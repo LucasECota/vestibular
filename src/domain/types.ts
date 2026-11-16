@@ -11,11 +11,14 @@ export const SUBJECTS = [
 
 export type SubjectId = (typeof SUBJECTS)[number]
 
+export type TaskKind = 'conteudo' | 'pratica' | 'revisao'
+
 export interface StudyTask {
   id: string
   /** Data do dia da tarefa, formato YYYY-MM-DD. */
   date: string
   subject: SubjectId
+  kind: TaskKind
   title: string
   minutes: number
   /** Slug da página de conteúdo associada. */

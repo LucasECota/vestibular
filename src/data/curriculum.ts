@@ -1,0 +1,85 @@
+import type { SubjectId } from '../domain/types'
+
+/**
+ * Tópicos de cada disciplina, na ordem de estudo. Baseados no conteúdo programático
+ * oficial e nos assuntos que mais aparecem nas provas de 2022 a 2024.
+ */
+export const CURRICULUM: Record<SubjectId, string[]> = {
+  matematica: [
+    'Operações, potências e porcentagem',
+    'Razão, proporção e regra de três',
+    'Equações e sistemas do 1º e 2º graus',
+    'Produtos notáveis e fatoração',
+    'Funções: afim e quadrática',
+    'Funções exponencial e logarítmica',
+    'Polinômios e equações polinomiais',
+    'Progressões aritméticas e geométricas',
+    'Geometria plana: áreas e perímetros',
+    'Geometria espacial: volumes e áreas',
+    'Geometria analítica: ponto, reta e circunferência',
+    'Trigonometria',
+    'Matrizes e determinantes',
+    'Análise combinatória, probabilidade e estatística',
+  ],
+  portugues: [
+    'Interpretação de texto e gêneros textuais',
+    'Variação linguística e funções da linguagem',
+    'Classes de palavras e morfologia',
+    'Sintaxe: concordância, regência e crase',
+    'Pontuação, coesão e coerência',
+    'Literatura: do Barroco ao Romantismo',
+    'Literatura: do Realismo ao Modernismo e contemporânea',
+  ],
+  ingles: [
+    'Estratégias de leitura: cognatos, skimming e scanning',
+    'Tempos verbais: presente, passado e futuro',
+    'Pronomes, preposições e conectivos',
+    'Vocabulário e falsos cognatos',
+    'Interpretação de tirinhas, notícias e textos científicos',
+  ],
+  fisica: [
+    'Cinemática: MRU, MRUV e lançamentos',
+    'Dinâmica: leis de Newton e aplicações',
+    'Trabalho, energia, potência e impulso',
+    'Gravitação, leis de Kepler e hidrostática',
+    'Termologia e termodinâmica',
+    'Ondas, som e óptica',
+    'Eletricidade, eletromagnetismo e física moderna',
+  ],
+  quimica: [
+    'Matéria, misturas e modelos atômicos',
+    'Tabela periódica e ligações químicas',
+    'Funções inorgânicas e reações químicas',
+    'Mol, estequiometria e soluções',
+    'Termoquímica e cinética química',
+    'Equilíbrio, ácidos e bases, pH e eletroquímica',
+    'Química orgânica e química ambiental',
+  ],
+  biologia: [
+    'Citologia: célula, membrana e organelas',
+    'Metabolismo energético, enzimas e divisão celular',
+    'Genética: Mendel e heredogramas',
+    'Biotecnologia e evolução',
+    'Ecologia: cadeias, ciclos, biomas e impactos ambientais',
+    'Fisiologia humana e saúde',
+    'Biodiversidade: seres vivos, plantas e animais',
+  ],
+  geografia: [
+    'Cartografia, coordenadas e fusos horários',
+    'Geologia, placas tectônicas e relevo',
+    'Clima, vegetação e biomas',
+    'Recursos hídricos e matriz energética',
+    'População, urbanização e migrações',
+    'Economia, indústria e agropecuária no Brasil',
+    'Geopolítica, globalização e espaço geográfico',
+  ],
+  historia: [
+    'Antiguidade clássica: Grécia e Roma',
+    'Idade Média, Renascimento e Absolutismo',
+    'Colonização do Brasil e escravidão',
+    'Revoluções (Industrial e Francesa) e independências',
+    'Brasil Império',
+    'República Velha e Era Vargas',
+    'Guerras mundiais, Guerra Fria e Ditadura Militar',
+  ],
+}

@@ -2,6 +2,7 @@ import { render, screen, within } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { MemoryRouter } from 'react-router-dom'
 import App from './App'
+import { PLAN } from './data/plan'
 import { ProgressProvider } from './state/ProgressProvider'
 
 const renderApp = (route = '/') =>
@@ -13,14 +14,27 @@ const renderApp = (route = '/') =>
     </MemoryRouter>,
   )
 
+const mathTasks = PLAN.filter((t) => t.subject === 'matematica').length
+
 const goHome = () => within(screen.getByRole('navigation')).getByRole('link', { name: 'Hoje' })
 
 describe('fluxo principal', () => {
   it('mostra nível, sequência e as tarefas de hoje', () => {
     renderApp()
     expect(screen.getByText('Nível 1')).toBeInTheDocument()
-    expect(screen.getByText(/potenciação e porcentagem/i)).toBeInTheDocument()
+    expect(screen.getByText(/operações, potências e porcentagem/i)).toBeInTheDocument()
+    expect(screen.getByText(/classes de palavras|interpretação de texto e gêneros/i)).toBeInTheDocument()
     expect(screen.queryByText(/cinemática/i)).not.toBeInTheDocument()
+  })
+
+  it('mostra a contagem regressiva e o plano completo', async () => {
+    const user = userEvent.setup()
+    renderApp()
+    expect(screen.getByText(/faltam 62 dias para a prova/i)).toBeInTheDocument()
+    await user.click(screen.getByRole('link', { name: /plano de estudo completo/i }))
+    expect(screen.getByRole('heading', { name: 'Plano de estudo' })).toBeInTheDocument()
+    expect(screen.getAllByRole('region', { name: /semana/i })).toHaveLength(9)
+    expect(screen.getByText('Revisão final')).toBeInTheDocument()
   })
 
   it('cumprimenta a Daniela', () => {
@@ -62,7 +76,7 @@ describe('fluxo principal', () => {
 
   it('o atalho da tarefa abre as dúvidas já com a disciplina escolhida', async () => {
     const user = userEvent.setup()
-    renderApp('/tarefa/t-2026-11-16-mat')
+    renderApp('/tarefa/t-2026-11-16-matematica')
     await user.click(screen.getByRole('link', { name: /anotar uma dúvida/i }))
     expect(screen.getByLabelText(/disciplina/i)).toHaveValue('matematica')
   })
@@ -81,7 +95,7 @@ describe('fluxo principal', () => {
 
   it('responde exercícios, vê o feedback, conclui a tarefa e ganha XP', async () => {
     const user = userEvent.setup()
-    renderApp('/tarefa/t-2026-11-16-mat')
+    renderApp('/tarefa/t-2026-11-16-matematica')
 
     const finish = screen.getByRole('button', { name: /concluir tarefa/i })
     expect(finish).toBeDisabled()
@@ -101,13 +115,13 @@ describe('fluxo principal', () => {
 
   it('mostra o progresso por disciplina depois de concluir tarefas', async () => {
     const user = userEvent.setup()
-    renderApp('/tarefa/t-2026-11-16-mat')
+    renderApp('/tarefa/t-2026-11-16-matematica')
     const cards = screen.getAllByRole('article')
     await user.click(within(cards[0]).getByRole('button', { name: /17/ }))
     await user.click(within(cards[1]).getByRole('button', { name: /150/ }))
     await user.click(screen.getByRole('button', { name: /concluir tarefa/i }))
     await user.click(goHome())
     await user.click(screen.getByRole('link', { name: 'Disciplinas' }))
-    expect(screen.getByRole('progressbar', { name: /matemática/i })).toHaveAttribute('aria-valuenow', '100')
+    expect(screen.getByRole('progressbar', { name: /matemática/i })).toHaveAttribute('aria-valuenow', String(Math.round(100 / mathTasks)))
   })
 })

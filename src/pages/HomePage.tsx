@@ -1,7 +1,8 @@
 import { Link } from 'react-router-dom'
 import { ProgressBar } from '../components/ProgressBar'
 import { SubjectChip } from '../components/SubjectChip'
-import { PLAN } from '../data/plan'
+import { EXAM_DATE_ESTIMATE, PLAN } from '../data/plan'
+import { daysBetween } from '../domain/date'
 import { SUBJECT_COLOR } from '../data/subjects'
 import { useProgress } from '../state/useProgress'
 
@@ -15,6 +16,7 @@ function greeting(): string {
 export function HomePage() {
   const { today, xp, level, streak, progress } = useProgress()
   const todayTasks = PLAN.filter((t) => t.date === today)
+  const daysLeft = Math.max(0, daysBetween(today, EXAM_DATE_ESTIMATE))
   const doneToday = todayTasks.filter((t) => progress.completedTaskIds.includes(t.id)).length
 
   return (
@@ -24,6 +26,11 @@ export function HomePage() {
         <h1 className="text-3xl font-extrabold tracking-tight">{STUDENT_NAME}! 👋</h1>
         <p className="mt-1 text-muted">Vamos estudar para o vestibular da UEMG.</p>
       </header>
+
+      <p className="card flex items-center justify-between px-4 py-3 text-base font-bold">
+        <span>⏳ Faltam {daysLeft} dias para a prova</span>
+        <span className="text-xs font-semibold text-muted">prevista</span>
+      </p>
 
       <section
         aria-label="Seu progresso"
@@ -90,6 +97,10 @@ export function HomePage() {
           )
         })}
       </section>
+
+      <Link to="/plano" className="card block px-4 py-3 text-center text-base font-bold text-brand">
+        Ver plano de estudo completo
+      </Link>
     </div>
   )
 }

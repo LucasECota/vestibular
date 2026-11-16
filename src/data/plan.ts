@@ -1,34 +1,23 @@
+import { generatePlan } from '../domain/planGenerator'
 import type { StudyTask } from '../domain/types'
+import { CURRICULUM } from './curriculum'
 
-/** Plano de exemplo; o plano completo até a prova será gerado depois. */
-export const PLAN: StudyTask[] = [
-  {
-    id: 't-2026-11-16-mat',
-    date: '2026-11-16',
-    subject: 'matematica',
-    title: 'Potenciação e porcentagem',
-    minutes: 60,
-    lessonSlug: 'matematica-potenciacao-porcentagem',
-    exerciseIds: ['ex-mat-1', 'ex-mat-2'],
-  },
-  {
-    id: 't-2026-11-16-ing',
-    date: '2026-11-16',
-    subject: 'ingles',
-    title: 'Interpretação de texto em inglês',
-    minutes: 60,
-    lessonSlug: 'ingles-interpretacao',
-    exerciseIds: [],
-  },
-  {
-    id: 't-2026-11-17-fis',
-    date: '2026-11-17',
-    subject: 'fisica',
-    title: 'Cinemática: MRU e MRUV',
-    minutes: 60,
-    lessonSlug: 'fisica-cinematica',
-    exerciseIds: [],
-  },
-]
+/**
+ * Data provável da prova: domingo de meados de janeiro de 2027.
+ * O edital da próxima edição ainda não saiu; ajuste aqui quando sair.
+ */
+export const EXAM_DATE_ESTIMATE = '2027-01-17'
+
+/** Exercícios já cadastrados por tarefa; o banco completo virá das provas importadas. */
+const EXERCISES_BY_TASK: Record<string, string[]> = {
+  't-2026-11-16-matematica': ['ex-mat-1', 'ex-mat-2'],
+}
+
+export const PLAN: StudyTask[] = generatePlan({
+  startMonday: '2026-11-16',
+  weeks: 9,
+  holidays: ['2026-12-25', '2027-01-01'],
+  curriculum: CURRICULUM,
+}).map((t) => ({ ...t, exerciseIds: EXERCISES_BY_TASK[t.id] ?? [] }))
 
 export const taskById = (id: string): StudyTask | undefined => PLAN.find((t) => t.id === id)

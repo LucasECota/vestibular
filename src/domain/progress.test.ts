@@ -6,6 +6,7 @@ const task = (id: string, subject: StudyTask['subject'] = 'matematica'): StudyTa
   id,
   date: '2026-11-17',
   subject,
+  kind: 'conteudo',
   title: id,
   minutes: 60,
   lessonSlug: 'x',

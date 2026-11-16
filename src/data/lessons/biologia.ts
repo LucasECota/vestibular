@@ -257,3 +257,47 @@ export const BIOLOGIA_5: Lesson = {
     ex('biologia-5', 5, S, 'O excesso de esgoto e de fertilizantes em lagos e rios provoca a proliferação de algas e a diminuição do oxigênio na água. Esse fenômeno é chamado de:', ['chuva ácida', 'eutrofização', 'bioacumulação', 'inversão térmica'], 1, 'Resposta B (eutrofização). Os nutrientes em excesso fazem as algas se multiplicarem. Quando morrem, a decomposição consome o oxigênio da água e muitos peixes morrem.'),
   ],
 }
+
+export const BIOLOGIA_6: Lesson = {
+  slug: 'biologia-6',
+  title: 'Fisiologia humana e saúde',
+  blocks: [
+    { type: 'p', text: 'Fisiologia estuda como o corpo funciona. Cada sistema tem uma função e todos trabalham juntos. O programa oficial da UEMG cobra o funcionamento dos sistemas respiratório, excretor, nervoso, digestório, locomotor, circulatório e endócrino, além de saúde e doenças.' },
+    { type: 'h', text: '1. Sistema digestório' },
+    { type: 'table', head: ['Órgão', 'O que faz'], rows: [
+      ['Boca', 'Mastigação e início da digestão do amido (amilase salivar)'],
+      ['Estômago', 'Suco gástrico (HCl e pepsina) digere proteínas'],
+      ['Fígado e pâncreas', 'Fígado produz a **bile** (emulsifica gorduras); pâncreas produz enzimas (tripsina, lipase) e **insulina**'],
+      ['Intestino delgado', 'Digestão final e **absorção dos nutrientes** (vilosidades)'],
+      ['Intestino grosso', 'Absorve água e forma as fezes'],
+    ] },
+    { type: 'h', text: '2. Sistemas respiratório e circulatório' },
+    { type: 'list', items: ['**Respiratório:** o ar passa por nariz → faringe → laringe → traqueia → brônquios → **alvéolos**, onde ocorrem as **trocas gasosas** (O₂ entra no sangue, CO₂ sai). O **diafragma** controla a ventilação.', '**Circulatório:** o coração tem 4 câmaras (2 átrios e 2 ventrículos). A circulação é **dupla e completa**: a **pequena** (coração → pulmões → coração) oxigena o sangue; a **grande** (coração → corpo → coração) leva O₂ aos tecidos.', 'O **ventrículo esquerdo** bombeia sangue oxigenado para o corpo pela **aorta**. As **artérias** saem do coração; as **veias** chegam a ele.', '**Sangue:** hemácias (levam O₂ pela hemoglobina), leucócitos (defesa) e plaquetas (coagulação).'] },
+    { type: 'h', text: '3. Sistemas excretor, nervoso e endócrino' },
+    { type: 'table', head: ['Sistema', 'Função', 'Destaques'], rows: [
+      ['Excretor', 'Filtra o sangue e elimina excretas', 'O **néfron** (unidade do rim) forma a urina; ureia e sais; regula água e sais do corpo'],
+      ['Nervoso', 'Recebe, interpreta e responde a estímulos', 'Neurônio, **sinapse**, SNC (encéfalo e medula) e SNP (nervos); ato reflexo'],
+      ['Endócrino', 'Regula funções por hormônios no sangue', 'Insulina (baixa a glicose) e glucagon (aumenta); tireoide; adrenalina; hormônios sexuais'],
+    ] },
+    { type: 'callout', kind: 'atencao', text: 'Diabetes: falta ou ação ineficaz da **insulina**, com glicose alta no sangue. Insulina e glucagon agem em sentidos opostos.' },
+    { type: 'h', text: '4. Locomotor e reprodução' },
+    { type: 'list', items: ['**Locomotor:** ossos (sustentação, proteção), músculos (contração) e articulações; o músculo precisa de cálcio e de ATP.', '**Reprodução humana:** o óvulo é fecundado na tuba uterina e o embrião se implanta no útero; anexos embrionários (placenta, âmnio). **Métodos contraceptivos:** barreira (camisinha, a única que também protege de ISTs), hormonais (pílula), DIU e cirúrgicos.'] },
+    { type: 'h', text: '5. Saúde e doenças' },
+    { type: 'table', head: ['Doença', 'Agente', 'Transmissão ou prevenção'], rows: [
+      ['Dengue, zika, chikungunya', 'Vírus', 'Mosquito Aedes aegypti: **eliminar água parada**'],
+      ['Malária', 'Protozoário (Plasmodium)', 'Mosquito Anopheles'],
+      ['Doença de Chagas', 'Protozoário', 'Barbeiro (inseto)'],
+      ['Esquistossomose', 'Verme (platelminto)', 'Água contaminada com fezes; **saneamento**'],
+      ['Gripe, sarampo, COVID-19', 'Vírus', 'Contato e vias respiratórias; **vacinas**'],
+      ['Tuberculose, cólera', 'Bactérias', 'Ar ou água contaminada; saneamento; antibióticos'],
+    ] },
+    { type: 'callout', kind: 'dica', text: 'Prevenção: **saneamento básico** (água tratada e esgoto), **vacinação**, higiene e controle de vetores. Muitos desses problemas têm ligação com o ambiente (Engenharia Ambiental).' },
+  ],
+  exercises: [
+    ex('biologia-6', 1, S, 'A maior parte da absorção dos nutrientes ocorre no:', ['estômago', 'intestino delgado', 'intestino grosso', 'fígado'], 1, 'Resposta B (intestino delgado). Suas vilosidades aumentam muito a superfície de absorção. O intestino grosso absorve principalmente água; o estômago digere proteínas.'),
+    ex('biologia-6', 2, S, 'As trocas gasosas (hematose) ocorrem nos:', ['brônquios', 'alvéolos pulmonares', 'bronquíolos', 'diafragma'], 1, 'Resposta B (alvéolos). São pequenas bolsas cercadas por capilares, onde o O₂ entra no sangue e o CO₂ sai. O diafragma é o músculo que controla a respiração.'),
+    ex('biologia-6', 3, S, 'O hormônio que diminui a concentração de glicose no sangue é:', ['glucagon', 'adrenalina', 'insulina', 'tiroxina'], 2, 'Resposta C (insulina), produzida pelo pâncreas. Ela favorece a entrada da glicose nas células. O glucagon tem efeito contrário, aumentando a glicose no sangue.'),
+    ex('biologia-6', 4, S, 'O sangue rico em oxigênio é bombeado para o corpo, pela aorta, a partir do:', ['átrio direito', 'ventrículo direito', 'átrio esquerdo', 'ventrículo esquerdo'], 3, 'Resposta D (ventrículo esquerdo). Ele é a câmara de parede mais forte do coração e impulsiona o sangue oxigenado pela grande circulação. O ventrículo direito envia o sangue aos pulmões.'),
+    ex('biologia-6', 5, S, 'Uma medida eficaz para prevenir a dengue, transmitida pelo Aedes aegypti, é:', ['tomar antibiótico regularmente', 'eliminar recipientes com água parada', 'lavar as mãos só antes das refeições', 'evitar o contato com animais domésticos'], 1, 'Resposta B. O mosquito põe os ovos em água parada limpa (pneus, vasos, caixas-d\'água destampadas). Eliminar esses focos interrompe o ciclo. A dengue é causada por vírus, e antibióticos não funcionam contra vírus.'),
+  ],
+}

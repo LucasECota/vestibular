@@ -251,3 +251,59 @@ export const QUIMICA_5: Lesson = {
     ex('quimica-5', 5, S, 'Entre os processos abaixo, o único endotérmico (que absorve calor) é:', ['a queima da gasolina', 'a fusão (derretimento) do gelo', 'a formação de orvalho (condensação)', 'a combustão do etanol'], 1, 'Resposta B. Para fundir o gelo é preciso receber calor do ambiente (endotérmico). Combustão e condensação liberam calor (exotérmicos).'),
   ],
 }
+
+/** Escala de pH (0 a 14) com exemplos do dia a dia. */
+const SVG_PH = (() => {
+  const colors = ['#dc2626', '#ea580c', '#f97316', '#f59e0b', '#eab308', '#a3e635', '#4ade80', '#22c55e', '#2dd4bf', '#38bdf8', '#3b82f6', '#6366f1', '#8b5cf6', '#7c3aed', '#6d28d9']
+  const bars = colors.map((c, i) => `<rect x="${20 + i * 20}" y="40" width="20" height="30" fill="${c}"/><text x="${30 + i * 20}" y="88" text-anchor="middle" fill="#0a0a0f" font-size="10">${i}</text>`).join('')
+  return `<svg viewBox="0 0 340 190" xmlns="http://www.w3.org/2000/svg" font-family="sans-serif" font-size="11"><rect width="340" height="190" fill="#fff"/>
+<text x="170" y="16" text-anchor="middle" font-weight="bold" fill="#0a0a0f">Escala de pH (a 25 °C)</text>${bars}
+<text x="20" y="32" fill="#b91c1c" font-weight="bold">ÁCIDO</text><text x="170" y="32" text-anchor="middle" fill="#15803d" font-weight="bold">NEUTRO (7)</text><text x="320" y="32" text-anchor="end" fill="#6d28d9" font-weight="bold">BÁSICO</text>
+<text x="20" y="116" fill="#0a0a0f">• Suco gástrico: pH ≈ 2    • Limão: ≈ 2    • Chuva "normal": ≈ 5,6</text>
+<text x="20" y="134" fill="#0a0a0f">• Água pura e sangue: ≈ 7 e 7,4    • Água do mar: ≈ 8</text>
+<text x="20" y="152" fill="#0a0a0f">• Água sanitária e amônia: ≈ 11 a 13    • Soda cáustica: ≈ 14</text>
+<text x="20" y="176" fill="#0a0a0f" font-weight="bold">pH = −log [H⁺]    pH + pOH = 14</text></svg>`
+})()
+
+export const QUIMICA_6: Lesson = {
+  slug: 'quimica-6',
+  title: 'Equilíbrio, ácidos e bases, pH e eletroquímica',
+  blocks: [
+    { type: 'p', text: 'Esta aula reúne três ideias: reações que podem ir e voltar (**equilíbrio**), a medida da acidez (**pH**) e as reações que produzem ou consomem eletricidade (**eletroquímica**). Elas explicam a chuva ácida, o tratamento de água e as pilhas e baterias. Na UEMG 2024 caiu uma questão de oxirredução (ferrugem) e, em 2023, um sistema ácido-base (água sanitária).' },
+    { type: 'h', text: '1. Equilíbrio químico' },
+    { type: 'p', text: 'Em uma reação **reversível** (⇌), reagentes viram produtos e produtos viram reagentes. No **equilíbrio**, as duas velocidades se igualam: as concentrações ficam constantes (equilíbrio **dinâmico**: a reação não parou, só está balanceada).' },
+    { type: 'math', tex: String.raw`aA + bB \rightleftharpoons cC + dD \qquad K_c = \dfrac{[C]^c\,[D]^d}{[A]^a\,[B]^b}` },
+    { type: 'p', text: '**Princípio de Le Chatelier:** se um equilíbrio é perturbado, ele se desloca para **diminuir** a perturbação.' },
+    { type: 'table', head: ['Perturbação', 'Deslocamento'], rows: [
+      ['Aumentar a concentração de um reagente', 'Para o lado dos **produtos**'],
+      ['Aumentar a concentração de um produto', 'Para o lado dos **reagentes**'],
+      ['Aumentar a pressão', 'Para o lado com **menor volume** (menos mols de gás)'],
+      ['Aumentar a temperatura', 'Para o sentido **endotérmico**'],
+      ['Adicionar catalisador', '**Não desloca**; só faz o equilíbrio ser atingido mais rápido'],
+    ] },
+    { type: 'h', text: '2. Ácidos, bases e pH' },
+    { type: 'list', items: ['**Arrhenius:** ácido libera H⁺; base libera OH⁻. **Brønsted-Lowry:** ácido doa H⁺; base recebe H⁺.', '**Forças:** ácidos fortes (HCl, H₂SO₄, HNO₃) se ionizam quase totalmente; ácidos fracos (ácido acético, H₂CO₃) pouco.'] },
+    { type: 'figure', svg: SVG_PH, alt: 'Escala de pH de 0 a 14 colorida, do ácido ao básico, com exemplos', caption: 'Cada unidade de pH muda a concentração de H⁺ em 10 vezes.' },
+    { type: 'math', tex: String.raw`\text{pH} = -\log\,[H^+] \qquad \text{pOH} = -\log\,[OH^-] \qquad \text{pH} + \text{pOH} = 14` },
+    { type: 'callout', kind: 'exemplo', text: String.raw`$[H^+] = 10^{-3}$ mol/L $\Rightarrow$ pH $= 3$ (ácida). $[H^+] = 10^{-9}$ mol/L $\Rightarrow$ pH $= 9$ (básica).` },
+    { type: 'callout', kind: 'atencao', text: 'Chuva "normal" já é levemente ácida (pH ≈ 5,6, por causa do CO₂ dissolvido). A **chuva ácida** tem pH menor que 5,6, por óxidos de enxofre e nitrogênio.' },
+    { type: 'p', text: '**Solução tampão** resiste a variações de pH (o sangue tem pH ≈ 7,4 graças a tampões). Indicadores (fenolftaleína, papel de tornassol) mudam de cor conforme o pH.' },
+    { type: 'h', text: '3. Oxirredução e pilhas' },
+    { type: 'list', items: ['**Oxidação:** perda de elétrons (o Nox **aumenta**). **Redução:** ganho de elétrons (o Nox **diminui**).', 'O **agente oxidante** é quem **sofre redução** (causa a oxidação do outro); o **agente redutor** é quem **sofre oxidação**.', '**Nox:** substância simples = 0; O = −2 (quase sempre); H = +1; metais alcalinos = +1; a soma dos Nox no composto neutro = 0.'] },
+    { type: 'callout', kind: 'exemplo', text: String.raw`Em $KMnO_4$: $K = +1$, $O = -2$ (4 átomos = −8), então $+1 + x - 8 = 0 \Rightarrow x = +7$. O Mn tem Nox +7.` },
+    { type: 'table', head: ['', 'Pilha (reação espontânea)', 'Eletrólise (reação forçada)'], rows: [
+      ['Energia', 'Química → elétrica', 'Elétrica → química'],
+      ['Ânodo', 'Oxidação (polo negativo)', 'Oxidação (polo positivo)'],
+      ['Cátodo', 'Redução (polo positivo)', 'Redução (polo negativo)'],
+      ['Exemplo', 'Pilha de Daniell (Zn e Cu); baterias', 'Produção de alumínio, cloro e soda; galvanoplastia'],
+    ] },
+    { type: 'callout', kind: 'dica', text: 'Em qualquer célula eletroquímica, o **ânodo** é onde ocorre a **oxidação** e o **cátodo** é onde ocorre a **redução**. (Vogais com vogais: Ânodo-Oxidação; Consoantes: Cátodo-Redução.)' },
+  ],
+  exercises: [
+    ex('quimica-6', 1, S, 'Uma solução tem concentração de íons H⁺ igual a 10⁻³ mol/L. Seu pH é:', ['3', '7', '11', '−3'], 0, 'Resposta A (3). pH = −log [H⁺] = −log 10⁻³ = 3. É uma solução ácida (pH menor que 7).'),
+    ex('quimica-6', 2, S, 'Uma solução com pH igual a 9, a 25 °C, é:', ['ácida', 'neutra', 'básica (alcalina)', 'um ácido forte'], 2, 'Resposta C (básica). A 25 °C, pH menor que 7 é ácido, igual a 7 é neutro e maior que 7 é básico. Quanto maior o pH, mais básica.'),
+    ex('quimica-6', 3, S, 'Em um equilíbrio químico, se aumentarmos a concentração de um dos reagentes, o equilíbrio:', ['se desloca para o lado dos produtos', 'se desloca para o lado dos reagentes', 'não sofre alteração', 'deixa de existir'], 0, 'Resposta A. Pelo princípio de Le Chatelier, o sistema reage para diminuir a perturbação: consome o reagente em excesso, formando mais produtos.'),
+    ex('quimica-6', 4, S, 'Em uma pilha, a oxidação ocorre no:', ['cátodo', 'ânodo', 'eletrólito', 'fio de ligação'], 1, 'Resposta B (ânodo). É nele que o metal perde elétrons (oxida). Os elétrons seguem pelo fio até o cátodo, onde ocorre a redução. Associe: Ânodo-Oxidação.'),
+    ex('quimica-6', 5, S, 'O número de oxidação (Nox) do manganês no permanganato de potássio, KMnO₄, é:', ['+1', '+4', '+5', '+7'], 3, 'Resposta D (+7). K = +1 e cada O = −2 (4 átomos somam −8). Como o composto é neutro: +1 + x − 8 = 0, então x = +7.'),
+  ],
+}

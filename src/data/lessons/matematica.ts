@@ -382,3 +382,123 @@ export const MATEMATICA_10: Lesson = {
     ex('matematica-10', 5, S, 'Um reservatório em forma de paralelepípedo mede 2 m × 3 m × 1,5 m. Quantos litros de água ele comporta quando está cheio?', ['6 000 L', '7 500 L', '9 000 L', '12 000 L'], 2, 'Resposta C (9 000 L). V = 2 · 3 · 1,5 = 9 m³. Como 1 m³ = 1 000 L, o reservatório comporta 9 000 L.'),
   ],
 }
+
+/** Plano cartesiano com os pontos A(1,1) e B(5,4), o segmento AB e o ponto médio M. */
+const SVG_ANALITICA = (() => {
+  const ox = 40
+  const oy = 160
+  const u = 28
+  const X = (x: number) => ox + x * u
+  const Y = (y: number) => oy - y * u
+  let grid = ''
+  for (let i = 1; i <= 8; i++) grid += `<line x1="${X(i)}" y1="${oy}" x2="${X(i)}" y2="${Y(5.5)}" stroke="#e5e7eb"/>`
+  for (let j = 1; j <= 5; j++) grid += `<line x1="${ox}" y1="${Y(j)}" x2="${X(8.4)}" y2="${Y(j)}" stroke="#e5e7eb"/>`
+  return `<svg viewBox="0 0 340 190" xmlns="http://www.w3.org/2000/svg" font-family="sans-serif" font-size="11"><rect width="340" height="190" fill="#fff"/>${grid}
+<line x1="${ox}" y1="${oy}" x2="${X(8.6)}" y2="${oy}" stroke="#0a0a0f" stroke-width="1.5"/><line x1="${ox}" y1="${oy}" x2="${ox}" y2="${Y(5.8)}" stroke="#0a0a0f" stroke-width="1.5"/>
+<line x1="${X(1)}" y1="${Y(1)}" x2="${X(5)}" y2="${Y(4)}" stroke="#6d28d9" stroke-width="3"/>
+<line x1="${X(1)}" y1="${Y(1)}" x2="${X(5)}" y2="${Y(1)}" stroke="#a16207" stroke-width="1.5" stroke-dasharray="4 3"/><line x1="${X(5)}" y1="${Y(1)}" x2="${X(5)}" y2="${Y(4)}" stroke="#a16207" stroke-width="1.5" stroke-dasharray="4 3"/>
+<circle cx="${X(1)}" cy="${Y(1)}" r="5" fill="#6d28d9"/><circle cx="${X(5)}" cy="${Y(4)}" r="5" fill="#6d28d9"/><circle cx="${X(3)}" cy="${Y(2.5)}" r="5" fill="#c2410c"/>
+<text x="${X(1) + 8}" y="${Y(1) - 8}" fill="#0a0a0f" font-weight="bold">A(1,1)</text><text x="${X(5) + 8}" y="${Y(4) + 4}" fill="#0a0a0f" font-weight="bold">B(5,4)</text><text x="${X(3) + 10}" y="${Y(2.5) + 18}" fill="#c2410c" font-weight="bold">M(3; 2,5)</text>
+<text x="${X(3)}" y="${Y(1) + 14}" text-anchor="middle" fill="#a16207">Δx = 4</text><text x="${X(5) + 8}" y="${Y(2.5)}" fill="#a16207">Δy = 3</text>
+<text x="215" y="30" fill="#0a0a0f" font-weight="bold">d(A, B) = √(4² + 3²) = 5</text></svg>`
+})()
+
+export const MATEMATICA_11: Lesson = {
+  slug: 'matematica-11',
+  title: 'Geometria analítica: ponto, reta e circunferência',
+  blocks: [
+    { type: 'p', text: 'Geometria analítica usa **coordenadas** (x, y) para estudar figuras com equações. Ela já apareceu na UEMG duas vezes: a área de um quadrilátero por coordenadas (2024) e a circunferência com centro na interseção de duas retas (2023).' },
+    { type: 'h', text: '1. Distância e ponto médio' },
+    { type: 'figure', svg: SVG_ANALITICA, alt: 'Plano cartesiano com os pontos A e B, o segmento entre eles e o ponto médio', caption: 'A distância é a hipotenusa de um triângulo retângulo de catetos Δx e Δy.' },
+    { type: 'math', tex: String.raw`d_{AB} = \sqrt{(x_B - x_A)^2 + (y_B - y_A)^2} \qquad M = \left(\dfrac{x_A + x_B}{2},\ \dfrac{y_A + y_B}{2}\right)` },
+    { type: 'h', text: '2. Reta' },
+    { type: 'table', head: ['Conceito', 'Fórmula', 'Observação'], rows: [
+      ['Coeficiente angular', String.raw`$m = \dfrac{y_B - y_A}{x_B - x_A}$`, String.raw`Inclinação; $m = \tan\theta$`],
+      ['Equação reduzida', String.raw`$y = m\,x + n$`, String.raw`$n$ é onde a reta corta o eixo y`],
+      ['Equação da reta por um ponto', String.raw`$y - y_0 = m\,(x - x_0)$`, 'Use quando souber m e um ponto'],
+      ['Equação geral', String.raw`$ax + by + c = 0$`, 'Forma que aparece nas provas'],
+    ] },
+    { type: 'table', head: ['Posição entre duas retas', 'Condição'], rows: [
+      ['Paralelas', String.raw`$m_1 = m_2$`],
+      ['Perpendiculares', String.raw`$m_1\cdot m_2 = -1$`],
+      ['Concorrentes', 'Têm um ponto em comum: resolva o sistema das duas equações'],
+    ] },
+    { type: 'callout', kind: 'exemplo', text: String.raw`Reta por $(1,3)$ e $(3,7)$: $m = \dfrac{7-3}{3-1} = 2$. Equação: $y - 3 = 2(x - 1)$, isto é, $y = 2x + 1$.` },
+    { type: 'h', text: '3. Circunferência' },
+    { type: 'math', tex: String.raw`(x - a)^2 + (y - b)^2 = r^2` },
+    { type: 'p', text: String.raw`Centro $C(a, b)$ e raio $r$. Atenção aos sinais: o centro $(2, -1)$ aparece como $(x-2)^2 + (y+1)^2$. O lado direito é $r^2$, não $r$.` },
+    { type: 'callout', kind: 'exemplo', title: 'Estilo UEMG 2023', text: String.raw`Duas retas se cortam no centro de uma circunferência de raio 8. Se o ponto de encontro é $(-4, -1)$, a equação é $(x+4)^2 + (y+1)^2 = 64$.` },
+    { type: 'h', text: '4. Área do triângulo por coordenadas' },
+    { type: 'math', tex: String.raw`A = \dfrac{1}{2}\,|D|, \qquad D = \begin{vmatrix} x_1 & y_1 & 1 \\ x_2 & y_2 & 1 \\ x_3 & y_3 & 1 \end{vmatrix}` },
+    { type: 'callout', kind: 'dica', text: 'Para um quadrilátero, divida em dois triângulos ou use o "laço" (fórmula de Gauss) como na questão de 2024: some os produtos x·y\' − x\'·y em volta da figura e divida o módulo por 2.' },
+  ],
+  exercises: [
+    ex('matematica-11', 1, S, 'A distância entre os pontos A(1, 2) e B(4, 6) é:', ['3', '4', '5', '7'], 2, 'Resposta C (5). d = √[(4 − 1)² + (6 − 2)²] = √(9 + 16) = √25 = 5. É o triângulo 3-4-5.'),
+    ex('matematica-11', 2, S, 'O ponto médio do segmento de extremos A(2, 4) e B(8, 10) é:', ['(5, 7)', '(10, 14)', '(6, 6)', '(3, 3)'], 0, 'Resposta A (5, 7). A média das abscissas é (2 + 8)/2 = 5 e a média das ordenadas é (4 + 10)/2 = 7.'),
+    ex('matematica-11', 3, S, 'O coeficiente angular da reta que passa pelos pontos (1, 3) e (3, 7) é:', ['1', '2', '4', '1/2'], 1, 'Resposta B (2). m = Δy/Δx = (7 − 3)/(3 − 1) = 4/2 = 2.'),
+    ex('matematica-11', 4, S, 'A equação da circunferência de centro (2, −1) e raio 3 é:', ['(x + 2)² + (y − 1)² = 9', '(x − 2)² + (y + 1)² = 9', '(x − 2)² + (y + 1)² = 3', '(x + 2)² + (y − 1)² = 3'], 1, 'Resposta B. A forma é (x − a)² + (y − b)² = r², com a = 2 e b = −1: (x − 2)² + (y − (−1))² = (x − 2)² + (y + 1)². O lado direito é r² = 9.'),
+    ex('matematica-11', 5, S, 'Qual das retas abaixo é perpendicular à reta y = 2x + 1?', ['y = 2x − 3', 'y = −2x + 1', 'y = −x/2 + 4', 'y = x/2'], 2, 'Resposta C. A reta dada tem m = 2. Retas perpendiculares têm m₁ · m₂ = −1, então m₂ = −1/2. Essa é a reta y = −x/2 + 4.'),
+  ],
+}
+
+/** Circunferência trigonométrica com os ângulos notáveis do 1º quadrante. */
+const SVG_TRIG = (() => {
+  const cx = 110
+  const cy = 105
+  const r = 82
+  const pts = [
+    { a: 0, t: '0°' },
+    { a: 30, t: '30°' },
+    { a: 45, t: '45°' },
+    { a: 60, t: '60°' },
+    { a: 90, t: '90°' },
+  ]
+  const px = (a: number) => cx + r * Math.cos((a * Math.PI) / 180)
+  const py = (a: number) => cy - r * Math.sin((a * Math.PI) / 180)
+  const dots = pts
+    .map((p) => `<line x1="${cx}" y1="${cy}" x2="${px(p.a).toFixed(1)}" y2="${py(p.a).toFixed(1)}" stroke="#c4b5fd" stroke-width="1.5"/><circle cx="${px(p.a).toFixed(1)}" cy="${py(p.a).toFixed(1)}" r="4" fill="#6d28d9"/><text x="${(px(p.a) + (p.a === 90 ? -8 : 8)).toFixed(1)}" y="${(py(p.a) + (p.a === 90 ? -8 : 4)).toFixed(1)}" fill="#0a0a0f" font-weight="bold" text-anchor="${p.a === 90 ? 'end' : 'start'}">${p.t}</text>`)
+    .join('')
+  return `<svg viewBox="0 0 340 215" xmlns="http://www.w3.org/2000/svg" font-family="sans-serif" font-size="11"><rect width="340" height="215" fill="#fff"/>
+<line x1="${cx - r - 8}" y1="${cy}" x2="${cx + r + 10}" y2="${cy}" stroke="#0a0a0f" stroke-width="1.5"/><line x1="${cx}" y1="${cy + r + 8}" x2="${cx}" y2="${cy - r - 12}" stroke="#0a0a0f" stroke-width="1.5"/>
+<circle cx="${cx}" cy="${cy}" r="${r}" fill="none" stroke="#0a0a0f" stroke-width="2"/>${dots}
+<text x="225" y="40" fill="#0a0a0f" font-weight="bold">Ângulos notáveis</text>
+<text x="225" y="62" fill="#0a0a0f">30°: sen ½ · cos √3/2</text><text x="225" y="80" fill="#0a0a0f">45°: sen √2/2 · cos √2/2</text><text x="225" y="98" fill="#0a0a0f">60°: sen √3/2 · cos ½</text>
+<text x="225" y="124" fill="#6d28d9" font-weight="bold">sen² + cos² = 1</text><text x="225" y="142" fill="#0a0a0f">180° = π rad</text><text x="225" y="160" fill="#0a0a0f">90° = π/2 rad</text></svg>`
+})()
+
+export const MATEMATICA_12: Lesson = {
+  slug: 'matematica-12',
+  title: 'Trigonometria',
+  blocks: [
+    { type: 'p', text: 'Trigonometria relaciona **ângulos** e **lados** de triângulos. É usada para calcular alturas e distâncias que não dá para medir direto (como a altura de uma árvore ou de uma barragem). Na UEMG 2023, uma equação trigonométrica (sen x = cos x) apareceu na prova.' },
+    { type: 'h', text: '1. Razões no triângulo retângulo' },
+    { type: 'math', tex: String.raw`\text{sen}\,\theta = \dfrac{\text{cateto oposto}}{\text{hipotenusa}} \quad \cos\theta = \dfrac{\text{cateto adjacente}}{\text{hipotenusa}} \quad \text{tg}\,\theta = \dfrac{\text{cateto oposto}}{\text{cateto adjacente}}` },
+    { type: 'callout', kind: 'dica', text: 'Macete: SOH-CAH-TOA. **S**eno = **O**posto/**H**ipotenusa; **C**osseno = **A**djacente/**H**ipotenusa; **T**angente = **O**posto/**A**djacente.' },
+    { type: 'h', text: '2. Ângulos notáveis' },
+    { type: 'table', head: ['Ângulo', 'sen', 'cos', 'tg'], rows: [
+      ['30°', '1/2', '√3/2', '√3/3'],
+      ['45°', '√2/2', '√2/2', '1'],
+      ['60°', '√3/2', '1/2', '√3'],
+    ] },
+    { type: 'figure', svg: SVG_TRIG, alt: 'Circunferência trigonométrica com os pontos de 0, 30, 45, 60 e 90 graus', caption: 'Na circunferência de raio 1, o cosseno é a coordenada x e o seno é a coordenada y do ponto.' },
+    { type: 'h', text: '3. Relação fundamental e radianos' },
+    { type: 'list', items: [String.raw`$\text{sen}^2\theta + \cos^2\theta = 1$ (vale para qualquer ângulo). Se $\text{sen}\,\theta = \tfrac{3}{5}$ e $\theta$ é agudo, então $\cos\theta = \tfrac{4}{5}$.`, String.raw`**Radianos:** $180^\circ = \pi$ rad. Então $90^\circ = \pi/2$, $60^\circ = \pi/3$, $45^\circ = \pi/4$, $30^\circ = \pi/6$ e $360^\circ = 2\pi$.`] },
+    { type: 'h', text: '4. Funções seno e cosseno' },
+    { type: 'table', head: ['', 'f(x) = sen x', 'f(x) = cos x'], rows: [
+      ['Período', '2π', '2π'],
+      ['Imagem', '[−1, 1]', '[−1, 1]'],
+      ['f(0)', '0', '1'],
+    ] },
+    { type: 'callout', kind: 'exemplo', title: 'Equação (estilo UEMG 2023)', text: String.raw`$\text{sen}\,x - \cos x = 0 \Rightarrow \text{sen}\,x = \cos x \Rightarrow \text{tg}\,x = 1$. No intervalo $0 < x < 2\pi$: $x = \dfrac{\pi}{4}$ ou $x = \dfrac{5\pi}{4}$.` },
+    { type: 'h', text: '5. Lei dos senos e dos cossenos (triângulos quaisquer)' },
+    { type: 'math', tex: String.raw`\dfrac{a}{\text{sen}\,A} = \dfrac{b}{\text{sen}\,B} = \dfrac{c}{\text{sen}\,C} \qquad a^2 = b^2 + c^2 - 2bc\cos A` },
+    { type: 'callout', kind: 'exemplo', title: 'Altura de uma árvore', text: String.raw`A sombra mede 10 m e o Sol forma $45^\circ$ com o chão. $\text{tg}\,45^\circ = \dfrac{h}{10} \Rightarrow 1 = \dfrac{h}{10} \Rightarrow h = 10$ m.` },
+  ],
+  exercises: [
+    ex('matematica-12', 1, S, 'Em um triângulo retângulo, a hipotenusa mede 10 cm e o ângulo agudo θ vale 30°. O cateto oposto a θ mede:', ['5 cm', '5√3 cm', '10 cm', '20 cm'], 0, 'Resposta A (5 cm). sen 30° = cateto oposto/hipotenusa, então cateto oposto = 10 · sen 30° = 10 · 1/2 = 5 cm.'),
+    ex('matematica-12', 2, S, 'O valor de tg 45° é:', ['0', '1/2', '1', '√3'], 2, 'Resposta C (1). Em 45°, seno e cosseno são iguais (√2/2), então tg 45° = sen/cos = 1.'),
+    ex('matematica-12', 3, S, 'Se sen x = 3/5 e x é um ângulo agudo, então cos x vale:', ['3/4', '4/5', '5/4', '2/5'], 1, 'Resposta B (4/5). Pela relação fundamental, sen²x + cos²x = 1: 9/25 + cos²x = 1, então cos²x = 16/25 e cos x = 4/5 (positivo, pois x é agudo). É o triângulo 3-4-5.'),
+    ex('matematica-12', 4, S, 'O ângulo de 90° corresponde, em radianos, a:', ['π/4', 'π/2', 'π', '2π'], 1, 'Resposta B (π/2). Como 180° = π rad, metade disso, 90°, é π/2 rad.'),
+    ex('matematica-12', 5, S, 'Uma árvore projeta uma sombra de 10 m quando os raios solares formam 45° com o solo. A altura da árvore é:', ['5 m', '10 m', '20 m', '10√2 m'], 1, 'Resposta B (10 m). A tangente relaciona o cateto oposto (altura) ao adjacente (sombra): tg 45° = h/10. Como tg 45° = 1, h = 10 m.'),
+  ],
+}

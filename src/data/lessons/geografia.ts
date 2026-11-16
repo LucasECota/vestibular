@@ -257,3 +257,37 @@ export const GEOGRAFIA_5: Lesson = {
     ex('geografia-5', 5, S, 'A união física das áreas urbanas de cidades vizinhas, que passam a formar uma mancha urbana contínua, é chamada de:', ['êxodo rural', 'conurbação', 'densidade demográfica', 'migração pendular'], 1, 'Resposta B (conurbação). Ocorre quando duas ou mais cidades crescem tanto que se encontram, formando um conjunto urbano, como São Paulo e os municípios do ABC.'),
   ],
 }
+
+export const GEOGRAFIA_6: Lesson = {
+  slug: 'geografia-6',
+  title: 'Economia, indústria e agropecuária no Brasil',
+  blocks: [
+    { type: 'p', text: 'A economia se organiza em **setores**, e cada setor deixa marcas no território e no ambiente. Entender a indústria, o agronegócio e a mineração brasileiros é essencial para a Engenharia Ambiental, ainda mais em Minas Gerais, com a mineração e a siderurgia de cidades como João Monlevade.' },
+    { type: 'h', text: '1. Setores da economia' },
+    { type: 'table', head: ['Setor', 'O que inclui', 'Exemplos'], rows: [
+      ['Primário', 'Extração e produção de matérias-primas', 'Agricultura, pecuária, mineração, pesca'],
+      ['Secundário', 'Transformação (indústria)', 'Siderurgia, automóveis, alimentos'],
+      ['Terciário', 'Comércio e serviços', 'Transporte, saúde, educação, turismo'],
+    ] },
+    { type: 'callout', kind: 'dica', text: 'No Brasil, o **terciário** é o que mais contribui para o PIB e emprega mais gente (mais de 60% do PIB). A agropecuária pesa menos no PIB, mas tem peso grande nas exportações.' },
+    { type: 'h', text: '2. Industrialização brasileira' },
+    { type: 'list', items: ['**Até 1930:** economia agroexportadora (café); indústria pequena, ligada ao mercado interno.', '**Era Vargas (1930–45):** início da industrialização, com **substituição de importações**; criação da **Companhia Siderúrgica Nacional** (Volta Redonda, 1941), da Vale do Rio Doce (1942) e das leis trabalhistas.', '**Anos 1950 (JK):** abertura ao **capital estrangeiro**; chegada da indústria automobilística (ABC paulista); construção de Brasília e de rodovias.', '**Concentração:** a indústria se concentrou no **Sudeste** (São Paulo, Minas, Rio). Desde os anos 1970–80, há **desconcentração** para outras regiões (guerra fiscal, incentivos, custos menores).'] },
+    { type: 'h', text: '3. Mineração e siderurgia' },
+    { type: 'list', items: ['**Quadrilátero Ferrífero (MG)** e **Carajás (PA)** são grandes províncias de **minério de ferro**. O Brasil é um dos maiores exportadores mundiais de minério de ferro e também de nióbio.', 'A **siderurgia** transforma o minério de ferro em aço, usando carvão (coque ou vegetal). Em Minas, os polos siderúrgicos acompanham o Quadrilátero Ferrífero, como no Vale do Aço e em João Monlevade.', 'A mineração gera empregos e divisas, mas também **impactos ambientais**: desmatamento, rejeitos, risco de rompimento de barragens (como Mariana, 2015, e Brumadinho, 2019) e contaminação de rios.'] },
+    { type: 'h', text: '4. Agropecuária e agronegócio' },
+    { type: 'table', head: ['Modelo', 'Características'], rows: [
+      ['Agronegócio (agricultura comercial)', 'Grandes propriedades, monocultura, máquinas, insumos e exportação (soja, milho, cana, café, carne)'],
+      ['Agricultura familiar', 'Pequenas propriedades, mão de obra da família, produz boa parte dos alimentos do prato do brasileiro (feijão, mandioca, hortaliças)'],
+    ] },
+    { type: 'list', items: ['**Commodities:** produtos primários, com preço definido no mercado internacional (soja, minério de ferro, petróleo, açúcar). A economia fica sujeita às variações desses preços.', '**Fronteira agrícola:** avanço da agropecuária sobre o **Cerrado** e a **Amazônia** (MATOPIBA, Mato Grosso).', '**Pecuária:** o Brasil tem um dos maiores rebanhos bovinos do mundo; a pecuária extensiva é grande causa de desmatamento.'] },
+    { type: 'callout', kind: 'atencao', text: 'Impactos ambientais da agropecuária: desmatamento, queimadas, erosão e empobrecimento do solo, **contaminação por agrotóxicos**, uso intensivo de água e assoreamento dos rios.' },
+    { type: 'callout', kind: 'dica', text: 'Tendência atual: **agricultura de baixo carbono**, integração lavoura-pecuária-floresta e recuperação de pastagens, buscando produzir mais sem desmatar.' },
+  ],
+  exercises: [
+    ex('geografia-6', 1, S, 'A agricultura, a pecuária e a mineração são atividades do setor:', ['primário', 'secundário', 'terciário', 'quaternário'], 0, 'Resposta A (primário). O setor primário extrai ou produz matérias-primas. A indústria de transformação é o setor secundário, e comércio e serviços formam o terciário.'),
+    ex('geografia-6', 2, S, 'O setor que mais contribui para o PIB e emprega mais pessoas no Brasil é o:', ['primário', 'secundário', 'terciário (comércio e serviços)', 'extrativismo vegetal'], 2, 'Resposta C. O setor de comércio e serviços é o maior da economia brasileira em geração de riqueza e de empregos. A agropecuária, apesar da importância nas exportações, tem peso menor no PIB.'),
+    ex('geografia-6', 3, S, 'O Quadrilátero Ferrífero, em Minas Gerais, destaca-se pela extração de:', ['petróleo', 'minério de ferro', 'carvão mineral', 'gás natural'], 1, 'Resposta B (minério de ferro). Essa região é uma das maiores produtoras do Brasil e abastece a siderurgia. Ele é associado aos escudos cristalinos do Pré-cambriano, vistos na aula de geologia.'),
+    ex('geografia-6', 4, S, 'Produtos primários, como soja e minério de ferro, comercializados em grande escala e com preço definido pelo mercado internacional, são chamados de:', ['manufaturas', 'commodities', 'serviços', 'bens de capital'], 1, 'Resposta B (commodities). Elas têm pouco valor agregado e preços que variam no mercado mundial, o que deixa a economia exportadora sujeita a oscilações.'),
+    ex('geografia-6', 5, S, 'Um impacto ambiental associado à expansão da fronteira agrícola sobre o Cerrado e a Amazônia é:', ['o aumento da cobertura florestal', 'o desmatamento e a perda de biodiversidade', 'a redução do uso de água', 'a diminuição da erosão do solo'], 1, 'Resposta B. Abrir áreas para lavouras e pastos elimina a vegetação nativa, reduz a biodiversidade e pode causar erosão, assoreamento dos rios e emissão de gases do efeito estufa.'),
+  ],
+}

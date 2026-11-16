@@ -243,3 +243,61 @@ export const FISICA_5: Lesson = {
     ex('fisica-5', 5, S, 'A energia do Sol chega à Terra através do vácuo do espaço por meio de:', ['condução', 'convecção', 'irradiação', 'dilatação'], 2, 'Resposta C (irradiação). Condução e convecção precisam de meio material (sólido ou fluido). A irradiação ocorre por ondas eletromagnéticas e se propaga até no vácuo.'),
   ],
 }
+
+/** Gráfico de uma onda senoidal com amplitude e comprimento de onda indicados. */
+const SVG_ONDA = (() => {
+  const x0 = 30
+  const y0 = 105
+  const A = 40
+  const L = 120
+  const pts: string[] = []
+  for (let x = 0; x <= 2 * L + 1e-9; x += 4) pts.push(`${(x0 + x).toFixed(1)} ${(y0 - A * Math.sin((2 * Math.PI * x) / L)).toFixed(1)}`)
+  const crest1 = x0 + L / 4
+  const crest2 = x0 + L / 4 + L
+  return `<svg viewBox="0 0 340 200" xmlns="http://www.w3.org/2000/svg" font-family="sans-serif" font-size="11"><rect width="340" height="200" fill="#fff"/>
+<line x1="${x0 - 8}" y1="${y0}" x2="${x0 + 2 * L + 20}" y2="${y0}" stroke="#9ca3af" stroke-width="1.5" stroke-dasharray="4 3"/>
+<path d="M${pts.join(' L')}" fill="none" stroke="#6d28d9" stroke-width="3"/>
+<line x1="${crest2}" y1="${y0}" x2="${crest2}" y2="${y0 - A}" stroke="#c2410c" stroke-width="2"/><text x="${crest2 + 10}" y="${y0 - A - 2}" fill="#c2410c" font-weight="bold">A (amplitude)</text>
+<line x1="${crest1}" y1="${y0 - A - 12}" x2="${crest2}" y2="${y0 - A - 12}" stroke="#15803d" stroke-width="2"/><line x1="${crest1}" y1="${y0 - A - 17}" x2="${crest1}" y2="${y0 - A - 7}" stroke="#15803d" stroke-width="2"/><line x1="${crest2}" y1="${y0 - A - 17}" x2="${crest2}" y2="${y0 - A - 7}" stroke="#15803d" stroke-width="2"/>
+<text x="${(crest1 + crest2) / 2}" y="${y0 - A - 22}" text-anchor="middle" fill="#15803d" font-weight="bold">λ (comprimento de onda)</text>
+<text x="170" y="168" text-anchor="middle" fill="#0a0a0f" font-weight="bold">v = λ · f</text>
+<text x="170" y="186" text-anchor="middle" fill="#0a0a0f">frequência f: número de ondas por segundo (Hz)</text></svg>`
+})()
+
+export const FISICA_6: Lesson = {
+  slug: 'fisica-6',
+  title: 'Ondas, som e óptica',
+  blocks: [
+    { type: 'p', text: 'Uma **onda** transporta **energia** sem transportar matéria. O som e a luz são os exemplos mais importantes. Na UEMG, o morcego com ecolocalização (2024) usou ondas sonoras, e a luz aparece em questões de eclipses e efeito fotoelétrico.' },
+    { type: 'h', text: '1. Grandezas de uma onda' },
+    { type: 'figure', svg: SVG_ONDA, alt: 'Onda senoidal com a amplitude e o comprimento de onda marcados', caption: 'A distância entre duas cristas consecutivas é o comprimento de onda λ.' },
+    { type: 'math', tex: String.raw`v = \lambda\cdot f \qquad f = \dfrac{1}{T}` },
+    { type: 'table', head: ['Grandeza', 'Significado', 'Unidade'], rows: [
+      ['Amplitude (A)', 'Altura da onda (relacionada à energia)', 'm'],
+      ['Comprimento de onda (λ)', 'Distância entre duas cristas', 'm'],
+      ['Frequência (f)', 'Ondas que passam por segundo', 'Hz'],
+      ['Período (T)', 'Tempo de uma onda completa', 's'],
+      ['Velocidade (v)', 'Rapidez com que a onda se propaga', 'm/s'],
+    ] },
+    { type: 'h', text: '2. Tipos de onda' },
+    { type: 'table', head: ['Critério', 'Tipos', 'Exemplos'], rows: [
+      ['Natureza', '**Mecânicas** (precisam de meio material) × **eletromagnéticas** (propagam-se no vácuo)', 'Som, onda na água × luz, rádio, raios X'],
+      ['Direção da vibração', '**Transversais** (vibram perpendicular à propagação) × **longitudinais** (na mesma direção)', 'Luz, corda × som no ar'],
+    ] },
+    { type: 'callout', kind: 'atencao', text: 'O som é uma onda **mecânica e longitudinal**: não se propaga no vácuo. A luz é **eletromagnética e transversal** e se propaga no vácuo (a 300 000 km/s).' },
+    { type: 'h', text: '3. Fenômenos ondulatórios' },
+    { type: 'list', items: ['**Reflexão:** a onda volta ao encontrar um obstáculo (eco, espelho).', '**Refração:** a onda muda de meio e **muda de velocidade** (luz do ar para a água).', '**Difração:** a onda contorna obstáculos (você ouve atrás de uma parede).', '**Interferência:** soma de ondas. **Ressonância:** quando a frequência externa coincide com a natural do corpo (a taça que quebra, a ponte que balança).'] },
+    { type: 'h', text: '4. Som' },
+    { type: 'list', items: ['Velocidade no ar: cerca de **340 m/s** (maior em líquidos e sólidos).', '**Altura:** grave × agudo, depende da **frequência**. **Intensidade:** volume, depende da amplitude. **Timbre:** "assinatura" que distingue instrumentos.', String.raw`**Eco e sonar:** $d = \dfrac{v\cdot t}{2}$ (o som vai e volta).`, '**Efeito Doppler:** a frequência percebida muda quando fonte e observador se movem (a sirene de ambulância).'] },
+    { type: 'callout', kind: 'exemplo', text: String.raw`Um eco volta depois de 0,5 s. Com $v = 340$ m/s: $d = \dfrac{340\cdot 0{,}5}{2} = 85$ m.` },
+    { type: 'h', text: '5. Óptica geométrica' },
+    { type: 'list', items: ['**Reflexão:** o ângulo de incidência é igual ao de reflexão. No **espelho plano**, a imagem é virtual, do mesmo tamanho e fica à mesma distância atrás do espelho.', String.raw`**Refração:** lei de Snell, $n_1\,\text{sen}\,\theta_1 = n_2\,\text{sen}\,\theta_2$, e índice de refração $n = \dfrac{c}{v}$. Ao entrar num meio com maior $n$ (ar → água), a luz **diminui a velocidade** e se aproxima da normal.`, '**Lentes:** convergentes (bordas finas, usadas na hipermetropia e em lupas) e divergentes (bordas grossas, usadas na miopia).', '**Cores:** a luz branca é a soma das cores do arco-íris, que se separam na refração (prisma).'] },
+  ],
+  exercises: [
+    ex('fisica-6', 1, S, 'Uma onda tem comprimento de onda de 2 m e frequência de 5 Hz. Sua velocidade de propagação é:', ['2,5 m/s', '7 m/s', '10 m/s', '20 m/s'], 2, 'Resposta C (10 m/s). Pela equação fundamental da ondulatória, v = λ · f = 2 · 5 = 10 m/s.'),
+    ex('fisica-6', 2, S, 'Uma pessoa grita diante de um paredão e ouve o eco 0,5 s depois. Sendo a velocidade do som 340 m/s, a distância até o paredão é:', ['85 m', '170 m', '340 m', '680 m'], 0, 'Resposta A (85 m). O som vai até o obstáculo e volta, então percorre o dobro da distância: 2d = v · t = 340 · 0,5 = 170 m. Logo d = 85 m. É o mesmo raciocínio do morcego da UEMG 2024.'),
+    ex('fisica-6', 3, S, 'A qualidade do som que permite distinguir um som grave de um agudo é a:', ['intensidade', 'altura (frequência)', 'timbre', 'velocidade'], 1, 'Resposta B (altura). O som agudo tem frequência alta e o grave tem frequência baixa. Intensidade é o "volume" e timbre diferencia, por exemplo, um violão de um piano tocando a mesma nota.'),
+    ex('fisica-6', 4, S, 'Quando um raio de luz passa do ar para a água, ocorre o fenômeno da refração e a luz:', ['aumenta de velocidade', 'diminui de velocidade', 'mantém a velocidade', 'deixa de se propagar'], 1, 'Resposta B. A água tem índice de refração maior que o do ar (n = c/v), então a velocidade da luz diminui. A frequência não muda; muda a velocidade e o comprimento de onda.'),
+    ex('fisica-6', 5, S, 'Uma pessoa está a 2 m de um espelho plano. A distância entre ela e a sua imagem é:', ['2 m', '4 m', '1 m', '8 m'], 1, 'Resposta B (4 m). No espelho plano, a imagem se forma à mesma distância do espelho que o objeto, mas do outro lado: 2 m atrás do espelho. Entre a pessoa e a imagem: 2 + 2 = 4 m.'),
+  ],
+}

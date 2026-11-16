@@ -217,3 +217,39 @@ export const PORTUGUES_5: Lesson = {
     ex('portugues-5', 5, S, 'Em "Trouxe três frutas: maçã, pera e uva", os dois-pontos servem para:', ['introduzir uma enumeração', 'indicar a fala de um personagem', 'separar o sujeito do verbo', 'marcar uma dúvida'], 0, 'Resposta A. Os dois-pontos introduzem uma enumeração ("três frutas:" → quais?). Também podem introduzir explicação ou citação, mas nunca separam sujeito de verbo.'),
   ],
 }
+
+export const PORTUGUES_6: Lesson = {
+  slug: 'portugues-6',
+  title: 'Literatura: do Barroco ao Romantismo',
+  blocks: [
+    { type: 'p', text: 'A literatura brasileira é estudada por **escolas literárias**: períodos em que os autores compartilham ideias e estilo. Para a prova, o segredo é ligar cada escola a seu **contexto histórico**, suas **características** e seus **autores principais**. Na UEMG, as questões trazem trechos e pedem que você identifique a escola (como o Simbolismo em 2023 e o Modernismo em 2024).' },
+    { type: 'h', text: '1. Visão geral (linha do tempo)' },
+    { type: 'table', head: ['Escola', 'Período', 'Ideia central'], rows: [
+      ['Quinhentismo', 'Séc. XVI', 'Literatura de informação (Pero Vaz de Caminha) e catequese jesuítica (Anchieta)'],
+      ['Barroco', 'Séc. XVII', 'Conflito entre fé e razão, culto do contraste'],
+      ['Arcadismo', 'Séc. XVIII', 'Volta à natureza e à simplicidade; razão e equilíbrio'],
+      ['Romantismo', 'Séc. XIX (1836–1881)', 'Emoção, subjetividade, nacionalismo e idealização'],
+    ] },
+    { type: 'h', text: '2. Barroco (séc. XVII)' },
+    { type: 'list', items: ['**Contexto:** Contrarreforma católica; a Igreja luta contra a Reforma protestante, e o homem vive entre o pecado e a salvação.', '**Características:** conflito espiritual (céu × terra), **antíteses e paradoxos**, jogos de palavras, exagero. Duas tendências: **cultismo** (linguagem rebuscada, formal) e **conceptismo** (jogo de ideias e raciocínio).', '**Autores:** **Gregório de Matos** (o "Boca do Inferno", poesia satírica, lírica e religiosa) e **Padre Antônio Vieira** (Sermões, em prosa).'] },
+    { type: 'h', text: '3. Arcadismo (séc. XVIII)' },
+    { type: 'list', items: ['**Contexto:** Iluminismo, valorização da razão; Minas Gerais enriquece com o ouro.', '**Características:** **bucolismo** (vida no campo), **pastoralismo**, simplicidade, equilíbrio. Lemas em latim: **fugere urbem** (fugir da cidade), **locus amoenus** (lugar ameno), **carpe diem** (aproveite o dia) e **aurea mediocritas** (equilíbrio, meio-termo).', '**Autores:** **Tomás Antônio Gonzaga** ("Marília de Dirceu"), **Cláudio Manuel da Costa** e Basílio da Gama ("O Uraguai"). Os poetas árcades de Minas se ligam à **Inconfidência Mineira** (1789).'] },
+    { type: 'h', text: '4. Romantismo (séc. XIX)' },
+    { type: 'p', text: 'Nasce na Europa e chega ao Brasil em 1836, no contexto da Independência (1822) e da busca de uma **identidade nacional**. Opõe-se ao racionalismo: valoriza o **sentimento**, o **eu**, a imaginação, a natureza e a liberdade.' },
+    { type: 'table', head: ['Geração', 'Tema', 'Autores e obras'], rows: [
+      ['1ª (nacionalista ou indianista)', 'Exaltação da pátria, natureza, o índio como herói nacional, saudade', 'Gonçalves Dias ("Canção do Exílio"), José de Alencar ("Iracema", "O Guarani")'],
+      ['2ª (ultrarromântica ou "mal do século")', 'Egocentrismo, tédio, morte, amor impossível', 'Álvares de Azevedo, Casimiro de Abreu, Fagundes Varela'],
+      ['3ª (condoreira ou social)', 'Poesia social, defesa da liberdade e da abolição', 'Castro Alves ("O Navio Negreiro", "Vozes d\'África")'],
+    ] },
+    { type: 'p', text: '**Prosa romântica:** romance urbano (Joaquim Manuel de Macedo, "A Moreninha"; Manuel Antônio de Almeida, "Memórias de um Sargento de Milícias"), romance indianista e regionalista (José de Alencar).' },
+    { type: 'callout', kind: 'dica', title: 'Como identificar a escola num trecho', text: 'Antíteses e conflito entre fé e prazer → **Barroco**. Pastores, campo, fugere urbem → **Arcadismo**. Índio herói, saudade da pátria → **Romantismo (1ª geração)**. Morte, melancolia, amor idealizado → **2ª geração**. Escravidão, liberdade, "condor" → **3ª geração**.' },
+    { type: 'callout', kind: 'atencao', text: 'Datas e autores são apenas referências: a prova costuma pedir a **característica** e a **ideia** da escola, mais do que o ano exato.' },
+  ],
+  exercises: [
+    ex('portugues-6', 1, S, 'O conflito entre a fé e o prazer, o uso de antíteses e o exagero são marcas da escola literária:', ['Arcadismo', 'Barroco', 'Romantismo', 'Realismo'], 1, 'Resposta B (Barroco). No século XVII, em meio à Contrarreforma, o homem vive o conflito entre o céu e a terra. Gregório de Matos e Padre Antônio Vieira são nomes dessa escola.'),
+    ex('portugues-6', 2, S, 'A valorização da vida no campo, da simplicidade e da natureza (bucolismo), com os lemas "fugere urbem" e "carpe diem", caracteriza o:', ['Barroco', 'Modernismo', 'Arcadismo', 'Simbolismo'], 2, 'Resposta C (Arcadismo). Os árcades do século XVIII, como Tomás Antônio Gonzaga, fugiam da cidade para um mundo pastoril idealizado. Fugere urbem significa "fugir da cidade".'),
+    ex('portugues-6', 3, S, 'A primeira geração romântica brasileira se destaca pelo nacionalismo e pelo indianismo. Um autor dessa geração é:', ['Álvares de Azevedo', 'Gonçalves Dias', 'Castro Alves', 'Gregório de Matos'], 1, 'Resposta B (Gonçalves Dias), autor da "Canção do Exílio". Álvares de Azevedo é da 2ª geração (ultrarromântica), Castro Alves é da 3ª (condoreira) e Gregório de Matos é do Barroco.'),
+    ex('portugues-6', 4, S, 'O poema "O Navio Negreiro", de Castro Alves, pertence à geração romântica:', ['indianista', 'ultrarromântica, com o "mal do século"', 'condoreira, de poesia social e abolicionista', 'barroca'], 2, 'Resposta C. Castro Alves é o poeta da terceira geração do Romantismo, a condoreira, que usava a poesia para defender a liberdade e denunciar a escravidão.'),
+    ex('portugues-6', 5, S, 'Uma característica geral do Romantismo é:', ['o culto à razão e ao equilíbrio acima de tudo', 'a valorização da emoção, da subjetividade e da idealização', 'a descrição objetiva e científica da realidade', 'o rompimento com todas as formas tradicionais, como a rima'], 1, 'Resposta B. O Romantismo se opõe ao racionalismo e valoriza o sentimento, o "eu", a imaginação e a idealização do amor e da pátria. A razão e o equilíbrio são do Arcadismo; a objetividade, do Realismo.'),
+  ],
+}

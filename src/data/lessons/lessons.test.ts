@@ -71,6 +71,15 @@ describe('aulas', () => {
     }
   })
 
+  it('todas as tarefas de conteúdo da sexta semana (22 a 28/12) têm aula e 5 exercícios', () => {
+    const week6 = PLAN.filter((t) => t.date >= '2026-12-22' && t.date <= '2026-12-28' && t.kind === 'conteudo')
+    expect(week6).toHaveLength(8) // 25/12 é feriado; Inglês já cumpriu os 5 tópicos
+    for (const t of week6) {
+      expect(lessonBySlug(t.lessonSlug), t.id).toBeDefined()
+      expect(t.exerciseIds, t.id).toHaveLength(5)
+    }
+  })
+
   it('o título da aula é o mesmo da tarefa', () => {
     for (const t of PLAN.filter((t) => lessonBySlug(t.lessonSlug))) {
       expect(lessonBySlug(t.lessonSlug)!.title).toBe(t.title)

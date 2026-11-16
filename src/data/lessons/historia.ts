@@ -198,3 +198,45 @@ export const HISTORIA_5: Lesson = {
     ex('historia-5', 5, S, 'A Proclamação da República, em 15 de novembro de 1889, foi liderada por:', ['D. Pedro II', 'Marechal Deodoro da Fonseca', 'Tiradentes', 'Princesa Isabel'], 1, 'Resposta B. O marechal Deodoro da Fonseca, com apoio do Exército e de republicanos, depôs o imperador e proclamou a República. Fatores: abolição, Questão Militar, Questão Religiosa e ideais republicanos.'),
   ],
 }
+
+export const HISTORIA_6: Lesson = {
+  slug: 'historia-6',
+  title: 'República Velha e Era Vargas',
+  blocks: [
+    { type: 'p', text: 'Esta aula cobre da Proclamação da República (1889) até o fim do Estado Novo (1945). É o período em que o país começa a se industrializar, os trabalhadores ganham direitos e o Estado cresce. A UEMG 2023 trouxe a frase "a questão social é um caso de polícia", do governo de Washington Luís.' },
+    { type: 'h', text: '1. República Velha (1889–1930)' },
+    { type: 'table', head: ['Fase', 'Características'], rows: [
+      ['República da Espada (1889–1894)', 'Governos militares: **Deodoro da Fonseca** e **Floriano Peixoto**'],
+      ['República Oligárquica (1894–1930)', 'Governos civis dominados pelas oligarquias rurais; **política do café com leite**'],
+    ] },
+    { type: 'list', items: ['**Política do café com leite:** acordo entre as elites de **São Paulo** (café) e **Minas Gerais** (leite) para se alternarem na Presidência.', '**Coronelismo:** poder local dos grandes proprietários (coronéis), que controlavam o voto. **Voto de cabresto:** voto aberto, vigiado e manipulado, com fraudes.', '**Política dos Governadores:** o governo federal apoiava as oligarquias estaduais em troca de votos.', '**Convênio de Taubaté (1906):** o governo compra o café excedente para sustentar o preço (proteção ao setor cafeeiro).'] },
+    { type: 'h', text: '2. Movimentos sociais e revoltas' },
+    { type: 'table', head: ['Movimento', 'Onde e quando', 'Resumo'], rows: [
+      ['Canudos', 'Bahia, 1896–97', 'Comunidade de sertanejos liderada por **Antônio Conselheiro**, destruída pelo Exército'],
+      ['Revolta da Vacina', 'Rio de Janeiro, 1904', 'Reação popular à vacinação obrigatória e às reformas urbanas autoritárias'],
+      ['Revolta da Chibata', 'Rio de Janeiro, 1910', 'Marinheiros (João Cândido) contra castigos físicos'],
+      ['Contestado', 'PR e SC, 1912–16', 'Camponeses contra a perda de terras e a ferrovia'],
+      ['Greve geral', 'São Paulo, 1917', 'Operários por melhores condições; forte repressão'],
+      ['Tenentismo', '1920', 'Jovens militares contra as oligarquias (Revolta dos 18 do Forte, 1922)'],
+      ['Semana de Arte Moderna', 'São Paulo, 1922', 'Início do Modernismo'],
+    ] },
+    { type: 'callout', kind: 'atencao', text: 'Washington Luís (1926–30) teria dito que "a questão social é um caso de polícia": os conflitos trabalhistas eram tratados com repressão, não com direitos.' },
+    { type: 'h', text: '3. A Revolução de 1930' },
+    { type: 'p', text: 'A crise de 1929 derrubou o preço do café. Em 1930, **Júlio Prestes**, de São Paulo, venceu a eleição, quebrando o rodízio (que dava a vez a Minas). A **Aliança Liberal** (Getúlio Vargas, do Rio Grande do Sul) contestou o resultado e a eleição acabou em golpe: Vargas assumiu em 1930, encerrando a República Velha.' },
+    { type: 'h', text: '4. Era Vargas (1930–1945)' },
+    { type: 'table', head: ['Fase', 'Principais fatos'], rows: [
+      ['Governo Provisório (1930–34)', 'Centralização do poder; **Revolução Constitucionalista (1932)** em São Paulo; Código Eleitoral com **voto feminino** e voto secreto'],
+      ['Governo Constitucional (1934–37)', '**Constituição de 1934** (direitos trabalhistas); polarização entre a Aliança Nacional Libertadora (esquerda) e a Ação Integralista (direita)'],
+      ['Estado Novo (1937–45)', 'Ditadura, com nova Constituição; **censura** e propaganda (DIP); fim dos partidos'],
+    ] },
+    { type: 'list', items: ['**Direitos trabalhistas:** salário mínimo (1940) e **CLT** (1943), com carteira assinada, jornada de 8 horas e férias. Sindicatos controlados pelo Estado.', '**Economia:** industrialização com **substituição de importações**; **CSN** (siderúrgica de Volta Redonda), Vale do Rio Doce; nacionalismo econômico.', '**Cultura:** forte propaganda do governo e do culto a Vargas ("pai dos pobres").', '**Fim:** pressão pela democracia após a participação do Brasil na 2ª Guerra (a FEB lutou contra o fascismo) levou à deposição de Vargas em 1945.'] },
+    { type: 'callout', kind: 'dica', text: 'Vargas voltou ao poder pelo voto (1951–54) e se suicidou em 1954, com a carta-testamento. Essa fase é lembrada pela criação da **Petrobras (1953)** e pelo nacionalismo.' },
+  ],
+  exercises: [
+    ex('historia-6', 1, S, 'A "política do café com leite", na República Velha, consistia em:', ['uma aliança entre o Rio Grande do Sul e a Bahia', 'o rodízio na Presidência entre as elites de São Paulo e de Minas Gerais', 'o controle da Presidência pelos militares', 'a eleição direta com voto feminino'], 1, 'Resposta B. As oligarquias paulista (café) e mineira (leite) se alternavam no poder federal. A Revolução de 1930 acabou com esse acordo.'),
+    ex('historia-6', 2, S, 'O "voto de cabresto" e o coronelismo, característicos da República Velha, significam que:', ['o voto era secreto e livre', 'os coronéis controlavam o voto dos eleitores, que era aberto e manipulado', 'todos os cidadãos podiam votar', 'as eleições eram decididas pelo imperador'], 1, 'Resposta B. O voto não era secreto: os grandes proprietários (coronéis) pressionavam e controlavam os eleitores, com muitas fraudes. As mulheres só puderam votar em 1932.'),
+    ex('historia-6', 3, S, 'A Guerra de Canudos (1896–1897) foi um conflito entre o Exército brasileiro e:', ['uma comunidade de sertanejos liderada por Antônio Conselheiro', 'os marinheiros liderados por João Cândido', 'os operários paulistas', 'a Marinha paraguaia'], 0, 'Resposta A. O arraial de Canudos, no sertão da Bahia, reunia milhares de sertanejos pobres sob a liderança de Antônio Conselheiro. Foi destruído pelo Exército. A Revolta da Chibata foi dos marinheiros.'),
+    ex('historia-6', 4, S, 'A Revolução de 1930 foi o movimento que:', ['proclamou a República', 'levou Getúlio Vargas ao poder e encerrou a República Velha', 'iniciou a ditadura militar', 'aboliu a escravidão'], 1, 'Resposta B. Depois da eleição de 1930 e do desgaste do acordo café com leite, a Aliança Liberal levou Getúlio Vargas ao poder, encerrando a República Velha.'),
+    ex('historia-6', 5, S, 'Durante o Estado Novo (1937–1945), foi criada a CLT, que:', ['reuniu as leis trabalhistas, garantindo direitos como carteira assinada e jornada de 8 horas', 'extinguiu os sindicatos', 'proibiu greves de forma definitiva em todos os setores', 'criou a Petrobras'], 0, 'Resposta A. A Consolidação das Leis do Trabalho (1943) organizou os direitos trabalhistas. O Estado Novo foi uma ditadura, mas combinou repressão com leis trabalhistas e propaganda. A Petrobras foi criada em 1953.'),
+  ],
+}

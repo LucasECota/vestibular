@@ -73,7 +73,8 @@
   "id": "uemg-2024-q03",
   "year": 2024,
   "snapshots": [
-   "questions/2024/q03-1.jpg"
+   "questions/2024/q03-1.jpg",
+   "questions/2024/q03-2.jpg"
   ],
   "answer": 0,
   "annulled": false,
@@ -92,7 +93,7 @@
   "images": [],
   "context": [
    {
-    "text": "De acordo com o trecho de Vidas Secas, do escritor Graciliano Ramos, responda à questão 04. “As manchas dos juazeiros tornaram a aparecer, Fabiano aligeirou o passo, esqueceu a fome, a canseira e os 2 ferimentos. As alpercatas dele estavam gastas nos saltos, e a embira tinha-lhe aberto entre os dedos rachaduras muito dolorosas. Os calcanhares, duros como cascos, gretavam-se e sangravam. Num cotovelo do caminho avistou um canto de cerca, encheu-o a esperança de achar comida, sentiu desejo de cantar. A voz saiu-lhe rouca, medonha. Calou-se para não estragar força.” (Ramos, Graciliano. Vidas Secas. Record, 1938)",
+    "text": "De acordo com o trecho de Vidas Secas, do escritor Graciliano Ramos, responda à questão 04. “As manchas dos juazeiros tornaram a aparecer, Fabiano aligeirou o passo, esqueceu a fome, a canseira e os ferimentos. As alpercatas dele estavam gastas nos saltos, e a embira tinha-lhe aberto entre os dedos rachaduras muito dolorosas. Os calcanhares, duros como cascos, gretavam-se e sangravam. Num cotovelo do caminho avistou um canto de cerca, encheu-o a esperança de achar comida, sentiu desejo de cantar. A voz saiu-lhe rouca, medonha. Calou-se para não estragar força.” (Ramos, Graciliano. Vidas Secas. Record, 1938)",
     "images": []
    }
   ],
@@ -179,7 +180,7 @@
   "statement": "Quais pronomes preenchem, corretamente, as perguntas abaixo? “ .................is Mary?” “She’s 29.” “ ..................was she born?” “She was born in London.” “ ...................was she born?” “She was born on November 10th, 2001.” “ ..................sister is she?” “She is Laura’s sister.” “.................is her favorite actor?” “Her favorite actor is Denzel Washington.”",
   "options": [
    "How old, Where, When, Whose, Who.",
-   "When, How old, Where, Whose, Who. 3",
+   "When, How old, Where, Whose, Who.",
    "How old, Where, Whose, Who, When.",
    "Whose, When, Who, How old, Where."
   ],
@@ -187,7 +188,8 @@
   "id": "uemg-2024-q08",
   "year": 2024,
   "snapshots": [
-   "questions/2024/q08-1.jpg"
+   "questions/2024/q08-1.jpg",
+   "questions/2024/q08-2.jpg"
   ],
   "answer": 0,
   "annulled": false,
@@ -260,7 +262,7 @@
   "subject": "ingles",
   "statement": "Qual seria a melhor tradução para: “Once in a Blue Moon”? Once in a Blue Moon, my daughter played cards with her granny.",
   "options": [
-   "Era uma vez. 4",
+   "Era uma vez.",
    "Uma vez na Lua Azul.",
    "Uma vez na vida, outra na morte.",
    "Quando a Lua estiver azul."
@@ -269,7 +271,8 @@
   "id": "uemg-2024-q12",
   "year": 2024,
   "snapshots": [
-   "questions/2024/q12-1.jpg"
+   "questions/2024/q12-1.jpg",
+   "questions/2024/q12-2.jpg"
   ],
   "answer": 2,
   "annulled": false,
@@ -291,12 +294,7 @@
   "id": "uemg-2024-q13",
   "year": 2024,
   "snapshots": [
-   "questions/2024/q13-1.jpg",
-   "questions/2024/q13-2.jpg",
-   "questions/2024/q13-3.jpg",
-   "questions/2024/q13-4.jpg",
-   "questions/2024/q13-5.jpg",
-   "questions/2024/q13-6.jpg"
+   "questions/2024/q13-1.jpg"
   ],
   "answer": 1,
   "annulled": false,
@@ -305,7 +303,7 @@
  {
   "number": 14,
   "subject": "fisica",
-  "statement": "Na natureza, diversos animais utilizam o sistema de ecolocalização para se locomoverem no ambiente de forma segura, sem depender do sentido da visão. Esses animais são capazes de emitir ondas sonoras, que são refletidas ao encontrar um obstáculo, retornando ao emissor, que possui a capacidade de interpretar as informações, podendo, assim, identificar a distância dos objetos e presas. Sendo assim, podemos tomar como exemplo o caso de um morcego que emite ondas ultrassônicas no intuito de localizar um inseto para sua alimentação, como mostra a imagem a seguir: Disponível em: https://www.researchgate.net/figure/Figura-7-Esquema-de-ecolocalizacao-em-morcegos-A- cabeca-de-um-morcego-e-adaptada-para_fig4_304942116 Sabendo-se que o morcego emitiu uma onda sonora e percebeu a onda refletida 0,08 s depois, considerando a velocidade do som no ar com 330 m/s e desconsiderando a resistência do ar e quaisquer outros efeitos, a distância entre o morcego e o inseto é de aproximadamente: 6",
+  "statement": "Na natureza, diversos animais utilizam o sistema de ecolocalização para se locomoverem no ambiente de forma segura, sem depender do sentido da visão. Esses animais são capazes de emitir ondas sonoras, que são refletidas ao encontrar um obstáculo, retornando ao emissor, que possui a capacidade de interpretar as informações, podendo, assim, identificar a distância dos objetos e presas. Sendo assim, podemos tomar como exemplo o caso de um morcego que emite ondas ultrassônicas no intuito de localizar um inseto para sua alimentação, como mostra a imagem a seguir: Disponível em: https://www.researchgate.net/figure/Figura-7-Esquema-de-ecolocalizacao-em-morcegos-A- cabeca-de-um-morcego-e-adaptada-para_fig4_304942116 Sabendo-se que o morcego emitiu uma onda sonora e percebeu a onda refletida 0,08 s depois, considerando a velocidade do som no ar com 330 m/s e desconsiderando a resistência do ar e quaisquer outros efeitos, a distância entre o morcego e o inseto é de aproximadamente:",
   "options": [
    "2,5 m.",
    "4,3 m.",
@@ -378,7 +376,7 @@
  {
   "number": 17,
   "subject": "fisica",
-  "statement": "Atualmente, o Brasil conta com duas usinas nucleares em atividade: Angra I, em funcionamento desde 1985, e Angra II, em funcionamento desde 2001. Juntas elas geram energia elétrica suficiente para abastecer cerca de 3 milhões de habitantes. As usinas usam como combustível urânio enriquecido e produzem energia elétrica a partir do processo de fissão nuclear. Disponível em: https://www.eletronuclear.gov.br/Nossas-Atividades/Paginas/Angra-1.aspx 7 Com relação a este processo e às radiações relacionadas a ele, analise as afirmativas: I- Na fissão nuclear, um próton colide com um núcleo atômico gerando sua divisão e uma grande liberação de energia. II- Durante uma fissão nuclear, não são emitidas ondas eletromagnéticas, somente partículas alfa e beta. III- No processo de fissão nuclear, dois átomos do mesmo elemento colidem, dando origem a um novo elemento com maior número atômico. IV- Na fissão de um elemento radioativo, há uma grande liberação de radiações gama, que são ondas eletromagnéticas de alta frequência. V- Todas as radiações emitidas durante a fissão nuclear possuem baixo poder de penetração, podendo ser bloqueadas com uma folha de papel. Estão corretas somente as afirmativas:",
+  "statement": "Atualmente, o Brasil conta com duas usinas nucleares em atividade: Angra I, em funcionamento desde 1985, e Angra II, em funcionamento desde 2001. Juntas elas geram energia elétrica suficiente para abastecer cerca de 3 milhões de habitantes. As usinas usam como combustível urânio enriquecido e produzem energia elétrica a partir do processo de fissão nuclear. Disponível em: https://www.eletronuclear.gov.br/Nossas-Atividades/Paginas/Angra-1.aspx Com relação a este processo e às radiações relacionadas a ele, analise as afirmativas: I- Na fissão nuclear, um próton colide com um núcleo atômico gerando sua divisão e uma grande liberação de energia. II- Durante uma fissão nuclear, não são emitidas ondas eletromagnéticas, somente partículas alfa e beta. III- No processo de fissão nuclear, dois átomos do mesmo elemento colidem, dando origem a um novo elemento com maior número atômico. IV- Na fissão de um elemento radioativo, há uma grande liberação de radiações gama, que são ondas eletromagnéticas de alta frequência. V- Todas as radiações emitidas durante a fissão nuclear possuem baixo poder de penetração, podendo ser bloqueadas com uma folha de papel. Estão corretas somente as afirmativas:",
   "options": [
    "I e II.",
    "III, IV e V.",
@@ -423,7 +421,7 @@
  {
   "number": 19,
   "subject": "quimica",
-  "statement": "O Amazonas tem o pior outubro de queimadas dos últimos 25 anos. Desde setembro, o estado decretou emergência ambiental por conta do avanço das queimadas. Somando os meses de setembro e outubro, são mais de 9 mil no período. Disponível em: <https://g1.globo.com/am/amazonas/noticia/2023/10/12/amazonas-tem-pior-outubro-de- queimadas-dos-ultimos-25-anos.ghtml> Acesso em 07/11/2023 As queimadas são prejudiciais tanto à saúde humana quanto ao meio ambiente, pois liberam gases como CO2, CO e CH4 que aumentam o efeito estufa, causando desequilíbrios climáticos no planeta Terra. Em relação aos gases citados, qual o tipo de ligação interatômica estabelecida entre seus átomos e quantos pares de elétrons compartilhados há entres eles no total? 8",
+  "statement": "O Amazonas tem o pior outubro de queimadas dos últimos 25 anos. Desde setembro, o estado decretou emergência ambiental por conta do avanço das queimadas. Somando os meses de setembro e outubro, são mais de 9 mil no período. Disponível em: <https://g1.globo.com/am/amazonas/noticia/2023/10/12/amazonas-tem-pior-outubro-de- queimadas-dos-ultimos-25-anos.ghtml> Acesso em 07/11/2023 As queimadas são prejudiciais tanto à saúde humana quanto ao meio ambiente, pois liberam gases como CO2, CO e CH4 que aumentam o efeito estufa, causando desequilíbrios climáticos no planeta Terra. Em relação aos gases citados, qual o tipo de ligação interatômica estabelecida entre seus átomos e quantos pares de elétrons compartilhados há entres eles no total?",
   "options": [
    "Covalente e 11 pares.",
    "Covalente e 12 pares.",
@@ -489,7 +487,7 @@
  {
   "number": 22,
   "subject": "quimica",
-  "statement": "O uso dos fertilizantes é fundamental para o desenvolvimento das plantas nas lavouras, para suprir a demanda mundial por alimentos. O básico que um fertilizante deve conter são substâncias que forneçam nitrogênio, fósforo e potássio, que são macronutrientes primordiais no desenvolvimento das plantas. O fertilizante que contém esses nutrientes é conhecido pelos símbolos dos três elementos químicos citados, esses símbolos são, respectivamente: 9",
+  "statement": "O uso dos fertilizantes é fundamental para o desenvolvimento das plantas nas lavouras, para suprir a demanda mundial por alimentos. O básico que um fertilizante deve conter são substâncias que forneçam nitrogênio, fósforo e potássio, que são macronutrientes primordiais no desenvolvimento das plantas. O fertilizante que contém esses nutrientes é conhecido pelos símbolos dos três elementos químicos citados, esses símbolos são, respectivamente:",
   "options": [
    "Ni, F, Po.",
    "N, P, K.",
@@ -552,7 +550,7 @@
  {
   "number": 25,
   "subject": "biologia",
-  "statement": "Um Professor de Biologia, de Ensino Médio, montou uma tabela na qual os alunos poderiam revisar as características de alguns animais. Moluscos. Poríferos. Cordados. Animais representantes. Mariscos, Ostras, Lulas, Polvos e Caramujos. Esponjas do mar. Peixes, Anfíbios, Répteis, Aves e Mamíferos. 10 Ausente. Diblásticos. Folhetos Embrionários. Triblásticos. Celoma. Celomados. Celomados. Celomados. Simetria. Bilateral. Bilateral. Bilateral. Origem da boca. Protostômios. Deuterostômios. Deuterostômios. Habitat. Terrestre. Aquáticos e Terrestres. Aquáticos ou Terrestres. Analise os itens sobre as informações do quadro e marque a alternativa correspondente. 1- Todos os animais representantes estão corretos. 2- A tabela está toda correta. 3- Com relação a folhetos embrionários está incorreto, pois os poríferos são Diblásticos. 4- Com relação à descrição de origem da boca, a tabela está incorreta. Estão corretos:",
+  "statement": "Um Professor de Biologia, de Ensino Médio, montou uma tabela na qual os alunos poderiam revisar as características de alguns animais. Moluscos. Poríferos. Cordados. Animais representantes. Mariscos, Ostras, Lulas, Polvos e Caramujos. Esponjas do mar. Peixes, Anfíbios, Répteis, Aves e Mamíferos. Ausente. Diblásticos. Folhetos Embrionários. Triblásticos. Celoma. Celomados. Celomados. Celomados. Simetria. Bilateral. Bilateral. Bilateral. Origem da boca. Protostômios. Deuterostômios. Deuterostômios. Habitat. Terrestre. Aquáticos e Terrestres. Aquáticos ou Terrestres. Analise os itens sobre as informações do quadro e marque a alternativa correspondente. 1- Todos os animais representantes estão corretos. 2- A tabela está toda correta. 3- Com relação a folhetos embrionários está incorreto, pois os poríferos são Diblásticos. 4- Com relação à descrição de origem da boca, a tabela está incorreta. Estão corretos:",
   "options": [
    "1, 2, 3 e 4.",
    "Somente 2, 3 e 4.",
@@ -595,7 +593,7 @@
  {
   "number": 27,
   "subject": "biologia",
-  "statement": "Analise as afirmativas e assinale a alternativa que indique os itens incorretos. I- Os cogumelos do tipo champignon, produzem efeitos alucinógenos e causam danos ao sistema nervoso periférico quando ingeridos. II- Fungos são importantes uma vez que atuam como agentes decompositores, muitas vezes se associando com raízes de plantas, sendo prejudicial para ambos. III- Na indústria de laticínios alguns fungos são utilizados na fabricação de queijos. IV- Muitos fungos podem causar micoses no ser humano, como lesões de pele, couro cabeludo e unhas, bem 11 como pé de atleta e rachaduras entre os dedos (frieiras). V- Bebidas alcoólicas, como vinho e cerveja, além de pães, são produzidas devido a fermentação de fungos, que chamamos de leveduras, na presença de oxigênio.",
+  "statement": "Analise as afirmativas e assinale a alternativa que indique os itens incorretos. I- Os cogumelos do tipo champignon, produzem efeitos alucinógenos e causam danos ao sistema nervoso periférico quando ingeridos. II- Fungos são importantes uma vez que atuam como agentes decompositores, muitas vezes se associando com raízes de plantas, sendo prejudicial para ambos. III- Na indústria de laticínios alguns fungos são utilizados na fabricação de queijos. IV- Muitos fungos podem causar micoses no ser humano, como lesões de pele, couro cabeludo e unhas, bem como pé de atleta e rachaduras entre os dedos (frieiras). V- Bebidas alcoólicas, como vinho e cerveja, além de pães, são produzidas devido a fermentação de fungos, que chamamos de leveduras, na presença de oxigênio.",
   "options": [
    "Somente I - ll - lV - V.",
    "Somente I - lll - lV - V.",
@@ -680,7 +678,7 @@
  {
   "number": 31,
   "subject": "geografia",
-  "statement": "Um viajante saiu do Rio de Janeiro em direção a Berlim em uma terça-feira, às 10h da manhã, sua viagem teve um tempo de duração de 12h. Ele permaneceu três dias em Berlim e no terceiro dia embarcou para Nova Iorque, saindo às 10h da manhã, com uma viagem que durou 10h. Ele permaneceu, então, quatro dias em Nova 12 Iorque e no quarto dia embarcou para São Paulo, saindo às 10h da manhã, com uma viagem que durou 9h. Berlim Rio de Janeiro São Paulo Nova Fonte: https://br.pinterest.com/pin/436778863846495043/ Considere as informações iniciais e o mapa de fusos horários, bem como os horários locais de cada cidade. Considere, também, que a contagem do período de permanência se inicia no dia de chegada em cada cidade. Dessa maneira, é correto afirmar que os desembarques em Nova Iorque e em São Paulo ocorreram, respectivamente, às:",
+  "statement": "Um viajante saiu do Rio de Janeiro em direção a Berlim em uma terça-feira, às 10h da manhã, sua viagem teve um tempo de duração de 12h. Ele permaneceu três dias em Berlim e no terceiro dia embarcou para Nova Iorque, saindo às 10h da manhã, com uma viagem que durou 10h. Ele permaneceu, então, quatro dias em Nova Iorque e no quarto dia embarcou para São Paulo, saindo às 10h da manhã, com uma viagem que durou 9h. Berlim Rio de Janeiro São Paulo Nova Fonte: https://br.pinterest.com/pin/436778863846495043/ Considere as informações iniciais e o mapa de fusos horários, bem como os horários locais de cada cidade. Considere, também, que a contagem do período de permanência se inicia no dia de chegada em cada cidade. Dessa maneira, é correto afirmar que os desembarques em Nova Iorque e em São Paulo ocorreram, respectivamente, às:",
   "options": [
    "15h de sexta-feira e às 18h de segunda-feira.",
    "14h de sexta-feira e às 20h de segunda-feira.",
@@ -723,7 +721,7 @@
  {
   "number": 33,
   "subject": "geografia",
-  "statement": "Leia o trecho para responder à questão 33. \"Não cabe, todavia, perder a esperança, porque os progressos técnicos (...) bastariam para produzir muito mais alimentos do que a população atual necessita e, aplicados à medicina, reduziriam drasticamente as doenças e a mortalidade. Um mundo solidário produzirá muitos empregos, ampliando um intercâmbio pacífico entre os povos e eliminando a belicosidade do processo competitivo, que todos os dias reduz a mão de obra. É possível 13 pensar na realização de um mundo de bem-estar, onde os homens serão mais felizes, um outro tipo de globalização\". (SANTOS, Milton. A natureza do espaço: técnica e tempo. Razão e emoção. 2ª edição. São Paulo: Hucitec, 1997). Considerando a observação crítica, e esperançosa, do geógrafo Milton Santos, bem como o próprio conceito de globalização, responda: quais são, respectivamente, uma consequência para o setor produtivo e outra para o mundo do trabalho advindas das transformações decorridas da globalização?",
+  "statement": "Leia o trecho para responder à questão 33. \"Não cabe, todavia, perder a esperança, porque os progressos técnicos (...) bastariam para produzir muito mais alimentos do que a população atual necessita e, aplicados à medicina, reduziriam drasticamente as doenças e a mortalidade. Um mundo solidário produzirá muitos empregos, ampliando um intercâmbio pacífico entre os povos e eliminando a belicosidade do processo competitivo, que todos os dias reduz a mão de obra. É possível pensar na realização de um mundo de bem-estar, onde os homens serão mais felizes, um outro tipo de globalização\". (SANTOS, Milton. A natureza do espaço: técnica e tempo. Razão e emoção. 2ª edição. São Paulo: Hucitec, 1997). Considerando a observação crítica, e esperançosa, do geógrafo Milton Santos, bem como o próprio conceito de globalização, responda: quais são, respectivamente, uma consequência para o setor produtivo e outra para o mundo do trabalho advindas das transformações decorridas da globalização?",
   "options": [
    "Extinção dos benefícios regionais e ampliação da legislação trabalhista unificada.",
    "Automatização da produção fabril e aumento do desemprego.",
@@ -810,7 +808,7 @@
  {
   "number": 37,
   "subject": "historia",
-  "statement": "Observe as duas imagens para responder à questão 37. 14 Fonte: Domingues, Joelza E. (Org.ª. da página Ensinar História). “Propaganda Ideológica durante a Guerra Fria”. Disponível em: https://www.ensinarhistoriajoelza.com.br/stj/wp-content/uploads/2020/08/CARTAZES- para-DOWNLOAD.pdf Legenda: à esquerda, capa de uma HQ do herói norte-americano, Capitão América, enfrentando inimigos, que eram comunistas. À direita, panfleto da URSS simbolizando uma falsa liberdade do estilo de vida norte-americano. A Guerra Fria foi um período de tensão geopolítica entre os Estados Unidos, a União Soviética e seus respectivos aliados, o Bloco Ocidental e o Bloco Oriental. Ela começou após a Segunda Guerra Mundial e durou até a dissolução da União Soviética, em 1991. Durante esse período, os Estados Unidos e a União Soviética competiram por influência global, cada um promovendo sua ideologia e tentando minar a do outro. Houve um impacto significativo na política, economia e cultura do mundo, por conta das disputas travadas pelos dois blocos. O que as duas imagens representam sobre o conflito entre os dois blocos?",
+  "statement": "Observe as duas imagens para responder à questão 37. Fonte: Domingues, Joelza E. (Org.ª. da página Ensinar História). “Propaganda Ideológica durante a Guerra Fria”. Disponível em: https://www.ensinarhistoriajoelza.com.br/stj/wp-content/uploads/2020/08/CARTAZES- para-DOWNLOAD.pdf Legenda: à esquerda, capa de uma HQ do herói norte-americano, Capitão América, enfrentando inimigos, que eram comunistas. À direita, panfleto da URSS simbolizando uma falsa liberdade do estilo de vida norte-americano. A Guerra Fria foi um período de tensão geopolítica entre os Estados Unidos, a União Soviética e seus respectivos aliados, o Bloco Ocidental e o Bloco Oriental. Ela começou após a Segunda Guerra Mundial e durou até a dissolução da União Soviética, em 1991. Durante esse período, os Estados Unidos e a União Soviética competiram por influência global, cada um promovendo sua ideologia e tentando minar a do outro. Houve um impacto significativo na política, economia e cultura do mundo, por conta das disputas travadas pelos dois blocos. O que as duas imagens representam sobre o conflito entre os dois blocos?",
   "options": [
    "Tentativas de acordos de paz baseadas na construção de uma cultura comum entre EUA e URSS.",
    "Disputas étnicas que levaram à produção de cartazes inspirados nos heróis de quadrinhos famosos.",
@@ -874,7 +872,7 @@
  {
   "number": 40,
   "subject": "historia",
-  "statement": "Entre 31 de março e 1 de abril de 1964, o governo de João Goulart foi deposto pelas Forças Armadas do Brasil, que instalaram o Regime Militar. Esse regime se tornou uma ditadura que durou cerca de vinte e um anos. Durante seu período, não foram permitidas eleições diretas para Presidente da República. Os militares 15 controlavam os sindicatos, movimentos sociais e a imprensa, bem como outros grupos que cobravam a democracia e denunciavam violência praticada pelo poder público. Sobre esse período, é correto afirmar que:",
+  "statement": "Entre 31 de março e 1 de abril de 1964, o governo de João Goulart foi deposto pelas Forças Armadas do Brasil, que instalaram o Regime Militar. Esse regime se tornou uma ditadura que durou cerca de vinte e um anos. Durante seu período, não foram permitidas eleições diretas para Presidente da República. Os militares controlavam os sindicatos, movimentos sociais e a imprensa, bem como outros grupos que cobravam a democracia e denunciavam violência praticada pelo poder público. Sobre esse período, é correto afirmar que:",
   "options": [
    "Havia unipartidarismo, que fora instalado pelo Ato Institucional n.º 2, no ano de 1965.",
    "O Ato Institucional n.º 5 abrandou a ditadura e iniciou um processo lento e seguro de retomada da democracia.",
@@ -975,7 +973,7 @@
  {
   "number": 45,
   "subject": "matematica",
-  "statement": "Professor Geraldo listou no quadro-negro cinco frações, designadas por (I), (II), (III), (IV) e (V). Fonte: (Elaboração Própria.) 16 Em seguida, ele solicitou aos seus estudantes do 3º ano do Ensino Médio que indicassem a menor e a maior fração dentre as cinco listadas no quadro-negro. A diferença entre a maior e a menor fração dentre as cinco listadas é igual a:",
+  "statement": "Professor Geraldo listou no quadro-negro cinco frações, designadas por (I), (II), (III), (IV) e (V). Fonte: (Elaboração Própria.) Em seguida, ele solicitou aos seus estudantes do 3º ano do Ensino Médio que indicassem a menor e a maior fração dentre as cinco listadas no quadro-negro. A diferença entre a maior e a menor fração dentre as cinco listadas é igual a:",
   "options": [
    "1/16.",
    "1/30.",

@@ -45,7 +45,7 @@ export function ExerciseCard({ exercise, index, onAnswer }: Props) {
         </div>
       ))}
 
-      <p className="mt-2 text-lg font-bold leading-snug">{exercise.statement}</p>
+      <p className="mt-2 whitespace-pre-line text-lg font-bold leading-snug">{exercise.statement}</p>
       {exercise.images && <Figures images={exercise.images} alt="Figura da questão" />}
 
       {exercise.snapshots && exercise.snapshots.length > 0 && (
@@ -92,7 +92,7 @@ export function ExerciseCard({ exercise, index, onAnswer }: Props) {
               : `Resposta certa: ${LETTERS[exercise.answer]}`}
           </p>
           {exercise.explanation ? (
-            <p className="mt-1 text-ink">{exercise.explanation}</p>
+            <p className="mt-1 whitespace-pre-line text-ink">{exercise.explanation}</p>
           ) : (
             <p className="mt-1 text-muted">Gabarito oficial da UEMG. Dúvida? Anote em Dúvidas.</p>
           )}

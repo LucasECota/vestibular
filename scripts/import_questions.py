@@ -48,7 +48,7 @@ def page_stream(doc, year, out_dir):
                 lines.append(f"[[IMG:questions/{name}]]")
                 continue
             text = b[4]
-            if y0 < 90 and re.fullmatch(r"\s*\d{1,2}\s*", text):
+            if (y0 < 90 or y0 > page.rect.height - 90) and re.fullmatch(r"\s*\d{1,2}\s*", text):
                 continue  # número da página
             lines.extend(text.split("\n"))
             lines.append("")
@@ -57,7 +57,7 @@ def page_stream(doc, year, out_dir):
 
 def question_positions(doc):
     """Posição (página, y) em que cada questão começa, na ordem sequencial 1..48."""
-    pos, expect = {}, 1
+    pos, expect, started = {}, 1, False
     for page in doc:
         items = []
         for b in page.get_text("dict")["blocks"]:
@@ -67,6 +67,9 @@ def question_positions(doc):
                 text = "".join(sp["text"] for sp in ln["spans"])
                 items.append((ln["bbox"][1], text))
         for y, text in sorted(items):
+            if not started:  # ignora as instruções numeradas da 1ª página
+                started = bool(re.match(r"^L[IÍ]NGUA PORTUGUESA", text.strip()))
+                continue
             m = p.QSTART.match(text)
             if m and int(m.group(1)) == expect and y > 20:
                 pos[expect] = (page.number, y)
@@ -77,7 +80,7 @@ def question_positions(doc):
 def save_snapshots(doc, year, pos, img_out):
     """Gera JPEGs de cada questão (fiel à prova: tabelas, equações e figuras vetoriais)."""
     order = sorted(pos)
-    result = {}
+    result, texts = {}, {}
     for k, n in enumerate(order):
         (p0, y0) = pos[n]
         end = pos[order[k + 1]] if k + 1 < len(order) else (len(doc) - 1, doc[-1].rect.height)
@@ -89,6 +92,7 @@ def save_snapshots(doc, year, pos, img_out):
             if bottom - top > 12:
                 clips.append((pg, fitz.Rect(30, top, rect.width - 30, bottom)))
         names = []
+        texts[n] = re.sub(r"\s+", " ", " ".join(doc[pg].get_text("text", clip=rect) for pg, rect in clips))
         for i, (pg, rect) in enumerate(clips):
             name = f"{year}/q{n:02d}-{i + 1}.jpg"
             path = os.path.join(img_out, name)
@@ -96,13 +100,13 @@ def save_snapshots(doc, year, pos, img_out):
             doc[pg].get_pixmap(clip=rect, dpi=100).save(path, jpg_quality=68)
             names.append(f"questions/{name}")
         result[n] = names
-    return result
+    return result, texts
 
 
 def build_year(year, prova, gabarito, pdf_root, src_out, img_out):
     doc = fitz.open(os.path.join(pdf_root, prova))
     stream = page_stream(doc, year, img_out)
-    snaps = save_snapshots(doc, year, question_positions(doc), img_out)
+    snaps, snap_text = save_snapshots(doc, year, question_positions(doc), img_out)
     gab = fitz.open(os.path.join(pdf_root, gabarito))
     gab_lines = "\n".join(pg.get_text() for pg in gab).split("\n")
     answers = p.parse_answers(p.english_table(gab_lines))
@@ -121,6 +125,11 @@ def build_year(year, prova, gabarito, pdf_root, src_out, img_out):
             questions.append(q)
         first += 6
     questions.sort(key=lambda q: q["number"])
+    norm = lambda t: re.sub(r"\W+", "", t).lower()
+    for q in questions:  # o recorte tem de conter o começo do enunciado (garante o alinhamento)
+        head = norm(q["statement"])[:25]
+        if head and head not in norm(snap_text.get(q["number"], "")):
+            print(f"  ATENÇÃO {year} q{q['number']}: recorte não confere com o enunciado")
     os.makedirs(src_out, exist_ok=True)
     with open(os.path.join(src_out, f"{year}.json"), "w", encoding="utf-8") as f:
         json.dump(questions, f, ensure_ascii=False, indent=1)

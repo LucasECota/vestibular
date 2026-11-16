@@ -1,0 +1,95 @@
+{
+  "uemg-2023-q43": {
+    "statement": "Um professor lançou o seguinte desafio aos seus alunos: calcular o valor da expressão A = [ 14(x³ − y³) / ( (7x² − 7y²)(x² + xy + y²) ) ]⁻¹, para x = 2023 e y = 2013. Respondeu, corretamente, o aluno que calculou o valor:"
+  },
+  "uemg-2023-q45": {
+    "statement": "Muitos vírus e bactérias têm crescimento exponencial, isso é uma das causas que os torna tão perigosos. Supondo o surgimento de um novo vírus com um crescimento exponencial de acordo com a seguinte lei de formação Q(t) = 25 · 3^(2t − 7), na qual Q é a quantidade de vírus e t é o tempo em dias. Analisando uma cultura desse vírus, quanto tempo demora para que ele alcance a quantidade de 54.675?",
+    "context": []
+  },
+  "uemg-2023-q46": {
+    "options": [
+      "(x + 4)² + (y + 1)² = 64",
+      "(x − 4)² + (y − 1)² = 64",
+      "(x + 4)² + (y + 1)² = 8",
+      "(x − 4)² + (y − 1)² = 64"
+    ]
+  },
+  "uemg-2023-q47": {
+    "statement": "Seja a função f: R − {3} → R, sendo f(x) = (4x + 6)/(2x − 6), dado que h(x) = f(f(x)), então o domínio da função h(x) é:",
+    "context": []
+  },
+  "uemg-2023-q48": {
+    "statement": "Seja a matriz A com primeira linha (sen x, 1) e segunda linha (cos x, 1), com 0 < x < 2π e sabendo que det A = 0, temos que x =",
+    "options": [
+      "{π/2; π; 3π/2}",
+      "{π/4; 5π/4}",
+      "{π/4; 3π/4; 5π/4; 7π/4}",
+      "{π/4}"
+    ]
+  },
+  "uemg-2024-q45": {
+    "statement": "Professor Geraldo listou no quadro-negro cinco frações: (I) 5/9, (II) 7/12, (III) 9/16, (IV) 19/34 e (V) 55/100. Em seguida, ele solicitou aos seus estudantes do 3º ano do Ensino Médio que indicassem a menor e a maior fração dentre as cinco listadas no quadro-negro. A diferença entre a maior e a menor fração dentre as cinco listadas é igual a:"
+  },
+  "uemg-2024-q47": {
+    "statement": "Os números inteiros maiores que 1 são organizados conforme mostrado no quadro: a linha 1 traz 2, 3, 4, 5 (da esquerda para a direita, nas colunas 2 a 5); a linha 2 traz 9, 8, 7, 6 (nas colunas 1 a 4); a linha 3 traz 10, 11, 12, 13 (colunas 2 a 5); a linha 4 traz 17, 16, 15, 14 (colunas 1 a 4); e assim por diante. Qual a soma dos elementos da 20ª linha?"
+  },
+  "uemg-2023-q13": {
+    "options": [
+      "1,5 · 10³",
+      "1,5 · 10⁹",
+      "15 · 10⁶",
+      "1,5 · 10¹²"
+    ]
+  },
+  "uemg-2023-q14": {
+    "statement": "Um professor de física realizou um campeonato de lançamento de foguetes com seus alunos. Para a etapa final foram classificadas as 3 equipes de melhor rendimento na competição. No último lançamento os foguetes foram abastecidos com a mesma quantidade de ar e água e lançados com uma velocidade de 20 m/s. As equipes tiveram a liberdade de escolher o ângulo de lançamento, de forma que as equipes azul e vermelha escolheram o ângulo de 45º e a equipe verde, 30º. Com relação aos resultados obtidos pelas equipes pode-se afirmar que: (Dados: g = 10 m/s²; sen 30º = 0,5; sen 45º = 0,7; sen 60º = 0,86; sen 90º = 1)."
+  },
+  "uemg-2023-q15": {
+    "statement": "É bastante comum meteoros serem atraídos pelo campo gravitacional da Terra e acabarem sendo desviados de sua órbita original, em alguns casos dando origem a belíssimas chuvas de meteoros. Considerando um meteoro de massa M que se aproxima da Terra, com base na lei da gravitação universal proposta por Isaac Newton, analise as afirmativas a seguir.\nI- Mesmo que o meteoro perca massa a força de atração gravitacional permanecerá constante, pois só depende da massa da Terra.\nII- À medida que o meteoro se aproxima da Terra a força gravitacional aumentará.\nIII- Caso o meteoro perca 1/4 de sua massa a força gravitacional aumentará 1/4 do valor inicial.\nIV- A força gravitacional será proporcional ao produto da massa do meteoro pela massa da Terra.\nV- Quando a distância entre o meteoro e a Terra for metade do valor inicial, a força gravitacional será o dobro da inicial.\nEstão corretas apenas:",
+    "context": []
+  },
+  "uemg-2023-q16": {
+    "statement": "Um técnico de laboratório realizou um teste com uma amostra de petróleo, de coeficiente de dilatação volumétrica 9 · 10⁻⁴ °C⁻¹, enchendo totalmente um recipiente de vidro, de coeficiente de dilatação linear 9 · 10⁻⁶ °C⁻¹, com a substância, e elevou a temperatura do sistema até um valor T. Nestas condições, é correto afirmar que:"
+  },
+  "uemg-2023-q18": {
+    "statement": "Um fabricante deseja confeccionar um relé fotocélula que seja acionado por frequências de luz visível azul (606 – 669 THz) e violeta (668 – 789 THz). Para tal, precisa testar três metais e verificar sua eficácia. Funções trabalho (W): Sódio = 2,28 eV; Bário = 2,5 eV; Lítio = 2,3 eV. Após os testes, o fabricante pode concluir que: (Dado: constante de Planck h = 4,1 · 10⁻¹⁵ eV·s)"
+  },
+  "uemg-2024-q14": {
+    "statement": "Na natureza, diversos animais utilizam o sistema de ecolocalização para se locomoverem no ambiente de forma segura, sem depender do sentido da visão. Esses animais são capazes de emitir ondas sonoras, que são refletidas ao encontrar um obstáculo, retornando ao emissor, que possui a capacidade de interpretar as informações, podendo, assim, identificar a distância dos objetos e presas. Sendo assim, podemos tomar como exemplo o caso de um morcego que emite ondas ultrassônicas no intuito de localizar um inseto para sua alimentação, como mostra a imagem. Sabendo-se que o morcego emitiu uma onda sonora e percebeu a onda refletida 0,08 s depois, considerando a velocidade do som no ar com 330 m/s e desconsiderando a resistência do ar e quaisquer outros efeitos, a distância entre o morcego e o inseto é de aproximadamente:"
+  },
+  "uemg-2024-q17": {
+    "statement": "Atualmente, o Brasil conta com duas usinas nucleares em atividade: Angra I, em funcionamento desde 1985, e Angra II, em funcionamento desde 2001. Juntas elas geram energia elétrica suficiente para abastecer cerca de 3 milhões de habitantes. As usinas usam como combustível urânio enriquecido e produzem energia elétrica a partir do processo de fissão nuclear. Com relação a este processo e às radiações relacionadas a ele, analise as afirmativas:\nI- Na fissão nuclear, um próton colide com um núcleo atômico gerando sua divisão e uma grande liberação de energia.\nII- Durante uma fissão nuclear, não são emitidas ondas eletromagnéticas, somente partículas alfa e beta.\nIII- No processo de fissão nuclear, dois átomos do mesmo elemento colidem, dando origem a um novo elemento com maior número atômico.\nIV- Na fissão de um elemento radioativo, há uma grande liberação de radiações gama, que são ondas eletromagnéticas de alta frequência.\nV- Todas as radiações emitidas durante a fissão nuclear possuem baixo poder de penetração, podendo ser bloqueadas com uma folha de papel.\nEstão corretas somente as afirmativas:"
+  },
+  "uemg-2023-q20": {
+    "statement": "Em 11 de março de 2020, a COVID-19 foi caracterizada pela OMS como uma pandemia, após ela atingir 118 países. [...] (Câmara, M. S. C. et al., A Química da Covid-19.) Alguns produtos químicos são utilizados para desinfecção de ambientes para prevenção da COVID-19, é o caso do hipoclorito de sódio, também conhecido como água sanitária, que deve ser diluído em água para formar uma espécie química com carga elétrica neutra, o que contribui, significativamente, para uma maior permeabilidade no vírus, fazendo sua oxidação. As reações que ocorrem desde a diluição do hipoclorito de sódio em água até o equilíbrio são:\nNaClO(aq) + H₂O(l) ⇌ Na⁺(aq) + OH⁻(aq) + HClO(aq)\nHClO(aq) ⇌ ClO⁻(aq) + H⁺(aq)\nApós o equilíbrio, os produtos formados, que são capazes de oxidar o vírus, têm caráter:"
+  },
+  "uemg-2023-q22": {
+    "statement": "O rótulo de um suco em pó apresenta as seguintes informações: Modo de preparo: adicione o conteúdo deste pacote em 1 L de água gelada e misture bem. Informação nutricional, porção de 6 g (1 colher de sopa): valor energético 21 kcal; carboidratos totais 4,9 g, dos quais açúcares 4,5 g; sódio 32 mg; ferro 2,1 mg; vitamina C 6,8 mg; vitamina A 90 µg RE. Para preparar um suco, Clarice seguiu as orientações do rótulo do produto. Sabendo-se que a massa total de cada pacotinho de suco é de 25 g, calcule a quantidade de açúcar presente em um copo de 200 mL do suco preparado."
+  },
+  "uemg-2024-q23": {
+    "statement": "As transformações químicas ocorrem todo o tempo ao nosso redor. É muito comum notarmos que materiais metálicos como cercas, portões e pregos, ao ficarem expostos ao ambiente, acabam se deteriorando. Isso ocorre devido ao contato do elemento químico ferro (Fe) com átomos de oxigênio (O) presentes no ar atmosférico e na água. Em regiões litorâneas, esses materiais sofrem ainda mais danos devido à presença de sais e uma maior umidade. Esse fenômeno é conhecido como ferrugem e ocorre devido a uma reação de oxirredução. Dada a equação de oxirredução do ferro, 4 Fe(s) + 3 O₂(g) → 2 Fe₂O₃(s), e sabendo-se que nessa reação ocorre transferência de elétrons, marque a alternativa correta."
+  },
+  "uemg-2024-q25": {
+    "statement": "Um Professor de Biologia, de Ensino Médio, montou uma tabela na qual os alunos poderiam revisar as características de alguns animais.\nColunas: Moluscos | Poríferos | Cordados\nAnimais representantes: Mariscos, Ostras, Lulas, Polvos e Caramujos | Esponjas do mar | Peixes, Anfíbios, Répteis, Aves e Mamíferos\nFolhetos embrionários: Triblásticos | Ausente | Diblásticos\nCeloma: Celomados | Celomados | Celomados\nSimetria: Bilateral | Bilateral | Bilateral\nOrigem da boca: Protostômios | Deuterostômios | Deuterostômios\nHabitat: Terrestre | Aquáticos e Terrestres | Aquáticos ou Terrestres\nAnalise os itens sobre as informações do quadro e marque a alternativa correspondente.\n1- Todos os animais representantes estão corretos.\n2- A tabela está toda correta.\n3- Com relação a folhetos embrionários está incorreto, pois os poríferos são Diblásticos.\n4- Com relação à descrição de origem da boca, a tabela está incorreta.\nEstão corretos:"
+  },
+  "uemg-2024-q26": {
+    "statement": "Células-tronco possuem a capacidade de se autorrenovarem e diferenciarem em diferentes tipos de células funcionais (figura). Em outras palavras, as células-tronco têm a capacidade de se dividirem e se transformarem em outros tipos de células. Analise as proposições em relação às células-tronco, atribua (V) para a verdadeira e (F) para a falsa e assinale a alternativa correta.\n( ) O crescente uso de células-tronco em pesquisas e terapias se dá ao fato que elas conseguem gerar qualquer tipo de célula.\n( ) As células-tronco adultas são chamadas de multipotentes, pois são mais variáveis que as embrionárias.\n( ) A divisão celular que ocorre nas células-tronco para que elas possam se multiplicar é denominada meiose.\n( ) Por serem células de renovação e diferenciação, não existe risco que as células-tronco fora de controle possam gerar tumores."
+  },
+  "uemg-2024-q27": {
+    "statement": "Analise as afirmativas e assinale a alternativa que indique os itens incorretos.\nI- Os cogumelos do tipo champignon produzem efeitos alucinógenos e causam danos ao sistema nervoso periférico quando ingeridos.\nII- Fungos são importantes uma vez que atuam como agentes decompositores, muitas vezes se associando com raízes de plantas, sendo prejudicial para ambos.\nIII- Na indústria de laticínios alguns fungos são utilizados na fabricação de queijos.\nIV- Muitos fungos podem causar micoses no ser humano, como lesões de pele, couro cabeludo e unhas, bem como pé de atleta e rachaduras entre os dedos (frieiras).\nV- Bebidas alcoólicas, como vinho e cerveja, além de pães, são produzidas devido à fermentação de fungos, que chamamos de leveduras, na presença de oxigênio."
+  },
+  "uemg-2024-q29": {
+    "statement": "Quando estudamos uma cadeia alimentar, podemos classificar em consumidor primário e secundário conforme a figura. O homem pode ser considerado como consumidor primário e secundário, quando se alimentar respectivamente de:"
+  },
+  "uemg-2023-q37": {
+    "options": [
+      "A formação dos Estados Nacionais Latinos, decorrente do rompimento com as metrópoles europeias, resultou na consolidação pacífica do poder das elites locais.",
+      "Os processos de independência que ocorreram no século XIX, na América, evidenciaram a passividade das massas populares no continente, pois permaneceram fora das decisões políticas dos novos países.",
+      "As elites latino-americanas alardeavam seu papel de mantenedoras da ordem social nos novos Estados, com objetivo de excluir as classes populares das instâncias decisórias.",
+      "As rebeliões populares na América Latina estimularam respostas políticas pacíficas por parte das elites, resultando na ampliação da participação popular nas repúblicas americanas no século XIX."
+    ]
+  },
+  "uemg-2023-q38": {
+    "context": []
+  }
+}

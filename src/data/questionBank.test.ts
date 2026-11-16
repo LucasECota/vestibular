@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest'
 import { SUBJECTS } from '../domain/types'
-import { PAST_QUESTIONS, QUESTION_YEARS, exerciseById, questionsBySubject } from './questionBank'
+import { PAST_QUESTIONS, QUESTION_YEARS, exerciseById, formatStatement, questionsBySubject } from './questionBank'
 
 describe('banco de questões', () => {
   it('tem ids únicos e alternativas completas', () => {
@@ -32,6 +32,20 @@ describe('banco de questões', () => {
     expect(exerciseById('uemg-2024-q14')!.answer).toBe(2)
     expect(exerciseById('uemg-2024-q43')!.answer).toBe(3)
     expect(exerciseById('uemg-2023-q47')!.answer).toBe(3)
+  })
+
+  it('formata itens I-/II- e ( ) em linhas separadas', () => {
+    expect(formatStatement('Analise. I- Um. II- Dois. III-Três.')).toBe('Analise.\nI- Um.\nII- Dois.\nIII-Três.')
+    expect(formatStatement('Marque. ( ) a ( ) b')).toBe('Marque.\n( ) a\n( ) b')
+    expect(exerciseById('uemg-2023-q05')!.statement).toContain('\n( ) Variações linguísticas no Sul')
+  })
+
+  it('toda questão válida tem explicação que confirma a letra do gabarito oficial', () => {
+    const letters = ['A', 'B', 'C', 'D']
+    for (const q of PAST_QUESTIONS) {
+      expect(q.explanation, `${q.id} sem explicação`).toBeTruthy()
+      expect(q.explanation!.startsWith(`Resposta ${letters[q.answer]}`), `${q.id}: explicação não confere com o gabarito`).toBe(true)
+    }
   })
 
   it('acha exercícios de exemplo e questões pelo mesmo id', () => {

@@ -37,6 +37,36 @@ describe('fluxo principal', () => {
     expect(screen.getByRole('heading', { name: 'Redação' })).toBeInTheDocument()
   })
 
+  it('anota, resolve e apaga dúvidas, e copia as abertas', async () => {
+    const user = userEvent.setup()
+    const writeText = vi.fn().mockResolvedValue(undefined)
+    Object.defineProperty(navigator, 'clipboard', { value: { writeText }, configurable: true })
+    renderApp('/duvidas')
+
+    const add = screen.getByRole('button', { name: /anotar dúvida/i })
+    expect(add).toBeDisabled()
+    await user.selectOptions(screen.getByLabelText(/disciplina/i), 'fisica')
+    await user.type(screen.getByLabelText(/qual é a sua dúvida/i), 'O que é MRUV?')
+    await user.click(add)
+    expect(screen.getByText('O que é MRUV?')).toBeInTheDocument()
+    expect(screen.getByText(/abertas \(1\)/i)).toBeInTheDocument()
+
+    await user.click(screen.getByRole('button', { name: /copiar para enviar/i }))
+    expect(writeText).toHaveBeenCalledWith(expect.stringContaining('Física: O que é MRUV?'))
+
+    await user.click(screen.getByRole('button', { name: /marcar como resolvida/i }))
+    expect(screen.getByText(/resolvidas \(1\)/i)).toBeInTheDocument()
+    await user.click(screen.getByRole('button', { name: /apagar/i }))
+    expect(screen.queryByText('O que é MRUV?')).not.toBeInTheDocument()
+  })
+
+  it('o atalho da tarefa abre as dúvidas já com a disciplina escolhida', async () => {
+    const user = userEvent.setup()
+    renderApp('/tarefa/t-2026-11-16-mat')
+    await user.click(screen.getByRole('link', { name: /anotar uma dúvida/i }))
+    expect(screen.getByLabelText(/disciplina/i)).toHaveValue('matematica')
+  })
+
   it('mostra a estrutura da prova', async () => {
     const user = userEvent.setup()
     renderApp()

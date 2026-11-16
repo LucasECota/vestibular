@@ -55,6 +55,13 @@ export function TaskPage() {
         ))}
       </section>
 
+      <Link
+        to={`/duvidas?materia=${task.subject}`}
+        className="card block px-4 py-3 text-center text-base font-bold text-brand"
+      >
+        ❓ Anotar uma dúvida desta matéria
+      </Link>
+
       <button
         type="button"
         disabled={done || !allAnswered}

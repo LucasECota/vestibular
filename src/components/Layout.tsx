@@ -4,12 +4,14 @@ const icons = {
   home: 'M3 11.5 12 4l9 7.5V20a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z',
   books: 'M5 4h4v16H5zM11 4h4v16h-4zM17.5 5.5l3.5 1-3.5 13.5-3.5-1z',
   clock: 'M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18zm0 4v5l3.5 2',
+  help: 'M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18zM9.5 9.5a2.5 2.5 0 1 1 3.5 2.3c-.7.4-1 .9-1 1.7M12 17h.01',
   pen: 'M4 20h4L19 9l-4-4L4 16zM14 6l4 4',
 }
 
 const links = [
   { to: '/', label: 'Hoje', end: true, icon: icons.home },
   { to: '/disciplinas', label: 'Disciplinas', end: false, icon: icons.books },
+  { to: '/duvidas', label: 'Dúvidas', end: false, icon: icons.help },
   { to: '/prova', label: 'Prova', end: false, icon: icons.clock },
   { to: '/redacao', label: 'Redação', end: false, icon: icons.pen },
 ]

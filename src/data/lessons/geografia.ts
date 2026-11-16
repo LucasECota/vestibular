@@ -291,3 +291,47 @@ export const GEOGRAFIA_6: Lesson = {
     ex('geografia-6', 5, S, 'Um impacto ambiental associado à expansão da fronteira agrícola sobre o Cerrado e a Amazônia é:', ['o aumento da cobertura florestal', 'o desmatamento e a perda de biodiversidade', 'a redução do uso de água', 'a diminuição da erosão do solo'], 1, 'Resposta B. Abrir áreas para lavouras e pastos elimina a vegetação nativa, reduz a biodiversidade e pode causar erosão, assoreamento dos rios e emissão de gases do efeito estufa.'),
   ],
 }
+
+export const GEOGRAFIA_7: Lesson = {
+  slug: 'geografia-7',
+  title: 'Geopolítica, globalização e espaço geográfico',
+  blocks: [
+    { type: 'p', text: 'Geopolítica estuda como o **poder** e os **interesses** dos Estados se refletem no espaço. Globalização é a intensificação das ligações entre países. Esses temas dão sentido às notícias do mundo: conflitos, blocos econômicos, acordos climáticos. A UEMG 2024 cobrou globalização e espaço geográfico (Milton Santos) e a tensão entre China e Taiwan.' },
+    { type: 'h', text: '1. Ordem mundial' },
+    { type: 'table', head: ['Período', 'Características'], rows: [
+      ['Guerra Fria (1947–1991)', '**Bipolaridade** entre EUA (capitalismo) e URSS (socialismo); corrida armamentista; conflitos indiretos'],
+      ['Pós-1991', 'Fim da URSS e hegemonia dos EUA; "Nova Ordem Mundial"'],
+      ['Atualidade', '**Multipolaridade**: crescimento da China, da Índia e de potências regionais; disputas tecnológicas e comerciais'],
+    ] },
+    { type: 'h', text: '2. Globalização' },
+    { type: 'p', text: 'Intensificação dos fluxos de **capitais, mercadorias, informações e pessoas** entre os países, favorecida pelo avanço dos transportes e das comunicações (internet, satélites, contêineres) e pela abertura econômica.' },
+    { type: 'table', head: ['Aspectos positivos', 'Aspectos negativos'], rows: [
+      ['Acesso rápido à informação e à tecnologia', 'Aumento da desigualdade entre e dentro dos países'],
+      ['Ampliação do comércio e do consumo', 'Desemprego causado pela automatização e pela transferência de fábricas'],
+      ['Troca cultural e cooperação científica', 'Homogeneização cultural; perda de culturas locais'],
+      ['Países emergentes se integram à economia mundial', 'Dependência de empresas multinacionais e de commodities; impactos ambientais'],
+    ] },
+    { type: 'callout', kind: 'dica', text: 'Em 2024 a questão pediu uma consequência da globalização para a produção e outra para o trabalho: automatização das fábricas e aumento do desemprego. As multinacionais organizam a produção em redes pelo mundo, aproveitando mão de obra e impostos mais baratos.' },
+    { type: 'h', text: '3. Blocos econômicos e organizações' },
+    { type: 'table', head: ['Bloco ou organização', 'Membros e característica'], rows: [
+      ['União Europeia (UE)', 'Mercado comum e moeda única (euro) em grande parte dos membros'],
+      ['Mercosul', 'Brasil, Argentina, Paraguai e Uruguai (e Venezuela, suspensa); união aduaneira'],
+      ['USMCA (ex-NAFTA)', 'EUA, México e Canadá; livre-comércio'],
+      ['BRICS', 'Brasil, Rússia, Índia, China e África do Sul (ampliado); países emergentes'],
+      ['ONU', 'Mantém a paz e promove a cooperação; Conselho de Segurança com 5 membros permanentes'],
+      ['OMC, FMI, Banco Mundial', 'Comércio, estabilidade financeira e desenvolvimento'],
+    ] },
+    { type: 'h', text: '4. Espaço geográfico' },
+    { type: 'p', text: 'Para **Milton Santos**, o espaço geográfico é um conjunto **indissociável, solidário e contraditório** de **sistemas de objetos** (cidades, estradas, fábricas, usinas) e **sistemas de ações** (o trabalho, a política e as relações humanas), formando um quadro único em que a história acontece. A natureza "selvagem" vai sendo substituída por objetos técnicos criados pelo ser humano.' },
+    { type: 'callout', kind: 'atencao', text: 'Conceitos de apoio: **território** (espaço apropriado e controlado por um grupo), **lugar** (espaço vivido, com identidade), **paisagem** (o que a vista alcança) e **região**.' },
+    { type: 'h', text: '5. Desigualdade e conflitos' },
+    { type: 'list', items: ['**IDH** (Índice de Desenvolvimento Humano): combina renda, saúde (expectativa de vida) e educação. Os países se dividem em desenvolvidos, emergentes e subdesenvolvidos, e a distância entre eles se reflete em comércio, tecnologia e poder.', '**Conflitos atuais:** Oriente Médio (disputas territoriais, religiosas e por petróleo), Rússia e Ucrânia, e a tensão entre China e Taiwan (a China considera a ilha parte de seu território).', '**Meio ambiente e política:** acordos como a COP e o Acordo de Paris buscam limitar o aquecimento global, enfrentando conflitos de interesse entre países ricos e em desenvolvimento.'] },
+  ],
+  exercises: [
+    ex('geografia-7', 1, S, 'O Mercosul é um bloco econômico formado, originalmente, por:', ['Brasil, Argentina, Paraguai e Uruguai', 'Brasil, Rússia, Índia e China', 'Estados Unidos, México e Canadá', 'países da União Europeia'], 0, 'Resposta A. O Mercosul (Mercado Comum do Sul) reúne países da América do Sul, com livre circulação de bens e uma tarifa externa comum. B é o BRICS e C é o USMCA (ex-NAFTA).'),
+    ex('geografia-7', 2, S, 'A globalização pode ser definida como:', ['o isolamento econômico dos países', 'a intensificação dos fluxos de capitais, mercadorias, informações e pessoas entre os países', 'o fim das empresas multinacionais', 'a divisão da Terra em dois blocos militares'], 1, 'Resposta B. Ela foi impulsionada pelos avanços tecnológicos nos transportes e nas comunicações e pela abertura dos mercados. O isolamento seria o contrário. A divisão em dois blocos é a Guerra Fria.'),
+    ex('geografia-7', 3, S, 'A Guerra Fria foi um período de disputa por poder e influência entre:', ['Brasil e Argentina', 'Estados Unidos e União Soviética', 'China e Japão', 'França e Alemanha'], 1, 'Resposta B. De 1947 a 1991, EUA (capitalismo) e URSS (socialismo) disputaram influência mundial, sem enfrentamento direto, por meio de corrida armamentista, espionagem e conflitos em outros países.'),
+    ex('geografia-7', 4, S, 'O BRICS é um grupo de países emergentes formado originalmente por:', ['Brasil, Rússia, Índia, China e África do Sul', 'Brasil, Reino Unido, Itália, Canadá e Suécia', 'Bolívia, Rússia, Irã, Cuba e Síria', 'Brasil, Rússia, Israel, Chile e Suíça'], 0, 'Resposta A. As iniciais são Brasil, Rússia, Índia, China e África do Sul (South Africa). O grupo reúne grandes economias emergentes que buscam maior peso nas decisões globais.'),
+    ex('geografia-7', 5, S, 'Para o geógrafo Milton Santos, o espaço geográfico é formado por:', ['apenas pelos elementos da natureza', 'um conjunto indissociável de sistemas de objetos e sistemas de ações', 'somente pelos limites políticos entre países', 'apenas pelas paisagens rurais'], 1, 'Resposta B. O espaço geográfico une os objetos (naturais e técnicos) e as ações humanas, formando um quadro único. É o conceito trabalhado na questão da UEMG 2024.'),
+  ],
+}

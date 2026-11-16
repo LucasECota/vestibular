@@ -6,8 +6,9 @@ import { LESSONS_WEEK3 } from './week3'
 import { LESSONS_WEEK4 } from './week4'
 import { LESSONS_WEEK5 } from './week5'
 import { LESSONS_WEEK6 } from './week6'
+import { LESSONS_WEEK7 } from './week7'
 
-export const LESSONS: Lesson[] = [...LESSONS_WEEK1, ...LESSONS_WEEK2, ...LESSONS_WEEK3, ...LESSONS_WEEK4, ...LESSONS_WEEK5, ...LESSONS_WEEK6]
+export const LESSONS: Lesson[] = [...LESSONS_WEEK1, ...LESSONS_WEEK2, ...LESSONS_WEEK3, ...LESSONS_WEEK4, ...LESSONS_WEEK5, ...LESSONS_WEEK6, ...LESSONS_WEEK7]
 
 export const lessonBySlug = (slug: string): Lesson | undefined => LESSONS.find((l) => l.slug === slug)
 

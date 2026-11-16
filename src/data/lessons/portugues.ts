@@ -253,3 +253,38 @@ export const PORTUGUES_6: Lesson = {
     ex('portugues-6', 5, S, 'Uma característica geral do Romantismo é:', ['o culto à razão e ao equilíbrio acima de tudo', 'a valorização da emoção, da subjetividade e da idealização', 'a descrição objetiva e científica da realidade', 'o rompimento com todas as formas tradicionais, como a rima'], 1, 'Resposta B. O Romantismo se opõe ao racionalismo e valoriza o sentimento, o "eu", a imaginação e a idealização do amor e da pátria. A razão e o equilíbrio são do Arcadismo; a objetividade, do Realismo.'),
   ],
 }
+
+export const PORTUGUES_7: Lesson = {
+  slug: 'portugues-7',
+  title: 'Literatura: do Realismo ao Modernismo e contemporânea',
+  blocks: [
+    { type: 'p', text: 'Na aula anterior você viu o Barroco, o Arcadismo e o Romantismo. Agora o caminho vai do **Realismo** (1881) até a literatura **contemporânea**. A UEMG já cobrou o Simbolismo (2023), a prosa de Graciliano Ramos (Vidas Secas, 2024) e o Modernismo e Murilo Mendes (2024).' },
+    { type: 'h', text: '1. Quadro geral' },
+    { type: 'table', head: ['Escola', 'Período', 'Ideia central', 'Autores e obras'], rows: [
+      ['Realismo e Naturalismo', '1881–1893', 'Objetividade, crítica social, análise psicológica; o Naturalismo vê o ser humano como produto do meio', 'Machado de Assis (Memórias Póstumas de Brás Cubas, Dom Casmurro); Aluísio Azevedo (O Cortiço)'],
+      ['Parnasianismo', '1882–1893', '"Arte pela arte": rigor formal, descrição, rima rica', 'Olavo Bilac, Raimundo Correia, Alberto de Oliveira'],
+      ['Simbolismo', '1893–1902', 'Subjetividade, musicalidade, sinestesia, misticismo, linguagem sugestiva', 'Cruz e Sousa, Alphonsus de Guimaraens'],
+      ['Pré-Modernismo', '1902–1922', 'Realismo crítico sobre o Brasil real', 'Euclides da Cunha (Os Sertões), Lima Barreto, Monteiro Lobato, Augusto dos Anjos'],
+      ['Modernismo', '1922 em diante', 'Ruptura com o passado, liberdade formal, valorização do Brasil', 'Veja as fases abaixo'],
+    ] },
+    { type: 'callout', kind: 'dica', text: 'Realismo × Romantismo: o Romantismo idealiza e vive de emoção; o Realismo é objetivo, critica a sociedade e mostra defeitos e hipocrisia. Machado de Assis usa a **ironia** e o narrador que dialoga com o leitor.' },
+    { type: 'h', text: '2. Modernismo brasileiro' },
+    { type: 'p', text: 'Começou com a **Semana de Arte Moderna** (São Paulo, 1922). Rompeu com o academicismo, adotou o **verso livre**, a linguagem coloquial e o humor, e valorizou temas brasileiros.' },
+    { type: 'table', head: ['Fase', 'Período', 'Características', 'Autores'], rows: [
+      ['1ª fase (heroica)', '1922–1930', 'Ruptura, experimentação, nacionalismo crítico, humor', 'Mário de Andrade (Macunaíma), Oswald de Andrade, Manuel Bandeira ("Os Sapos")'],
+      ['2ª fase (consolidação)', '1930–1945', 'Prosa regionalista e social (denúncia da seca e da miséria); poesia de reflexão', 'Graciliano Ramos (Vidas Secas), Rachel de Queiroz (O Quinze), Jorge Amado, José Lins do Rego; Carlos Drummond de Andrade, Cecília Meireles, Murilo Mendes, Vinícius de Moraes'],
+      ['3ª fase', '1945–1960', 'Experimentação com a linguagem, prosa intimista e poesia concreta', 'Guimarães Rosa (Grande Sertão: Veredas), Clarice Lispector (A Hora da Estrela), João Cabral de Melo Neto'],
+    ] },
+    { type: 'callout', kind: 'exemplo', title: 'Vidas Secas (UEMG 2024)', text: 'Romance de Graciliano Ramos (1938), da 2ª fase modernista. Mostra a vida de uma família de retirantes no sertão nordestino, com linguagem seca, econômica e narrador em 3ª pessoa que acessa o pensamento de Fabiano. É literatura de denúncia social.' },
+    { type: 'h', text: '3. Literatura contemporânea (depois de 1960)' },
+    { type: 'list', items: ['Variedade de estilos e temas: o urbano e a violência, o cotidiano, a memória, a literatura de testemunho.', 'Poesia marginal e **concretismo** (a palavra como objeto visual).', 'Crescimento das vozes femininas, negras e periféricas: Conceição Evaristo, Carolina Maria de Jesus (Quarto de Despejo), Ana Maria Gonçalves.'] },
+    { type: 'callout', kind: 'atencao', text: 'Para a prova, memorize o **par escola + característica principal**: Realismo = crítica social; Parnasianismo = forma; Simbolismo = musicalidade e misticismo; Modernismo = ruptura e liberdade; 2ª fase = regionalismo social.' },
+  ],
+  exercises: [
+    ex('portugues-7', 1, S, 'A obra "Memórias Póstumas de Brás Cubas", de Machado de Assis, inaugura no Brasil, em 1881, a escola literária:', ['Romantismo', 'Realismo', 'Simbolismo', 'Modernismo'], 1, 'Resposta B (Realismo). A obra se caracteriza pela ironia, pela análise psicológica e pela crítica à sociedade, com um narrador defunto que fala diretamente ao leitor.'),
+    ex('portugues-7', 2, S, 'O lema "arte pela arte", o rigor formal e o culto à perfeição da forma são marcas do:', ['Parnasianismo', 'Simbolismo', 'Naturalismo', 'Barroco'], 0, 'Resposta A (Parnasianismo). Os parnasianos, como Olavo Bilac, valorizavam o rigor da métrica, da rima e da descrição. O Simbolismo, ao contrário, valoriza a sugestão e a musicalidade.'),
+    ex('portugues-7', 3, S, 'Musicalidade, sinestesia, misticismo e subjetividade caracterizam a escola literária conhecida como:', ['Realismo', 'Parnasianismo', 'Simbolismo', 'Arcadismo'], 2, 'Resposta C (Simbolismo), de Cruz e Sousa e Alphonsus de Guimaraens. É a mesma descrição da questão da UEMG 2023. Sinestesia é a mistura de sensações, como "cheiro doce" ou "som colorido".'),
+    ex('portugues-7', 4, S, 'A Semana de Arte Moderna, realizada em São Paulo, em 1922, marca:', ['o início do Modernismo brasileiro, com rompimento com o academicismo', 'o início do Romantismo no Brasil', 'o fim da escravidão', 'o início do Parnasianismo'], 0, 'Resposta A. A Semana de 22 propôs liberdade formal, o verso livre, a linguagem coloquial e a valorização da cultura brasileira, rompendo com os modelos acadêmicos.'),
+    ex('portugues-7', 5, S, 'O romance "Vidas Secas", de Graciliano Ramos, pertence:', ['à 1ª fase do Modernismo e trata de temas urbanos', 'à 2ª fase do Modernismo, com prosa regionalista de denúncia social', 'ao Romantismo indianista', 'ao Realismo do século XIX'], 1, 'Resposta B. Publicado em 1938, na 2ª fase modernista, retrata a miséria e a seca no sertão nordestino com linguagem enxuta, característica da literatura social da época.'),
+  ],
+}

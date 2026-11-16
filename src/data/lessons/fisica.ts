@@ -301,3 +301,50 @@ export const FISICA_6: Lesson = {
     ex('fisica-6', 5, S, 'Uma pessoa está a 2 m de um espelho plano. A distância entre ela e a sua imagem é:', ['2 m', '4 m', '1 m', '8 m'], 1, 'Resposta B (4 m). No espelho plano, a imagem se forma à mesma distância do espelho que o objeto, mas do outro lado: 2 m atrás do espelho. Entre a pessoa e a imagem: 2 + 2 = 4 m.'),
   ],
 }
+
+const SVG_CIRCUITOS = `<svg viewBox="0 0 340 210" xmlns="http://www.w3.org/2000/svg" font-family="sans-serif" font-size="11">
+<rect width="340" height="210" fill="#fff"/>
+<text x="85" y="16" text-anchor="middle" font-weight="bold" fill="#0a0a0f">Em série</text><text x="255" y="16" text-anchor="middle" font-weight="bold" fill="#0a0a0f">Em paralelo</text>
+<g stroke="#0a0a0f" stroke-width="2.5" fill="none">
+<path d="M20 40 H42 M72 40 H98 M128 40 H150 V120 H20 V86 M20 74 V40"/>
+<path d="M190 40 H320 V150 H190 V106 M190 94 V40"/>
+<path d="M215 40 V60 M245 40 V60 M215 120 V150 M245 120 V150"/></g>
+<g fill="#fff" stroke="#0a0a0f" stroke-width="2.5"><rect x="42" y="30" width="30" height="20"/><rect x="98" y="30" width="30" height="20"/><rect x="205" y="60" width="20" height="60"/><rect x="235" y="60" width="20" height="60"/></g>
+<g stroke="#0a0a0f" stroke-width="3"><line x1="12" y1="74" x2="28" y2="74"/><line x1="16" y1="86" x2="24" y2="86"/><line x1="182" y1="94" x2="198" y2="94"/><line x1="186" y1="106" x2="194" y2="106"/></g>
+<g text-anchor="middle" fill="#0a0a0f" font-weight="bold"><text x="57" y="44">R₁</text><text x="113" y="44">R₂</text><text x="215" y="94" dx="0">R₁</text><text x="245" y="94">R₂</text></g>
+<g fill="#6d28d9" font-weight="bold" text-anchor="middle"><text x="85" y="150">mesma corrente (i)</text><text x="85" y="166">Req = R₁ + R₂</text><text x="255" y="172">mesma tensão (U)</text><text x="255" y="188">1/Req = 1/R₁ + 1/R₂</text></g>
+<text x="170" y="204" text-anchor="middle" fill="#0a0a0f" font-size="10">Lei de Ohm: U = R · i</text></svg>`
+
+export const FISICA_7: Lesson = {
+  slug: 'fisica-7',
+  title: 'Eletricidade, eletromagnetismo e física moderna',
+  blocks: [
+    { type: 'p', text: 'Esta é a última aula de Física e reúne três assuntos: **eletricidade** (cargas e circuitos), **eletromagnetismo** (a relação entre eletricidade e magnetismo) e **física moderna** (efeito fotoelétrico e radioatividade). Aparecem nas provas: circuitos em série e paralelo (2024), efeito fotoelétrico (2023) e fissão nuclear (2024).' },
+    { type: 'h', text: '1. Cargas elétricas' },
+    { type: 'list', items: ['Prótons têm carga **positiva** e elétrons, **negativa**. Cargas de mesmo sinal **se repelem**; de sinais opostos, **se atraem**.', '**Eletrização:** por atrito, por contato ou por indução. A carga total se conserva.', String.raw`**Lei de Coulomb:** $F = k\,\dfrac{|q_1\,q_2|}{d^2}$. Se a distância dobra, a força cai a 1/4.`, String.raw`**Campo elétrico:** $E = \dfrac{F}{q}$ (unidade N/C).`] },
+    { type: 'h', text: '2. Corrente, tensão e resistência' },
+    { type: 'table', head: ['Grandeza', 'Fórmula', 'Unidade'], rows: [
+      ['Corrente elétrica', String.raw`$i = \dfrac{\Delta Q}{\Delta t}$`, 'ampère (A)'],
+      ['Tensão (ddp)', 'U', 'volt (V)'],
+      ['Resistência', String.raw`$R = \dfrac{U}{i}$ (Lei de Ohm)`, 'ohm (Ω)'],
+      ['Potência elétrica', String.raw`$P = U\cdot i = R\,i^2 = \dfrac{U^2}{R}$`, 'watt (W)'],
+      ['Energia consumida', String.raw`$E = P\cdot\Delta t$`, 'joule ou kWh'],
+    ] },
+    { type: 'p', text: 'A passagem da corrente em um resistor o esquenta (**efeito Joule**: chuveiro, ferro de passar, lâmpada incandescente).' },
+    { type: 'h', text: '3. Associação de resistores' },
+    { type: 'figure', svg: SVG_CIRCUITOS, alt: 'Dois circuitos: dois resistores em série e dois resistores em paralelo, com as fórmulas da resistência equivalente', caption: 'Série: a corrente é a mesma e as resistências somam. Paralelo: a tensão é a mesma e a resistência equivalente diminui.' },
+    { type: 'callout', kind: 'exemplo', text: String.raw`Em série, 3 Ω e 6 Ω: $R_{eq} = 9\ \Omega$. Em paralelo, 6 Ω e 3 Ω: $R_{eq} = \dfrac{6\cdot 3}{6+3} = 2\ \Omega$. Três lâmpadas iguais de 160 Ω em paralelo: $160/3 \approx 53{,}3\ \Omega$ (como na UEMG 2024).` },
+    { type: 'callout', kind: 'dica', text: 'Em casa, as lâmpadas e tomadas ficam em **paralelo**: cada aparelho recebe a mesma tensão (127 V ou 220 V) e funciona independente dos outros. Consumo: quilowatts × horas = **kWh** (é o que aparece na conta de luz).' },
+    { type: 'h', text: '4. Magnetismo e eletromagnetismo' },
+    { type: 'list', items: ['**Ímãs** têm polos norte e sul (polos iguais se repelem; diferentes se atraem) e é impossível separar um polo do outro.', '**Oersted:** corrente elétrica produz **campo magnético** (eletroímãs, campainhas).', '**Faraday e Lenz (indução):** um campo magnético **variável** induz corrente elétrica. É o princípio dos **geradores** (usinas hidrelétricas, eólicas) e dos transformadores.'] },
+    { type: 'h', text: '5. Física moderna' },
+    { type: 'list', items: [String.raw`**Efeito fotoelétrico:** a luz arranca elétrons de um metal se a energia do fóton for maior que a função trabalho: $E = h\,f$ e $E_c = h f - W$. Mostra a natureza **corpuscular** da luz (Einstein).`, '**Radioatividade:** emissões **alfa** (pouco penetrante), **beta** e **gama** (muito penetrante, ondas eletromagnéticas). **Meia-vida** é o tempo para a quantidade de uma amostra cair à metade.', '**Fissão nuclear:** divisão de um núcleo pesado (urânio), liberando energia (usinas Angra 1 e 2). **Fusão:** junção de núcleos leves (o que acontece no Sol).', String.raw`**Relatividade:** $E = m\,c^2$ (massa e energia se relacionam).`] },
+  ],
+  exercises: [
+    ex('fisica-7', 1, S, 'Um resistor de 4 Ω é submetido a uma tensão de 12 V. A corrente que o atravessa é:', ['3 A', '8 A', '16 A', '48 A'], 0, 'Resposta A (3 A). Pela Lei de Ohm, i = U/R = 12/4 = 3 A.'),
+    ex('fisica-7', 2, S, 'Dois resistores de 3 Ω e 6 Ω estão ligados em série. A resistência equivalente é:', ['2 Ω', '9 Ω', '18 Ω', '3 Ω'], 1, 'Resposta B (9 Ω). Em série, as resistências se somam: 3 + 6 = 9 Ω.'),
+    ex('fisica-7', 3, S, 'Dois resistores de 6 Ω e 3 Ω estão ligados em paralelo. A resistência equivalente é:', ['2 Ω', '4,5 Ω', '9 Ω', '18 Ω'], 0, 'Resposta A (2 Ω). Em paralelo com dois resistores: Req = (R₁ · R₂)/(R₁ + R₂) = (6 · 3)/(6 + 3) = 18/9 = 2 Ω. Fica sempre menor que o menor resistor.'),
+    ex('fisica-7', 4, S, 'Um chuveiro de potência 5 500 W fica ligado por 30 minutos. A energia consumida é de:', ['2,75 kWh', '5,5 kWh', '11 kWh', '27,5 kWh'], 0, 'Resposta A (2,75 kWh). Converta: 5 500 W = 5,5 kW e 30 min = 0,5 h. E = P · Δt = 5,5 · 0,5 = 2,75 kWh.'),
+    ex('fisica-7', 5, S, 'Duas cargas elétricas se atraem com uma força F. Se a distância entre elas for dobrada, a força passará a valer:', ['F/2', 'F/4', '2F', '4F'], 1, 'Resposta B (F/4). Pela lei de Coulomb, F é inversamente proporcional ao quadrado da distância: 2² = 4, então a força fica dividida por 4.'),
+  ],
+}

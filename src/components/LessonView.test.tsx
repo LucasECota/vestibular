@@ -17,6 +17,12 @@ describe('RichText', () => {
     expect(container.textContent).not.toContain('\\cdot')
   })
 
+  it('fórmula dentro de negrito também é desenhada', () => {
+    const { container } = render(<RichText text={String.raw`Veja a **linha $i$** e a **coluna $j$** da matriz.`} />)
+    expect(container.querySelectorAll('strong .katex')).toHaveLength(2)
+    expect(container.textContent).not.toContain('$')
+  })
+
   it('negrito e fórmulas curtas funcionam juntos', () => {
     const { container } = render(<RichText text={'O valor de $x$ é **importante** e custa R$ 5,00.'} />)
     expect(container.querySelector('strong')?.textContent).toBe('importante')

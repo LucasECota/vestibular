@@ -301,3 +301,56 @@ export const BIOLOGIA_6: Lesson = {
     ex('biologia-6', 5, S, 'Uma medida eficaz para prevenir a dengue, transmitida pelo Aedes aegypti, é:', ['tomar antibiótico regularmente', 'eliminar recipientes com água parada', 'lavar as mãos só antes das refeições', 'evitar o contato com animais domésticos'], 1, 'Resposta B. O mosquito põe os ovos em água parada limpa (pneus, vasos, caixas-d\'água destampadas). Eliminar esses focos interrompe o ciclo. A dengue é causada por vírus, e antibióticos não funcionam contra vírus.'),
   ],
 }
+
+export const BIOLOGIA_7: Lesson = {
+  slug: 'biologia-7',
+  title: 'Biodiversidade: seres vivos, plantas e animais',
+  blocks: [
+    { type: 'p', text: 'O Brasil é um dos países com maior **biodiversidade** do planeta. Para estudá-la, os cientistas classificam os seres vivos em grupos, de acordo com suas características e parentesco. A UEMG já cobrou anfíbios (2023), fungos e a tabela de moluscos, poríferos e cordados (2024).' },
+    { type: 'h', text: '1. Classificação e nomenclatura' },
+    { type: 'list', items: ['**Categorias (do maior para o menor):** domínio → reino → filo → classe → ordem → família → gênero → espécie.', '**Nomenclatura binomial** (Lineu): o nome científico tem duas palavras em latim, **gênero** (maiúscula) + **espécie** (minúscula), em itálico: *Homo sapiens*, *Panthera onca* (onça-pintada).', '**Espécie:** conjunto de indivíduos que se cruzam e deixam descendentes férteis.', '**Três domínios:** Bacteria, Archaea (procariontes) e Eukarya (eucariontes: protistas, fungos, plantas e animais).'] },
+    { type: 'h', text: '2. Vírus, bactérias, protistas e fungos' },
+    { type: 'table', head: ['Grupo', 'Características', 'Exemplos e importância'], rows: [
+      ['Vírus', 'Não têm células; só se reproduzem dentro de uma célula; DNA ou RNA + capsídeo proteico', 'Gripe, dengue, COVID-19, HIV'],
+      ['Bactérias', 'Procariontes, unicelulares; decompositoras, fixam nitrogênio, causam doenças', 'Tuberculose, iogurte, tratamento de esgoto'],
+      ['Protistas', 'Eucariontes, em geral unicelulares; algas e protozoários', 'Malária, doença de Chagas; algas fazem fotossíntese'],
+      ['Fungos', 'Eucariontes heterótrofos que **absorvem** nutrientes; parede de **quitina**; decompositores', 'Cogumelos, leveduras (pão, cerveja), micoses; micorrizas'],
+    ] },
+    { type: 'h', text: '3. Reino Plantae' },
+    { type: 'table', head: ['Grupo', 'Vasos', 'Sementes', 'Flores e frutos', 'Exemplos'], rows: [
+      ['Briófitas', 'Não', 'Não', 'Não', 'Musgos, hepáticas'],
+      ['Pteridófitas', 'Sim', 'Não', 'Não', 'Samambaias, avencas'],
+      ['Gimnospermas', 'Sim', 'Sim (nuas)', 'Não', 'Pinheiros, araucária'],
+      ['Angiospermas', 'Sim', 'Sim (dentro de frutos)', 'Sim', 'Quase todas as plantas com flores: ipê, feijão, grama'],
+    ] },
+    { type: 'callout', kind: 'dica', text: 'A evolução das plantas seguiu esta ordem: vasos condutores → sementes → flores e frutos. As angiospermas são o grupo mais diverso e dominante na Terra hoje.' },
+    { type: 'p', text: '**Hormônios vegetais:** auxina (alongamento e fototropismo), giberelina (germinação e crescimento), citocinina (divisão celular), etileno (amadurecimento de frutos) e ácido abscísico (dormência e estresse).' },
+    { type: 'h', text: '4. Reino Animalia' },
+    { type: 'table', head: ['Filo', 'Características', 'Exemplos'], rows: [
+      ['Poríferos', 'Sem tecidos verdadeiros; corpo com poros; filtradores', 'Esponjas'],
+      ['Cnidários', 'Células urticantes; simetria radial', 'Águas-vivas, corais'],
+      ['Platelmintos', 'Corpo achatado', 'Tênia, esquistossomo'],
+      ['Nematelmintos', 'Corpo cilíndrico', 'Lombriga, ancilóstomo'],
+      ['Anelídeos', 'Corpo segmentado em anéis', 'Minhoca, sanguessuga'],
+      ['Moluscos', 'Corpo mole, geralmente com concha', 'Caramujo, ostra, polvo, lula'],
+      ['Artrópodes', 'Exoesqueleto de quitina, patas articuladas; o maior grupo', 'Insetos, aranhas, crustáceos'],
+      ['Equinodermos', 'Esqueleto calcário e simetria radial no adulto', 'Estrela-do-mar, ouriço-do-mar'],
+      ['Cordados', 'Notocorda, tubo nervoso dorsal', 'Peixes, anfíbios, répteis, aves, mamíferos'],
+    ] },
+    { type: 'table', head: ['Vertebrados', 'Pele', 'Respiração', 'Temperatura'], rows: [
+      ['Peixes', 'Escamas', 'Branquial', 'Ectotérmicos'],
+      ['Anfíbios', 'Fina, úmida e sem escamas', 'Pele, pulmões (adultos) e brânquias (girinos); **metamorfose**', 'Ectotérmicos'],
+      ['Répteis', 'Escamas secas', 'Pulmonar; ovo com casca', 'Ectotérmicos'],
+      ['Aves', 'Penas', 'Pulmonar', 'Endotérmicas'],
+      ['Mamíferos', 'Pelos; glândulas mamárias', 'Pulmonar', 'Endotérmicos'],
+    ] },
+    { type: 'callout', kind: 'atencao', text: 'Conservar a biodiversidade importa porque ela garante serviços ao ambiente (polinização, controle de pragas, água, clima). As maiores ameaças são o desmatamento, a poluição, as espécies invasoras e as mudanças climáticas.' },
+  ],
+  exercises: [
+    ex('biologia-7', 1, S, 'No nome científico "Canis lupus" (lobo), a palavra "Canis" representa:', ['a espécie', 'o gênero', 'a família', 'o reino'], 1, 'Resposta B (gênero). Na nomenclatura binomial, a primeira palavra é o gênero (com inicial maiúscula) e a segunda é o epíteto específico (minúscula). Juntos, formam o nome da espécie.'),
+    ex('biologia-7', 2, S, 'Plantas que têm vasos condutores e sementes, mas não têm flores nem frutos (como o pinheiro), pertencem ao grupo das:', ['briófitas', 'pteridófitas', 'gimnospermas', 'angiospermas'], 2, 'Resposta C (gimnospermas). Suas sementes ficam "nuas" (como o pinhão), sem fruto. As angiospermas têm flores e frutos; as pteridófitas (samambaias) não têm sementes.'),
+    ex('biologia-7', 3, S, 'Os artrópodes (insetos, aranhas e crustáceos) se caracterizam por:', ['corpo mole e concha calcária', 'exoesqueleto de quitina e patas articuladas', 'corpo achatado sem segmentação', 'esqueleto ósseo interno'], 1, 'Resposta B. Os artrópodes têm corpo segmentado, exoesqueleto de quitina e patas articuladas. É o filo com maior número de espécies. O corpo mole com concha é característico dos moluscos.'),
+    ex('biologia-7', 4, S, 'Entre os vertebrados, o grupo que sofre metamorfose (girino → adulto) e tem pele úmida e fina é o dos:', ['répteis', 'peixes', 'anfíbios', 'mamíferos'], 2, 'Resposta C (anfíbios). Sapos, rãs e pererecas passam por metamorfose, com larva aquática (girino) e adulto semiterrestre, e respiram em parte pela pele. Por isso, dependem de ambientes úmidos.'),
+    ex('biologia-7', 5, S, 'Os fungos são seres:', ['autótrofos, que fazem fotossíntese', 'heterótrofos, que absorvem nutrientes do meio e têm parede de quitina', 'procariontes, sem núcleo', 'sempre unicelulares'], 1, 'Resposta B. Fungos são eucariontes heterótrofos que digerem fora do corpo e absorvem os nutrientes. Muitos (cogumelos, bolores) são pluricelulares; as leveduras são unicelulares.'),
+  ],
+}

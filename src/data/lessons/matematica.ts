@@ -234,7 +234,7 @@ export const MATEMATICA_6: Lesson = {
     ex('matematica-6', 1, S, 'A solução da equação 2ˣ = 32 é:', ['x = 4', 'x = 5', 'x = 6', 'x = 16'], 1, 'Resposta B (x = 5). Escreva 32 como potência de 2: 32 = 2⁵. Então 2ˣ = 2⁵ e, igualando os expoentes, x = 5.'),
     ex('matematica-6', 2, S, 'O valor de log₂ 64 é:', ['4', '5', '6', '32'], 2, 'Resposta C (6). log₂ 64 é o expoente que se aplica a 2 para obter 64. Como 2⁶ = 64, o resultado é 6.'),
     ex('matematica-6', 3, S, 'O valor de log 2 + log 5 (logaritmos decimais) é:', ['0', '1', '7', '10'], 1, 'Resposta B (1). Pela propriedade do produto, log 2 + log 5 = log (2 · 5) = log 10 = 1, já que 10¹ = 10.'),
-    ex('matematica-6', 4, S, 'Uma cultura de bactérias dobra a cada hora: P(t) = 100 · 2ᵗ, com t em horas. Em quantas horas a população chega a 1 600 bactérias?', ['3 horas', '4 horas', '8 horas', '16 horas'], 1, 'Resposta B (4 horas). Queremos 100 · 2ᵗ = 1 600, logo 2ᵗ = 16 = 2⁴. Igualando os expoentes, t = 4 horas.'),
+    ex('matematica-6', 4, S, 'Uma cultura de bactérias dobra a cada hora: P(t) = 100 · 2^t, com t em horas. Em quantas horas a população chega a 1 600 bactérias?', ['3 horas', '4 horas', '8 horas', '16 horas'], 1, 'Resposta B (4 horas). Queremos 100 · 2^t = 1 600, logo 2^t = 16 = 2⁴. Igualando os expoentes, t = 4 horas.'),
     ex('matematica-6', 5, S, 'A solução da equação 3^(x+1) = 27 é:', ['x = 1', 'x = 2', 'x = 3', 'x = 9'], 1, 'Resposta B (x = 2). Como 27 = 3³, temos 3^(x+1) = 3³, então x + 1 = 3 e x = 2. Cuidado: x = 3 seria a resposta de 3ˣ = 27, sem o "+1".'),
   ],
 }
@@ -500,5 +500,94 @@ export const MATEMATICA_12: Lesson = {
     ex('matematica-12', 3, S, 'Se sen x = 3/5 e x é um ângulo agudo, então cos x vale:', ['3/4', '4/5', '5/4', '2/5'], 1, 'Resposta B (4/5). Pela relação fundamental, sen²x + cos²x = 1: 9/25 + cos²x = 1, então cos²x = 16/25 e cos x = 4/5 (positivo, pois x é agudo). É o triângulo 3-4-5.'),
     ex('matematica-12', 4, S, 'O ângulo de 90° corresponde, em radianos, a:', ['π/4', 'π/2', 'π', '2π'], 1, 'Resposta B (π/2). Como 180° = π rad, metade disso, 90°, é π/2 rad.'),
     ex('matematica-12', 5, S, 'Uma árvore projeta uma sombra de 10 m quando os raios solares formam 45° com o solo. A altura da árvore é:', ['5 m', '10 m', '20 m', '10√2 m'], 1, 'Resposta B (10 m). A tangente relaciona o cateto oposto (altura) ao adjacente (sombra): tg 45° = h/10. Como tg 45° = 1, h = 10 m.'),
+  ],
+}
+
+export const MATEMATICA_13: Lesson = {
+  slug: 'matematica-13',
+  title: 'Matrizes e determinantes',
+  blocks: [
+    { type: 'p', text: String.raw`Uma **matriz** é uma tabela de números organizados em linhas e colunas. Uma matriz $m\times n$ tem $m$ linhas e $n$ colunas; o elemento $a_{ij}$ está na linha $i$ e na coluna $j$. A UEMG 2023 pediu os valores de $x$ para os quais o determinante de uma matriz 2×2 com seno e cosseno é zero.` },
+    { type: 'h', text: '1. Tipos especiais' },
+    { type: 'table', head: ['Tipo', 'Definição'], rows: [
+      ['Quadrada', 'Mesmo número de linhas e colunas (ordem n)'],
+      ['Identidade (I)', 'Quadrada, com 1 na diagonal principal e 0 nas demais'],
+      ['Nula', 'Todos os elementos são 0'],
+      [String.raw`Transposta ($A^T$)`, String.raw`Troca linhas por colunas. Se $A$ é 2×3, $A^T$ é 3×2`],
+      ['Simétrica', String.raw`$A = A^T$`],
+    ] },
+    { type: 'h', text: '2. Operações' },
+    { type: 'list', items: ['**Soma:** some os elementos de mesma posição (matrizes de mesma ordem).', '**Multiplicação por um número:** multiplique cada elemento.', String.raw`**Produto $A\cdot B$:** só existe se o nº de **colunas de A** for igual ao nº de **linhas de B**. O elemento $c_{ij}$ é a soma dos produtos da **linha $i$** de A pelos elementos da **coluna $j$** de B.`, 'O produto **não é comutativo**: em geral, A·B ≠ B·A.'] },
+    { type: 'callout', kind: 'exemplo', text: String.raw`$A = \begin{pmatrix} 1 & 2 \\ 3 & 4 \end{pmatrix}$ e $B = \begin{pmatrix} 0 & 1 \\ 1 & 0 \end{pmatrix}$.` + '\n' + String.raw`$c_{11} = 1\cdot 0 + 2\cdot 1 = 2$, $c_{12} = 1\cdot 1 + 2\cdot 0 = 1$, $c_{21} = 3\cdot 0 + 4\cdot 1 = 4$, $c_{22} = 3\cdot 1 + 4\cdot 0 = 3$. Então $AB = \begin{pmatrix} 2 & 1 \\ 4 & 3 \end{pmatrix}$.` },
+    { type: 'h', text: '3. Determinante' },
+    { type: 'p', text: 'O determinante existe só para matrizes **quadradas**.' },
+    { type: 'math', tex: String.raw`\det\begin{pmatrix} a & b \\ c & d \end{pmatrix} = a\,d - b\,c` },
+    { type: 'p', text: String.raw`**3×3 (regra de Sarrus):** repita as duas primeiras colunas ao lado; some os produtos das três diagonais descendentes e subtraia os produtos das três diagonais ascendentes. Em matrizes **triangulares** ou **diagonais**, o determinante é o produto da diagonal principal.` },
+    { type: 'table', head: ['Propriedade', 'Efeito'], rows: [
+      ['Duas linhas (ou colunas) iguais ou proporcionais', String.raw`$\det = 0$`],
+      ['Trocar duas linhas de lugar', 'Troca o sinal do determinante'],
+      ['Multiplicar uma linha por k', 'O determinante fica multiplicado por k'],
+      ['Produto de matrizes', String.raw`$\det(AB) = \det A\cdot\det B$`],
+      ['Linha ou coluna de zeros', String.raw`$\det = 0$`],
+    ] },
+    { type: 'h', text: '4. Matriz inversa' },
+    { type: 'p', text: String.raw`$A^{-1}$ é a matriz tal que $A\cdot A^{-1} = I$. Ela só existe se $\det A \neq 0$. Para 2×2, $A^{-1} = \dfrac{1}{\det A}\begin{pmatrix} d & -b \\ -c & a \end{pmatrix}$.` },
+    { type: 'callout', kind: 'exemplo', title: 'Estilo UEMG 2023', text: String.raw`$A = \begin{pmatrix} \text{sen}\,x & 1 \\ \cos x & 1 \end{pmatrix}$, $\det A = \text{sen}\,x - \cos x = 0 \Rightarrow \text{tg}\,x = 1$, então $x = \dfrac{\pi}{4}$ ou $\dfrac{5\pi}{4}$ em $(0, 2\pi)$.` },
+    { type: 'callout', kind: 'dica', text: 'Um sistema linear tem solução única quando o determinante da matriz dos coeficientes é diferente de zero. Se o determinante é zero, o sistema é indeterminado ou impossível.' },
+  ],
+  exercises: [
+    ex('matematica-13', 1, S, 'O determinante da matriz de linhas (2, 3) e (1, 4) é:', ['5', '11', '8', '3'], 0, 'Resposta A (5). Para uma matriz 2×2, det = a·d − b·c = 2 · 4 − 3 · 1 = 8 − 3 = 5.'),
+    ex('matematica-13', 2, S, 'Sejam A com linhas (1, 2) e (3, 4), e B com linhas (0, 1) e (1, 0). O elemento da 1ª linha e 1ª coluna de A · B é:', ['0', '1', '2', '4'], 2, 'Resposta C (2). Multiplique a 1ª linha de A pela 1ª coluna de B: 1 · 0 + 2 · 1 = 2.'),
+    ex('matematica-13', 3, S, 'Para que a matriz de linhas (2, 4) e (1, k) tenha determinante nulo, o valor de k deve ser:', ['1', '2', '4', '8'], 1, 'Resposta B (2). det = 2 · k − 4 · 1 = 2k − 4 = 0, então k = 2. (As linhas ficam proporcionais: (2, 4) = 2 · (1, 2).)'),
+    ex('matematica-13', 4, S, 'A matriz A de linhas (1, 2, 3) e (4, 5, 6) é de ordem 2×3. Sua transposta tem ordem:', ['2×3', '3×2', '3×3', '2×2'], 1, 'Resposta B (3×2). A transposta troca linhas por colunas: as 3 colunas de A viram 3 linhas e as 2 linhas viram 2 colunas.'),
+    ex('matematica-13', 5, S, 'O determinante da matriz diagonal de diagonal principal 1, 2 e 3 (os demais elementos são 0) é:', ['0', '5', '6', '9'], 2, 'Resposta C (6). Em uma matriz diagonal (ou triangular), o determinante é o produto dos elementos da diagonal principal: 1 · 2 · 3 = 6.'),
+  ],
+}
+
+const SVG_ARVORE = `<svg viewBox="0 0 340 190" xmlns="http://www.w3.org/2000/svg" font-family="sans-serif" font-size="11"><rect width="340" height="190" fill="#fff"/>
+<text x="170" y="16" text-anchor="middle" font-weight="bold" fill="#0a0a0f">Árvore de possibilidades: duas moedas</text>
+<g stroke="#0a0a0f" stroke-width="2" fill="none"><line x1="30" y1="95" x2="110" y2="55"/><line x1="30" y1="95" x2="110" y2="135"/><line x1="125" y1="55" x2="215" y2="35"/><line x1="125" y1="55" x2="215" y2="75"/><line x1="125" y1="135" x2="215" y2="115"/><line x1="125" y1="135" x2="215" y2="155"/></g>
+<circle cx="30" cy="95" r="6" fill="#6d28d9"/>
+<g font-weight="bold" fill="#0a0a0f" text-anchor="middle"><text x="117" y="59">C</text><text x="117" y="139">K</text></g>
+<g fill="#0a0a0f"><text x="222" y="39">C → CC</text><text x="222" y="79">K → CK</text><text x="222" y="119">C → KC</text><text x="222" y="159">K → KK</text></g>
+<text x="170" y="184" text-anchor="middle" fill="#6d28d9" font-weight="bold">2 · 2 = 4 resultados, cada um com probabilidade 1/4</text></svg>`
+
+export const MATEMATICA_14: Lesson = {
+  slug: 'matematica-14',
+  title: 'Análise combinatória, probabilidade e estatística',
+  blocks: [
+    { type: 'p', text: '**Análise combinatória** conta as possibilidades sem listar todas. **Probabilidade** mede a chance de um evento. **Estatística** organiza e resume dados. Os três se combinam em muitos problemas, e a estatística aparece em gráficos e notícias, como as de meio ambiente.' },
+    { type: 'h', text: '1. Princípio fundamental da contagem' },
+    { type: 'p', text: 'Se uma decisão tem **m** maneiras e outra tem **n**, as duas juntas têm **m × n** maneiras. Exemplo: 3 camisas e 2 calças dão 6 combinações.' },
+    { type: 'figure', svg: SVG_ARVORE, alt: 'Árvore com duas jogadas de moeda e quatro resultados possíveis', caption: 'Cada nível da árvore multiplica as possibilidades.' },
+    { type: 'h', text: '2. Fatorial, permutação, arranjo e combinação' },
+    { type: 'table', head: ['Situação', 'Fórmula', 'Exemplo'], rows: [
+      ['Fatorial', String.raw`$n! = n(n-1)\cdots 2\cdot 1$`, String.raw`$4! = 24$; $0! = 1$`],
+      ['Permutação (ordenar todos)', String.raw`$P_n = n!$`, 'Anagramas de AMOR: 4! = 24'],
+      ['Arranjo (a ordem importa)', String.raw`$A_{n,p} = \dfrac{n!}{(n-p)!}$`, 'Pódio de 3 entre 10 atletas: 10·9·8'],
+      ['Combinação (a ordem não importa)', String.raw`$C_{n,p} = \dfrac{n!}{p!\,(n-p)!}$`, 'Comissão de 2 em 5 pessoas: C(5,2) = 10'],
+    ] },
+    { type: 'callout', kind: 'dica', text: 'Pergunte: trocar a ordem dos escolhidos muda o resultado? Se SIM (presidente e vice, senhas, pódio), é **arranjo**. Se NÃO (comissão, grupo), é **combinação**.' },
+    { type: 'p', text: String.raw`**Permutação com repetição:** anagramas de uma palavra com letras repetidas: $\dfrac{n!}{a!\,b!\cdots}$. Em BANANA: $\dfrac{6!}{3!\,2!} = 60$.` },
+    { type: 'h', text: '3. Probabilidade' },
+    { type: 'math', tex: String.raw`P(A) = \dfrac{\text{casos favoráveis}}{\text{casos possíveis}} \qquad 0 \le P(A) \le 1` },
+    { type: 'list', items: [String.raw`**Evento contrário:** $P(\bar{A}) = 1 - P(A)$.`, String.raw`**"E" (independentes):** $P(A \text{ e } B) = P(A)\cdot P(B)$.`, String.raw`**"Ou":** $P(A \text{ ou } B) = P(A) + P(B) - P(A\cap B)$ (se não podem ocorrer juntos, a interseção é zero).`] },
+    { type: 'callout', kind: 'exemplo', text: 'Dado honesto: a probabilidade de sair um número par é 3/6 = 1/2. A de sair 6 duas vezes seguidas é 1/6 · 1/6 = 1/36. Em genética, como na aula de Mendel, a probabilidade de dois filhos aa é 1/4 · 1/4.' },
+    { type: 'h', text: '4. Estatística' },
+    { type: 'table', head: ['Medida', 'O que é', 'Exemplo (4, 6, 8, 10, 12)'], rows: [
+      ['Média', 'Soma ÷ quantidade', '(4+6+8+10+12)/5 = 8'],
+      ['Mediana', 'Valor central dos dados em ordem', '8'],
+      ['Moda', 'Valor que mais aparece', 'Não há (todos aparecem 1 vez)'],
+      ['Amplitude', 'Maior − menor', '12 − 4 = 8'],
+      ['Desvio padrão', 'O quanto os dados se afastam da média (dispersão)', 'Quanto maior, mais espalhados'],
+    ] },
+    { type: 'callout', kind: 'atencao', text: 'A média é muito sensível a valores extremos; a **mediana** é mais estável. Com um número par de dados, a mediana é a média dos dois valores centrais.' },
+  ],
+  exercises: [
+    ex('matematica-14', 1, S, 'Com os algarismos 1, 2, 3 e 4, quantos números de dois algarismos distintos podem ser formados?', ['8', '12', '16', '24'], 1, 'Resposta B (12). Há 4 escolhas para o algarismo das dezenas e, como não podem se repetir, 3 para o das unidades: 4 · 3 = 12.'),
+    ex('matematica-14', 2, S, 'O número de anagramas da palavra AMOR (letras todas diferentes) é:', ['12', '16', '24', '48'], 2, 'Resposta C (24). É uma permutação de 4 elementos: 4! = 4 · 3 · 2 · 1 = 24.'),
+    ex('matematica-14', 3, S, 'De quantas maneiras se pode formar uma comissão de 2 pessoas escolhidas entre 5?', ['5', '10', '20', '25'], 1, 'Resposta B (10). A ordem não importa, então é combinação: C(5,2) = 5!/(2! · 3!) = (5 · 4)/2 = 10. Se a ordem importasse, seria 20.'),
+    ex('matematica-14', 4, S, 'Ao lançar um dado honesto de 6 faces, a probabilidade de obter um número par é:', ['1/6', '1/3', '1/2', '2/3'], 2, 'Resposta C (1/2). Os casos favoráveis são 2, 4 e 6 (3 casos) em 6 possíveis: 3/6 = 1/2.'),
+    ex('matematica-14', 5, S, 'A média aritmética dos números 4, 6, 8, 10 e 12 é:', ['6', '7', '8', '10'], 2, 'Resposta C (8). Soma: 4 + 6 + 8 + 10 + 12 = 40. Dividindo por 5 termos: 40/5 = 8.'),
   ],
 }

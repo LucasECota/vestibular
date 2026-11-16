@@ -80,6 +80,20 @@ describe('aulas', () => {
     }
   })
 
+  it('todas as tarefas de conteúdo da sétima semana (29/12 a 5/1) têm aula e 5 exercícios', () => {
+    const week7 = PLAN.filter((t) => t.date >= '2026-12-29' && t.date <= '2027-01-05' && t.kind === 'conteudo')
+    expect(week7).toHaveLength(8) // 29/12 só tem questões de provas; 1/1 é feriado
+    for (const t of week7) {
+      expect(lessonBySlug(t.lessonSlug), t.id).toBeDefined()
+      expect(t.exerciseIds, t.id).toHaveLength(5)
+    }
+  })
+
+  it('o conteúdo programático está completo: toda tarefa de conteúdo do plano tem aula', () => {
+    const missing = PLAN.filter((t) => t.kind === 'conteudo' && !lessonBySlug(t.lessonSlug)).map((t) => t.id)
+    expect(missing).toEqual([])
+  })
+
   it('o título da aula é o mesmo da tarefa', () => {
     for (const t of PLAN.filter((t) => lessonBySlug(t.lessonSlug))) {
       expect(lessonBySlug(t.lessonSlug)!.title).toBe(t.title)

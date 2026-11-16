@@ -23,7 +23,14 @@ export function RichText({ text }: { text: string }) {
     <>
       {text.split(PART).map((part, i) => {
         if (part.startsWith('$') && part.endsWith('$') && part.length > 2) return <Tex key={i} tex={part.slice(1, -1)} />
-        if (part.startsWith('**') && part.endsWith('**')) return <strong key={i}>{part.slice(2, -2)}</strong>
+        if (part.startsWith('**') && part.endsWith('**')) {
+          // o negrito pode conter fórmulas: lê o interior de novo
+          return (
+            <strong key={i}>
+              <RichText text={part.slice(2, -2)} />
+            </strong>
+          )
+        }
         return <span key={i}>{part}</span>
       })}
     </>

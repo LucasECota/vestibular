@@ -240,3 +240,45 @@ export const HISTORIA_6: Lesson = {
     ex('historia-6', 5, S, 'Durante o Estado Novo (1937–1945), foi criada a CLT, que:', ['reuniu as leis trabalhistas, garantindo direitos como carteira assinada e jornada de 8 horas', 'extinguiu os sindicatos', 'proibiu greves de forma definitiva em todos os setores', 'criou a Petrobras'], 0, 'Resposta A. A Consolidação das Leis do Trabalho (1943) organizou os direitos trabalhistas. O Estado Novo foi uma ditadura, mas combinou repressão com leis trabalhistas e propaganda. A Petrobras foi criada em 1953.'),
   ],
 }
+
+export const HISTORIA_7: Lesson = {
+  slug: 'historia-7',
+  title: 'Guerras mundiais, Guerra Fria e Ditadura Militar',
+  blocks: [
+    { type: 'p', text: 'Esta é a última aula de conteúdo de História e cobre o século XX: as duas guerras mundiais, a Guerra Fria e, no Brasil, a ditadura militar. A UEMG cobrou as causas da Primeira Guerra (2023), a propaganda da Guerra Fria (2024) e vários pontos da ditadura militar (2023 e 2024).' },
+    { type: 'h', text: '1. Primeira Guerra Mundial (1914–1918)' },
+    { type: 'list', items: ['**Causas:** imperialismo e disputas coloniais, nacionalismos, **corrida armamentista** ("paz armada") e **sistema de alianças**: Tríplice Aliança (Alemanha, Áustria-Hungria, Itália) × Tríplice Entente (França, Inglaterra, Rússia).', '**Estopim:** o assassinato do arquiduque **Francisco Ferdinando**, herdeiro do trono austríaco, em **Sarajevo** (1914).', '**Fim:** Alemanha derrotada; **Tratado de Versalhes (1919)** impôs pesadas punições e reparações, alimentando ressentimento.', '**Revolução Russa (1917):** os bolcheviques de Lênin tomam o poder, criando a futura URSS.'] },
+    { type: 'h', text: '2. Entreguerras e a Segunda Guerra (1939–1945)' },
+    { type: 'list', items: ['**Crise de 1929:** quebra da Bolsa de Nova York, depressão mundial.', '**Totalitarismos:** fascismo (Mussolini, Itália) e **nazismo** (Hitler, Alemanha), com ditadura, propaganda, nacionalismo extremo e perseguição.', '**Início:** invasão da Polônia pela Alemanha (1939). **Eixo** (Alemanha, Itália, Japão) × **Aliados** (EUA, URSS, Inglaterra, França).', '**Holocausto:** extermínio de cerca de 6 milhões de judeus e de milhões de outras pessoas pelo regime nazista.', '**Fim:** rendição alemã (maio de 1945) e bombas atômicas em **Hiroshima e Nagasaki** (agosto de 1945). Criação da **ONU** (1945).'] },
+    { type: 'h', text: '3. Guerra Fria (1947–1991)' },
+    { type: 'table', head: ['Aspecto', 'Descrição'], rows: [
+      ['Disputa', 'EUA (capitalismo, democracia liberal) × URSS (socialismo, partido único); **conflito indireto**, sem guerra direta'],
+      ['Alianças militares', 'OTAN (1949, Ocidente) × Pacto de Varsóvia (1955, Oriente)'],
+      ['Corrida armamentista e espacial', 'Armas nucleares; Sputnik (1957); chegada à Lua pelos EUA (1969)'],
+      ['Conflitos', 'Coreia, Cuba (Revolução, 1959; Crise dos Mísseis, 1962), Vietnã'],
+      ['Símbolo', '**Muro de Berlim** (construído em 1961, derrubado em **1989**)'],
+      ['Fim', 'Dissolução da URSS (1991)'],
+    ] },
+    { type: 'callout', kind: 'dica', text: 'A propaganda foi uma arma da Guerra Fria (como nas imagens da UEMG 2024): histórias em quadrinhos e cartazes mostravam o outro lado como ameaça e o seu como "liberdade".' },
+    { type: 'h', text: '4. Ditadura Militar no Brasil (1964–1985)' },
+    { type: 'table', head: ['Ano', 'Acontecimento'], rows: [
+      ['1961–64', 'Renúncia de Jânio Quadros; João Goulart (Jango) assume e propõe reformas de base; polarização da Guerra Fria'],
+      ['31/03 e 1º/04/1964', '**Golpe civil-militar** derruba Jango; primeiro presidente militar: Castelo Branco'],
+      ['1965', '**AI-2**: extingue os partidos e cria o **bipartidarismo** (ARENA e MDB)'],
+      ['1968', '**AI-5**: o mais duro; fecha o Congresso, suspende direitos, amplia a censura e a tortura'],
+      ['1969–73', '"Milagre econômico": crescimento acelerado, com endividamento e desigualdade'],
+      ['1979', '**Lei da Anistia** (governo Figueiredo, o último general presidente)'],
+      ['1984', 'Campanha **Diretas Já**'],
+      ['1985', 'Fim do regime: o civil **José Sarney** assume (após a morte de Tancredo Neves)'],
+      ['1988', '**Constituição Cidadã**, base da democracia atual'],
+    ] },
+    { type: 'callout', kind: 'atencao', text: 'Durante o regime houve censura, perseguição política, tortura e desaparecimentos. A censura era exercida por órgãos do Estado, e o SNI era o serviço de informações (não o órgão da censura em si). As eleições diretas para presidente só voltaram em 1989.' },
+  ],
+  exercises: [
+    ex('historia-7', 1, S, 'O fato que serviu de estopim para a Primeira Guerra Mundial foi:', ['a invasão da Polônia pela Alemanha', 'o assassinato do arquiduque Francisco Ferdinando, em Sarajevo, em 1914', 'a queda da Bolsa de Nova York', 'o lançamento da bomba atômica'], 1, 'Resposta B. O atentado de Sarajevo, em 1914, acionou o sistema de alianças e levou à guerra. A invasão da Polônia (1939) iniciou a Segunda Guerra, e a quebra da Bolsa (1929) causou a crise econômica.'),
+    ex('historia-7', 2, S, 'A Segunda Guerra Mundial terminou em 1945, e nesse mesmo ano foi criada a:', ['Liga das Nações', 'Organização das Nações Unidas (ONU)', 'União Europeia', 'OTAN'], 1, 'Resposta B (ONU). Ela foi criada para manter a paz e a cooperação entre as nações. A Liga das Nações era a organização anterior, criada após a Primeira Guerra, e a OTAN é de 1949.'),
+    ex('historia-7', 3, S, 'A Guerra Fria foi caracterizada por:', ['um confronto militar direto e contínuo entre EUA e URSS', 'uma disputa entre EUA e URSS, com corrida armamentista e conflitos indiretos', 'a união entre os países capitalistas e socialistas', 'a Primeira Guerra Mundial'], 1, 'Resposta B. Os dois blocos nunca se enfrentaram diretamente por causa do risco nuclear, mas competiram por influência, com corrida armamentista e espacial, espionagem e guerras em outros países.'),
+    ex('historia-7', 4, S, 'A queda do Muro de Berlim, em 1989, é considerada um símbolo do:', ['início da Segunda Guerra Mundial', 'fim da Guerra Fria', 'início da ditadura militar no Brasil', 'início da Primeira Guerra'], 1, 'Resposta B. O Muro dividia Berlim entre o lado capitalista e o socialista desde 1961. Sua queda precedeu a reunificação alemã (1990) e o fim da URSS (1991).'),
+    ex('historia-7', 5, S, 'O Ato Institucional nº 5 (AI-5), de 1968, durante a ditadura militar brasileira:', ['restabeleceu a democracia', 'endureceu o regime, ampliando a censura e a repressão', 'criou a Constituição de 1988', 'concedeu anistia aos presos políticos'], 1, 'Resposta B. O AI-5 fechou o Congresso, suspendeu direitos e ampliou a censura e a repressão. A anistia veio em 1979 e a Constituição democrática, em 1988.'),
+  ],
+}

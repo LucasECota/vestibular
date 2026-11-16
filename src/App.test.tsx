@@ -113,6 +113,22 @@ describe('fluxo principal', () => {
     expect(localStorage.getItem('vestibular-uemg:seen-level:v1')).not.toBeNull()
   })
 
+  it('abrir uma tarefa sempre começa no topo da página', async () => {
+    const user = userEvent.setup()
+    renderApp('/plano') // lista longa: a pessoa costuma estar rolada para baixo
+    const scrollTo = vi.mocked(window.scrollTo)
+    scrollTo.mockClear()
+
+    await user.click(screen.getAllByRole('link', { name: /operações, potências e porcentagem/i })[0])
+    expect(screen.getByRole('heading', { name: 'Operações, potências e porcentagem' })).toBeInTheDocument()
+    expect(scrollTo).toHaveBeenCalledWith(0, 0)
+
+    // também ao ir de uma tarefa para outra aba e voltar
+    scrollTo.mockClear()
+    await user.click(within(screen.getByRole('navigation')).getByRole('link', { name: 'Disciplinas' }))
+    expect(scrollTo).toHaveBeenCalledWith(0, 0)
+  })
+
   it('cumprimenta a Daniela', () => {
     renderApp()
     expect(screen.getByRole('heading', { name: /daniela/i })).toBeInTheDocument()

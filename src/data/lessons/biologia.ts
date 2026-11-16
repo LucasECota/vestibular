@@ -158,3 +158,45 @@ export const BIOLOGIA_3: Lesson = {
     ex('biologia-3', 5, S, 'O daltonismo é recessivo e ligado ao cromossomo X. Uma mulher portadora (XDXd) casa-se com um homem normal (XDY). A probabilidade de terem um menino daltônico é:', ['1/8', '1/4', '1/2', '3/4'], 1, 'Resposta B (1/4). Os filhos possíveis são XDXD, XDXd, XDY e XdY, cada um com probabilidade 1/4. O menino daltônico é o XdY, ou seja, 1/4 de todos os filhos (ou 1/2 dos meninos).'),
   ],
 }
+
+export const BIOLOGIA_4: Lesson = {
+  slug: 'biologia-4',
+  title: 'Biotecnologia e evolução',
+  blocks: [
+    { type: 'p', text: 'Biotecnologia usa seres vivos ou seus componentes para criar produtos. A evolução explica como os seres vivos mudam ao longo do tempo. As duas se encontram na hereditariedade: o DNA. Para a Engenharia Ambiental, ambas são importantes (biorremediação, resistência a pesticidas, conservação).' },
+    { type: 'h', text: '1. Biotecnologia' },
+    { type: 'table', head: ['Técnica', 'O que é', 'Exemplos'], rows: [
+      ['DNA recombinante (engenharia genética)', 'Cortar e colar genes com enzimas de restrição e ligases', 'Insulina humana produzida por bactérias'],
+      ['Transgênicos (OGM)', 'Organismos que recebem gene de outra espécie', 'Soja resistente a herbicida; milho Bt'],
+      ['Clonagem', 'Obter cópias geneticamente idênticas', 'Ovelha Dolly (1996), a partir de célula adulta'],
+      ['Células-tronco', 'Células capazes de se multiplicar e se diferenciar', 'Terapias celulares; pesquisa'],
+      ['PCR', 'Copia (amplifica) trechos de DNA', 'Teste de COVID-19, exame de paternidade'],
+      ['CRISPR', 'Edita genes de forma precisa', 'Pesquisa de doenças genéticas'],
+    ] },
+    { type: 'callout', kind: 'atencao', text: 'Células-tronco **embrionárias** são pluripotentes (geram quase todos os tipos de célula). As **adultas** são multipotentes (mais limitadas). Elas se multiplicam por mitose e podem gerar tumores se saírem de controle (assunto da UEMG 2024).' },
+    { type: 'h', text: '2. Teorias evolutivas' },
+    { type: 'table', head: ['', 'Lamarck (1809)', 'Darwin e Wallace (1859)'], rows: [
+      ['Ideia central', 'Uso e desuso e herança dos caracteres adquiridos', 'Seleção natural'],
+      ['Exemplo', 'O pescoço da girafa cresceu de tanto esticar; os filhos já nasceriam com pescoço maior', 'Girafas de pescoço mais longo alcançavam mais folhas, sobreviviam mais e deixavam mais descendentes'],
+      ['Hoje', 'Superada (características adquiridas não são herdadas)', 'Aceita e complementada pela genética'],
+    ] },
+    { type: 'p', text: '**Seleção natural (Darwin):** 1) os indivíduos de uma população **variam**; 2) parte dessa variação é **hereditária**; 3) nascem mais indivíduos do que o ambiente sustenta (**luta pela sobrevivência**); 4) os **mais adaptados** sobrevivem e deixam mais descendentes.' },
+    { type: 'callout', kind: 'exemplo', title: 'Seleção natural em ação', text: 'Ao usar antibiótico, morrem as bactérias sensíveis; as raras bactérias resistentes sobrevivem e se multiplicam. O antibiótico não "cria" a resistência: ele selecionou quem já tinha. O mesmo vale para insetos resistentes a inseticidas.' },
+    { type: 'h', text: '3. Teoria sintética da evolução' },
+    { type: 'list', items: ['Une Darwin à genética. Fontes de variabilidade: **mutação** e **recombinação gênica** (meiose e reprodução sexuada).', 'Fatores evolutivos: **seleção natural**, **deriva genética**, **migração (fluxo gênico)** e **mutação**.', '**Especiação:** formação de novas espécies, geralmente após isolamento geográfico e reprodutivo.'] },
+    { type: 'h', text: '4. Evidências da evolução' },
+    { type: 'table', head: ['Evidência', 'Explicação', 'Exemplo'], rows: [
+      ['Fósseis', 'Restos de seres antigos mostram formas intermediárias', 'Archaeopteryx (réptil e ave)'],
+      ['Órgãos homólogos', 'Mesma origem embrionária, funções que podem diferir', 'Braço humano, asa de morcego, nadadeira de baleia'],
+      ['Órgãos análogos', 'Mesma função, origens diferentes', 'Asa de ave e asa de inseto'],
+      ['Moleculares', 'Semelhança de DNA e proteínas entre espécies', 'Humanos e chimpanzés'],
+    ] },
+  ],
+  exercises: [
+    ex('biologia-4', 1, S, 'A ideia de que o pescoço da girafa se alongou por esticar-se para alcançar folhas altas, e que essa característica foi transmitida aos filhos, corresponde à teoria de:', ['Darwin', 'Lamarck', 'Mendel', 'Pasteur'], 1, 'Resposta B (Lamarck). Ele propôs a lei do uso e desuso e a herança dos caracteres adquiridos. Hoje sabemos que o que é adquirido em vida não altera o DNA nem passa aos descendentes.'),
+    ex('biologia-4', 2, S, 'Segundo Darwin, a seleção natural ocorre porque:', ['os organismos criam mutações de acordo com suas necessidades', 'os mais adaptados ao ambiente sobrevivem e deixam mais descendentes', 'o uso excessivo de um órgão o desenvolve', 'todos os indivíduos de uma espécie são iguais'], 1, 'Resposta B. Havendo variação hereditária e recursos limitados, os indivíduos mais adaptados têm mais chance de sobreviver e se reproduzir, e suas características se tornam mais comuns na população.'),
+    ex('biologia-4', 3, S, 'O braço humano, a asa de um morcego e a nadadeira de uma baleia são exemplos de:', ['órgãos análogos', 'órgãos homólogos', 'órgãos vestigiais', 'convergência adaptativa'], 1, 'Resposta B (homólogos). Têm a mesma origem embrionária e estrutura básica, ainda que desempenhem funções diferentes. Isso indica um ancestral comum. Análogos têm a mesma função, mas origens diferentes.'),
+    ex('biologia-4', 4, S, 'Um organismo transgênico é aquele que:', ['foi clonado a partir de uma célula adulta', 'recebeu em seu genoma um gene de outra espécie', 'possui o dobro de cromossomos', 'sofreu mutação por radiação natural'], 1, 'Resposta B. Transgênicos (OGM) recebem genes de outras espécies por engenharia genética, como o milho Bt, que ganha um gene de bactéria. Clonagem é a produção de cópias idênticas.'),
+    ex('biologia-4', 5, S, 'O aparecimento de populações de bactérias resistentes a antibióticos é explicado principalmente pela:', ['herança dos caracteres adquiridos', 'seleção natural das bactérias já resistentes', 'vontade das bactérias de se adaptar', 'ação direta do antibiótico, que cria a resistência'], 1, 'Resposta B. Na população há bactérias com variações; as raras que já eram resistentes sobrevivem ao antibiótico, se multiplicam e passam o gene adiante. Por isso é importante usar antibióticos só com receita e até o fim.'),
+  ],
+}

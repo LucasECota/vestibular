@@ -165,3 +165,45 @@ export const GEOGRAFIA_3: Lesson = {
     ex('geografia-3', 5, S, 'O Pampa, bioma típico do Rio Grande do Sul, apresenta:', ['clima semiárido e vegetação xerófila', 'clima equatorial e floresta densa', 'clima subtropical e predomínio de campos de gramíneas', 'clima tropical de altitude e mangues'], 2, 'Resposta C. O Pampa tem clima subtropical, com chuvas bem distribuídas e estações definidas, e vegetação de campos (gramíneas), usada na pecuária. Clima semiárido e vegetação xerófila são da Caatinga.'),
   ],
 }
+
+export const GEOGRAFIA_4: Lesson = {
+  slug: 'geografia-4',
+  title: 'Recursos hídricos e matriz energética',
+  blocks: [
+    { type: 'p', text: 'Água e energia são dois recursos essenciais e muito ligados: o Brasil gera a maior parte da sua eletricidade com a força da água. Esses temas são muito cobrados (a UEMG 2023 falou das hidrelétricas, e 2024, dos recursos energéticos e da sustentabilidade) e são o dia a dia de quem cursa Engenharia Ambiental.' },
+    { type: 'h', text: '1. Ciclo da água e águas do planeta' },
+    { type: 'p', text: 'A água circula entre oceanos, atmosfera e continentes: **evaporação** → **condensação** (nuvens) → **precipitação** → **infiltração e escoamento** → volta aos rios e mares. Cerca de 97% da água do planeta é salgada; da doce, a maior parte está em geleiras e aquíferos, e só uma pequena fração está em rios e lagos.' },
+    { type: 'h', text: '2. Bacias hidrográficas' },
+    { type: 'p', text: '**Bacia hidrográfica** é a área drenada por um rio principal e seus afluentes. Os limites entre bacias são chamados de **divisores de água**. É a unidade usada para gestão dos recursos hídricos.' },
+    { type: 'table', head: ['Bacia', 'Característica'], rows: [
+      ['Amazônica', 'A maior do Brasil e do mundo em volume de água; rios de planície, navegáveis; baixo aproveitamento hidrelétrico'],
+      ['Tocantins-Araguaia', 'Rios de planalto; grande potencial hidrelétrico (Tucuruí)'],
+      ['São Francisco', 'Rio da integração nacional; atravessa MG, BA, PE, AL e SE; irrigação e energia'],
+      ['Paraná', 'Maior produção de energia hidrelétrica do país (Itaipu); alta população'],
+      ['Atlântico Sul, Leste e Sudeste', 'Rios curtos e importantes para abastecimento (Rio Doce, Paraíba do Sul)'],
+    ] },
+    { type: 'callout', kind: 'dica', text: 'Aquífero Guarani: uma das maiores reservas de água subterrânea do mundo, sob Brasil, Argentina, Paraguai e Uruguai. Precisa de proteção contra poluição e uso excessivo.' },
+    { type: 'h', text: '3. Usos e problemas da água' },
+    { type: 'list', items: ['A **agropecuária** é o maior consumidor de água (irrigação), seguida do abastecimento urbano e da indústria.', '**Poluição** por esgoto não tratado, agrotóxicos, mineração e lixo.', '**Assoreamento** (acúmulo de sedimentos no leito do rio) por desmatamento da mata ciliar.', '**Escassez:** não é falta de água no planeta, mas má distribuição e mau uso (como no semiárido e nas grandes metrópoles).'] },
+    { type: 'h', text: '4. Fontes de energia' },
+    { type: 'table', head: ['Tipo', 'Fontes', 'Características'], rows: [
+      ['Não renováveis', 'Petróleo, carvão mineral, gás natural, urânio', 'Esgotáveis; as fósseis emitem gases de efeito estufa'],
+      ['Renováveis', 'Hidráulica, solar, eólica, biomassa (etanol, bagaço de cana), geotérmica', 'Se renovam naturalmente e poluem menos'],
+    ] },
+    { type: 'h', text: '5. Matriz energética brasileira' },
+    { type: 'list', items: ['**Matriz energética** = todas as fontes usadas (combustíveis, eletricidade, calor). **Matriz elétrica** = só a eletricidade.', 'A **matriz elétrica** brasileira é majoritariamente renovável (cerca de 80% ou mais): predominam as **hidrelétricas**, com crescimento rápido da energia **eólica** e **solar**.', 'Na **matriz energética** total, o petróleo e seus derivados têm peso grande; o Brasil também se destaca no **etanol** e no **pré-sal**.', 'Há duas usinas nucleares em operação, Angra 1 e 2 (RJ), e uma em construção (Angra 3).'] },
+    { type: 'table', head: ['Hidrelétricas: vantagens', 'Hidrelétricas: desvantagens'], rows: [
+      ['Fonte renovável, sem queima de combustível', 'Alagam grandes áreas (florestas, terras, casas)'],
+      ['Gera empregos e acumula água para outros usos', 'Alteram o curso do rio e a migração de peixes'],
+      ['Baixo custo de operação depois de construída', 'Dependem das chuvas (secas reduzem a geração) e deslocam populações'],
+    ] },
+    { type: 'callout', kind: 'atencao', text: 'Renovável não significa "sem impacto". Toda fonte (inclusive hidrelétrica, eólica e solar) causa algum impacto ambiental e social e precisa de planejamento.' },
+  ],
+  exercises: [
+    ex('geografia-4', 1, S, 'Bacia hidrográfica é:', ['a área drenada por um rio principal e seus afluentes', 'o conjunto de todos os mares do planeta', 'uma região onde só existem águas subterrâneas', 'o ponto mais alto do relevo'], 0, 'Resposta A. A bacia hidrográfica reúne o rio principal, seus afluentes e toda a área que escoa a água para ele. É a unidade de planejamento da gestão da água.'),
+    ex('geografia-4', 2, S, 'A maior bacia hidrográfica do Brasil, em volume de água, é a:', ['Bacia do Rio São Francisco', 'Bacia Amazônica', 'Bacia do Paraná', 'Bacia do Tocantins-Araguaia'], 1, 'Resposta B (Amazônica). A bacia do Amazonas é a maior do país e do mundo em volume de água. A do Paraná, apesar de menor, é a que mais produz energia hidrelétrica, por ter rios de planalto e a maior demanda.'),
+    ex('geografia-4', 3, S, 'Qual das fontes de energia abaixo é renovável?', ['carvão mineral', 'petróleo', 'energia eólica', 'gás natural'], 2, 'Resposta C (eólica). Usa a força dos ventos, que se renova naturalmente. Carvão, petróleo e gás natural são combustíveis fósseis, não renováveis e emissores de CO₂.'),
+    ex('geografia-4', 4, S, 'Um impacto ambiental comum da construção de grandes hidrelétricas é:', ['a redução da área de floresta alagada', 'o alagamento de grandes áreas, com perda de vegetação e habitat', 'o aumento da emissão de gases pelo uso de carvão', 'a eliminação total do uso de água dos rios'], 1, 'Resposta B. O reservatório alaga áreas de vegetação, destrói habitats, desloca populações e muda o curso natural do rio e a migração de peixes. A usina não queima carvão.'),
+    ex('geografia-4', 5, S, 'O Aquífero Guarani é:', ['um rio da Amazônia', 'uma das maiores reservas de água subterrânea do mundo, sob países do Mercosul', 'uma usina hidrelétrica no Sul', 'um oceano interior'], 1, 'Resposta B. O aquífero é um grande reservatório de água subterrânea, que ocupa parte do subsolo do Brasil, Argentina, Paraguai e Uruguai. Por ser subterrâneo, o cuidado com poluição e retirada excessiva é fundamental.'),
+  ],
+}

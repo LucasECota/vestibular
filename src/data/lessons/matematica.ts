@@ -238,3 +238,66 @@ export const MATEMATICA_6: Lesson = {
     ex('matematica-6', 5, S, 'A solução da equação 3^(x+1) = 27 é:', ['x = 1', 'x = 2', 'x = 3', 'x = 9'], 1, 'Resposta B (x = 2). Como 27 = 3³, temos 3^(x+1) = 3³, então x + 1 = 3 e x = 2. Cuidado: x = 3 seria a resposta de 3ˣ = 27, sem o "+1".'),
   ],
 }
+
+export const MATEMATICA_7: Lesson = {
+  slug: 'matematica-7',
+  title: 'Polinômios e equações polinomiais',
+  blocks: [
+    { type: 'p', text: String.raw`Polinômio é uma expressão do tipo $P(x) = a_n x^n + \dots + a_1 x + a_0$. O **grau** é o maior expoente de $x$ com coeficiente diferente de zero. As funções afim e quadrática que você já viu são polinômios de grau 1 e 2. A UEMG 2024 trouxe um polinômio do 3º grau com três raízes dadas.` },
+    { type: 'h', text: '1. Valor numérico e raiz' },
+    { type: 'p', text: String.raw`**Valor numérico** é o resultado de $P(a)$: troque $x$ por $a$. Se $P(a) = 0$, dizemos que $a$ é **raiz** do polinômio.` },
+    { type: 'callout', kind: 'exemplo', text: String.raw`$P(x) = x^3 - 2x + 1$. Então $P(2) = 8 - 4 + 1 = 5$ e $P(1) = 1 - 2 + 1 = 0$, ou seja, 1 é raiz.` },
+    { type: 'h', text: '2. Operações' },
+    { type: 'list', items: ['**Soma e subtração:** some ou subtraia os termos de mesmo grau.', '**Multiplicação:** distribua; o grau do produto é a **soma** dos graus.', '**Divisão:** o resto tem grau menor que o do divisor. Pode ser feita pelo método da chave ou, para divisor $x-a$, pelo **dispositivo de Briot-Ruffini**.'] },
+    { type: 'h', text: '3. Teorema do resto e de D\'Alembert' },
+    { type: 'table', head: ['Teorema', 'Enunciado', 'Uso'], rows: [
+      ['Do resto', String.raw`O resto da divisão de $P(x)$ por $(x-a)$ é $P(a)$`, 'Descobrir o resto sem fazer a divisão'],
+      ['De D\'Alembert', String.raw`$P(x)$ é divisível por $(x-a)$ se e somente se $P(a)=0$`, 'Testar se um número é raiz'],
+    ] },
+    { type: 'callout', kind: 'exemplo', text: String.raw`Resto da divisão de $P(x) = x^2 + 3x + 5$ por $x - 1$: basta calcular $P(1) = 1 + 3 + 5 = 9$.` },
+    { type: 'h', text: '4. Forma fatorada e relações de Girard' },
+    { type: 'p', text: String.raw`Se $P(x)$ tem grau 3 e raízes $r_1, r_2, r_3$, então $P(x) = a\,(x-r_1)(x-r_2)(x-r_3)$, em que $a$ é o coeficiente de $x^3$.` },
+    { type: 'callout', kind: 'exemplo', title: 'Estilo UEMG 2024', text: String.raw`$P(x)$ tem grau 3 e raízes 5, 10 e 15, com $P(7) = 144$. Então $P(x) = a(x-5)(x-10)(x-15)$.` + '\n' + String.raw`$P(7) = a\cdot 2\cdot(-3)\cdot(-8) = 48a = 144 \Rightarrow a = 3$` },
+    { type: 'p', text: String.raw`**Relações de Girard** (grau 3, $ax^3 + bx^2 + cx + d = 0$): soma das raízes $= -\dfrac{b}{a}$; soma dos produtos dois a dois $= \dfrac{c}{a}$; produto das raízes $= -\dfrac{d}{a}$.` },
+    { type: 'callout', kind: 'dica', text: 'Para achar raízes inteiras de um polinômio com coeficientes inteiros, teste os divisores do termo independente (a₀). Depois use Briot-Ruffini para baixar o grau.' },
+  ],
+  exercises: [
+    ex('matematica-7', 1, S, 'Se P(x) = x³ − 2x + 1, o valor de P(2) é:', ['3', '5', '7', '9'], 1, 'Resposta B (5). Substitua x = 2: P(2) = 2³ − 2 · 2 + 1 = 8 − 4 + 1 = 5.'),
+    ex('matematica-7', 2, S, 'O resto da divisão de P(x) = x² + 3x + 5 por x − 1 é:', ['5', '7', '9', '11'], 2, 'Resposta C (9). Pelo teorema do resto, o resto da divisão por (x − 1) é P(1) = 1 + 3 + 5 = 9.'),
+    ex('matematica-7', 3, S, 'O número 2 é raiz do polinômio P(x) = x³ − 3x² + kx − 2. O valor de k é:', ['1', '2', '3', '4'], 2, 'Resposta C (3). Se 2 é raiz, P(2) = 0: 8 − 12 + 2k − 2 = 0, então 2k − 6 = 0 e k = 3.'),
+    ex('matematica-7', 4, S, 'Um polinômio P(x) de grau 3 tem raízes 1, 2 e 3 e P(0) = −12. O valor de P(4) é:', ['6', '12', '24', '36'], 1, 'Resposta B (12). P(x) = a(x − 1)(x − 2)(x − 3). P(0) = a · (−1)(−2)(−3) = −6a = −12, então a = 2. Logo P(4) = 2 · 3 · 2 · 1 = 12.'),
+    ex('matematica-7', 5, S, 'A soma das raízes da equação x³ − 6x² + 11x − 6 = 0 é:', ['−6', '6', '11', '−11'], 1, 'Resposta B (6). Pelas relações de Girard, a soma das raízes é −b/a = −(−6)/1 = 6. Conferindo: as raízes são 1, 2 e 3, e 1 + 2 + 3 = 6.'),
+  ],
+}
+
+export const MATEMATICA_8: Lesson = {
+  slug: 'matematica-8',
+  title: 'Progressões aritméticas e geométricas',
+  blocks: [
+    { type: 'p', text: 'Uma **sequência** é uma lista de números em ordem. Quando há uma regra fixa para passar de um termo ao próximo, temos uma **progressão**. A UEMG 2024 trouxe uma questão de soma de termos de uma linha de números em sequência, que se resolve com PA.' },
+    { type: 'h', text: '1. Progressão aritmética (PA)' },
+    { type: 'p', text: String.raw`Cada termo é o anterior **somado** a uma constante $r$ (razão). Exemplo: $(3, 7, 11, 15, \dots)$ tem $r = 4$.` },
+    { type: 'math', tex: String.raw`a_n = a_1 + (n-1)\,r \qquad S_n = \dfrac{(a_1 + a_n)\,n}{2}` },
+    { type: 'callout', kind: 'exemplo', text: String.raw`PA $(3, 7, 11, \dots)$: $a_{10} = 3 + 9\cdot 4 = 39$.` + '\n' + String.raw`Soma dos 20 primeiros ímpares $(1, 3, 5, \dots, 39)$: $S_{20} = \dfrac{(1+39)\cdot 20}{2} = 400$.` },
+    { type: 'callout', kind: 'dica', text: 'Truque da soma (Gauss): em uma PA, a soma de termos equidistantes das pontas é sempre a mesma. Por isso a soma é a média do primeiro e do último termo vezes o número de termos.' },
+    { type: 'h', text: '2. Progressão geométrica (PG)' },
+    { type: 'p', text: String.raw`Cada termo é o anterior **multiplicado** por uma constante $q$ (razão). Exemplo: $(2, 6, 18, 54, \dots)$ tem $q = 3$.` },
+    { type: 'math', tex: String.raw`a_n = a_1 \cdot q^{\,n-1} \qquad S_n = \dfrac{a_1\,(q^n - 1)}{q - 1}\ \ (q \neq 1)` },
+    { type: 'p', text: String.raw`Se $-1 < q < 1$, a PG infinita converge e sua soma é $S = \dfrac{a_1}{1-q}$.` },
+    { type: 'callout', kind: 'exemplo', text: String.raw`PG $(2, 6, 18, \dots)$: $a_5 = 2\cdot 3^4 = 162$.` + '\n' + String.raw`PG $(1, 2, 4, 8, 16)$: $S_5 = \dfrac{1\cdot(2^5 - 1)}{2 - 1} = 31$.` + '\n' + String.raw`PG infinita $(1, \tfrac{1}{2}, \tfrac{1}{4}, \dots)$: $S = \dfrac{1}{1 - \frac{1}{2}} = 2$.` },
+    { type: 'table', head: ['', 'PA', 'PG'], rows: [
+      ['Como varia', 'Soma uma razão r', 'Multiplica por uma razão q'],
+      ['Crescimento', 'Linear (reta)', 'Exponencial'],
+      ['Termo geral', String.raw`$a_1 + (n-1)r$`, String.raw`$a_1\cdot q^{n-1}$`],
+      ['Aplicações', 'Parcelas fixas, filas, pilhas de objetos', 'Juros compostos, populações, desvalorização'],
+    ] },
+    { type: 'callout', kind: 'atencao', text: 'Leia com atenção a pergunta: n é o número do termo; "a₁₀" é o décimo termo, e não o valor 10. E em PG, q^(n−1): o expoente é n − 1.' },
+  ],
+  exercises: [
+    ex('matematica-8', 1, S, 'O décimo termo da PA (3, 7, 11, ...) é:', ['36', '39', '43', '47'], 1, 'Resposta B (39). A razão é 4. a₁₀ = a₁ + 9r = 3 + 9 · 4 = 3 + 36 = 39.'),
+    ex('matematica-8', 2, S, 'A soma dos 20 primeiros números ímpares positivos (1, 3, 5, ...) é:', ['200', '380', '400', '420'], 2, 'Resposta C (400). É uma PA com a₁ = 1 e r = 2, então a₂₀ = 1 + 19 · 2 = 39. A soma é S = (1 + 39) · 20 / 2 = 400.'),
+    ex('matematica-8', 3, S, 'O quinto termo da PG (2, 6, 18, ...) é:', ['54', '162', '486', '108'], 1, 'Resposta B (162). A razão é q = 3. a₅ = a₁ · q⁴ = 2 · 81 = 162. Conferindo na sequência: 2, 6, 18, 54, 162.'),
+    ex('matematica-8', 4, S, 'A soma dos 5 primeiros termos da PG (1, 2, 4, 8, ...) é:', ['15', '31', '32', '63'], 1, 'Resposta B (31). Somando: 1 + 2 + 4 + 8 + 16 = 31. Pela fórmula: S₅ = 1 · (2⁵ − 1)/(2 − 1) = 31.'),
+    ex('matematica-8', 5, S, 'A soma de todos os termos da PG infinita (1, 1/2, 1/4, 1/8, ...) é:', ['1', '3/2', '2', 'infinita'], 2, 'Resposta C (2). A razão é q = 1/2, e como |q| < 1 a soma converge: S = a₁/(1 − q) = 1/(1 − 1/2) = 2.'),
+  ],
+}

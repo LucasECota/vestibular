@@ -125,3 +125,50 @@ export const PORTUGUES_3: Lesson = {
     ex('portugues-3', 5, S, 'O plural correto da palavra "pão" é:', ['pães', 'pãos', 'pões', 'pãoes'], 0, 'Resposta A (pães). Os substantivos terminados em -ão formam o plural de três jeitos: -ões (corações), -ãos (mãos, irmãos) e -ães (pães, alemães, capitães). "Pão" segue o caso do -ães.'),
   ],
 }
+
+export const PORTUGUES_4: Lesson = {
+  slug: 'portugues-4',
+  title: 'Sintaxe: concordância, regência e crase',
+  blocks: [
+    { type: 'p', text: 'Sintaxe estuda como as palavras se combinam na frase. Três pontos caem sempre nas provas: **concordância** (as palavras "combinam" entre si), **regência** (qual preposição o verbo ou nome pede) e **crase** (a + a). A UEMG 2024 cobrou concordância com os verbos **haver** e **fazer**.' },
+    { type: 'h', text: '1. Concordância verbal' },
+    { type: 'p', text: 'O verbo concorda com o **sujeito** em número e pessoa. Primeiro ache o sujeito (pergunte "quem?" ao verbo).' },
+    { type: 'table', head: ['Situação', 'Regra', 'Exemplo'], rows: [
+      ['Sujeito composto antes do verbo', 'Verbo no plural', 'O pai e a mãe chegaram.'],
+      ['Sujeito composto depois do verbo', 'Plural ou concorda com o mais próximo', 'Chegaram (ou Chegou) o pai e a mãe.'],
+      ['Verbo **haver** no sentido de existir, e **fazer** indicando tempo', 'Impessoais: ficam sempre no **singular**', 'Havia muitos alunos. Faz dois anos que moro aqui.'],
+      ['Verbo **ser** com horas e distâncias', 'Concorda com o número', 'São duas horas. É meio-dia.'],
+      ['Sujeito coletivo', 'Singular', 'A turma saiu cedo.'],
+      ['"A maioria dos alunos"', 'Singular ou plural', 'A maioria dos alunos passou (ou passaram).'],
+    ] },
+    { type: 'callout', kind: 'atencao', text: 'Errado: "Haviam muitos alunos" e "Fazem dois anos". Certo: "Havia muitos alunos" e "Faz dois anos". Nesses casos o verbo não tem sujeito e não vai para o plural.' },
+    { type: 'h', text: '2. Concordância nominal' },
+    { type: 'list', items: ['O **adjetivo**, o artigo e o pronome concordam com o **substantivo** em gênero e número: *as alunas atentas*.', '**Meio** é advérbio e fica invariável: *as alunas estavam meio cansadas* (= um pouco). Já "meia" é numeral: *meia hora*.', '**Anexo** e **obrigado** concordam: *as fotos seguem anexas*; *obrigada* (dito por mulher).', '**É proibido** e **é necessário** ficam invariáveis quando o sujeito não tem artigo: *É proibido entrada* / *É proibida a entrada*.'] },
+    { type: 'h', text: '3. Regência' },
+    { type: 'table', head: ['Verbo', 'Sentido', 'Preposição', 'Exemplo'], rows: [
+      ['Assistir', 'Ver', 'a', 'Assistimos ao filme.'],
+      ['Assistir', 'Ajudar', 'sem preposição', 'O médico assistiu o paciente.'],
+      ['Aspirar', 'Desejar', 'a', 'Aspiro a uma boa vaga.'],
+      ['Obedecer', '—', 'a', 'Obedeça às regras.'],
+      ['Preferir', '—', 'a', 'Prefiro café a chá.'],
+      ['Chegar / Ir', 'Direção', 'a', 'Cheguei a Minas. Fui ao Rio.'],
+      ['Visar', 'Almejar', 'a', 'Ela visa ao sucesso.'],
+    ] },
+    { type: 'h', text: '4. Crase' },
+    { type: 'p', text: 'Crase é a **fusão** da preposição **a** com o artigo **a(s)** (a + a = à). Só acontece se o verbo ou nome pedir a preposição **e** a palavra seguinte aceitar o artigo feminino.' },
+    { type: 'table', head: ['Usa crase', 'Não usa crase'], rows: [
+      ['Antes de palavra feminina com artigo: *Fui à escola.*', 'Antes de palavra masculina: *Andei a pé. Vou a Minas* (sem artigo)'],
+      ['Horas: *Chegou às oito horas.*', 'Antes de verbo: *Começou a chover.*'],
+      ['Locuções femininas: *à noite, à tarde, às vezes, à vista*', 'Antes de pronomes pessoais: *Falei a ela.*'],
+      ['Local feminino com artigo: *Vou à praia. Voltei à Bahia.*', 'Antes de nomes de cidades sem artigo: *Fui a Brasília.*'],
+    ] },
+    { type: 'callout', kind: 'dica', title: 'Teste da crase', text: 'Troque o a por "ao" (ou por "volto da / voltei da"). Se a frase com palavra masculina pede "ao", a feminina pede "à". Exemplo: Fui **ao** cinema → Fui **à** escola. E se "voltar" dá "da": Voltei **da** escola → Fui **à** escola.' },
+  ],
+  exercises: [
+    ex('portugues-4', 1, S, 'Assinale a alternativa em que a concordância verbal está CORRETA.', ['Haviam muitas pessoas na sala.', 'Fazem dois anos que moro aqui.', 'Faz dois anos que moro aqui.', 'Houveram muitos problemas.'], 2, 'Resposta C. O verbo fazer, indicando tempo decorrido, é impessoal e fica no singular: "Faz dois anos". "Haver" no sentido de existir também é impessoal: "Havia" (e não "Haviam"), "Houve" (e não "Houveram").'),
+    ex('portugues-4', 2, S, 'Assinale a frase em que o uso da crase está CORRETO.', ['Vou à pé para o trabalho.', 'Fui à escola ontem.', 'Falei à ele sobre o problema.', 'Começou à chover forte.'], 1, 'Resposta B. "Fui à escola": o verbo ir pede a, e "escola" aceita o artigo a (a escola), então a + a = à. Em A (pé é masculino), C (pronome pessoal) e D (verbo) não há crase.'),
+    ex('portugues-4', 3, S, 'No sentido de "ver", o verbo assistir pede a preposição a. Assinale a frase correta.', ['Assistimos o jogo ontem.', 'Assistimos ao jogo ontem.', 'Assistimos de o jogo ontem.', 'Assistimos pelo jogo ontem.'], 1, 'Resposta B. "Assistir" no sentido de ver é transitivo indireto: assistir **a** algo. Com "o jogo" (masculino), a + o = ao: "assistimos ao jogo".'),
+    ex('portugues-4', 4, S, 'Assinale a frase com a concordância nominal CORRETA.', ['As alunas estavam meias cansadas.', 'As alunas estavam meio cansadas.', 'As alunas estavam meios cansadas.', 'As alunas estava meio cansadas.'], 1, 'Resposta B. Aqui "meio" é advérbio (significa um pouco), então fica invariável. Já em "meia hora", "meia" é numeral e concorda com o substantivo.'),
+    ex('portugues-4', 5, S, 'Complete corretamente: "A prova e o gabarito ____ publicados no site."', ['foi', 'foram', 'fui', 'fora'], 1, 'Resposta B (foram). O sujeito é composto ("a prova e o gabarito"), antes do verbo, portanto o verbo vai para o plural: foram.'),
+  ],
+}

@@ -123,3 +123,40 @@ export const HISTORIA_3: Lesson = {
     ex('historia-3', 5, S, 'No período pré-colonial (1500–1530), a exploração do pau-brasil era feita principalmente por meio do:', ['trabalho assalariado', 'escambo com os indígenas', 'tráfico de africanos', 'cultivo em grandes engenhos'], 1, 'Resposta B (escambo). Os portugueses trocavam objetos como machados, espelhos e tecidos pelo trabalho dos indígenas no corte e transporte da madeira, sem pagar salários. A escravidão africana e os engenhos vieram depois.'),
   ],
 }
+
+export const HISTORIA_4: Lesson = {
+  slug: 'historia-4',
+  title: 'Revoluções (Industrial e Francesa) e independências',
+  blocks: [
+    { type: 'p', text: 'Entre os séculos XVIII e XIX, a Europa e as Américas passaram por mudanças profundas: a **Revolução Industrial** transformou o trabalho e a economia, o **Iluminismo** e a **Revolução Francesa** transformaram a política, e as **independências** mudaram o mapa das Américas. Esse é o ponto de partida do mundo contemporâneo (e da UEMG 2023, que trouxe um texto sobre as independências).' },
+    { type: 'h', text: '1. Revolução Industrial (a partir de 1760)' },
+    { type: 'p', text: 'Começou na **Inglaterra** e substituiu o trabalho artesanal pela produção em **fábricas**, com máquinas. A **máquina a vapor** (James Watt) e o **carvão** foram a base da energia.' },
+    { type: 'table', head: ['Por que na Inglaterra?', 'Consequências'], rows: [
+      ['Capital acumulado pelo comércio colonial e pelo tráfico', 'Surgimento do **proletariado** (operários) e da burguesia industrial'],
+      ['Carvão e ferro em abundância', 'Urbanização acelerada; cidades superlotadas e sujas'],
+      ['Mão de obra liberada pelos cercamentos (enclosures) no campo', 'Jornadas longas, trabalho infantil, baixos salários; origem do movimento sindical e do socialismo'],
+      ['Mercado consumidor e frota naval', 'Poluição do ar e da água, uso intenso de recursos naturais (primeiros grandes impactos ambientais industriais)'],
+    ] },
+    { type: 'h', text: '2. Iluminismo (séc. XVIII)' },
+    { type: 'p', text: 'Movimento intelectual que defende a **razão**, a liberdade e o progresso e critica o Absolutismo e os privilégios. **Locke** (direitos naturais), **Montesquieu** (separação dos três poderes), **Rousseau** (soberania popular), **Voltaire** (tolerância e liberdade de pensamento).' },
+    { type: 'h', text: '3. Independência dos Estados Unidos (1776)' },
+    { type: 'p', text: 'As Treze Colônias inglesas se rebelaram contra os impostos e a falta de representação política (**"sem representação, sem tributação"**) e declararam independência em **4 de julho de 1776**, inspirando outros movimentos.' },
+    { type: 'h', text: '4. Revolução Francesa (1789)' },
+    { type: 'table', head: ['Ano', 'Acontecimento'], rows: [
+      ['1789', 'Convocação dos Estados Gerais; **Queda da Bastilha (14 de julho)**; Declaração dos Direitos do Homem e do Cidadão'],
+      ['1792–1794', 'República; Terror jacobino (Robespierre); o rei Luís XVI é executado (1793)'],
+      ['1795–1799', 'Diretório (burguesia moderada)'],
+      ['1799', 'Golpe do 18 Brumário: Napoleão Bonaparte assume o poder'],
+    ] },
+    { type: 'callout', kind: 'dica', text: 'Lema da Revolução Francesa: **Liberdade, Igualdade e Fraternidade**. Ela acabou com os privilégios do clero e da nobreza e inspirou a ideia de direitos universais.' },
+    { type: 'h', text: '5. Independências na América Latina' },
+    { type: 'list', items: ['**Haiti (1804):** primeira independência liderada por pessoas escravizadas (Toussaint Louverture) e primeiro país negro livre das Américas.', '**América espanhola (1810–1825):** lideranças como **Simón Bolívar** e **San Martín**; as elites **criollas** (descendentes de espanhóis nascidos na América) lideraram o processo e mantiveram seus privilégios, excluindo as classes populares.', '**Brasil (1822):** independência proclamada por D. Pedro I, de forma negociada, mantendo a monarquia, o latifúndio e a escravidão.'] },
+  ],
+  exercises: [
+    ex('historia-4', 1, S, 'A Revolução Industrial teve início, no século XVIII, em qual país?', ['França', 'Inglaterra', 'Estados Unidos', 'Alemanha'], 1, 'Resposta B (Inglaterra). Reunia capital, carvão e ferro, mão de obra disponível, mercado consumidor e uma frota naval. A máquina a vapor impulsionou as fábricas e a mineração.'),
+    ex('historia-4', 2, S, 'O lema "Liberdade, Igualdade e Fraternidade" está associado a:', ['Revolução Industrial', 'Independência dos Estados Unidos', 'Revolução Francesa', 'Reforma protestante'], 2, 'Resposta C (Revolução Francesa). Ela começou em 1789 e se baseou nos ideais iluministas. A queda da Bastilha, em 14 de julho, é o símbolo do início.'),
+    ex('historia-4', 3, S, 'O Iluminismo, movimento intelectual do século XVIII, defendia:', ['o Absolutismo e o direito divino dos reis', 'a razão, a liberdade e a crítica aos privilégios do Antigo Regime', 'o feudalismo', 'a volta do teocentrismo'], 1, 'Resposta B. Os iluministas (Locke, Montesquieu, Rousseau, Voltaire) valorizavam a razão e defendiam a liberdade, a separação dos poderes e a soberania popular. Criticavam o Absolutismo, que Bossuet defendia.'),
+    ex('historia-4', 4, S, 'A independência do Haiti, em 1804, foi marcante porque:', ['foi liderada por pessoas escravizadas e criou o primeiro país negro livre das Américas', 'manteve a escravidão e a monarquia', 'foi pacífica e negociada com a metrópole', 'foi a primeira independência da América do Sul'], 0, 'Resposta A. Liderados por Toussaint Louverture, os escravizados do Haiti derrotaram as tropas francesas e proclamaram a independência. Foi a única revolta escrava a criar um Estado independente nas Américas.'),
+    ex('historia-4', 5, S, 'As Treze Colônias inglesas da América do Norte declararam independência em:', ['1500', '1776', '1822', '1914'], 1, 'Resposta B (1776). Em 4 de julho de 1776, os colonos rejeitaram os impostos cobrados pela Inglaterra sem representação política. 1822 é a independência do Brasil.'),
+  ],
+}

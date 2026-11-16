@@ -158,3 +158,47 @@ export const QUIMICA_3: Lesson = {
     ex('quimica-3', 5, S, 'A reação 2 H₂O₂ → 2 H₂O + O₂, em que uma substância dá origem a duas ou mais, é classificada como:', ['síntese', 'decomposição', 'dupla troca', 'neutralização'], 1, 'Resposta B (decomposição). Uma única substância (água oxigenada) se quebra em duas (água e gás oxigênio). Na síntese acontece o contrário: substâncias se juntam para formar uma.'),
   ],
 }
+
+const SVG_MOL = `<svg viewBox="0 0 340 170" xmlns="http://www.w3.org/2000/svg" font-family="sans-serif" font-size="11">
+<rect width="340" height="170" fill="#fff"/>
+<text x="170" y="16" text-anchor="middle" font-weight="bold" fill="#0a0a0f">O mol como "ponte" entre as grandezas</text>
+<rect x="10" y="55" width="80" height="50" rx="8" fill="#ede4ff" stroke="#6d28d9" stroke-width="2"/><text x="50" y="76" text-anchor="middle" fill="#0a0a0f" font-weight="bold">massa (g)</text><text x="50" y="92" text-anchor="middle" fill="#0a0a0f" font-size="10">m</text>
+<rect x="130" y="55" width="80" height="50" rx="8" fill="#fef3c7" stroke="#a16207" stroke-width="2"/><text x="170" y="76" text-anchor="middle" fill="#0a0a0f" font-weight="bold">quantidade</text><text x="170" y="92" text-anchor="middle" fill="#0a0a0f" font-size="10">n (mol)</text>
+<rect x="250" y="25" width="80" height="45" rx="8" fill="#dcfce7" stroke="#15803d" stroke-width="2"/><text x="290" y="44" text-anchor="middle" fill="#0a0a0f" font-weight="bold">partículas</text><text x="290" y="60" text-anchor="middle" fill="#0a0a0f" font-size="10">n × 6,02·10²³</text>
+<rect x="250" y="95" width="80" height="45" rx="8" fill="#dbeafe" stroke="#1d4ed8" stroke-width="2"/><text x="290" y="114" text-anchor="middle" fill="#0a0a0f" font-weight="bold">volume (gás)</text><text x="290" y="130" text-anchor="middle" fill="#0a0a0f" font-size="10">n × 22,4 L (CNTP)</text>
+<line x1="92" y1="80" x2="128" y2="80" stroke="#0a0a0f" stroke-width="2"/><line x1="212" y1="70" x2="248" y2="50" stroke="#0a0a0f" stroke-width="2"/><line x1="212" y1="90" x2="248" y2="115" stroke="#0a0a0f" stroke-width="2"/>
+<text x="110" y="72" text-anchor="middle" fill="#0a0a0f" font-size="10">÷ M</text>
+<text x="170" y="152" text-anchor="middle" fill="#0a0a0f">M = massa molar (g/mol). Ex.: H₂O = 18 g/mol.</text></svg>`
+
+export const QUIMICA_4: Lesson = {
+  slug: 'quimica-4',
+  title: 'Mol, estequiometria e soluções',
+  blocks: [
+    { type: 'p', text: 'Átomos e moléculas são pequenos demais para contar um a um, então a Química usa o **mol**. Com ele calculamos quanto de reagente é preciso e quanto de produto se forma (estequiometria) e como medir a concentração de uma solução. Na UEMG 2023 já caiu um cálculo de concentração.' },
+    { type: 'h', text: '1. Mol e massa molar' },
+    { type: 'list', items: ['**1 mol** = 6,02 · 10²³ partículas (constante de Avogadro).', '**Massa molar (M):** massa de 1 mol, em g/mol. Soma das massas atômicas.', 'Massas atômicas úteis: H = 1; C = 12; N = 14; O = 16; Na = 23; S = 32; Cl = 35,5; Ca = 40.'] },
+    { type: 'figure', svg: SVG_MOL, alt: 'Esquema com o mol no centro ligando massa, número de partículas e volume de gás', caption: 'Passe sempre pelo mol: massa ÷ M → mol → partículas ou volume.' },
+    { type: 'math', tex: String.raw`n = \dfrac{m}{M}` },
+    { type: 'callout', kind: 'exemplo', text: String.raw`CO₂: $M = 12 + 2\cdot 16 = 44$ g/mol. H₂O: $M = 2\cdot 1 + 16 = 18$ g/mol. Então 36 g de água são $n = \dfrac{36}{18} = 2$ mol.` },
+    { type: 'p', text: '**Volume molar:** nas CNTP (0 °C e 1 atm), 1 mol de qualquer gás ocupa **22,4 L**.' },
+    { type: 'h', text: '2. Estequiometria (cálculo de reações)' },
+    { type: 'list', ordered: true, items: ['Escreva e **balanceie** a equação.', 'Os **coeficientes** dão a proporção em **mols**.', 'Converta o dado do problema para mols (m ÷ M).', 'Use a proporção (regra de três) e converta de volta (mol × M).'] },
+    { type: 'callout', kind: 'exemplo', text: String.raw`$2\,H_2 + O_2 \to 2\,H_2O$. Que massa de água se forma a partir de 4 g de H₂?` + '\n' + String.raw`$n(H_2) = \dfrac{4}{2} = 2$ mol. Como a proporção é 2 : 2, formam-se 2 mol de H₂O.` + '\n' + String.raw`$m = 2\cdot 18 = 36$ g de água.` },
+    { type: 'h', text: '3. Concentração de soluções' },
+    { type: 'table', head: ['Grandeza', 'Fórmula', 'Unidade', 'Exemplo'], rows: [
+      ['Concentração comum', String.raw`$C = \dfrac{m_{\text{soluto}}}{V_{\text{solução}}}$`, 'g/L', '20 g de NaOH em 0,5 L → 40 g/L'],
+      ['Molaridade', String.raw`$M = \dfrac{n_{\text{soluto}}}{V_{\text{solução}}}$`, 'mol/L', '1 mol de NaCl em 2 L → 0,5 mol/L'],
+      ['Título', String.raw`$\tau = \dfrac{m_{\text{soluto}}}{m_{\text{solução}}}$`, 'sem unidade', 'Percentual = τ × 100'],
+      ['ppm', 'partes por milhão', 'mg/L ou mg/kg', 'Usado para poluentes em água'],
+    ] },
+    { type: 'callout', kind: 'atencao', text: 'O volume da concentração é o da **solução** (soluto + solvente) e deve estar em **litros**. 500 mL = 0,5 L.' },
+    { type: 'p', text: String.raw`**Diluição:** ao adicionar solvente, a quantidade de soluto não muda: $M_1\cdot V_1 = M_2\cdot V_2$.` },
+  ],
+  exercises: [
+    ex('quimica-4', 1, S, 'A massa molar do dióxido de carbono (CO₂) é (C = 12 e O = 16):', ['28 g/mol', '32 g/mol', '44 g/mol', '56 g/mol'], 2, 'Resposta C (44 g/mol). M(CO₂) = 12 + 2 · 16 = 12 + 32 = 44 g/mol.'),
+    ex('quimica-4', 2, S, 'Quantos mols existem em 36 g de água (H₂O, M = 18 g/mol)?', ['1 mol', '2 mol', '3 mol', '18 mol'], 1, 'Resposta B (2 mol). n = m/M = 36/18 = 2 mol.'),
+    ex('quimica-4', 3, S, 'Na reação 2 H₂ + O₂ → 2 H₂O, a massa de água formada a partir de 4 g de H₂ (M = 2 g/mol; água: 18 g/mol) é:', ['18 g', '36 g', '72 g', '4 g'], 1, 'Resposta B (36 g). 4 g de H₂ correspondem a 4/2 = 2 mol. Pela proporção 2 : 2, formam-se 2 mol de água, ou seja, 2 · 18 = 36 g.'),
+    ex('quimica-4', 4, S, 'Uma solução foi preparada dissolvendo 20 g de NaOH em água até completar 500 mL. A concentração comum dessa solução é:', ['4 g/L', '10 g/L', '40 g/L', '100 g/L'], 2, 'Resposta C (40 g/L). Converta o volume: 500 mL = 0,5 L. C = m/V = 20/0,5 = 40 g/L. Se você usasse 500 no lugar de 0,5, erraria por um fator de 1 000.'),
+    ex('quimica-4', 5, S, 'Dissolvendo 58,5 g de NaCl (M = 58,5 g/mol) em água suficiente para 2 L de solução, a molaridade é:', ['0,5 mol/L', '1 mol/L', '2 mol/L', '29,25 mol/L'], 0, 'Resposta A (0,5 mol/L). n = 58,5/58,5 = 1 mol. M = n/V = 1/2 = 0,5 mol/L.'),
+  ],
+}

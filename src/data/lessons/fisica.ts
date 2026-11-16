@@ -150,3 +150,47 @@ export const FISICA_3: Lesson = {
     ex('fisica-3', 5, S, 'A quantidade de movimento de um carro de 1 000 kg que se move a 20 m/s é:', ['20 kg·m/s', '2 000 kg·m/s', '20 000 kg·m/s', '50 kg·m/s'], 2, 'Resposta C (20 000 kg·m/s). Q = m · v = 1 000 · 20 = 20 000 kg·m/s.'),
   ],
 }
+
+const SVG_KEPLER = `<svg viewBox="0 0 340 210" xmlns="http://www.w3.org/2000/svg" font-family="sans-serif" font-size="11">
+<rect width="340" height="210" fill="#fff"/>
+<text x="170" y="16" text-anchor="middle" font-weight="bold" fill="#0a0a0f">Órbita elíptica (1ª e 2ª leis de Kepler)</text>
+<ellipse cx="170" cy="110" rx="140" ry="75" fill="none" stroke="#0a0a0f" stroke-width="2.5"/>
+<circle cx="100" cy="110" r="12" fill="#f59e0b"/><text x="100" y="140" text-anchor="middle" fill="#0a0a0f">Sol (foco)</text>
+<circle cx="30" cy="110" r="7" fill="#6d28d9"/><circle cx="14" cy="176" r="5" fill="#6d28d9"/><text x="24" y="180" fill="#6d28d9" font-weight="bold">periélio: mais rápido</text>
+<circle cx="310" cy="110" r="7" fill="#15803d"/><circle cx="190" cy="176" r="5" fill="#15803d"/><text x="200" y="180" fill="#15803d" font-weight="bold">afélio: mais lento</text>
+<text x="170" y="203" text-anchor="middle" fill="#0a0a0f">O raio Sol–planeta varre áreas iguais em tempos iguais.</text></svg>`
+
+export const FISICA_4: Lesson = {
+  slug: 'fisica-4',
+  title: 'Gravitação, leis de Kepler e hidrostática',
+  blocks: [
+    { type: 'p', text: 'Esta aula tem duas partes: o que explica o movimento dos astros (gravitação) e o que explica o comportamento dos líquidos em repouso (hidrostática). Ambas caíram na UEMG: Kepler (2024), gravitação (2023) e, na Engenharia Ambiental, a hidrostática está por trás de barragens, pressão em tubulações e flutuação.' },
+    { type: 'h', text: '1. Lei da gravitação universal' },
+    { type: 'math', tex: String.raw`F = G\,\dfrac{M\,m}{d^2}` },
+    { type: 'list', items: ['A força é de **atração**, proporcional ao **produto das massas** e **inversamente proporcional ao quadrado da distância**.', 'Se a distância dobra, a força cai para 1/4. Se a distância é reduzida à metade, a força quadruplica.', String.raw`A aceleração da gravidade na superfície de um planeta é $g = \dfrac{G\,M}{R^2}$.`] },
+    { type: 'h', text: '2. Leis de Kepler' },
+    { type: 'figure', svg: SVG_KEPLER, alt: 'Elipse com o Sol em um dos focos, o periélio à esquerda e o afélio à direita', caption: 'O planeta é mais rápido no periélio (mais perto do Sol) e mais lento no afélio.' },
+    { type: 'table', head: ['Lei', 'Enunciado'], rows: [
+      ['1ª (órbitas)', 'Os planetas descrevem **elipses** com o Sol em um dos focos.'],
+      ['2ª (áreas)', 'O raio vetor Sol–planeta varre áreas iguais em tempos iguais; logo a velocidade é **maior no periélio** e menor no afélio.'],
+      ['3ª (períodos)', String.raw`$\dfrac{T^2}{R^3}$ é constante: quanto mais distante do Sol, **maior o período** (ano mais longo).`],
+    ] },
+    { type: 'h', text: '3. Hidrostática' },
+    { type: 'table', head: ['Grandeza', 'Fórmula', 'Unidade'], rows: [
+      ['Densidade', String.raw`$d = \dfrac{m}{V}$`, 'kg/m³ ou g/cm³'],
+      ['Pressão', String.raw`$p = \dfrac{F}{A}$`, 'Pa (N/m²)'],
+      ['Pressão hidrostática (Stevin)', String.raw`$p = d\cdot g\cdot h$`, 'Pa'],
+      ['Empuxo (Arquimedes)', String.raw`$E = d_{\text{líq}}\cdot V_{\text{imerso}}\cdot g$`, 'N'],
+    ] },
+    { type: 'list', items: ['**Princípio de Stevin:** a pressão em um líquido aumenta com a **profundidade**, independentemente do formato do recipiente. A cada 10 m de água, a pressão aumenta cerca de 1 atm (10⁵ Pa).', '**Princípio de Pascal:** a pressão aplicada a um líquido se transmite integralmente a todos os pontos (prensa hidráulica, freios).', '**Princípio de Arquimedes:** todo corpo imerso recebe uma força para cima (empuxo) igual ao **peso do líquido deslocado**.'] },
+    { type: 'callout', kind: 'dica', title: 'Flutua ou afunda?', text: 'Compare as densidades: se d_corpo < d_líquido, o corpo flutua; se d_corpo > d_líquido, afunda; se são iguais, fica em equilíbrio. Um navio de aço flutua porque o casco oco deixa a densidade média menor que a da água.' },
+    { type: 'callout', kind: 'exemplo', text: String.raw`Pressão a 10 m de profundidade na água ($d = 1000$ kg/m³, $g = 10$ m/s²): $p = 1000\cdot 10\cdot 10 = 10^5$ Pa.` },
+  ],
+  exercises: [
+    ex('fisica-4', 1, S, 'Um bloco tem massa de 200 g e volume de 50 cm³. Sua densidade é:', ['0,25 g/cm³', '4 g/cm³', '10 g/cm³', '250 g/cm³'], 1, 'Resposta B (4 g/cm³). Densidade é massa dividida pelo volume: d = m/V = 200/50 = 4 g/cm³.'),
+    ex('fisica-4', 2, S, 'Uma força de 100 N é aplicada perpendicularmente a uma superfície de área 0,5 m². A pressão exercida é de:', ['50 Pa', '200 Pa', '100 Pa', '0,005 Pa'], 1, 'Resposta B (200 Pa). Pressão = força/área = 100/0,5 = 200 Pa (200 N/m²).'),
+    ex('fisica-4', 3, S, 'A pressão hidrostática a 10 m de profundidade na água (d = 1 000 kg/m³, g = 10 m/s²) é:', ['10³ Pa', '10⁴ Pa', '10⁵ Pa', '10⁶ Pa'], 2, 'Resposta C (10⁵ Pa). Pelo teorema de Stevin, p = d · g · h = 1 000 · 10 · 10 = 100 000 Pa = 10⁵ Pa, ou cerca de 1 atm (sem contar a pressão atmosférica acima).'),
+    ex('fisica-4', 4, S, 'Um objeto de volume 0,002 m³ está totalmente submerso na água (d = 1 000 kg/m³). Adotando g = 10 m/s², o empuxo sobre ele é:', ['2 N', '20 N', '200 N', '2 000 N'], 1, 'Resposta B (20 N). E = d · V · g = 1 000 · 0,002 · 10 = 20 N. O empuxo depende da densidade do líquido e do volume imerso, não da massa do objeto.'),
+    ex('fisica-4', 5, S, 'De acordo com a 2ª lei de Kepler, um planeta se move com maior velocidade:', ['no afélio', 'no periélio', 'quando está no centro da órbita', 'com a mesma velocidade em toda a órbita'], 1, 'Resposta B (no periélio). O raio vetor varre áreas iguais em tempos iguais; para isso, quando o planeta está mais perto do Sol (periélio), ele tem de andar mais rápido. No afélio é mais lento.'),
+  ],
+}

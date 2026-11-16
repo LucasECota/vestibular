@@ -14,6 +14,8 @@ export interface ProgressValue {
   /** Última tarefa aberta (vale só se ainda não foi concluída). */
   openTaskId: string | null
   openTask: (taskId: string) => void
+  /** Esconde o botão "voltar para a tarefa" (volta a aparecer ao abrir uma tarefa de novo). */
+  closeOpenTask: () => void
 }
 
 export const ProgressCtx = createContext<ProgressValue | null>(null)

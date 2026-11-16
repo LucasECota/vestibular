@@ -4,7 +4,7 @@ import { levelFromXp, studyStreak } from '../domain/gamification'
 import { completeTask, recordAttempt, totalXp } from '../domain/progress'
 import { recordReview } from '../domain/review'
 import type { ExerciseAttempt, ProgressState } from '../domain/types'
-import { loadOpenTask, saveOpenTask } from '../storage/openTaskStorage'
+import { clearOpenTask, loadOpenTask, saveOpenTask } from '../storage/openTaskStorage'
 import { loadProgress, saveProgress } from '../storage/progressStorage'
 import { ProgressCtx, type ProgressValue } from './useProgress'
 
@@ -17,6 +17,10 @@ export function ProgressProvider({ children, today = todayISO() }: { children: R
   const openTask = useCallback((taskId: string) => {
     setOpenTaskId(taskId)
     saveOpenTask(taskId)
+  }, [])
+  const closeOpenTask = useCallback(() => {
+    setOpenTaskId(null)
+    clearOpenTask()
   }, [])
 
   const answer = useCallback(
@@ -46,8 +50,9 @@ export function ProgressProvider({ children, today = todayISO() }: { children: R
       answerReview,
       openTaskId,
       openTask,
+      closeOpenTask,
     }
-  }, [progress, today, answer, finishTask, answerReview, openTaskId, openTask])
+  }, [progress, today, answer, finishTask, answerReview, openTaskId, openTask, closeOpenTask])
 
   return <ProgressCtx.Provider value={value}>{children}</ProgressCtx.Provider>
 }

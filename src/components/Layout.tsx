@@ -22,22 +22,31 @@ const links = [
 
 /** Botão para retomar a tarefa que foi aberta e ainda não foi concluída. */
 function ResumeTask() {
-  const { openTaskId, progress } = useProgress()
+  const { openTaskId, progress, closeOpenTask } = useProgress()
   const { pathname } = useLocation()
   const task = openTaskId ? taskById(openTaskId) : undefined
   if (!task || progress.completedTaskIds.includes(task.id) || pathname.endsWith(`/tarefa/${task.id}`)) return null
   return (
-    <Link
-      to={`/tarefa/${task.id}`}
-      className="mx-auto flex max-w-md items-center justify-between gap-3 border-b border-l-[6px] border-line bg-white px-4 py-2 text-sm"
+    <div
+      className="mx-auto flex max-w-md items-center gap-2 border-b border-l-[6px] border-line bg-white py-2 pl-4 pr-2 text-sm"
       style={{ borderLeftColor: SUBJECT_COLOR[task.subject] }}
     >
-      <span className="min-w-0">
-        <span className="block text-xs font-bold text-muted">Tarefa em andamento · {SUBJECT_LABEL[task.subject]}</span>
-        <span className="block truncate font-extrabold">{task.title}</span>
-      </span>
-      <span className="shrink-0 rounded-full bg-brand px-3 py-1.5 text-xs font-extrabold text-white">Voltar ↩</span>
-    </Link>
+      <Link to={`/tarefa/${task.id}`} className="flex min-w-0 flex-1 items-center justify-between gap-3">
+        <span className="min-w-0">
+          <span className="block text-xs font-bold text-muted">Tarefa em andamento · {SUBJECT_LABEL[task.subject]}</span>
+          <span className="block truncate font-extrabold">{task.title}</span>
+        </span>
+        <span className="shrink-0 rounded-full bg-brand px-3 py-1.5 text-xs font-extrabold text-white">Voltar ↩</span>
+      </Link>
+      <button
+        type="button"
+        onClick={closeOpenTask}
+        aria-label="Fechar tarefa em andamento"
+        className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full text-lg font-extrabold text-muted active:bg-brand-soft"
+      >
+        ✕
+      </button>
+    </div>
   )
 }
 

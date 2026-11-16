@@ -246,6 +246,33 @@ describe('fluxo principal', () => {
     expect(nav().queryByRole('link', { name: /tarefa em andamento/i })).not.toBeInTheDocument()
   })
 
+  it('o X fecha a faixa de tarefa em andamento, e ela volta ao abrir uma tarefa de novo', async () => {
+    const user = userEvent.setup()
+    const nav = () => within(screen.getByRole('navigation'))
+    const first = renderApp('/tarefa/t-2026-11-17-matematica')
+    await user.click(within(screen.getAllByRole('article')[0]).getByRole('button', { name: MAT1_PICKS[0] }))
+    await user.click(nav().getByRole('link', { name: 'Disciplinas' }))
+    expect(nav().getByRole('link', { name: /tarefa em andamento/i })).toBeInTheDocument()
+
+    await user.click(nav().getByRole('button', { name: /fechar tarefa em andamento/i }))
+    expect(nav().queryByRole('link', { name: /tarefa em andamento/i })).not.toBeInTheDocument()
+    expect(nav().queryByRole('button', { name: /fechar tarefa em andamento/i })).not.toBeInTheDocument()
+    await user.click(nav().getByRole('link', { name: 'Questões' }))
+    expect(nav().queryByRole('link', { name: /tarefa em andamento/i })).not.toBeInTheDocument()
+    first.unmount()
+
+    // continua fechada ao recarregar, e a resposta marcada não se perde
+    const second = renderApp('/guia')
+    expect(within(screen.getByRole('navigation')).queryByRole('link', { name: /tarefa em andamento/i })).not.toBeInTheDocument()
+    second.unmount()
+
+    // abrir a tarefa de novo e sair faz a faixa voltar
+    renderApp('/tarefa/t-2026-11-17-matematica')
+    expect(within(screen.getAllByRole('article')[0]).getByRole('button', { name: MAT1_PICKS[0] })).toHaveAttribute('aria-pressed', 'true')
+    await user.click(within(screen.getByRole('navigation')).getByRole('link', { name: 'Disciplinas' }))
+    expect(within(screen.getByRole('navigation')).getByRole('link', { name: /tarefa em andamento/i })).toBeInTheDocument()
+  })
+
   it('o botão de voltar sobrevive a recarregar a página e só aparece se houve tarefa aberta', () => {
     const first = renderApp('/')
     expect(within(screen.getByRole('navigation')).queryByRole('link', { name: /tarefa em andamento/i })).not.toBeInTheDocument()

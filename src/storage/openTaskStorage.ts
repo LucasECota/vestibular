@@ -16,3 +16,11 @@ export function saveOpenTask(taskId: string): void {
     // sem armazenamento: o botão só vale enquanto o site estiver aberto
   }
 }
+
+export function clearOpenTask(): void {
+  try {
+    localStorage.removeItem(OPEN_TASK_KEY)
+  } catch {
+    // ignora
+  }
+}

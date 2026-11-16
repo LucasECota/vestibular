@@ -11,6 +11,9 @@ export interface ProgressValue {
   answer: (attempt: ExerciseAttempt) => void
   finishTask: (taskId: string) => void
   answerReview: (exerciseId: string, correct: boolean) => void
+  /** Última tarefa aberta (vale só se ainda não foi concluída). */
+  openTaskId: string | null
+  openTask: (taskId: string) => void
 }
 
 export const ProgressCtx = createContext<ProgressValue | null>(null)

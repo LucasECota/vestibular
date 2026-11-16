@@ -215,6 +215,47 @@ describe('fluxo principal', () => {
     expect(review.getByText('Correto!')).toBeInTheDocument()
   })
 
+  it('botão para voltar à tarefa aberta e ainda não concluída', async () => {
+    const user = userEvent.setup()
+    const nav = () => within(screen.getByRole('navigation'))
+    renderApp('/tarefa/t-2026-11-17-matematica')
+
+    // na própria tarefa o botão não aparece
+    expect(nav().queryByRole('link', { name: /tarefa em andamento/i })).not.toBeInTheDocument()
+    await user.click(within(screen.getAllByRole('article')[0]).getByRole('button', { name: MAT1_PICKS[0] })) // marca uma resposta
+
+    // ao ir para outra aba, aparece o botão com o nome da tarefa
+    await user.click(nav().getByRole('link', { name: 'Disciplinas' }))
+    const resume = nav().getByRole('link', { name: /tarefa em andamento.*operações, potências e porcentagem/i })
+    expect(screen.getByRole('heading', { name: 'Disciplinas' })).toBeInTheDocument()
+
+    // continua em qualquer aba
+    await user.click(nav().getByRole('link', { name: 'Questões' }))
+    expect(nav().getByRole('link', { name: /tarefa em andamento/i })).toBeInTheDocument()
+
+    // voltar retoma a tarefa com a resposta que ela já tinha marcado
+    await user.click(nav().getByRole('link', { name: /tarefa em andamento/i }))
+    expect(resume).not.toBeInTheDocument() // o botão some na própria tarefa
+    expect(screen.getByRole('heading', { name: 'Operações, potências e porcentagem' })).toBeInTheDocument()
+    expect(within(screen.getAllByRole('article')[0]).getByRole('button', { name: MAT1_PICKS[0] })).toHaveAttribute('aria-pressed', 'true')
+
+    // concluindo a tarefa, o botão não volta mais
+    for (let i = 1; i < 5; i++) await user.click(within(screen.getAllByRole('article')[i]).getByRole('button', { name: MAT1_PICKS[i] }))
+    await user.click(screen.getByRole('button', { name: /concluir tarefa/i }))
+    await user.click(nav().getByRole('link', { name: 'Disciplinas' }))
+    expect(nav().queryByRole('link', { name: /tarefa em andamento/i })).not.toBeInTheDocument()
+  })
+
+  it('o botão de voltar sobrevive a recarregar a página e só aparece se houve tarefa aberta', () => {
+    const first = renderApp('/')
+    expect(within(screen.getByRole('navigation')).queryByRole('link', { name: /tarefa em andamento/i })).not.toBeInTheDocument()
+    first.unmount()
+    const open = renderApp('/tarefa/t-2026-11-18-fisica', '2026-11-18')
+    open.unmount()
+    renderApp('/guia', '2026-11-18') // "recarregou" em outra página
+    expect(within(screen.getByRole('navigation')).getByRole('link', { name: /tarefa em andamento.*cinemática/i })).toBeInTheDocument()
+  })
+
   it('mostra a estrutura da prova', async () => {
     const user = userEvent.setup()
     renderApp()

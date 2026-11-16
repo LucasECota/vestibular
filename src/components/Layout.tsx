@@ -1,4 +1,7 @@
-import { NavLink, Outlet } from 'react-router-dom'
+import { Link, NavLink, Outlet, useLocation } from 'react-router-dom'
+import { taskById } from '../data/plan'
+import { SUBJECT_COLOR, SUBJECT_LABEL } from '../data/subjects'
+import { useProgress } from '../state/useProgress'
 
 const icons = {
   home: 'M3 11.5 12 4l9 7.5V20a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z',
@@ -17,16 +20,40 @@ const links = [
   { to: '/guia', label: 'Guia', end: false, icon: icons.clock },
 ]
 
+/** Botão para retomar a tarefa que foi aberta e ainda não foi concluída. */
+function ResumeTask() {
+  const { openTaskId, progress } = useProgress()
+  const { pathname } = useLocation()
+  const task = openTaskId ? taskById(openTaskId) : undefined
+  if (!task || progress.completedTaskIds.includes(task.id) || pathname.endsWith(`/tarefa/${task.id}`)) return null
+  return (
+    <Link
+      to={`/tarefa/${task.id}`}
+      className="mx-auto flex max-w-md items-center justify-between gap-3 border-b border-l-[6px] border-line bg-white px-4 py-2 text-sm"
+      style={{ borderLeftColor: SUBJECT_COLOR[task.subject] }}
+    >
+      <span className="min-w-0">
+        <span className="block text-xs font-bold text-muted">Tarefa em andamento · {SUBJECT_LABEL[task.subject]}</span>
+        <span className="block truncate font-extrabold">{task.title}</span>
+      </span>
+      <span className="shrink-0 rounded-full bg-brand px-3 py-1.5 text-xs font-extrabold text-white">Voltar ↩</span>
+    </Link>
+  )
+}
+
 export function Layout() {
+  const { openTaskId, progress } = useProgress()
+  const hasResume = Boolean(openTaskId && taskById(openTaskId) && !progress.completedTaskIds.includes(openTaskId))
   return (
     <div className="mx-auto flex min-h-dvh max-w-md flex-col">
-      <main className="flex-1 px-4 pb-28 pt-6">
+      <main className={`flex-1 px-4 pt-6 ${hasResume ? 'pb-44' : 'pb-28'}`}>
         <Outlet />
       </main>
       <nav
         aria-label="Navegação principal"
         className="fixed inset-x-0 bottom-0 z-10 border-t border-line bg-surface/95 pb-[env(safe-area-inset-bottom)] backdrop-blur"
       >
+        <ResumeTask />
         <ul className="mx-auto flex max-w-md px-2 py-1">
           {links.map((l) => (
             <li key={l.to} className="flex-1">

@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import { ExerciseView } from '../components/ExerciseCard'
 import { LessonView } from '../components/LessonView'
@@ -13,7 +13,7 @@ import { useProgress } from '../state/useProgress'
 
 export function TaskPage() {
   const { taskId = '' } = useParams()
-  const { progress, today, answer, answerReview, finishTask } = useProgress()
+  const { progress, today, answer, answerReview, finishTask, openTask } = useProgress()
   const { draft, choose, clearStorage } = useDraftAnswers(taskId)
   const [finishedHere, setFinishedHere] = useState(false)
   // revisão de erros vencidos: lista fixada ao abrir a tarefa
@@ -25,6 +25,12 @@ export function TaskPage() {
   )
   const task = taskById(taskId)
   const lesson = task ? lessonBySlug(task.lessonSlug) : undefined
+  const taskDone = progress.completedTaskIds.includes(taskId)
+
+  // guarda a tarefa aberta e não concluída, para o botão "voltar para a tarefa" do menu
+  useEffect(() => {
+    if (task && !taskDone) openTask(task.id)
+  }, [task, taskDone, openTask])
 
   if (!task) {
     return (

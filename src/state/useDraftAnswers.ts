@@ -1,6 +1,7 @@
 import { useCallback, useState } from 'react'
+import { scopedKey } from '../storage/scope'
 
-const key = (taskId: string) => `vestibular-uemg:draft:${taskId}`
+const key = (taskId: string) => scopedKey(`vestibular-uemg:draft:${taskId}`)
 
 function load(taskId: string): Record<string, number> {
   try {

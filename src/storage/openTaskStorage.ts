@@ -1,9 +1,11 @@
+import { scopedKey } from './scope'
+
 export const OPEN_TASK_KEY = 'vestibular-uemg:open-task:v1'
 
 /** Id da última tarefa aberta (para o botão "voltar para a tarefa"). */
 export function loadOpenTask(): string | null {
   try {
-    return localStorage.getItem(OPEN_TASK_KEY)
+    return localStorage.getItem(scopedKey(OPEN_TASK_KEY))
   } catch {
     return null
   }
@@ -11,7 +13,7 @@ export function loadOpenTask(): string | null {
 
 export function saveOpenTask(taskId: string): void {
   try {
-    localStorage.setItem(OPEN_TASK_KEY, taskId)
+    localStorage.setItem(scopedKey(OPEN_TASK_KEY), taskId)
   } catch {
     // sem armazenamento: o botão só vale enquanto o site estiver aberto
   }
@@ -19,7 +21,7 @@ export function saveOpenTask(taskId: string): void {
 
 export function clearOpenTask(): void {
   try {
-    localStorage.removeItem(OPEN_TASK_KEY)
+    localStorage.removeItem(scopedKey(OPEN_TASK_KEY))
   } catch {
     // ignora
   }

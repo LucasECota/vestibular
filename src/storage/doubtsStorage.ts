@@ -1,4 +1,5 @@
 import type { Doubt } from '../domain/doubts'
+import { notifyLocalChange, scopedKey } from './scope'
 
 export const DOUBTS_KEY = 'vestibular-uemg:doubts:v1'
 
@@ -14,21 +15,36 @@ const isDoubt = (v: unknown): v is Doubt => {
   )
 }
 
-export function loadDoubts(): Doubt[] {
+/** Valida dúvidas vindas do aparelho ou da nuvem; dados inválidos viram lista vazia. */
+export const parseDoubts = (raw: unknown): Doubt[] =>
+  Array.isArray(raw) && raw.every(isDoubt) ? raw : []
+
+function read(key: string): Doubt[] {
   try {
-    const raw = localStorage.getItem(DOUBTS_KEY)
-    if (!raw) return []
-    const parsed: unknown = JSON.parse(raw)
-    return Array.isArray(parsed) && parsed.every(isDoubt) ? parsed : []
+    const raw = localStorage.getItem(key)
+    return raw ? parseDoubts(JSON.parse(raw)) : []
   } catch {
     return []
   }
 }
 
+export const loadDoubts = (): Doubt[] => read(scopedKey(DOUBTS_KEY))
+
+export const loadLegacyDoubts = (): Doubt[] => read(DOUBTS_KEY)
+
+export function removeLegacyDoubts(): void {
+  try {
+    localStorage.removeItem(DOUBTS_KEY)
+  } catch {
+    // ignora
+  }
+}
+
 export function saveDoubts(list: Doubt[]): void {
   try {
-    localStorage.setItem(DOUBTS_KEY, JSON.stringify(list))
+    localStorage.setItem(scopedKey(DOUBTS_KEY), JSON.stringify(list))
   } catch {
     // armazenamento indisponível: segue sem persistir
   }
+  notifyLocalChange()
 }

@@ -7,6 +7,7 @@ import { HomePage } from './pages/HomePage'
 import { ReviewPage } from './pages/ReviewPage'
 import { GuidePage } from './pages/GuidePage'
 import { QuestionBankPage } from './pages/QuestionBankPage'
+import { ProgressReportPage } from './pages/ProgressReportPage'
 import { PlanPage } from './pages/PlanPage'
 import { SubjectsPage } from './pages/SubjectsPage'
 import { TaskPage } from './pages/TaskPage'
@@ -17,6 +18,7 @@ export default function App() {
       <Route element={<Layout />}>
         <Route index element={<HomePage />} />
         <Route path="disciplinas" element={<SubjectsPage />} />
+        <Route path="acompanhamento" element={<ProgressReportPage />} />
         <Route path="revisao" element={<ReviewPage />} />
         <Route path="questoes" element={<QuestionBankPage />} />
         <Route path="guia" element={<GuidePage />} />

@@ -15,6 +15,7 @@
     "test:scripts": "python3 scripts/test_uemg_parser.py"
   },
   "dependencies": {
+    "@supabase/supabase-js": "^2.119.0",
     "katex": "^0.19.1",
     "react": "^19.3.1",
     "react-dom": "^19.3.1",

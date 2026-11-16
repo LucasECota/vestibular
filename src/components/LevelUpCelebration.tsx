@@ -1,5 +1,6 @@
 import { useEffect, useState, type CSSProperties } from 'react'
 import { loadSeenLevel, saveSeenLevel } from '../storage/levelStorage'
+import { useAuth } from '../cloud/useAuth'
 import { useProgress } from '../state/useProgress'
 
 const COLORS = ['#6d28d9', '#f59e0b', '#16a34a', '#e11d48', '#0ea5e9', '#f97316']
@@ -17,6 +18,7 @@ const ROCKETS = [8, 28, 50, 72, 90].map((left, i) => ({ left, delay: i * 0.5, du
 /** Card "Você subiu de nível!" com foguetes, confetes e palmas. Aparece uma vez por nível conquistado. */
 export function LevelUpCelebration() {
   const { level, xp } = useProgress()
+  const { user } = useAuth()
   // nível já "visto" neste aparelho; na primeira vez, é o nível atual (não comemora o que já existia)
   const [seen, setSeen] = useState<number>(() => loadSeenLevel() ?? level.level)
 
@@ -77,7 +79,7 @@ export function LevelUpCelebration() {
         </h2>
         <p className="mt-3 text-sm font-bold text-muted">Seu novo nível</p>
         <p className="text-6xl font-extrabold text-brand">{celebrating}</p>
-        <p className="mt-1 text-base font-semibold">Total: {xp} XP. Continue assim, Daniela! 🚀</p>
+        <p className="mt-1 text-base font-semibold">Total: {xp} XP. Continue assim, {user?.displayName ?? 'Daniela'}! 🚀</p>
         <button
           type="button"
           autoFocus

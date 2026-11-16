@@ -6,9 +6,10 @@ import { EXAM_DATE_ESTIMATE, PLAN } from '../data/plan'
 import { daysBetween } from '../domain/date'
 import { dueReviews } from '../domain/review'
 import { SUBJECT_COLOR } from '../data/subjects'
+import { useAuth } from '../cloud/useAuth'
 import { useProgress } from '../state/useProgress'
 
-const STUDENT_NAME = 'Daniela'
+const DEFAULT_NAME = 'Daniela'
 
 function greeting(): string {
   const h = new Date().getHours()
@@ -16,6 +17,8 @@ function greeting(): string {
 }
 
 export function HomePage() {
+  const { user } = useAuth()
+  const name = user?.displayName ?? DEFAULT_NAME
   const { today, xp, level, streak, progress } = useProgress()
   const todayTasks = PLAN.filter((t) => t.date === today)
   const daysLeft = Math.max(0, daysBetween(today, EXAM_DATE_ESTIMATE))
@@ -26,7 +29,7 @@ export function HomePage() {
     <div className="space-y-6">
       <header>
         <p className="text-sm font-bold text-brand">{greeting()},</p>
-        <h1 className="text-3xl font-extrabold tracking-tight">{STUDENT_NAME}! 👋</h1>
+        <h1 className="text-3xl font-extrabold tracking-tight">{name}! 👋</h1>
         <p className="mt-1 text-muted">Vamos estudar para o vestibular da UEMG.</p>
       </header>
 

@@ -1,4 +1,5 @@
 import { emptyProgress, type ProgressState } from '../domain/types'
+import { notifyLocalChange, scopedKey } from './scope'
 
 export const STORAGE_KEY = 'vestibular-uemg:progress:v1'
 
@@ -13,21 +14,38 @@ function isProgress(v: unknown): v is Partial<ProgressState> {
   )
 }
 
-export function loadProgress(): ProgressState {
+/** Valida dados vindos do aparelho ou da nuvem; o que estiver inválido vira progresso vazio. */
+export function parseProgress(raw: unknown): ProgressState {
+  return isProgress(raw) ? { ...emptyProgress(), ...raw } : emptyProgress()
+}
+
+function read(key: string): ProgressState {
   try {
-    const raw = localStorage.getItem(STORAGE_KEY)
-    if (!raw) return emptyProgress()
-    const parsed: unknown = JSON.parse(raw)
-    return isProgress(parsed) ? { ...emptyProgress(), ...parsed } : emptyProgress()
+    const raw = localStorage.getItem(key)
+    return raw ? parseProgress(JSON.parse(raw)) : emptyProgress()
   } catch {
     return emptyProgress()
   }
 }
 
+export const loadProgress = (): ProgressState => read(scopedKey(STORAGE_KEY))
+
+/** Progresso salvo antes de existir login (chave sem escopo). */
+export const loadLegacyProgress = (): ProgressState => read(STORAGE_KEY)
+
+export function removeLegacyProgress(): void {
+  try {
+    localStorage.removeItem(STORAGE_KEY)
+  } catch {
+    // ignora
+  }
+}
+
 export function saveProgress(state: ProgressState): void {
   try {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(state))
+    localStorage.setItem(scopedKey(STORAGE_KEY), JSON.stringify(state))
   } catch {
     // armazenamento indisponível (modo privado/cheio): segue sem persistir
   }
+  notifyLocalChange()
 }

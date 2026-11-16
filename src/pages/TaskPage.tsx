@@ -1,6 +1,6 @@
 import { Link, useParams } from 'react-router-dom'
 import { ExerciseCard } from '../components/ExerciseCard'
-import { exerciseById } from '../data/exercises'
+import { exerciseById } from '../data/questionBank'
 import { taskById } from '../data/plan'
 import { SubjectChip } from '../components/SubjectChip'
 import { SUBJECT_COLOR } from '../data/subjects'

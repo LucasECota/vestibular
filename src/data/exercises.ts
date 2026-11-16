@@ -1,5 +1,10 @@
 import type { SubjectId } from '../domain/types'
 
+export interface ExerciseContext {
+  text: string
+  images: string[]
+}
+
 export interface Exercise {
   id: string
   subject: SubjectId
@@ -7,7 +12,16 @@ export interface Exercise {
   options: [string, string, string, string]
   /** Índice (0–3) da alternativa correta. */
   answer: 0 | 1 | 2 | 3
-  explanation: string
+  /** Explicação do porquê; ainda não existe para as questões importadas das provas. */
+  explanation?: string
+  /** Textos de apoio compartilhados (ex.: "Leia o texto para as questões 1 e 2"). */
+  context?: ExerciseContext[]
+  /** Figuras recortadas da prova (caminhos relativos a `public/`). */
+  images?: string[]
+  /** Recortes da questão inteira, como aparece na prova. */
+  snapshots?: string[]
+  /** Origem, para questões de provas anteriores. */
+  source?: { year: number; number: number }
 }
 
 /** Exercícios de exemplo; o banco real virá das provas importadas. */
@@ -30,4 +44,4 @@ export const EXERCISES: Exercise[] = [
   },
 ]
 
-export const exerciseById = (id: string): Exercise | undefined => EXERCISES.find((e) => e.id === id)
+

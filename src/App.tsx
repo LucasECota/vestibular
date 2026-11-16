@@ -4,6 +4,8 @@ import { ExamPage } from './pages/ExamPage'
 import { DoubtsPage } from './pages/DoubtsPage'
 import { EssayPage } from './pages/EssayPage'
 import { HomePage } from './pages/HomePage'
+import { GuidePage } from './pages/GuidePage'
+import { QuestionBankPage } from './pages/QuestionBankPage'
 import { PlanPage } from './pages/PlanPage'
 import { SubjectsPage } from './pages/SubjectsPage'
 import { TaskPage } from './pages/TaskPage'
@@ -14,6 +16,8 @@ export default function App() {
       <Route element={<Layout />}>
         <Route index element={<HomePage />} />
         <Route path="disciplinas" element={<SubjectsPage />} />
+        <Route path="questoes" element={<QuestionBankPage />} />
+        <Route path="guia" element={<GuidePage />} />
         <Route path="plano" element={<PlanPage />} />
         <Route path="duvidas" element={<DoubtsPage />} />
         <Route path="prova" element={<ExamPage />} />

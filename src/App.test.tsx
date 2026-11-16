@@ -47,7 +47,8 @@ describe('fluxo principal', () => {
     renderApp()
     await user.click(screen.getByRole('link', { name: 'Disciplinas' }))
     expect(screen.getByRole('heading', { name: 'Disciplinas' })).toBeInTheDocument()
-    await user.click(screen.getByRole('link', { name: 'Redação' }))
+    await user.click(screen.getByRole('link', { name: 'Guia' }))
+    await user.click(screen.getByRole('link', { name: /redação/i }))
     expect(screen.getByRole('heading', { name: 'Redação' })).toBeInTheDocument()
   })
 
@@ -81,10 +82,32 @@ describe('fluxo principal', () => {
     expect(screen.getByLabelText(/disciplina/i)).toHaveValue('matematica')
   })
 
+  it('banco de questões: filtra por disciplina, responde e mostra o gabarito oficial', async () => {
+    const user = userEvent.setup()
+    renderApp('/questoes')
+    await user.selectOptions(screen.getByLabelText(/disciplina/i), 'matematica')
+    await user.selectOptions(screen.getByLabelText(/^ano/i), '2024')
+    expect(screen.getByText(/5 questões|\d+ questões/)).toBeInTheDocument()
+    const first = screen.getAllByRole('article')[0]
+    expect(within(first).getByText(/UEMG 2024, questão 43/)).toBeInTheDocument()
+    await user.click(within(first).getByRole('button', { name: /^D\s*25\./ })) // gabarito oficial: D
+    expect(within(first).getByText('Correto!')).toBeInTheDocument()
+  })
+
+  it('tarefa de prática traz questões de provas anteriores', async () => {
+    const user = userEvent.setup()
+    renderApp('/tarefa/t-2026-11-20-matematica')
+    expect(screen.getByRole('heading', { name: /questões de provas anteriores/i })).toBeInTheDocument()
+    expect(screen.getAllByRole('article').length).toBeGreaterThanOrEqual(3)
+    await user.click(screen.getAllByRole('button', { name: /ver a questão como na prova/i })[0])
+    expect(screen.getAllByAltText(/como aparece na prova/i)[0]).toBeInTheDocument()
+  })
+
   it('mostra a estrutura da prova', async () => {
     const user = userEvent.setup()
     renderApp()
-    await user.click(screen.getByRole('link', { name: 'Prova' }))
+    await user.click(screen.getByRole('link', { name: 'Guia' }))
+    await user.click(screen.getByRole('link', { name: /^A prova/ }))
     expect(screen.getByRole('heading', { name: 'A prova' })).toBeInTheDocument()
     expect(screen.getByText('4h')).toBeInTheDocument()
     expect(screen.getByText('48')).toBeInTheDocument()

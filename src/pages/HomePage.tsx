@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import { ProgressBar } from '../components/ProgressBar'
+import { ScoreRules } from '../components/ScoreRules'
 import { SubjectChip } from '../components/SubjectChip'
 import { EXAM_DATE_ESTIMATE, PLAN } from '../data/plan'
 import { daysBetween } from '../domain/date'
@@ -62,6 +63,8 @@ export function HomePage() {
           🔥 Sequência: {streak} {streak === 1 ? 'dia' : 'dias'}
         </p>
       </section>
+
+      <ScoreRules />
 
       {reviewCount > 0 && (
         <Link

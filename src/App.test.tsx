@@ -54,6 +54,27 @@ describe('fluxo principal', () => {
     expect(screen.getByRole('region', { name: 'Semana 1' })).toHaveTextContent('17/11')
   })
 
+  it('explica a pontuação, e questão de provas anteriores acertada rende pontos', async () => {
+    const user = userEvent.setup()
+    renderApp()
+    const rules = screen.getByText(/como ganho pontos/i).closest('details')!
+    expect(rules).toHaveTextContent('+10 XP')
+    expect(rules).toHaveTextContent('+2 XP')
+    expect(rules).toHaveTextContent('+50 XP')
+    expect(rules).toHaveTextContent('+5 XP')
+    expect(rules).toHaveTextContent(/provas anteriores/i)
+
+    // o que o texto promete confere: acertar uma questão de prova anterior dá +10 XP
+    await user.click(within(screen.getByRole('navigation')).getByRole('link', { name: 'Questões' }))
+    await user.selectOptions(screen.getByLabelText(/disciplina/i), 'matematica')
+    await user.selectOptions(screen.getByLabelText(/^ano/i), '2024')
+    const first = screen.getAllByRole('article')[0]
+    await user.click(within(first).getByRole('button', { name: /^D\s*25\./ })) // gabarito oficial
+    await user.click(within(first).getByRole('button', { name: /confirmar resposta/i }))
+    await user.click(within(screen.getByRole('navigation')).getByRole('link', { name: 'Hoje' }))
+    expect(screen.getByText('10 XP')).toBeInTheDocument()
+  })
+
   it('cumprimenta a Daniela', () => {
     renderApp()
     expect(screen.getByRole('heading', { name: /daniela/i })).toBeInTheDocument()

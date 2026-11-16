@@ -256,6 +256,36 @@ describe('fluxo principal', () => {
     expect(within(screen.getByRole('navigation')).getByRole('link', { name: /tarefa em andamento.*cinemática/i })).toBeInTheDocument()
   })
 
+  it('páginas do guia têm botão Voltar: volta para onde ela estava, ou para o Guia se abriu direto', async () => {
+    const user = userEvent.setup()
+    // veio do Guia -> Redação -> Voltar
+    const first = renderApp('/guia')
+    await user.click(screen.getByRole('link', { name: /redação/i }))
+    expect(screen.getByRole('heading', { name: 'Redação' })).toBeInTheDocument()
+    await user.click(screen.getByRole('button', { name: /voltar/i }))
+    expect(screen.getByRole('heading', { name: 'Guia' })).toBeInTheDocument()
+
+    // Guia -> A prova -> Voltar
+    await user.click(screen.getByRole('link', { name: /^A prova/ }))
+    expect(screen.getByRole('heading', { name: 'A prova' })).toBeInTheDocument()
+    await user.click(screen.getByRole('button', { name: /voltar/i }))
+    expect(screen.getByRole('heading', { name: 'Guia' })).toBeInTheDocument()
+    first.unmount()
+
+    // Home -> Plano -> Voltar: volta para a Home (a página anterior), não para o Guia
+    const second = renderApp('/')
+    await user.click(screen.getByRole('link', { name: /plano de estudo completo/i }))
+    expect(screen.getByRole('heading', { name: 'Plano de estudo' })).toBeInTheDocument()
+    await user.click(screen.getByRole('button', { name: /voltar/i }))
+    expect(screen.getByRole('heading', { name: /daniela/i })).toBeInTheDocument()
+    second.unmount()
+
+    // abriu a Redação direto (sem página anterior) -> Voltar leva ao Guia
+    renderApp('/redacao')
+    await user.click(screen.getByRole('button', { name: /voltar/i }))
+    expect(screen.getByRole('heading', { name: 'Guia' })).toBeInTheDocument()
+  })
+
   it('mostra a estrutura da prova', async () => {
     const user = userEvent.setup()
     renderApp()

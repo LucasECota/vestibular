@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import { BackButton } from '../components/BackButton'
 import { SubjectChip } from '../components/SubjectChip'
 import { EXAM_DATE_ESTIMATE, PLAN } from '../data/plan'
 import { addDays, formatBR, weekdayOf } from '../domain/date'
@@ -22,7 +23,7 @@ export function PlanPage() {
 
   return (
     <div className="space-y-6">
-      <Link to="/" className="text-sm font-bold text-brand">‹ Hoje</Link>
+      <BackButton fallback="/" />
       <header>
         <h1 className="text-3xl font-extrabold tracking-tight">Plano de estudo</h1>
         <p className="text-muted">

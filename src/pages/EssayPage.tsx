@@ -1,3 +1,5 @@
+import { BackButton } from '../components/BackButton'
+
 const parts = [
   { title: 'Introdução', text: 'Apresente o tema e a sua tese (o ponto de vista que você vai defender) em 3 a 5 linhas.' },
   { title: 'Desenvolvimento 1', text: 'Primeiro argumento, com explicação e um exemplo, dado ou referência que o sustente.' },
@@ -8,6 +10,7 @@ const parts = [
 export function EssayPage() {
   return (
     <div className="space-y-4">
+      <BackButton />
       <h1 className="text-3xl font-extrabold tracking-tight">Redação</h1>
       <p className="text-muted">
         Texto dissertativo-argumentativo com 15 a 30 linhas, a partir de textos motivadores, valendo até 60

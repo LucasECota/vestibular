@@ -1,3 +1,4 @@
+import { BackButton } from '../components/BackButton'
 import { EXAM, examTotals, paceSuggestion } from '../data/exam'
 
 const fmtHours = (min: number) => `${min / 60}h`
@@ -17,6 +18,7 @@ export function ExamPage() {
 
   return (
     <div className="space-y-6">
+      <BackButton />
       <header>
         <h1 className="text-3xl font-extrabold tracking-tight">A prova</h1>
         <p className="text-muted">

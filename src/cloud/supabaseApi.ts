@@ -8,7 +8,7 @@ export const SUPABASE_URL = 'https://dxjkyymznotuetzkzdrm.supabase.co'
 export const SUPABASE_PUBLISHABLE_KEY = 'sb_publishable_rwZuK9bBfV6XnpMlR7bvhw_KAvr96PM'
 
 /** O login é por "usuário"; o Supabase exige e-mail, então montamos um e-mail interno. */
-export const emailFor = (username: string): string => `${username.trim().toLowerCase()}@vestibular-uemg.app`
+export const emailFor = (username: string): string => `${username.trim().toLowerCase()}@vestibular.app`
 
 interface ProfileRow {
   id: string

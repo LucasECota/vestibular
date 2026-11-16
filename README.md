@@ -21,7 +21,7 @@ Os PDFs oficiais ficam em `pdfs/` e o texto extraído em `data/raw/`. Ambos são
 O site exige login. O progresso de cada pessoa fica salvo na nuvem (Supabase) e o administrador
 (Lucas) vê o desempenho da aluna (Daniela) na página **Guia > Acompanhamento**.
 
-1. Em `Authentication > Users`, crie `dani@vestibular-uemg.app` e `lucas@vestibular-uemg.app`
+1. Em `Authentication > Users`, crie `dani@vestibular.app` e `lucas@vestibular.app`
    (marque *Auto Confirm User*), cada um com a senha escolhida. No login do site basta digitar
    `dani` ou `lucas`.
 2. Cole `supabase/schema.sql` em `SQL Editor` e rode. Isso cria as tabelas, as regras de acesso

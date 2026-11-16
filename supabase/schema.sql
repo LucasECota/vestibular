@@ -63,8 +63,9 @@ create policy "estado: aluno atualiza o proprio"
 -- ============================================================================
 -- 4) PERFIS DOS DOIS USUARIOS
 -- Rode esta parte DEPOIS de criar os usuarios em Authentication > Users, com os e-mails:
---     dani@vestibular-uemg.app   (aluna)
---     lucas@vestibular-uemg.app  (administrador: ve o desempenho dela)
+--     dani@vestibular.app   (aluna)
+--     lucas@vestibular.app  (administrador: ve o desempenho dela)
+-- (O dominio do e-mail nao importa: o perfil e achado pela parte antes do @.)
 -- ============================================================================
 insert into public.profiles (id, username, display_name, role)
 select
@@ -73,7 +74,7 @@ select
   case split_part(email, '@', 1) when 'lucas' then 'Lucas' else 'Daniela' end,
   case split_part(email, '@', 1) when 'lucas' then 'admin' else 'student' end
 from auth.users
-where email in ('dani@vestibular-uemg.app', 'lucas@vestibular-uemg.app')
+where split_part(email, '@', 1) in ('dani', 'lucas')
 on conflict (id) do update
   set username = excluded.username,
       display_name = excluded.display_name,

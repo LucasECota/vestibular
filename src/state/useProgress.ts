@@ -10,6 +10,7 @@ export interface ProgressValue {
   streak: number
   answer: (attempt: ExerciseAttempt) => void
   finishTask: (taskId: string) => void
+  answerReview: (exerciseId: string, correct: boolean) => void
 }
 
 export const ProgressCtx = createContext<ProgressValue | null>(null)

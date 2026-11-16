@@ -4,6 +4,7 @@ import { ExamPage } from './pages/ExamPage'
 import { DoubtsPage } from './pages/DoubtsPage'
 import { EssayPage } from './pages/EssayPage'
 import { HomePage } from './pages/HomePage'
+import { ReviewPage } from './pages/ReviewPage'
 import { GuidePage } from './pages/GuidePage'
 import { QuestionBankPage } from './pages/QuestionBankPage'
 import { PlanPage } from './pages/PlanPage'
@@ -16,6 +17,7 @@ export default function App() {
       <Route element={<Layout />}>
         <Route index element={<HomePage />} />
         <Route path="disciplinas" element={<SubjectsPage />} />
+        <Route path="revisao" element={<ReviewPage />} />
         <Route path="questoes" element={<QuestionBankPage />} />
         <Route path="guia" element={<GuidePage />} />
         <Route path="plano" element={<PlanPage />} />

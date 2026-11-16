@@ -3,6 +3,7 @@ import { ProgressBar } from '../components/ProgressBar'
 import { SubjectChip } from '../components/SubjectChip'
 import { EXAM_DATE_ESTIMATE, PLAN } from '../data/plan'
 import { daysBetween } from '../domain/date'
+import { dueReviews } from '../domain/review'
 import { SUBJECT_COLOR } from '../data/subjects'
 import { useProgress } from '../state/useProgress'
 
@@ -17,6 +18,7 @@ export function HomePage() {
   const { today, xp, level, streak, progress } = useProgress()
   const todayTasks = PLAN.filter((t) => t.date === today)
   const daysLeft = Math.max(0, daysBetween(today, EXAM_DATE_ESTIMATE))
+  const reviewCount = dueReviews(progress, today).length
   const doneToday = todayTasks.filter((t) => progress.completedTaskIds.includes(t.id)).length
 
   return (
@@ -60,6 +62,16 @@ export function HomePage() {
           🔥 Sequência: {streak} {streak === 1 ? 'dia' : 'dias'}
         </p>
       </section>
+
+      {reviewCount > 0 && (
+        <Link
+          to="/revisao"
+          className="card flex items-center justify-between gap-3 border-l-[6px] border-l-accent px-4 py-3 text-base font-bold"
+        >
+          <span>🔁 {reviewCount} {reviewCount === 1 ? 'questão para revisar' : 'questões para revisar'}</span>
+          <span className="text-brand">Revisar ›</span>
+        </Link>
+      )}
 
       <section aria-label="Tarefas de hoje" className="space-y-3">
         <div className="flex items-baseline justify-between">

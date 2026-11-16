@@ -1,5 +1,6 @@
 import { Link, useParams } from 'react-router-dom'
 import { ExerciseCard } from '../components/ExerciseCard'
+import { ReviewSection } from '../components/ReviewSection'
 import { exerciseById } from '../data/questionBank'
 import { taskById } from '../data/plan'
 import { SubjectChip } from '../components/SubjectChip'
@@ -54,6 +55,8 @@ export function TaskPage() {
           />
         ))}
       </section>
+
+      <ReviewSection limit={3} />
 
       <Link
         to={`/duvidas?materia=${task.subject}`}

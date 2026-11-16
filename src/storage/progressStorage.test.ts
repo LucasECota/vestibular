@@ -11,6 +11,10 @@ describe('progressStorage', () => {
     saveProgress(p)
     expect(loadProgress()).toEqual(p)
   })
+  it('aceita progresso salvo antes da fila de revisão existir', () => {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify({ completedTaskIds: ['t1'], activeDates: [], attempts: [] }))
+    expect(loadProgress()).toEqual({ ...emptyProgress(), completedTaskIds: ['t1'] })
+  })
   it('ignora JSON corrompido', () => {
     localStorage.setItem(STORAGE_KEY, '{nao-e-json')
     expect(loadProgress()).toEqual(emptyProgress())

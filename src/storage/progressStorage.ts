@@ -5,7 +5,7 @@ export const STORAGE_KEY = 'vestibular-uemg:progress:v1'
 const isStringArray = (v: unknown): v is string[] =>
   Array.isArray(v) && v.every((x) => typeof x === 'string')
 
-function isProgress(v: unknown): v is ProgressState {
+function isProgress(v: unknown): v is Partial<ProgressState> {
   if (typeof v !== 'object' || v === null) return false
   const o = v as Record<string, unknown>
   return (
@@ -18,7 +18,7 @@ export function loadProgress(): ProgressState {
     const raw = localStorage.getItem(STORAGE_KEY)
     if (!raw) return emptyProgress()
     const parsed: unknown = JSON.parse(raw)
-    return isProgress(parsed) ? parsed : emptyProgress()
+    return isProgress(parsed) ? { ...emptyProgress(), ...parsed } : emptyProgress()
   } catch {
     return emptyProgress()
   }

@@ -1,4 +1,5 @@
 import { XP_TASK_COMPLETE, xpForAttempt } from './gamification'
+import { enqueueWrong, XP_REVIEW_CORRECT } from './review'
 import type { ExerciseAttempt, ProgressState, StudyTask, SubjectId } from './types'
 
 const addDate = (dates: string[], date: string): string[] =>
@@ -11,11 +12,12 @@ export function recordAttempt(
   date: string,
 ): ProgressState {
   if (state.attempts.some((a) => a.exerciseId === attempt.exerciseId)) return state
-  return {
+  const next: ProgressState = {
     ...state,
     attempts: [...state.attempts, attempt],
     activeDates: addDate(state.activeDates, date),
   }
+  return attempt.correct ? next : enqueueWrong(next, attempt.exerciseId, attempt.subject, date)
 }
 
 export function completeTask(state: ProgressState, taskId: string, date: string): ProgressState {
@@ -29,7 +31,8 @@ export function completeTask(state: ProgressState, taskId: string, date: string)
 
 export const totalXp = (state: ProgressState): number =>
   state.attempts.reduce((sum, a) => sum + xpForAttempt(a.correct), 0) +
-  state.completedTaskIds.length * XP_TASK_COMPLETE
+  state.completedTaskIds.length * XP_TASK_COMPLETE +
+  state.reviewCorrect * XP_REVIEW_CORRECT
 
 export interface SubjectProgress {
   subject: SubjectId

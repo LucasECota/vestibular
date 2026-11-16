@@ -34,15 +34,30 @@ export interface ExerciseAttempt {
   correct: boolean
 }
 
+/** Questão errada que deve voltar para revisão em datas futuras. */
+export interface ReviewItem {
+  exerciseId: string
+  subject: SubjectId
+  /** Data (YYYY-MM-DD) a partir da qual a questão volta a aparecer. */
+  dueDate: string
+  /** Etapa do espaçamento: 0 = 1º dia, 1 = 3 dias, 2 = 7 dias, 3 = 14 dias. */
+  step: number
+}
+
 export interface ProgressState {
   completedTaskIds: string[]
   /** Datas (YYYY-MM-DD) em que houve atividade. */
   activeDates: string[]
   attempts: ExerciseAttempt[]
+  reviewQueue: ReviewItem[]
+  /** Revisões acertadas (cada uma vale XP). */
+  reviewCorrect: number
 }
 
 export const emptyProgress = (): ProgressState => ({
   completedTaskIds: [],
   activeDates: [],
   attempts: [],
+  reviewQueue: [],
+  reviewCorrect: 0,
 })

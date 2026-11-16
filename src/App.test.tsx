@@ -5,10 +5,10 @@ import App from './App'
 import { PLAN } from './data/plan'
 import { ProgressProvider } from './state/ProgressProvider'
 
-const renderApp = (route = '/') =>
+const renderApp = (route = '/', today = '2026-11-16') =>
   render(
     <MemoryRouter initialEntries={[route]}>
-      <ProgressProvider today="2026-11-16">
+      <ProgressProvider today={today}>
         <App />
       </ProgressProvider>
     </MemoryRouter>,
@@ -101,6 +101,42 @@ describe('fluxo principal', () => {
     expect(screen.getAllByRole('article').length).toBeGreaterThanOrEqual(3)
     await user.click(screen.getAllByRole('button', { name: /ver a questão como na prova/i })[0])
     expect(screen.getAllByAltText(/como aparece na prova/i)[0]).toBeInTheDocument()
+  })
+
+  it('questão errada volta para revisão nos dias seguintes, e acertar rende XP', async () => {
+    const user = userEvent.setup()
+    // dia 1: erra a questão 1 da tarefa de Matemática (certa: C = 17)
+    const day1 = renderApp('/tarefa/t-2026-11-16-matematica', '2026-11-16')
+    const card = screen.getAllByRole('article')[0]
+    await user.click(within(card).getByRole('button', { name: /^A\s*11/ }))
+    expect(within(card).getByText(/resposta certa: C/i)).toBeInTheDocument()
+    day1.unmount()
+
+    // mesmo dia: ainda não vence
+    const same = renderApp('/revisao', '2026-11-16')
+    expect(screen.getByText(/nada para revisar hoje/i)).toBeInTheDocument()
+    same.unmount()
+
+    // dia 2: aparece na Home e em /revisao
+    const day2 = renderApp('/', '2026-11-17')
+    expect(screen.getByText(/1 questão para revisar/i)).toBeInTheDocument()
+    day2.unmount()
+
+    renderApp('/revisao', '2026-11-17')
+    const review = screen.getAllByRole('article')[0]
+    await user.click(within(review).getByRole('button', { name: /^C\s*17/ }))
+    expect(within(review).getByText('Correto!')).toBeInTheDocument()
+    // continua visível depois de responder
+    expect(screen.getAllByRole('article')).toHaveLength(1)
+  })
+
+  it('tarefa mostra a revisão de erros vencidos', async () => {
+    const user = userEvent.setup()
+    const day1 = renderApp('/tarefa/t-2026-11-16-matematica', '2026-11-16')
+    await user.click(within(screen.getAllByRole('article')[0]).getByRole('button', { name: /^A\s*11/ }))
+    day1.unmount()
+    renderApp('/tarefa/t-2026-11-17-fisica', '2026-11-17')
+    expect(screen.getByRole('region', { name: /revisão de erros/i })).toBeInTheDocument()
   })
 
   it('mostra a estrutura da prova', async () => {

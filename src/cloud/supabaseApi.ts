@@ -1,4 +1,4 @@
-import { createClient } from '@supabase/supabase-js'
+import { createClient, type SupabaseClient } from '@supabase/supabase-js'
 import { parseDoubts } from '../storage/doubtsStorage'
 import { parseProgress } from '../storage/progressStorage'
 import { LoginError, type CloudApi, type CloudState, type CloudUser, type Role } from './types'
@@ -30,8 +30,34 @@ const toUser = (p: ProfileRow): CloudUser => ({
   role: p.role,
 })
 
-export function createSupabaseApi(url = SUPABASE_URL, key = SUPABASE_PUBLISHABLE_KEY): CloudApi {
-  const client = createClient(url, key)
+const USER_CACHE_KEY = 'vestibular-uemg:cloud-user:v1'
+
+function readCachedUser(): CloudUser | null {
+  try {
+    const raw = localStorage.getItem(USER_CACHE_KEY)
+    const u = raw ? (JSON.parse(raw) as Partial<CloudUser>) : null
+    return u && typeof u.id === 'string' && typeof u.username === 'string' && typeof u.displayName === 'string' && (u.role === 'student' || u.role === 'admin')
+      ? (u as CloudUser)
+      : null
+  } catch {
+    return null
+  }
+}
+
+function cacheUser(user: CloudUser | null): void {
+  try {
+    if (user) localStorage.setItem(USER_CACHE_KEY, JSON.stringify(user))
+    else localStorage.removeItem(USER_CACHE_KEY)
+  } catch {
+    // ignora
+  }
+}
+
+export function createSupabaseApi(
+  url = SUPABASE_URL,
+  key = SUPABASE_PUBLISHABLE_KEY,
+  client: SupabaseClient = createClient(url, key),
+): CloudApi {
 
   async function profileOf(userId: string): Promise<CloudUser> {
     const { data, error } = await client
@@ -54,16 +80,30 @@ export function createSupabaseApi(url = SUPABASE_URL, key = SUPABASE_PUBLISHABLE
     async getSessionUser() {
       const { data } = await client.auth.getSession()
       const user = data.session?.user
-      return user ? profileOf(user.id) : null
+      if (!user) return null
+      try {
+        const profile = await profileOf(user.id)
+        cacheUser(profile)
+        return profile
+      } catch (err) {
+        if (err instanceof LoginError) throw err
+        // sem internet: o login continua valendo; usa o perfil guardado no aparelho
+        const cached = readCachedUser()
+        if (cached && cached.id === user.id) return cached
+        throw err
+      }
     },
 
     async signIn(username, password) {
       const { data, error } = await client.auth.signInWithPassword({ email: emailFor(username), password })
       if (error || !data.user) throw new LoginError('Usuário ou senha incorretos.')
-      return profileOf(data.user.id)
+      const profile = await profileOf(data.user.id)
+      cacheUser(profile)
+      return profile
     },
 
     async signOut() {
+      cacheUser(null)
       await client.auth.signOut()
     },
 

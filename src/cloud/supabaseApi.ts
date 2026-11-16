@@ -7,8 +7,14 @@ import { LoginError, type CloudApi, type CloudState, type CloudUser, type Role }
 export const SUPABASE_URL = 'https://dxjkyymznotuetzkzdrm.supabase.co'
 export const SUPABASE_PUBLISHABLE_KEY = 'sb_publishable_rwZuK9bBfV6XnpMlR7bvhw_KAvr96PM'
 
-/** O login é por "usuário"; o Supabase exige e-mail, então montamos um e-mail interno. */
-export const emailFor = (username: string): string => `${username.trim().toLowerCase()}@vestibular.app`
+/**
+ * O login é por "usuário"; o Supabase exige e-mail, então montamos um e-mail interno.
+ * Se a pessoa já digitar o e-mail completo, ele é usado como está.
+ */
+export const emailFor = (username: string): string => {
+  const name = username.trim().toLowerCase()
+  return name.includes('@') ? name : `${name}@vestibular.app`
+}
 
 interface ProfileRow {
   id: string

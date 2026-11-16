@@ -6,4 +6,9 @@ describe('emailFor', () => {
     expect(emailFor('dani')).toBe('dani@vestibular.app')
     expect(emailFor(' Lucas ')).toBe('lucas@vestibular.app')
   })
+
+  it('aceita o e-mail completo, sem duplicar o domínio', () => {
+    expect(emailFor('lucas@vestibular.app')).toBe('lucas@vestibular.app')
+    expect(emailFor(' Dani@Vestibular.app ')).toBe('dani@vestibular.app')
+  })
 })

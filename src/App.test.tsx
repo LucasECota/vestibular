@@ -451,6 +451,27 @@ describe('fluxo principal', () => {
     expect(screen.getByText('92 XP')).toBeInTheDocument() // 2 + 4×10 + 50
   })
 
+  it('ao concluir a tarefa, a tela vai direto para o resultado; ao reabrir uma concluída, não rola', async () => {
+    const user = userEvent.setup()
+    const scrollIntoView = vi.mocked(Element.prototype.scrollIntoView)
+    const first = renderApp('/tarefa/t-2026-11-17-matematica')
+    await answerMat1(user)
+    scrollIntoView.mockClear()
+    expect(scrollIntoView).not.toHaveBeenCalled() // marcar respostas não rola a página
+
+    await user.click(screen.getByRole('button', { name: /concluir tarefa/i }))
+    const result = screen.getByRole('status', { name: 'Resultado da tarefa' })
+    expect(scrollIntoView).toHaveBeenCalledTimes(1)
+    expect(scrollIntoView.mock.contexts[0]).toBe(result) // rolou até o cartão do resultado
+    expect(result).toHaveTextContent('Você acertou 4/5')
+    first.unmount()
+
+    scrollIntoView.mockClear()
+    renderApp('/tarefa/t-2026-11-17-matematica') // tarefa já concluída
+    expect(screen.getByRole('status', { name: 'Resultado da tarefa' })).toBeInTheDocument()
+    expect(scrollIntoView).not.toHaveBeenCalled()
+  })
+
   it('as respostas marcadas sobrevivem a recarregar a página e a correção volta com a escolha dela', async () => {
     const user = userEvent.setup()
     const first = renderApp('/tarefa/t-2026-11-17-matematica')

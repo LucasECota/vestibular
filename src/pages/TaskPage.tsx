@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import { ExerciseView } from '../components/ExerciseCard'
 import { LessonView } from '../components/LessonView'
@@ -16,6 +16,7 @@ export function TaskPage() {
   const { progress, today, answer, answerReview, finishTask, openTask } = useProgress()
   const { draft, choose, clearStorage } = useDraftAnswers(taskId)
   const [finishedHere, setFinishedHere] = useState(false)
+  const resultRef = useRef<HTMLElement>(null)
   // revisão de erros vencidos: lista fixada ao abrir a tarefa
   const [reviewItems] = useState(() =>
     dueReviews(progress, today)
@@ -26,6 +27,11 @@ export function TaskPage() {
   const task = taskById(taskId)
   const lesson = task ? lessonBySlug(task.lessonSlug) : undefined
   const taskDone = progress.completedTaskIds.includes(taskId)
+
+  // ao concluir, leva a tela direto ao resultado ("Você acertou X/Y"), no fim da página
+  useEffect(() => {
+    if (finishedHere) resultRef.current?.scrollIntoView({ behavior: 'smooth', block: 'center' })
+  }, [finishedHere])
 
   // guarda a tarefa aberta e não concluída, para o botão "voltar para a tarefa" do menu
   useEffect(() => {
@@ -143,6 +149,7 @@ export function TaskPage() {
 
       {done && exercises.length > 0 && (
         <section
+          ref={resultRef}
           role="status"
           aria-label="Resultado da tarefa"
           className="card p-5 text-center"

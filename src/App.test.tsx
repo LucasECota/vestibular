@@ -99,17 +99,55 @@ describe('fluxo principal', () => {
     expect(screen.getByLabelText(/disciplina/i)).toHaveValue('matematica')
   })
 
-  it('banco de questões: filtra por disciplina, responde e mostra o gabarito oficial', async () => {
+  it('banco de questões: marcar não corrige; só ao confirmar o envio aparece o feedback', async () => {
     const user = userEvent.setup()
     renderApp('/questoes')
     await user.selectOptions(screen.getByLabelText(/disciplina/i), 'matematica')
     await user.selectOptions(screen.getByLabelText(/^ano/i), '2024')
-    expect(screen.getByText(/5 questões|\d+ questões/)).toBeInTheDocument()
     const first = screen.getAllByRole('article')[0]
     expect(within(first).getByText(/UEMG 2024, questão 43/)).toBeInTheDocument()
     expect(screen.queryByRole('button', { name: /ver a questão como na prova/i })).not.toBeInTheDocument()
-    await user.click(within(first).getByRole('button', { name: /^D\s*25\./ })) // gabarito oficial: D
+
+    const confirm = within(first).getByRole('button', { name: /confirmar resposta/i })
+    expect(confirm).toBeDisabled() // nada marcado
+    await user.click(within(first).getByRole('button', { name: /^A\s*16\./ })) // errada
+    expect(within(first).queryByText(/resposta certa/i)).not.toBeInTheDocument()
+    expect(within(first).queryByText('Correto!')).not.toBeInTheDocument()
+    await user.click(within(first).getByRole('button', { name: /^D\s*25\./ })) // troca para a certa (gabarito: D)
+    expect(within(first).queryByText('Correto!')).not.toBeInTheDocument() // ainda sem correção
+    expect(confirm).toBeEnabled()
+
+    await user.click(confirm)
     expect(within(first).getByText('Correto!')).toBeInTheDocument()
+    expect(within(first).getByText(/laço de Gauss/i)).toBeInTheDocument() // explicação
+    expect(within(first).queryByRole('button', { name: /confirmar resposta/i })).not.toBeInTheDocument()
+  })
+
+  it('banco de questões: filtra por já feitas e ainda não feitas', async () => {
+    const user = userEvent.setup()
+    renderApp('/questoes')
+    await user.selectOptions(screen.getByLabelText(/disciplina/i), 'matematica')
+    await user.selectOptions(screen.getByLabelText(/^ano/i), '2024')
+    const total = Number(screen.getByText(/^\d+ questões$/).textContent!.split(' ')[0])
+
+    await user.selectOptions(screen.getByLabelText(/mostrar/i), 'feitas')
+    expect(screen.getByText(/nenhuma questão encontrada/i)).toBeInTheDocument()
+
+    await user.selectOptions(screen.getByLabelText(/mostrar/i), 'todas')
+    const first = screen.getAllByRole('article')[0]
+    await user.click(within(first).getByRole('button', { name: /^D\s*25\./ }))
+    await user.click(within(first).getByRole('button', { name: /confirmar resposta/i }))
+    expect(screen.getAllByRole('article')[0]).toBe(first) // continua na lista depois de confirmar
+
+    await user.selectOptions(screen.getByLabelText(/mostrar/i), 'feitas')
+    expect(screen.getByText('1 questões')).toBeInTheDocument()
+    const done = screen.getAllByRole('article')[0]
+    expect(within(done).getByText('Correto!')).toBeInTheDocument() // volta corrigida, com a escolha dela
+    expect(within(done).getByRole('button', { name: /^D\s*25\./ })).toHaveAttribute('aria-pressed', 'true')
+
+    await user.selectOptions(screen.getByLabelText(/mostrar/i), 'novas')
+    expect(screen.getByText(`${total - 1} questões`)).toBeInTheDocument()
+    expect(screen.queryByText(/UEMG 2024, questão 43/)).not.toBeInTheDocument()
   })
 
   it('tarefa de prática traz questões de provas anteriores', async () => {

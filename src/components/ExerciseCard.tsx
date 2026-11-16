@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, type ReactNode } from 'react'
 import type { Exercise } from '../data/exercises'
 import { asset } from '../lib/assets'
 
@@ -32,10 +32,12 @@ interface ViewProps {
   revealed: boolean
   /** Oferece o botão "ver a questão como na prova" (padrão: sim). */
   allowOriginal?: boolean
+  /** Conteúdo extra (ex.: botão de confirmar) mostrado abaixo das alternativas, antes da correção. */
+  footer?: ReactNode
 }
 
 /** Questão controlada: o pai decide quando mostrar a correção. */
-export function ExerciseView({ exercise, index, chosen, onChoose, revealed, allowOriginal = true }: ViewProps) {
+export function ExerciseView({ exercise, index, chosen, onChoose, revealed, allowOriginal = true, footer }: ViewProps) {
   const [showOriginal, setShowOriginal] = useState(false)
 
   return (
@@ -95,6 +97,7 @@ export function ExerciseView({ exercise, index, chosen, onChoose, revealed, allo
           )
         })}
       </ul>
+      {!revealed && footer}
       {revealed && (
         <div role="status" className="mt-3 rounded-xl bg-brand-soft p-3 text-sm">
           <p className="font-semibold">

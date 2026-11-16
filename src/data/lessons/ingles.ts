@@ -174,3 +174,33 @@ export const INGLES_4: Lesson = {
     ex('ingles-4', 5, S, 'O phrasal verb "give up" significa:', ['dar presentes', 'desistir', 'levantar-se', 'procurar'], 1, 'Resposta B (desistir). Exemplo: "Don\'t give up!" = Não desista! Já "get up" é levantar-se e "look for" é procurar.'),
   ],
 }
+
+export const INGLES_5: Lesson = {
+  slug: 'ingles-5',
+  title: 'Interpretação de tirinhas, notícias e textos científicos',
+  blocks: [
+    { type: 'p', text: 'Na UEMG, os textos de Inglês vêm de tirinhas (Calvin e Haroldo), notícias (BBC), poemas e textos de livros didáticos. Cada gênero pede um olhar diferente. Aplique o que você aprendeu: cognatos, skimming e scanning, pronomes e conectivos.' },
+    { type: 'h', text: '1. Tirinhas (comics)' },
+    { type: 'list', items: ['Leia **quadrinho por quadrinho**, na ordem, e observe as expressões dos personagens.', 'O humor costuma vir de uma **quebra de expectativa** ou **ironia** no último quadrinho.', 'Preste atenção em **pronomes** (it, they) e em **tempos verbais**: as questões costumam perguntar a classe de uma palavra ou o sentido de uma fala.', 'Gírias e expressões fixas (idioms) não se traduzem palavra por palavra.'] },
+    { type: 'h', text: '2. Notícias (news)' },
+    { type: 'table', head: ['Parte', 'Para que serve'], rows: [
+      ['Headline (manchete)', 'Resume o fato; muitas vezes tem verbos no presente ("Brazil hits record")'],
+      ['Lead (1º parágrafo)', 'Responde às perguntas: **who** (quem), **what** (o quê), **when** (quando), **where** (onde), **why** (por quê)'],
+      ['Corpo', 'Detalhes, dados e declarações'],
+      ['Fonte', 'Indica de onde vem a informação'],
+    ] },
+    { type: 'callout', kind: 'dica', text: 'Para encontrar um dado numa notícia, faça **scanning**: procure números, datas e nomes próprios (escritos com letra maiúscula).' },
+    { type: 'h', text: '3. Textos científicos' },
+    { type: 'list', items: ['Muitos termos são cognatos: *researchers, temperature, population, species, energy*.', '**Verbos de pesquisa:** *found* (descobriu), *shows* (mostra), *suggests* (sugere), *concluded* (concluiu).', '**Números e comparações:** *up to* (até), *more than* (mais de), *less than* (menos de), *increase* (aumento), *decrease* (queda).'] },
+    { type: 'h', text: '4. Roteiro de leitura' },
+    { type: 'list', ordered: true, items: ['Olhe o **título** e as imagens: qual é o assunto?', 'Leia a **pergunta** antes do texto.', 'Faça **skimming** para a ideia geral ou **scanning** para um dado.', 'Releia só o trecho da resposta e confira **pronomes** e **conectivos**.', 'Elimine as alternativas que **não aparecem** ou **contradizem** o texto.'] },
+    { type: 'callout', kind: 'atencao', text: 'Não responda por opinião própria. A resposta correta é a que está **no texto**, mesmo que você ache outra coisa mais lógica.' },
+  ],
+  exercises: [
+    ex('ingles-5', 1, S, 'Headline: "Brazil\'s solar energy production hits record high". Qual é o assunto principal da notícia?', ['A queda da produção de energia eólica', 'Um recorde na produção de energia solar no Brasil', 'O aumento do preço da energia', 'A construção de uma hidrelétrica'], 1, 'Resposta B. Os cognatos "solar energy production" e "record" dão o assunto; o verbo "hits record high" significa atingir um recorde. Nada fala de energia eólica, preço ou hidrelétrica.'),
+    ex('ingles-5', 2, S, 'Text: "On Monday, a new recycling plant opened in Belo Horizonte. It will process 50 tons of plastic per month." Quantas toneladas de plástico a usina vai processar por mês?', ['5 toneladas', '15 toneladas', '50 toneladas', '500 toneladas'], 2, 'Resposta C (50 toneladas). Esta é uma pergunta de scanning: procure o número no texto. "It will process 50 tons of plastic per month". O "It" se refere à usina de reciclagem (recycling plant).'),
+    ex('ingles-5', 3, S, 'Text: "Researchers found that trees in urban areas can reduce temperatures by up to 3°C." O que os pesquisadores descobriram?', ['Que as árvores aumentam a temperatura das cidades', 'Que as árvores nas áreas urbanas podem reduzir a temperatura em até 3 °C', 'Que as cidades não têm árvores', 'Que a temperatura nunca muda nas cidades'], 1, 'Resposta B. "Found that" introduz a descoberta; "reduce temperatures" é reduzir temperaturas (cognato) e "up to 3°C" significa "até 3 °C", ou seja, um máximo.'),
+    ex('ingles-5', 4, S, 'Text: "Plastic pollution is a serious problem. However, new technologies can help to solve it." Na segunda frase, o pronome "it" se refere a:', ['new technologies', 'the problem of plastic pollution', 'plastic', 'the solution'], 1, 'Resposta B. O pronome "it" retoma o problema mencionado na frase anterior (plastic pollution is a serious problem). "However" marca oposição: há um problema, mas existe uma esperança.'),
+    ex('ingles-5', 5, S, 'Na tirinha: "— I\'m going to study all night! — And what about sleeping? — I\'ll sleep during the exam." O humor da tirinha vem do fato de que:', ['o personagem vai estudar a noite toda e dormir bem', 'o personagem pretende dormir durante a prova, o que mostra uma ideia absurda', 'o personagem não gosta de estudar', 'a prova será de madrugada'], 1, 'Resposta B. A graça está na quebra de expectativa: em vez de dormir à noite, ele diz que dormirá durante a prova, justamente o momento em que precisa estar acordado. O verbo "I\'ll" (I will) indica uma decisão futura.'),
+  ],
+}

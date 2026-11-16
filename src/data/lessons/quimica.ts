@@ -202,3 +202,52 @@ export const QUIMICA_4: Lesson = {
     ex('quimica-4', 5, S, 'Dissolvendo 58,5 g de NaCl (M = 58,5 g/mol) em água suficiente para 2 L de solução, a molaridade é:', ['0,5 mol/L', '1 mol/L', '2 mol/L', '29,25 mol/L'], 0, 'Resposta A (0,5 mol/L). n = 58,5/58,5 = 1 mol. M = n/V = 1/2 = 0,5 mol/L.'),
   ],
 }
+
+const SVG_ENTALPIA = `<svg viewBox="0 0 340 200" xmlns="http://www.w3.org/2000/svg" font-family="sans-serif" font-size="10">
+<rect width="340" height="200" fill="#fff"/>
+<text x="85" y="14" text-anchor="middle" font-weight="bold" fill="#0a0a0f">Exotérmica (ΔH &lt; 0)</text>
+<text x="255" y="14" text-anchor="middle" font-weight="bold" fill="#0a0a0f">Endotérmica (ΔH &gt; 0)</text>
+<g stroke="#0a0a0f" stroke-width="1.5"><line x1="15" y1="150" x2="165" y2="150"/><line x1="15" y1="150" x2="15" y2="25"/><line x1="185" y1="150" x2="335" y2="150"/><line x1="185" y1="150" x2="185" y2="25"/></g>
+<path d="M18 60 L45 60 C70 60 70 38 90 38 C110 38 110 108 135 108 L162 108" fill="none" stroke="#b91c1c" stroke-width="3"/>
+<path d="M188 108 L215 108 C240 108 240 38 260 38 C280 38 280 60 305 60 L332 60" fill="none" stroke="#1d4ed8" stroke-width="3"/>
+<text x="20" y="54" fill="#0a0a0f">Reagentes</text><text x="112" y="124" fill="#0a0a0f">Produtos</text>
+<text x="190" y="124" fill="#0a0a0f">Reagentes</text><text x="285" y="50" fill="#0a0a0f">Produtos</text>
+<text x="85" y="170" text-anchor="middle" fill="#b91c1c" font-weight="bold">libera calor (esquenta)</text><text x="255" y="170" text-anchor="middle" fill="#1d4ed8" font-weight="bold">absorve calor (esfria)</text>
+<text x="85" y="186" text-anchor="middle" fill="#0a0a0f">combustão, neutralização</text><text x="255" y="186" text-anchor="middle" fill="#0a0a0f">fusão, evaporação</text>
+<text x="8" y="22" fill="#0a0a0f" font-size="9">Energia</text></svg>`
+
+export const QUIMICA_5: Lesson = {
+  slug: 'quimica-5',
+  title: 'Termoquímica e cinética química',
+  blocks: [
+    { type: 'p', text: 'Toda reação troca energia com o ambiente (**termoquímica**) e acontece em uma certa rapidez (**cinética**). Isso explica por que combustíveis queimam, por que guardamos alimentos na geladeira e como funciona o catalisador do carro, que reduz poluentes. A UEMG listou a produção de energia por combustíveis no conteúdo oficial.' },
+    { type: 'h', text: '1. Reações exotérmicas e endotérmicas' },
+    { type: 'figure', svg: SVG_ENTALPIA, alt: 'Dois gráficos de energia: exotérmica com produtos abaixo dos reagentes e endotérmica com produtos acima', caption: 'ΔH = H(produtos) − H(reagentes).' },
+    { type: 'table', head: ['', 'Exotérmica', 'Endotérmica'], rows: [
+      ['Calor', 'Libera para o ambiente', 'Absorve do ambiente'],
+      ['ΔH', 'Negativo (ΔH < 0)', 'Positivo (ΔH > 0)'],
+      ['Exemplos', 'Combustão, respiração, neutralização, condensação, solidificação', 'Fusão do gelo, evaporação, fotossíntese, decomposição do calcário'],
+    ] },
+    { type: 'callout', kind: 'dica', text: 'Pense no ambiente: se a reação libera calor, o ambiente esquenta (exotérmica). Se absorve calor, o ambiente esfria (endotérmica), como a compressa fria instantânea.' },
+    { type: 'h', text: '2. Lei de Hess e combustíveis' },
+    { type: 'p', text: 'A **lei de Hess** diz que a variação de entalpia de uma reação depende só dos estados inicial e final, e não do caminho. Portanto, o ΔH total é a **soma** dos ΔH das etapas.' },
+    { type: 'callout', kind: 'exemplo', text: String.raw`Etapa 1: $\Delta H_1 = -100$ kJ. Etapa 2: $\Delta H_2 = -50$ kJ. Reação global: $\Delta H = -100 + (-50) = -150$ kJ.` },
+    { type: 'p', text: 'A **combustão** de combustíveis (carvão, etanol, gasolina, gás natural) é exotérmica: libera energia, mas também CO₂ (efeito estufa). Por isso a escolha de combustíveis é um tema ambiental.' },
+    { type: 'h', text: '3. Cinética química: a rapidez das reações' },
+    { type: 'p', text: String.raw`**Velocidade média** = variação da quantidade (ou concentração) de um reagente ou produto por unidade de tempo, por exemplo mol/(L·s). Para reagir, as moléculas precisam **colidir** com orientação certa e energia suficiente (**energia de ativação**, $E_a$).` },
+    { type: 'table', head: ['Fator', 'Efeito na velocidade', 'Exemplo'], rows: [
+      ['Temperatura ↑', 'Aumenta (mais colisões e mais energéticas)', 'Alimentos estragam mais rápido no calor'],
+      ['Concentração ↑', 'Aumenta (mais colisões)', 'Ácido concentrado reage mais rápido'],
+      ['Superfície de contato ↑', 'Aumenta (mais área exposta)', 'Pó de carvão queima mais rápido que um bloco'],
+      ['Catalisador', 'Aumenta, **diminuindo a energia de ativação**', 'Catalisador automotivo; enzimas'],
+    ] },
+    { type: 'callout', kind: 'atencao', text: 'O catalisador **não é consumido** e **não altera o ΔH** nem o rendimento: só faz a reação chegar mais rápido ao mesmo resultado.' },
+  ],
+  exercises: [
+    ex('quimica-5', 1, S, 'Uma reação com ΔH < 0 é classificada como:', ['endotérmica', 'exotérmica', 'de decomposição', 'lenta'], 1, 'Resposta B (exotérmica). ΔH negativo significa que os produtos têm menos energia que os reagentes: a diferença foi liberada como calor. É o caso da combustão.'),
+    ex('quimica-5', 2, S, 'Qual das alternativas NÃO aumenta a velocidade de uma reação química?', ['aumentar a temperatura', 'aumentar a superfície de contato dos reagentes', 'diminuir a temperatura', 'usar um catalisador'], 2, 'Resposta C. Diminuir a temperatura reduz o número e a energia das colisões, deixando a reação mais lenta. É por isso que usamos a geladeira para conservar alimentos.'),
+    ex('quimica-5', 3, S, 'Uma reação ocorre em duas etapas, com ΔH₁ = −100 kJ e ΔH₂ = −50 kJ. Pela lei de Hess, o ΔH da reação global é:', ['−50 kJ', '−100 kJ', '−150 kJ', '+150 kJ'], 2, 'Resposta C (−150 kJ). Pela lei de Hess, o ΔH global é a soma dos ΔH das etapas: −100 + (−50) = −150 kJ. É exotérmica.'),
+    ex('quimica-5', 4, S, 'Um catalisador acelera uma reação porque:', ['aumenta a quantidade de produtos formados', 'diminui a energia de ativação', 'é consumido durante a reação', 'torna a reação endotérmica'], 1, 'Resposta B. O catalisador oferece um caminho com menor energia de ativação, e a reação ocorre mais rápido. Ele não é consumido e não muda o ΔH nem a quantidade final de produto.'),
+    ex('quimica-5', 5, S, 'Entre os processos abaixo, o único endotérmico (que absorve calor) é:', ['a queima da gasolina', 'a fusão (derretimento) do gelo', 'a formação de orvalho (condensação)', 'a combustão do etanol'], 1, 'Resposta B. Para fundir o gelo é preciso receber calor do ambiente (endotérmico). Combustão e condensação liberam calor (exotérmicos).'),
+  ],
+}

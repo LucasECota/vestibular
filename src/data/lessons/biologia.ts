@@ -200,3 +200,60 @@ export const BIOLOGIA_4: Lesson = {
     ex('biologia-4', 5, S, 'O aparecimento de populações de bactérias resistentes a antibióticos é explicado principalmente pela:', ['herança dos caracteres adquiridos', 'seleção natural das bactérias já resistentes', 'vontade das bactérias de se adaptar', 'ação direta do antibiótico, que cria a resistência'], 1, 'Resposta B. Na população há bactérias com variações; as raras que já eram resistentes sobrevivem ao antibiótico, se multiplicam e passam o gene adiante. Por isso é importante usar antibióticos só com receita e até o fim.'),
   ],
 }
+
+const SVG_PIRAMIDE = `<svg viewBox="0 0 340 220" xmlns="http://www.w3.org/2000/svg" font-family="sans-serif" font-size="11">
+<rect width="340" height="220" fill="#fff"/>
+<text x="170" y="16" text-anchor="middle" font-weight="bold" fill="#0a0a0f">Pirâmide de energia (regra dos 10%)</text>
+<rect x="115" y="30" width="110" height="38" fill="#fecaca" stroke="#b91c1c" stroke-width="2"/><text x="170" y="48" text-anchor="middle" fill="#0a0a0f" font-weight="bold">Consumidor 3º</text><text x="170" y="62" text-anchor="middle" fill="#0a0a0f">10 kJ</text>
+<rect x="85" y="72" width="170" height="38" fill="#fed7aa" stroke="#c2410c" stroke-width="2"/><text x="170" y="90" text-anchor="middle" fill="#0a0a0f" font-weight="bold">Consumidor 2º</text><text x="170" y="104" text-anchor="middle" fill="#0a0a0f">100 kJ</text>
+<rect x="55" y="114" width="230" height="38" fill="#fde68a" stroke="#a16207" stroke-width="2"/><text x="170" y="132" text-anchor="middle" fill="#0a0a0f" font-weight="bold">Consumidor 1º (herbívoro)</text><text x="170" y="146" text-anchor="middle" fill="#0a0a0f">1 000 kJ</text>
+<rect x="25" y="156" width="290" height="38" fill="#bbf7d0" stroke="#15803d" stroke-width="2"/><text x="170" y="174" text-anchor="middle" fill="#0a0a0f" font-weight="bold">Produtores (plantas)</text><text x="170" y="188" text-anchor="middle" fill="#0a0a0f">10 000 kJ</text>
+<text x="170" y="212" text-anchor="middle" fill="#0a0a0f">A cada nível, só cerca de 10% da energia passa ao seguinte.</text></svg>`
+
+export const BIOLOGIA_5: Lesson = {
+  slug: 'biologia-5',
+  title: 'Ecologia: cadeias, ciclos, biomas e impactos ambientais',
+  blocks: [
+    { type: 'p', text: 'Ecologia estuda as relações dos seres vivos entre si e com o ambiente. É o coração da Biologia para a Engenharia Ambiental e já apareceu na UEMG em cadeia alimentar (2024) e biomas (2023). O conteúdo programático oficial também inclui poluição e desenvolvimento sustentável.' },
+    { type: 'h', text: '1. Níveis de organização' },
+    { type: 'table', head: ['Nível', 'Definição', 'Exemplo'], rows: [
+      ['Espécie', 'Indivíduos que se cruzam e geram descendentes férteis', 'Onça-pintada'],
+      ['População', 'Indivíduos da mesma espécie, na mesma área e tempo', 'Todas as onças de um parque'],
+      ['Comunidade (biocenose)', 'Conjunto de populações de espécies diferentes em uma área', 'Onças, capivaras, plantas, fungos...'],
+      ['Ecossistema', 'Comunidade + ambiente físico (clima, solo, água)', 'Pantanal'],
+      ['Bioma', 'Grande conjunto de ecossistemas com clima e vegetação característicos', 'Cerrado'],
+      ['Biosfera', 'Todos os ecossistemas da Terra', 'O planeta vivo'],
+    ] },
+    { type: 'callout', kind: 'dica', text: '**Habitat** é o "endereço" (onde a espécie vive). **Nicho ecológico** é a "profissão" (o que ela faz e de que se alimenta).' },
+    { type: 'h', text: '2. Cadeias alimentares e fluxo de energia' },
+    { type: 'list', items: ['**Produtores** (plantas, algas): fazem fotossíntese. **Consumidores:** primários (herbívoros), secundários (comem herbívoros), terciários... **Decompositores** (fungos e bactérias): reciclam a matéria.', 'A cadeia começa sempre no produtor: capim → gafanhoto → sapo → cobra. Várias cadeias interligadas formam uma **teia alimentar**.', 'A **energia** flui em **um só sentido** (Sol → produtores → consumidores → calor) e só cerca de **10%** passa de um nível trófico a outro. A **matéria**, ao contrário, é reciclada.'] },
+    { type: 'figure', svg: SVG_PIRAMIDE, alt: 'Pirâmide com produtores na base com 10 mil kJ e consumidores acima com 1000, 100 e 10 kJ', caption: 'Por isso há muito menos predadores de topo do que herbívoros.' },
+    { type: 'h', text: '3. Relações ecológicas' },
+    { type: 'table', head: ['Relação', 'Tipo', 'Exemplo'], rows: [
+      ['Mutualismo', 'Harmônica (ambos ganham, interdependentes)', 'Líquen (alga + fungo); micorrizas'],
+      ['Protocooperação', 'Harmônica (ambos ganham, mas vivem sem a relação)', 'Anu e gado'],
+      ['Comensalismo', 'Harmônica (um ganha, o outro não é afetado)', 'Rêmora e tubarão'],
+      ['Predação', 'Desarmônica (um mata e come o outro)', 'Onça e capivara'],
+      ['Parasitismo', 'Desarmônica (um prejudica o outro, sem matar rapidamente)', 'Carrapato e boi'],
+      ['Competição', 'Desarmônica (disputa por recursos)', 'Dois herbívoros pelo mesmo pasto'],
+    ] },
+    { type: 'h', text: '4. Ciclos biogeoquímicos' },
+    { type: 'list', items: ['**Carbono:** fotossíntese retira CO₂; respiração, decomposição e queima de combustíveis o devolvem.', '**Nitrogênio:** bactérias fixam o N₂ do ar (fixação), formam nitratos que as plantas absorvem; a decomposição e a desnitrificação devolvem N₂.', '**Água:** evaporação, condensação, precipitação e infiltração.'] },
+    { type: 'h', text: '5. Impactos ambientais' },
+    { type: 'table', head: ['Problema', 'Causa', 'Consequência'], rows: [
+      ['Efeito estufa intensificado', 'Queima de combustíveis fósseis, queimadas', 'Aquecimento global'],
+      ['Eutrofização', 'Esgoto e fertilizantes (excesso de nutrientes) na água', 'Proliferação de algas, falta de oxigênio, morte de peixes'],
+      ['Bioacumulação / magnificação trófica', 'Poluentes persistentes (mercúrio, DDT) que se acumulam ao longo da cadeia', 'Maior concentração nos predadores de topo'],
+      ['Chuva ácida', 'Óxidos de enxofre e nitrogênio', 'Danos a solos, água e construções'],
+      ['Desmatamento', 'Agropecuária e urbanização', 'Perda de biodiversidade, erosão, assoreamento'],
+    ] },
+    { type: 'callout', kind: 'atencao', text: '**Desenvolvimento sustentável:** atender às necessidades de hoje sem comprometer as das gerações futuras, equilibrando economia, sociedade e ambiente.' },
+  ],
+  exercises: [
+    ex('biologia-5', 1, S, 'O conjunto de populações de espécies diferentes que vivem em uma mesma área é chamado de:', ['espécie', 'população', 'comunidade', 'bioma'], 2, 'Resposta C (comunidade, ou biocenose). População é um grupo de indivíduos da mesma espécie. Bioma é um conjunto de ecossistemas muito maior, com clima e vegetação típicos.'),
+    ex('biologia-5', 2, S, 'Na cadeia alimentar capim → gafanhoto → sapo → cobra, o sapo é um consumidor:', ['primário', 'secundário', 'terciário', 'produtor'], 1, 'Resposta B (secundário). O capim é o produtor; o gafanhoto, que come o produtor, é consumidor primário; o sapo, que come o gafanhoto, é secundário; a cobra é terciária.'),
+    ex('biologia-5', 3, S, 'Em uma cadeia alimentar, os produtores armazenam 10 000 kJ de energia. Considerando que só 10% passa de um nível para o seguinte, os consumidores secundários receberão:', ['1 000 kJ', '100 kJ', '10 kJ', '10 000 kJ'], 1, 'Resposta B (100 kJ). Produtores: 10 000 kJ → consumidores primários: 10% = 1 000 kJ → consumidores secundários: 10% de 1 000 = 100 kJ.'),
+    ex('biologia-5', 4, S, 'A associação entre alga e fungo que forma os líquens, em que ambos se beneficiam, é um exemplo de:', ['parasitismo', 'predação', 'mutualismo', 'competição'], 2, 'Resposta C (mutualismo). A alga faz fotossíntese e alimenta o fungo, e o fungo protege a alga e retém água. Os dois ganham e dependem um do outro (relação harmônica).'),
+    ex('biologia-5', 5, S, 'O excesso de esgoto e de fertilizantes em lagos e rios provoca a proliferação de algas e a diminuição do oxigênio na água. Esse fenômeno é chamado de:', ['chuva ácida', 'eutrofização', 'bioacumulação', 'inversão térmica'], 1, 'Resposta B (eutrofização). Os nutrientes em excesso fazem as algas se multiplicarem. Quando morrem, a decomposição consome o oxigênio da água e muitos peixes morrem.'),
+  ],
+}

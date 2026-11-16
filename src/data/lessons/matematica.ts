@@ -301,3 +301,84 @@ export const MATEMATICA_8: Lesson = {
     ex('matematica-8', 5, S, 'A soma de todos os termos da PG infinita (1, 1/2, 1/4, 1/8, ...) é:', ['1', '3/2', '2', 'infinita'], 2, 'Resposta C (2). A razão é q = 1/2, e como |q| < 1 a soma converge: S = a₁/(1 − q) = 1/(1 − 1/2) = 2.'),
   ],
 }
+
+const SVG_PITAGORAS = `<svg viewBox="0 0 340 190" xmlns="http://www.w3.org/2000/svg" font-family="sans-serif" font-size="12">
+<rect width="340" height="190" fill="#fff"/>
+<polygon points="40,150 200,150 40,30" fill="#ede4ff" stroke="#6d28d9" stroke-width="3"/>
+<polyline points="40,134 56,134 56,150" fill="none" stroke="#0a0a0f" stroke-width="1.5"/>
+<text x="112" y="172" text-anchor="middle" fill="#0a0a0f" font-weight="bold">cateto = 4</text>
+<text x="8" y="95" fill="#0a0a0f" font-weight="bold">cateto</text><text x="8" y="109" fill="#0a0a0f" font-weight="bold">= 3</text>
+<text x="132" y="78" fill="#6d28d9" font-weight="bold">hipotenusa = 5</text>
+<text x="215" y="50" fill="#0a0a0f" font-weight="bold">Teorema de Pitágoras</text>
+<text x="215" y="72" fill="#0a0a0f">a² = b² + c²</text><text x="215" y="92" fill="#0a0a0f">5² = 3² + 4²</text><text x="215" y="112" fill="#0a0a0f">25 = 9 + 16 ✓</text></svg>`
+
+export const MATEMATICA_9: Lesson = {
+  slug: 'matematica-9',
+  title: 'Geometria plana: áreas e perímetros',
+  blocks: [
+    { type: 'p', text: '**Perímetro** é a medida do contorno de uma figura (soma dos lados). **Área** é a medida da superfície. Geometria plana aparece muito em provas, muitas vezes combinada com equações (como o retângulo de lados desconhecidos da UEMG 2024) e com coordenadas (a área do quadrilátero de 2024).' },
+    { type: 'h', text: '1. Áreas das principais figuras' },
+    { type: 'table', head: ['Figura', 'Área', 'Perímetro'], rows: [
+      ['Quadrado (lado l)', String.raw`$A = l^2$`, String.raw`$4l$`],
+      ['Retângulo (b × h)', String.raw`$A = b\cdot h$`, String.raw`$2(b + h)$`],
+      ['Paralelogramo', String.raw`$A = b\cdot h$ (h é a altura)`, 'soma dos lados'],
+      ['Triângulo', String.raw`$A = \dfrac{b\cdot h}{2}$`, 'soma dos lados'],
+      ['Losango (diagonais D e d)', String.raw`$A = \dfrac{D\cdot d}{2}$`, String.raw`$4l$`],
+      ['Trapézio (bases B e b)', String.raw`$A = \dfrac{(B + b)\cdot h}{2}$`, 'soma dos lados'],
+      ['Círculo (raio r)', String.raw`$A = \pi r^2$`, String.raw`$C = 2\pi r$`],
+    ] },
+    { type: 'callout', kind: 'atencao', text: 'A altura é sempre **perpendicular** à base. Não use o lado inclinado do paralelogramo ou do trapézio como altura.' },
+    { type: 'h', text: '2. Teorema de Pitágoras' },
+    { type: 'figure', svg: SVG_PITAGORAS, alt: 'Triângulo retângulo com catetos 3 e 4 e hipotenusa 5', caption: 'Em todo triângulo retângulo, o quadrado da hipotenusa é igual à soma dos quadrados dos catetos.' },
+    { type: 'p', text: String.raw`Ternas pitagóricas comuns: $(3,4,5)$, $(5,12,13)$, $(6,8,10)$ e $(8,15,17)$. Reconhecê-las poupa contas.` },
+    { type: 'h', text: '3. Ângulos' },
+    { type: 'list', items: ['Soma dos ângulos internos de um **triângulo**: **180°**.', String.raw`Soma dos ângulos internos de um polígono de $n$ lados: $S = (n-2)\cdot 180^\circ$. Hexágono: $(6-2)\cdot 180 = 720^\circ$.`, 'Ângulos complementares somam 90°; suplementares somam 180°.', 'Ângulos opostos pelo vértice são iguais.'] },
+    { type: 'h', text: '4. Semelhança e Tales' },
+    { type: 'p', text: String.raw`Figuras **semelhantes** têm a mesma forma e lados proporcionais. Se a razão de semelhança é $k$, as **áreas** ficam multiplicadas por $k^2$. O **teorema de Tales** diz que retas paralelas cortadas por transversais determinam segmentos proporcionais: $\dfrac{a}{b} = \dfrac{c}{d}$.` },
+    { type: 'callout', kind: 'exemplo', title: 'Sombras', text: 'Um poste de 3 m projeta sombra de 2 m. No mesmo momento, uma árvore projeta sombra de 10 m. A altura da árvore (triângulos semelhantes) é: 3/2 = x/10, então x = 15 m.' },
+    { type: 'callout', kind: 'dica', text: 'Quando a figura é complicada, divida em figuras simples (retângulos, triângulos) e some ou subtraia as áreas.' },
+  ],
+  exercises: [
+    ex('matematica-9', 1, S, 'Em um triângulo retângulo, os catetos medem 6 cm e 8 cm. A hipotenusa mede:', ['9 cm', '10 cm', '12 cm', '14 cm'], 1, 'Resposta B (10 cm). Pitágoras: a² = 6² + 8² = 36 + 64 = 100, logo a = 10. É a terna 6-8-10, múltipla da 3-4-5.'),
+    ex('matematica-9', 2, S, 'A área de um trapézio de bases 10 cm e 6 cm e altura 4 cm é:', ['24 cm²', '32 cm²', '40 cm²', '64 cm²'], 1, 'Resposta B (32 cm²). A = (B + b) · h / 2 = (10 + 6) · 4 / 2 = 16 · 4 / 2 = 32 cm².'),
+    ex('matematica-9', 3, S, 'A área de um círculo de raio 5 cm é:', ['10π cm²', '25π cm²', '50π cm²', '100π cm²'], 1, 'Resposta B (25π cm²). A = π · r² = π · 5² = 25π cm². Atenção: 10π cm seria o comprimento da circunferência (2πr).'),
+    ex('matematica-9', 4, S, 'Um retângulo tem área 48 cm² e um dos lados mede 6 cm. O perímetro desse retângulo é:', ['14 cm', '28 cm', '48 cm', '56 cm'], 1, 'Resposta B (28 cm). O outro lado mede 48 ÷ 6 = 8 cm. O perímetro é 2 · (6 + 8) = 28 cm.'),
+    ex('matematica-9', 5, S, 'A soma dos ângulos internos de um hexágono é:', ['360°', '540°', '720°', '1 080°'], 2, 'Resposta C (720°). S = (n − 2) · 180° = (6 − 2) · 180° = 4 · 180° = 720°. Para o pentágono seria 540° e, para o quadrilátero, 360°.'),
+  ],
+}
+
+export const MATEMATICA_10: Lesson = {
+  slug: 'matematica-10',
+  title: 'Geometria espacial: volumes e áreas',
+  blocks: [
+    { type: 'p', text: 'Geometria espacial estuda os sólidos (figuras em 3 dimensões). Cálculo de volume é usado em tanques, reservatórios, embalagens e caixas-d\'água. Na UEMG 2023 caiu o cilindro equilátero com volume dado.' },
+    { type: 'h', text: '1. Prismas e cilindro' },
+    { type: 'table', head: ['Sólido', 'Volume', 'Área total'], rows: [
+      ['Cubo (aresta a)', String.raw`$V = a^3$`, String.raw`$A = 6a^2$`],
+      ['Paralelepípedo (a, b, c)', String.raw`$V = a\cdot b\cdot c$`, String.raw`$A = 2(ab + ac + bc)$`],
+      ['Prisma qualquer', String.raw`$V = A_{\text{base}}\cdot h$`, String.raw`$A = 2A_{\text{base}} + A_{\text{lateral}}$`],
+      ['Cilindro (r, h)', String.raw`$V = \pi r^2 h$`, String.raw`$A = 2\pi r^2 + 2\pi r h = 2\pi r (r+h)$`],
+    ] },
+    { type: 'callout', kind: 'dica', text: 'Regra geral: volume de prisma e cilindro = área da base × altura.' },
+    { type: 'h', text: '2. Pirâmide, cone e esfera' },
+    { type: 'table', head: ['Sólido', 'Volume', 'Área'], rows: [
+      ['Pirâmide', String.raw`$V = \dfrac{A_{\text{base}}\cdot h}{3}$`, 'base + faces laterais'],
+      ['Cone (r, h, geratriz g)', String.raw`$V = \dfrac{\pi r^2 h}{3}$`, String.raw`$A = \pi r^2 + \pi r g$, com $g^2 = r^2 + h^2$`],
+      ['Esfera (raio r)', String.raw`$V = \dfrac{4}{3}\pi r^3$`, String.raw`$A = 4\pi r^2$`],
+    ] },
+    { type: 'callout', kind: 'atencao', text: 'Pirâmide e cone têm volume igual a **um terço** do volume do prisma ou cilindro de mesma base e mesma altura.' },
+    { type: 'h', text: '3. Diagonais e relação de Euler' },
+    { type: 'list', items: [String.raw`Diagonal do cubo: $d = a\sqrt{3}$. Do paralelepípedo: $d = \sqrt{a^2 + b^2 + c^2}$.`, String.raw`**Relação de Euler** (poliedros convexos): $V - A + F = 2$ (vértices − arestas + faces). Cubo: $8 - 12 + 6 = 2$.`] },
+    { type: 'h', text: '4. Unidades de volume' },
+    { type: 'p', text: '1 m³ = 1 000 L. 1 dm³ = 1 L. 1 cm³ = 1 mL. Ao trocar de unidade de comprimento, o volume muda com o **cubo** da razão (1 m = 10 dm, então 1 m³ = 1 000 dm³).' },
+    { type: 'callout', kind: 'exemplo', title: 'Caixa-d\'água', text: String.raw`Um reservatório tem 2 m de comprimento, 3 m de largura e 1,5 m de altura. $V = 2\cdot 3\cdot 1{,}5 = 9\ \text{m}^3 = 9\,000\ \text{L}$.` },
+    { type: 'callout', kind: 'exemplo', title: 'Estilo UEMG 2023', text: String.raw`Cilindro equilátero ($h = 2r$) com volume $686\pi$: $V = \pi r^2\cdot 2r = 2\pi r^3 = 686\pi \Rightarrow r = 7$ e $h = 14$.` + '\n' + String.raw`$A_{\text{total}} = 2\pi r(r + h) = 2\pi\cdot 7\cdot 21 = 294\pi\ \text{cm}^2$` },
+  ],
+  exercises: [
+    ex('matematica-10', 1, S, 'O volume de um cubo de aresta 3 cm é:', ['9 cm³', '18 cm³', '27 cm³', '54 cm³'], 2, 'Resposta C (27 cm³). V = a³ = 3³ = 27 cm³. 54 cm² seria a área total (6a²).'),
+    ex('matematica-10', 2, S, 'O volume de um cilindro de raio 2 cm e altura 5 cm é:', ['10π cm³', '20π cm³', '40π cm³', '100π cm³'], 1, 'Resposta B (20π cm³). V = π · r² · h = π · 2² · 5 = 20π cm³.'),
+    ex('matematica-10', 3, S, 'O volume de um cone de raio da base 3 cm e altura 4 cm é:', ['12π cm³', '24π cm³', '36π cm³', '48π cm³'], 0, 'Resposta A (12π cm³). V = π r² h / 3 = π · 9 · 4 / 3 = 12π cm³. Sem dividir por 3 seria o cilindro (36π).'),
+    ex('matematica-10', 4, S, 'O volume de uma esfera de raio 3 cm é:', ['12π cm³', '27π cm³', '36π cm³', '108π cm³'], 2, 'Resposta C (36π cm³). V = (4/3) π r³ = (4/3) · π · 27 = 36π cm³.'),
+    ex('matematica-10', 5, S, 'Um reservatório em forma de paralelepípedo mede 2 m × 3 m × 1,5 m. Quantos litros de água ele comporta quando está cheio?', ['6 000 L', '7 500 L', '9 000 L', '12 000 L'], 2, 'Resposta C (9 000 L). V = 2 · 3 · 1,5 = 9 m³. Como 1 m³ = 1 000 L, o reservatório comporta 9 000 L.'),
+  ],
+}

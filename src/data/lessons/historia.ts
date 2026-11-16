@@ -160,3 +160,41 @@ export const HISTORIA_4: Lesson = {
     ex('historia-4', 5, S, 'As Treze Colônias inglesas da América do Norte declararam independência em:', ['1500', '1776', '1822', '1914'], 1, 'Resposta B (1776). Em 4 de julho de 1776, os colonos rejeitaram os impostos cobrados pela Inglaterra sem representação política. 1822 é a independência do Brasil.'),
   ],
 }
+
+export const HISTORIA_5: Lesson = {
+  slug: 'historia-5',
+  title: 'Brasil Império',
+  blocks: [
+    { type: 'p', text: 'O Império do Brasil (1822–1889) começa com a Independência e termina com a Proclamação da República. É um período decisivo para entender a escravidão, a economia do café e a formação do Estado brasileiro. A UEMG já cobriu revoltas escravas (2023) e a Guerra do Paraguai (2024).' },
+    { type: 'h', text: '1. A chegada da corte e a Independência' },
+    { type: 'list', items: ['**1808:** a família real portuguesa foge de Napoleão e chega ao Rio de Janeiro; abertura dos portos às nações amigas; o Brasil vira sede do império português.', '**1815:** o Brasil é elevado a Reino Unido a Portugal e Algarves.', '**1820:** Revolução Liberal do Porto: as Cortes querem a volta de D. João VI e a recolonização do Brasil.', '**Dia do Fico (9/1/1822)** e **7 de setembro de 1822:** D. Pedro I proclama a Independência. Foi um processo negociado, que manteve a monarquia, o latifúndio e a escravidão.'] },
+    { type: 'h', text: '2. Primeiro Reinado (1822–1831)' },
+    { type: 'list', items: ['**Constituição de 1824**, outorgada (imposta) por D. Pedro I, que criou o **Poder Moderador**, exercido só pelo imperador, acima dos outros poderes.', 'Voto censitário (por renda).', '**Confederação do Equador (1824):** revolta separatista em Pernambuco, reprimida.', 'Perda da Cisplatina e crise econômica; D. Pedro I **abdica em 1831**.'] },
+    { type: 'h', text: '3. Período Regencial (1831–1840)' },
+    { type: 'p', text: 'D. Pedro II tinha só 5 anos, e o país foi governado por regentes. Houve muitas revoltas provinciais: **Cabanagem** (PA), **Sabinada** (BA), **Balaiada** (MA), **Farroupilha** (RS, a mais longa, 1835–1845) e a **Revolta dos Malês** (BA, 1835), de africanos muçulmanos escravizados. O **Golpe da Maioridade** (1840) antecipou o reinado de D. Pedro II.' },
+    { type: 'h', text: '4. Segundo Reinado (1840–1889)' },
+    { type: 'table', head: ['Tema', 'O que aconteceu'], rows: [
+      ['Economia', 'O **café**, no Vale do Paraíba (RJ, SP, depois Oeste Paulista e Minas), dominou a economia e a política'],
+      ['Política', 'Alternância entre Liberais e Conservadores; "parlamentarismo às avessas" (o imperador escolhia o primeiro-ministro)'],
+      ['Guerra do Paraguai (1864–1870)', 'Brasil, Argentina e Uruguai (Tríplice Aliança) contra o Paraguai; criação dos **Voluntários da Pátria**; fortaleceu o Exército'],
+      ['Imigração', 'Chegada de europeus (italianos, alemães) para trabalhar no café, no lugar de escravizados'],
+    ] },
+    { type: 'h', text: '5. O fim da escravidão (abolição gradual)' },
+    { type: 'table', head: ['Ano', 'Lei', 'O que determinou'], rows: [
+      ['1850', 'Eusébio de Queirós', 'Proíbe o tráfico de escravizados (pressão inglesa)'],
+      ['1871', 'Lei do Ventre Livre', 'Filhos de escravizadas nascem livres (com restrições)'],
+      ['1885', 'Lei dos Sexagenários', 'Liberta escravizados com mais de 60 anos'],
+      ['1888', 'Lei Áurea', 'Abolição total, assinada pela Princesa Isabel'],
+    ] },
+    { type: 'callout', kind: 'atencao', text: 'A abolição não veio só de "bondade" do governo: foi resultado da resistência dos escravizados (fugas, revoltas, quilombos) e do movimento abolicionista (José do Patrocínio, Joaquim Nabuco, Luís Gama). Depois da Lei Áurea, os libertos ficaram sem terra, sem indenização e sem políticas de inclusão.' },
+    { type: 'h', text: '6. O fim do Império' },
+    { type: 'p', text: 'Fatores: a **abolição** (fazendeiros perderam o apoio à monarquia), a **Questão Militar** (insatisfação do Exército), a **Questão Religiosa** (conflito com a Igreja) e o avanço das ideias **republicanas**. Em **15 de novembro de 1889**, o marechal **Deodoro da Fonseca** proclamou a República.' },
+  ],
+  exercises: [
+    ex('historia-5', 1, S, 'A Independência do Brasil foi proclamada por D. Pedro I em:', ['1808', '1822', '1888', '1889'], 1, 'Resposta B (1822). Foi em 7 de setembro. 1808 é a chegada da corte, 1888 é a Lei Áurea e 1889 é a Proclamação da República.'),
+    ex('historia-5', 2, S, 'O Poder Moderador, criado pela Constituição de 1824, era exercido:', ['pelo Senado', 'pelos presidentes das províncias', 'exclusivamente pelo imperador', 'pelo Supremo Tribunal'], 2, 'Resposta C. A Constituição outorgada por D. Pedro I criou um quarto poder, o Moderador, só do imperador, que podia dissolver a Câmara, nomear senadores e ministros. Ele ficava acima dos outros poderes.'),
+    ex('historia-5', 3, S, 'A Lei Áurea, assinada pela Princesa Isabel, aboliu totalmente a escravidão no Brasil em:', ['1850', '1871', '1885', '1888'], 3, 'Resposta D (1888). Antes houve leis graduais: Eusébio de Queirós (1850, fim do tráfico), Ventre Livre (1871) e Sexagenários (1885). O Brasil foi o último país das Américas a abolir a escravidão.'),
+    ex('historia-5', 4, S, 'Os "Voluntários da Pátria" foram criados no contexto da:', ['Confederação do Equador', 'Guerra do Paraguai', 'Revolta dos Malês', 'Revolução Farroupilha'], 1, 'Resposta B (Guerra do Paraguai, 1864–1870). O decreto de 1865 criou unidades de voluntários para a guerra contra o Paraguai, mas muitas das vantagens prometidas não se concretizaram.'),
+    ex('historia-5', 5, S, 'A Proclamação da República, em 15 de novembro de 1889, foi liderada por:', ['D. Pedro II', 'Marechal Deodoro da Fonseca', 'Tiradentes', 'Princesa Isabel'], 1, 'Resposta B. O marechal Deodoro da Fonseca, com apoio do Exército e de republicanos, depôs o imperador e proclamou a República. Fatores: abolição, Questão Militar, Questão Religiosa e ideais republicanos.'),
+  ],
+}

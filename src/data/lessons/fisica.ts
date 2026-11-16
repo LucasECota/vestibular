@@ -194,3 +194,52 @@ export const FISICA_4: Lesson = {
     ex('fisica-4', 5, S, 'De acordo com a 2ª lei de Kepler, um planeta se move com maior velocidade:', ['no afélio', 'no periélio', 'quando está no centro da órbita', 'com a mesma velocidade em toda a órbita'], 1, 'Resposta B (no periélio). O raio vetor varre áreas iguais em tempos iguais; para isso, quando o planeta está mais perto do Sol (periélio), ele tem de andar mais rápido. No afélio é mais lento.'),
   ],
 }
+
+const SVG_ESCALAS = `<svg viewBox="0 0 340 210" xmlns="http://www.w3.org/2000/svg" font-family="sans-serif" font-size="11">
+<rect width="340" height="210" fill="#fff"/>
+<text x="170" y="16" text-anchor="middle" font-weight="bold" fill="#0a0a0f">Escalas de temperatura</text>
+<g text-anchor="middle" font-weight="bold" fill="#0a0a0f"><text x="60" y="38">Celsius</text><text x="170" y="38">Fahrenheit</text><text x="280" y="38">Kelvin</text></g>
+<g stroke="#0a0a0f" stroke-width="3"><line x1="60" y1="55" x2="60" y2="165"/><line x1="170" y1="55" x2="170" y2="165"/><line x1="280" y1="55" x2="280" y2="165"/></g>
+<g fill="#c2410c"><circle cx="60" cy="55" r="6"/><circle cx="170" cy="55" r="6"/><circle cx="280" cy="55" r="6"/></g>
+<g fill="#1d4ed8"><circle cx="60" cy="165" r="6"/><circle cx="170" cy="165" r="6"/><circle cx="280" cy="165" r="6"/></g>
+<g font-size="10" fill="#c2410c" text-anchor="start"><text x="72" y="59">100 °C</text><text x="182" y="59">212 °F</text><text x="292" y="59" text-anchor="start">373 K</text></g>
+<g font-size="10" fill="#1d4ed8"><text x="72" y="169">0 °C</text><text x="182" y="169">32 °F</text><text x="292" y="169">273 K</text></g>
+<text x="170" y="190" text-anchor="middle" fill="#c2410c">● ebulição da água</text><text x="170" y="204" text-anchor="middle" fill="#1d4ed8">● fusão do gelo</text></svg>`
+
+export const FISICA_5: Lesson = {
+  slug: 'fisica-5',
+  title: 'Termologia e termodinâmica',
+  blocks: [
+    { type: 'p', text: '**Temperatura** mede o grau de agitação das partículas de um corpo. **Calor** é energia térmica em trânsito, que flui do corpo mais quente para o mais frio. A UEMG já cobrou dilatação de um líquido e um recipiente (2023) e, em Engenharia Ambiental, a termologia ajuda a entender clima, efeito estufa e energia.' },
+    { type: 'h', text: '1. Escalas termométricas' },
+    { type: 'figure', svg: SVG_ESCALAS, alt: 'Três termômetros lado a lado com os pontos de fusão e ebulição da água em Celsius, Fahrenheit e Kelvin', caption: 'A água ferve a 100 °C = 212 °F = 373 K e congela a 0 °C = 32 °F = 273 K.' },
+    { type: 'math', tex: String.raw`\dfrac{T_C}{5} = \dfrac{T_F - 32}{9} = \dfrac{T_K - 273}{5}` },
+    { type: 'callout', kind: 'exemplo', text: String.raw`$50\ ^\circ\text{C} = 50 + 273 = 323\ \text{K}$. E $86\ ^\circ\text{F}$: $\dfrac{T_C}{5} = \dfrac{86-32}{9} = 6 \Rightarrow T_C = 30\ ^\circ\text{C}$.` },
+    { type: 'h', text: '2. Dilatação térmica' },
+    { type: 'table', head: ['Tipo', 'Fórmula', 'Observação'], rows: [
+      ['Linear', String.raw`$\Delta L = L_0\cdot\alpha\cdot\Delta T$`, 'Fios, barras, trilhos'],
+      ['Superficial', String.raw`$\Delta A = A_0\cdot\beta\cdot\Delta T$, com $\beta = 2\alpha$`, 'Chapas'],
+      ['Volumétrica', String.raw`$\Delta V = V_0\cdot\gamma\cdot\Delta T$, com $\gamma = 3\alpha$`, 'Líquidos e sólidos'],
+    ] },
+    { type: 'p', text: 'Um líquido dilata mais que o recipiente (como o petróleo no vidro da UEMG 2023) e, por isso, pode transbordar.' },
+    { type: 'h', text: '3. Calorimetria' },
+    { type: 'list', items: [String.raw`**Calor sensível** (muda a temperatura): $Q = m\cdot c\cdot\Delta T$. O calor específico da água é $c = 1\ \text{cal/g}\cdot^\circ\text{C}$ (alto: a água esquenta e esfria devagar, o que modera o clima perto do mar).`, String.raw`**Calor latente** (muda o estado, sem mudar a temperatura): $Q = m\cdot L$.`, 'Em um sistema isolado, a soma dos calores trocados é zero (**equilíbrio térmico**).'] },
+    { type: 'callout', kind: 'exemplo', text: String.raw`Aquecer 200 g de água de 20 °C a 70 °C: $Q = 200\cdot 1\cdot 50 = 10\,000$ cal.` },
+    { type: 'h', text: '4. Propagação do calor' },
+    { type: 'table', head: ['Processo', 'Como ocorre', 'Exemplo'], rows: [
+      ['Condução', 'Por contato, em sólidos', 'Cabo de panela esquentando'],
+      ['Convecção', 'Movimento de fluidos (quente sobe, frio desce)', 'Brisa marítima, ar-condicionado'],
+      ['Irradiação', 'Por ondas eletromagnéticas, inclusive no vácuo', 'Calor do Sol'],
+    ] },
+    { type: 'h', text: '5. Gases e termodinâmica' },
+    { type: 'math', tex: String.raw`P\,V = n\,R\,T \qquad \Delta U = Q - W` },
+    { type: 'list', items: ['A temperatura deve estar em **kelvin** na equação dos gases.', '**1ª lei:** a variação da energia interna é o calor recebido menos o trabalho realizado (conservação da energia).', '**2ª lei:** o calor flui espontaneamente do corpo quente para o frio e nenhuma máquina térmica converte todo o calor em trabalho (rendimento menor que 100%).'] },
+  ],
+  exercises: [
+    ex('fisica-5', 1, S, 'A temperatura de 50 °C, expressa na escala Kelvin, corresponde a:', ['223 K', '273 K', '323 K', '373 K'], 2, 'Resposta C (323 K). T(K) = T(°C) + 273 = 50 + 273 = 323 K.'),
+    ex('fisica-5', 2, S, 'Uma temperatura de 86 °F corresponde, em graus Celsius, a:', ['20 °C', '30 °C', '40 °C', '54 °C'], 1, 'Resposta B (30 °C). Use TC/5 = (TF − 32)/9: (86 − 32)/9 = 54/9 = 6, então TC = 6 · 5 = 30 °C.'),
+    ex('fisica-5', 3, S, 'Quantas calorias são necessárias para aquecer 200 g de água de 20 °C até 70 °C? (calor específico da água = 1 cal/g·°C)', ['1 000 cal', '4 000 cal', '10 000 cal', '14 000 cal'], 2, 'Resposta C (10 000 cal). Q = m · c · ΔT = 200 · 1 · (70 − 20) = 200 · 50 = 10 000 cal.'),
+    ex('fisica-5', 4, S, 'Uma barra de 2 m, com coeficiente de dilatação linear de 1,2 · 10⁻⁵ °C⁻¹, sofre aquecimento de 100 °C. Seu aumento de comprimento é:', ['0,24 mm', '2,4 mm', '24 mm', '12 mm'], 1, 'Resposta B (2,4 mm). ΔL = L₀ · α · ΔT = 2 · 1,2 · 10⁻⁵ · 100 = 2,4 · 10⁻³ m = 2,4 mm.'),
+    ex('fisica-5', 5, S, 'A energia do Sol chega à Terra através do vácuo do espaço por meio de:', ['condução', 'convecção', 'irradiação', 'dilatação'], 2, 'Resposta C (irradiação). Condução e convecção precisam de meio material (sólido ou fluido). A irradiação ocorre por ondas eletromagnéticas e se propaga até no vácuo.'),
+  ],
+}

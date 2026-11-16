@@ -207,3 +207,53 @@ export const GEOGRAFIA_4: Lesson = {
     ex('geografia-4', 5, S, 'O Aquífero Guarani é:', ['um rio da Amazônia', 'uma das maiores reservas de água subterrânea do mundo, sob países do Mercosul', 'uma usina hidrelétrica no Sul', 'um oceano interior'], 1, 'Resposta B. O aquífero é um grande reservatório de água subterrânea, que ocupa parte do subsolo do Brasil, Argentina, Paraguai e Uruguai. Por ser subterrâneo, o cuidado com poluição e retirada excessiva é fundamental.'),
   ],
 }
+
+export const GEOGRAFIA_5: Lesson = {
+  slug: 'geografia-5',
+  title: 'População, urbanização e migrações',
+  blocks: [
+    { type: 'p', text: 'Geografia da população estuda quantas pessoas vivem em um lugar, como elas se distribuem e por que se deslocam. Na UEMG 2023 caiu a migração venezuelana (causada por crise econômica). Para a Engenharia Ambiental, urbanização e população explicam consumo de água, resíduos e planejamento das cidades.' },
+    { type: 'h', text: '1. Conceitos básicos' },
+    { type: 'table', head: ['Conceito', 'Definição'], rows: [
+      ['População absoluta', 'Número total de habitantes'],
+      ['Densidade demográfica', 'Habitantes por km² (população ÷ área)'],
+      ['Taxa de natalidade', 'Nascimentos por mil habitantes ao ano'],
+      ['Taxa de mortalidade', 'Mortes por mil habitantes ao ano'],
+      ['Crescimento vegetativo', 'Natalidade − mortalidade'],
+      ['Expectativa de vida', 'Média de anos que se espera viver'],
+    ] },
+    { type: 'callout', kind: 'atencao', text: 'População **absoluta** (quantos são) não é o mesmo que população **relativa** ou densidade (quantos por km²). A China é muito populosa; Bangladesh é muito densa.' },
+    { type: 'h', text: '2. Transição demográfica e pirâmides etárias' },
+    { type: 'p', text: 'Com o desenvolvimento, caem primeiro a mortalidade (saúde, saneamento) e depois a natalidade. O crescimento diminui e a população **envelhece**.' },
+    { type: 'table', head: ['Forma da pirâmide', 'Significa', 'Exemplo'], rows: [
+      ['Base larga e topo estreito (triângulo)', 'Alta natalidade, população jovem', 'Países pobres, como o Niger'],
+      ['Base se estreitando e meio mais largo', 'Natalidade em queda; muitos adultos (**bônus demográfico**)', 'Brasil nas últimas décadas'],
+      ['Topo largo e base estreita', 'Baixa natalidade e envelhecimento', 'Japão, Itália, Alemanha'],
+    ] },
+    { type: 'p', text: 'O Brasil está em **transição demográfica** avançada: a natalidade caiu, o número de idosos cresce e o país deve ter menos população jovem e mais aposentados nas próximas décadas, o que pressiona a Previdência.' },
+    { type: 'h', text: '3. Urbanização' },
+    { type: 'list', items: ['**Urbanização** é o aumento da população urbana em relação à rural. No Brasil, foi muito rápida a partir dos anos 1950, impulsionada pela industrialização e pelo **êxodo rural** (deslocamento do campo para a cidade).', 'Hoje mais de 80% dos brasileiros vivem em cidades.', '**Metrópole:** cidade grande que polariza uma região. **Conurbação:** união física de áreas urbanas de cidades vizinhas. **Região metropolitana:** conjunto de municípios integrados.', '**Megacidade:** mais de 10 milhões de habitantes (São Paulo).'] },
+    { type: 'table', head: ['Problemas urbanos', 'Impacto ambiental'], rows: [
+      ['Moradia precária (favelas), ocupação de encostas e várzeas', 'Deslizamentos e enchentes'],
+      ['Impermeabilização do solo e falta de saneamento', 'Alagamentos e poluição dos rios'],
+      ['Trânsito e queima de combustíveis', 'Poluição do ar e ilhas de calor'],
+      ['Produção de lixo', 'Aterros e lixões; contaminação do solo e da água'],
+    ] },
+    { type: 'h', text: '4. Migrações' },
+    { type: 'table', head: ['Tipo', 'Descrição'], rows: [
+      ['Emigração / imigração', 'Saída de um país / entrada em um país'],
+      ['Migração interna', 'Dentro do país (êxodo rural; Nordeste → Sudeste)'],
+      ['Migração pendular', 'Ida e volta diária entre cidades, para trabalhar ou estudar'],
+      ['Migração sazonal', 'Em determinada época (colheitas)'],
+      ['Refugiados', 'Pessoas que fogem de guerras, perseguição ou crises, como os venezuelanos, sírios e ucranianos'],
+    ] },
+    { type: 'callout', kind: 'dica', text: 'Causas das migrações: econômicas (busca de emprego), políticas (guerra, perseguição), ambientais (secas, enchentes) e familiares. Fatores de **expulsão** (o que faz sair) e de **atração** (o que faz chegar).' },
+  ],
+  exercises: [
+    ex('geografia-5', 1, S, 'O crescimento vegetativo de uma população é calculado pela diferença entre:', ['a população urbana e a rural', 'a natalidade e a mortalidade', 'a imigração e a emigração', 'a população absoluta e a área'], 1, 'Resposta B. Crescimento vegetativo = natalidade − mortalidade. Imigração e emigração formam o saldo migratório, que é outra componente do crescimento total.'),
+    ex('geografia-5', 2, S, 'O êxodo rural consiste no deslocamento de pessoas:', ['da cidade para o campo', 'do campo para a cidade', 'de um país para outro', 'entre cidades vizinhas, todos os dias, para trabalhar'], 1, 'Resposta B. É a saída da população do campo para as cidades, em busca de emprego e melhores condições. Foi um dos motores da urbanização brasileira no século XX.'),
+    ex('geografia-5', 3, S, 'A migração pendular é caracterizada por:', ['mudança definitiva de país', 'deslocamento diário entre municípios, por trabalho ou estudo', 'fuga de guerras', 'deslocamento para a colheita'], 1, 'Resposta B. Quem faz migração pendular mora em uma cidade e vai todos os dias trabalhar ou estudar em outra, e volta. Costuma ocorrer em regiões metropolitanas.'),
+    ex('geografia-5', 4, S, 'Uma pirâmide etária com base estreita e topo largo indica:', ['alta natalidade e população jovem', 'baixa natalidade e envelhecimento da população', 'crescimento populacional muito rápido', 'população majoritariamente rural'], 1, 'Resposta B. Poucos jovens (base estreita) e muitos idosos (topo largo) indicam queda da natalidade e envelhecimento, como no Japão e em países europeus. Alta natalidade dá base larga.'),
+    ex('geografia-5', 5, S, 'A união física das áreas urbanas de cidades vizinhas, que passam a formar uma mancha urbana contínua, é chamada de:', ['êxodo rural', 'conurbação', 'densidade demográfica', 'migração pendular'], 1, 'Resposta B (conurbação). Ocorre quando duas ou mais cidades crescem tanto que se encontram, formando um conjunto urbano, como São Paulo e os municípios do ABC.'),
+  ],
+}

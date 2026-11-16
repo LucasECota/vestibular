@@ -172,3 +172,48 @@ export const PORTUGUES_4: Lesson = {
     ex('portugues-4', 5, S, 'Complete corretamente: "A prova e o gabarito ____ publicados no site."', ['foi', 'foram', 'fui', 'fora'], 1, 'Resposta B (foram). O sujeito é composto ("a prova e o gabarito"), antes do verbo, portanto o verbo vai para o plural: foram.'),
   ],
 }
+
+export const PORTUGUES_5: Lesson = {
+  slug: 'portugues-5',
+  title: 'Pontuação, coesão e coerência',
+  blocks: [
+    { type: 'p', text: 'Pontuação, coesão e coerência fazem um texto ficar claro e bem encadeado. São a base da **redação** (vale 60 pontos na UEMG: macroestrutura e microestrutura têm 15 pontos cada) e aparecem nas questões de Português. Aprenda os usos principais.' },
+    { type: 'h', text: '1. Vírgula' },
+    { type: 'table', head: ['Usa vírgula', 'Exemplo'], rows: [
+      ['Enumeração', 'Trouxe maçã, pera, uva e banana.'],
+      ['Aposto (explicação)', 'Maria, minha vizinha, viajou.'],
+      ['Vocativo', 'Daniela, estude mais um pouco.'],
+      ['Adjunto adverbial deslocado (antes do verbo)', 'Ontem, choveu muito.'],
+      ['Antes de conjunção adversativa (mas, porém...)', 'Estudou, mas não passou.'],
+      ['Orações explicativas (adjetivas)', 'O Brasil, que é tropical, tem muitos rios.'],
+      ['Oração subordinada deslocada', 'Se chover, não irei.'],
+    ] },
+    { type: 'callout', kind: 'atencao', title: 'Nunca separe', text: 'Não use vírgula entre **sujeito e verbo** nem entre **verbo e complemento**. Errado: "O aluno, estudou muito." Certo: "O aluno estudou muito." (Só se houver um termo intercalado: "O aluno, cansado, estudou muito.")' },
+    { type: 'h', text: '2. Outros sinais' },
+    { type: 'table', head: ['Sinal', 'Uso', 'Exemplo'], rows: [
+      ['Ponto e vírgula (;)', 'Separa orações longas ou itens de uma lista', 'Estudou muito; passou.'],
+      ['Dois-pontos (:)', 'Introduz enumeração, explicação ou citação', 'Trouxe três frutas: maçã, pera e uva.'],
+      ['Travessão (—)', 'Fala de personagem, aposto ou ênfase', 'Ela — a mais esforçada — passou.'],
+      ['Aspas ("")', 'Citação, ironia, estrangeirismo', 'Ele disse: "vou estudar".'],
+      ['Reticências (...)', 'Interrupção ou suspense', 'Será que...'],
+    ] },
+    { type: 'h', text: '3. Coesão: a "cola" do texto' },
+    { type: 'p', text: '**Coesão** é a ligação entre as partes do texto por meio de palavras e expressões.' },
+    { type: 'table', head: ['Tipo', 'Como funciona', 'Exemplo'], rows: [
+      ['Referencial', 'Retoma ou antecipa algo (pronomes, sinônimos, repetições)', 'Daniela estuda para o vestibular. **Ela** quer cursar Engenharia Ambiental.'],
+      ['Sequencial', 'Conectivos que ligam as ideias', 'Estudou muito; **por isso**, passou. **Porém**, ainda falta o resultado.'],
+    ] },
+    { type: 'p', text: '**Conectivos úteis na redação:** adição (além disso, ademais), oposição (porém, no entanto, contudo), causa (visto que, uma vez que), consequência (portanto, por isso), conclusão (em suma, dessa forma), exemplificação (por exemplo, como).' },
+    { type: 'h', text: '4. Coerência: o sentido do texto' },
+    { type: 'p', text: '**Coerência** é a lógica do texto: as ideias não se contradizem, seguem uma progressão e têm relação com o tema. Um texto pode ter conectivos (coesão) e ainda assim ser incoerente.' },
+    { type: 'callout', kind: 'exemplo', title: 'Incoerente × coerente', text: 'Incoerente: "Choveu muito, por isso as ruas ficaram secas." (a causa e a consequência não combinam).' + '\n' + 'Coerente: "Choveu muito, por isso as ruas ficaram alagadas."' },
+    { type: 'callout', kind: 'dica', text: 'Para a redação: introdução com tese, dois parágrafos de argumentos ligados por conectivos e uma conclusão com proposta de intervenção. Os conectivos mostram ao corretor que seu raciocínio está organizado.' },
+  ],
+  exercises: [
+    ex('portugues-5', 1, S, 'Em "Maria, minha vizinha, viajou ontem", as vírgulas foram usadas para:', ['separar o sujeito do verbo', 'isolar um aposto (explicação)', 'separar um vocativo', 'enumerar elementos'], 1, 'Resposta B. "Minha vizinha" é um aposto: explica quem é Maria. Os apostos são isolados por vírgulas. Não é vocativo (ninguém está sendo chamado) nem enumeração.'),
+    ex('portugues-5', 2, S, 'Assinale a frase em que a vírgula foi usada de forma INCORRETA.', ['O aluno, estudou muito para a prova.', 'Ontem, choveu muito em Minas.', 'Estudou bastante, mas não passou.', 'Daniela, venha aqui, por favor.'], 0, 'Resposta A (a incorreta). A vírgula separa o sujeito ("o aluno") do verbo ("estudou"), o que não pode acontecer. Em B há adjunto adverbial deslocado, em C conjunção adversativa e em D vocativo.'),
+    ex('portugues-5', 3, S, 'Em "Daniela estuda para o vestibular. Ela quer cursar Engenharia Ambiental.", o pronome "Ela" estabelece coesão:', ['sequencial, por conectivo', 'referencial, retomando "Daniela"', 'por elipse do verbo', 'por oposição'], 1, 'Resposta B (referencial). O pronome "ela" retoma o termo "Daniela", evitando a repetição. A coesão sequencial usa conectivos, como "porém" e "portanto".'),
+    ex('portugues-5', 4, S, 'Assinale a frase que apresenta coerência entre as ideias.', ['Choveu muito, por isso as ruas ficaram secas.', 'Estava muito calor, por isso ligamos o ventilador.', 'Estudou pouco, portanto foi aprovado com a maior nota.', 'Fez frio, então vestimos roupas de verão.'], 1, 'Resposta B. Calor leva a ligar o ventilador: causa e consequência combinam. Nas outras frases o conectivo liga ideias que se contradizem (chuva e rua seca; estudar pouco e a maior nota; frio e roupa de verão).'),
+    ex('portugues-5', 5, S, 'Em "Trouxe três frutas: maçã, pera e uva", os dois-pontos servem para:', ['introduzir uma enumeração', 'indicar a fala de um personagem', 'separar o sujeito do verbo', 'marcar uma dúvida'], 0, 'Resposta A. Os dois-pontos introduzem uma enumeração ("três frutas:" → quais?). Também podem introduzir explicação ou citação, mas nunca separam sujeito de verbo.'),
+  ],
+}

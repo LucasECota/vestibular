@@ -1,5 +1,5 @@
 import type { Exercise } from './exercises'
-import { EXERCISES } from './exercises'
+import { LESSON_EXERCISES } from './lessons'
 import q2023 from './questions/2023.json'
 import q2024 from './questions/2024.json'
 import fixes from './questionFixes.json'
@@ -58,7 +58,7 @@ export const PAST_QUESTIONS: Exercise[] = ([...q2023, ...q2024] as RawQuestion[]
   .map(toExercise)
 
 export const exerciseById = (id: string): Exercise | undefined =>
-  EXERCISES.find((e) => e.id === id) ?? PAST_QUESTIONS.find((e) => e.id === id)
+  LESSON_EXERCISES.find((e) => e.id === id) ?? PAST_QUESTIONS.find((e) => e.id === id)
 
 export const questionsBySubject = (subject: SubjectId): Exercise[] =>
   PAST_QUESTIONS.filter((q) => q.subject === subject)

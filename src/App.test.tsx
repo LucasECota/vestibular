@@ -5,7 +5,7 @@ import App from './App'
 import { PLAN } from './data/plan'
 import { ProgressProvider } from './state/ProgressProvider'
 
-const renderApp = (route = '/', today = '2026-11-16') =>
+const renderApp = (route = '/', today = '2026-11-17') =>
   render(
     <MemoryRouter initialEntries={[route]}>
       <ProgressProvider today={today}>
@@ -15,6 +15,16 @@ const renderApp = (route = '/', today = '2026-11-16') =>
   )
 
 const mathTasks = PLAN.filter((t) => t.subject === 'matematica').length
+
+type User = ReturnType<typeof userEvent.setup>
+
+/** Respostas da aula de Matemática 1: [errada, certa, certa, certa, certa]. */
+const MAT1_PICKS = [/^A\s*11/, /^B\s*2$/, /^C\s*R\$ 220/, /^B\s*4% menor/, /^B\s*2$/]
+
+const answerMat1 = async (user: User) => {
+  const cards = screen.getAllByRole('article').slice(0, 5)
+  for (let i = 0; i < 5; i++) await user.click(within(cards[i]).getByRole('button', { name: MAT1_PICKS[i] }))
+}
 
 const goHome = () => within(screen.getByRole('navigation')).getByRole('link', { name: 'Hoje' })
 
@@ -27,14 +37,21 @@ describe('fluxo principal', () => {
     expect(screen.queryByText(/cinemática/i)).not.toBeInTheDocument()
   })
 
+  it('o plano só começa amanhã: hoje (16/11) não tem tarefas', () => {
+    renderApp('/', '2026-11-16')
+    expect(screen.getByText(/sem tarefas hoje/i)).toBeInTheDocument()
+    expect(screen.queryByText(/operações, potências e porcentagem/i)).not.toBeInTheDocument()
+  })
+
   it('mostra a contagem regressiva e o plano completo', async () => {
     const user = userEvent.setup()
     renderApp()
-    expect(screen.getByText(/faltam 62 dias para a prova/i)).toBeInTheDocument()
+    expect(screen.getByText(/faltam 61 dias para a prova/i)).toBeInTheDocument()
     await user.click(screen.getByRole('link', { name: /plano de estudo completo/i }))
     expect(screen.getByRole('heading', { name: 'Plano de estudo' })).toBeInTheDocument()
     expect(screen.getAllByRole('region', { name: /semana/i })).toHaveLength(9)
     expect(screen.getByText('Revisão final')).toBeInTheDocument()
+    expect(screen.getByRole('region', { name: 'Semana 1' })).toHaveTextContent('17/11')
   })
 
   it('cumprimenta a Daniela', () => {
@@ -77,7 +94,7 @@ describe('fluxo principal', () => {
 
   it('o atalho da tarefa abre as dúvidas já com a disciplina escolhida', async () => {
     const user = userEvent.setup()
-    renderApp('/tarefa/t-2026-11-16-matematica')
+    renderApp('/tarefa/t-2026-11-17-matematica')
     await user.click(screen.getByRole('link', { name: /anotar uma dúvida/i }))
     expect(screen.getByLabelText(/disciplina/i)).toHaveValue('matematica')
   })
@@ -96,7 +113,7 @@ describe('fluxo principal', () => {
 
   it('tarefa de prática traz questões de provas anteriores', async () => {
     const user = userEvent.setup()
-    renderApp('/tarefa/t-2026-11-20-matematica')
+    renderApp('/tarefa/t-2026-11-23-matematica')
     expect(screen.getByRole('heading', { name: /questões de provas anteriores/i })).toBeInTheDocument()
     expect(screen.getAllByRole('article').length).toBeGreaterThanOrEqual(3)
     await user.click(screen.getAllByRole('button', { name: /ver a questão como na prova/i })[0])
@@ -105,26 +122,26 @@ describe('fluxo principal', () => {
 
   it('questão errada volta para revisão nos dias seguintes, e acertar rende XP', async () => {
     const user = userEvent.setup()
-    // dia 1: erra a questão 1 da tarefa de Matemática (certa: C = 17)
-    const day1 = renderApp('/tarefa/t-2026-11-16-matematica', '2026-11-16')
+    // dia 1 (17/11): erra a questão 1 da aula de Matemática (certa: C = 15)
+    const day1 = renderApp('/tarefa/t-2026-11-17-matematica', '2026-11-17')
     const card = screen.getAllByRole('article')[0]
     await user.click(within(card).getByRole('button', { name: /^A\s*11/ }))
     expect(within(card).getByText(/resposta certa: C/i)).toBeInTheDocument()
     day1.unmount()
 
     // mesmo dia: ainda não vence
-    const same = renderApp('/revisao', '2026-11-16')
+    const same = renderApp('/revisao', '2026-11-17')
     expect(screen.getByText(/nada para revisar hoje/i)).toBeInTheDocument()
     same.unmount()
 
-    // dia 2: aparece na Home e em /revisao
-    const day2 = renderApp('/', '2026-11-17')
+    // dia 2 (18/11): aparece na Home e em /revisao
+    const day2 = renderApp('/', '2026-11-18')
     expect(screen.getByText(/1 questão para revisar/i)).toBeInTheDocument()
     day2.unmount()
 
-    renderApp('/revisao', '2026-11-17')
+    renderApp('/revisao', '2026-11-18')
     const review = screen.getAllByRole('article')[0]
-    await user.click(within(review).getByRole('button', { name: /^C\s*17/ }))
+    await user.click(within(review).getByRole('button', { name: /^C\s*15/ }))
     expect(within(review).getByText('Correto!')).toBeInTheDocument()
     // continua visível depois de responder
     expect(screen.getAllByRole('article')).toHaveLength(1)
@@ -132,10 +149,10 @@ describe('fluxo principal', () => {
 
   it('tarefa mostra a revisão de erros vencidos', async () => {
     const user = userEvent.setup()
-    const day1 = renderApp('/tarefa/t-2026-11-16-matematica', '2026-11-16')
+    const day1 = renderApp('/tarefa/t-2026-11-17-matematica', '2026-11-17')
     await user.click(within(screen.getAllByRole('article')[0]).getByRole('button', { name: /^A\s*11/ }))
     day1.unmount()
-    renderApp('/tarefa/t-2026-11-17-fisica', '2026-11-17')
+    renderApp('/tarefa/t-2026-11-18-fisica', '2026-11-18')
     expect(screen.getByRole('region', { name: /revisão de erros/i })).toBeInTheDocument()
   })
 
@@ -152,32 +169,41 @@ describe('fluxo principal', () => {
     expect(screen.getByText('Matemática')).toBeInTheDocument()
   })
 
-  it('responde exercícios, vê o feedback, conclui a tarefa e ganha XP', async () => {
+  it('mostra a aula da tarefa, com fórmulas e tabelas', () => {
+    renderApp('/tarefa/t-2026-11-17-matematica')
+    expect(screen.getByRole('region', { name: 'Aula' })).toBeInTheDocument()
+    expect(screen.getByText('1. Ordem das operações')).toBeInTheDocument()
+    expect(document.querySelector('.katex')).not.toBeNull()
+    expect(screen.getByText('Mesma base, multiplicação')).toBeInTheDocument()
+    expect(screen.getAllByRole('article')).toHaveLength(5)
+  })
+
+  it('responde os 5 exercícios, vê o feedback, conclui a tarefa e ganha XP', async () => {
     const user = userEvent.setup()
-    renderApp('/tarefa/t-2026-11-16-matematica')
+    renderApp('/tarefa/t-2026-11-17-matematica')
 
     const finish = screen.getByRole('button', { name: /concluir tarefa/i })
     expect(finish).toBeDisabled()
 
     const cards = screen.getAllByRole('article')
-    await user.click(within(cards[0]).getByRole('button', { name: /17/ })) // certa
-    expect(within(cards[0]).getByText('Correto!')).toBeInTheDocument()
-    await user.click(within(cards[1]).getByRole('button', { name: /^B\s*120$/ })) // errada
-    expect(within(cards[1]).getByText(/resposta certa: C/i)).toBeInTheDocument()
+    await user.click(within(cards[0]).getByRole('button', { name: MAT1_PICKS[0] })) // errada
+    expect(within(cards[0]).getByText(/resposta certa: C/i)).toBeInTheDocument()
+    expect(within(cards[0]).getByText(/primeiro a potência/i)).toBeInTheDocument()
+    expect(finish).toBeDisabled() // faltam 4
+    for (let i = 1; i < 5; i++) await user.click(within(cards[i]).getByRole('button', { name: MAT1_PICKS[i] }))
+    expect(within(cards[1]).getByText('Correto!')).toBeInTheDocument()
 
     await user.click(finish)
     expect(screen.getByRole('button', { name: /tarefa concluída/i })).toBeDisabled()
 
     await user.click(goHome())
-    expect(screen.getByText('62 XP')).toBeInTheDocument()
+    expect(screen.getByText('92 XP')).toBeInTheDocument() // 2 + 4×10 + 50
   })
 
   it('mostra o progresso por disciplina depois de concluir tarefas', async () => {
     const user = userEvent.setup()
-    renderApp('/tarefa/t-2026-11-16-matematica')
-    const cards = screen.getAllByRole('article')
-    await user.click(within(cards[0]).getByRole('button', { name: /17/ }))
-    await user.click(within(cards[1]).getByRole('button', { name: /150/ }))
+    renderApp('/tarefa/t-2026-11-17-matematica')
+    await answerMat1(user)
     await user.click(screen.getByRole('button', { name: /concluir tarefa/i }))
     await user.click(goHome())
     await user.click(screen.getByRole('link', { name: 'Disciplinas' }))

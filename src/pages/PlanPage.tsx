@@ -1,22 +1,24 @@
 import { Link } from 'react-router-dom'
 import { SubjectChip } from '../components/SubjectChip'
 import { EXAM_DATE_ESTIMATE, PLAN } from '../data/plan'
-import { addDays, daysBetween, formatBR } from '../domain/date'
+import { addDays, formatBR, weekdayOf } from '../domain/date'
 import type { TaskKind } from '../domain/types'
 import { useProgress } from '../state/useProgress'
 
 const KIND_LABEL: Record<TaskKind, string> = {
-  conteudo: 'Conteúdo novo',
+  conteudo: 'Conteúdo novo e questões de provas',
   pratica: 'Questões de provas',
   revisao: 'Revisão final',
 }
+
+/** Segunda-feira da semana de uma data. */
+const mondayOf = (iso: string): string => addDays(iso, -((weekdayOf(iso) + 6) % 7))
 
 const WEEKDAY = ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb']
 
 export function PlanPage() {
   const { progress, today } = useProgress()
-  const start = PLAN[0].date
-  const weeks = [...new Set(PLAN.map((t) => Math.floor(daysBetween(start, t.date) / 7)))]
+  const mondays = [...new Set(PLAN.map((t) => mondayOf(t.date)))]
 
   return (
     <div className="space-y-6">
@@ -29,18 +31,16 @@ export function PlanPage() {
         </p>
       </header>
 
-      {weeks.map((w) => {
-        const monday = addDays(start, w * 7)
+      {mondays.map((monday, w) => {
         const tasks = PLAN.filter((t) => t.date >= monday && t.date <= addDays(monday, 4))
-        const phase: TaskKind =
-          w === weeks.length - 1 ? 'revisao' : w === weeks.length - 2 ? 'pratica' : 'conteudo'
+        const phase: TaskKind = tasks.some((t) => t.kind === 'revisao') ? 'revisao' : 'conteudo'
         const done = tasks.filter((t) => progress.completedTaskIds.includes(t.id)).length
         return (
           <section key={w} aria-label={`Semana ${w + 1}`} className="space-y-3">
             <div className="flex items-baseline justify-between">
               <h2 className="text-xl font-extrabold">Semana {w + 1}</h2>
               <span className="text-sm font-bold text-muted">
-                {formatBR(monday).slice(0, 5)} a {formatBR(addDays(monday, 4)).slice(0, 5)} · {done}/{tasks.length}
+                {formatBR(tasks[0].date).slice(0, 5)} a {formatBR(tasks[tasks.length - 1].date).slice(0, 5)} · {done}/{tasks.length}
               </span>
             </div>
             <p className="text-sm font-bold text-brand">{KIND_LABEL[phase]}</p>

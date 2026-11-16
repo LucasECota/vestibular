@@ -49,7 +49,7 @@ describe('banco de questões', () => {
   })
 
   it('acha exercícios de exemplo e questões pelo mesmo id', () => {
-    expect(exerciseById('ex-mat-1')).toBeDefined()
+    expect(exerciseById('les-matematica-1-1')).toBeDefined()
     expect(exerciseById('nao-existe')).toBeUndefined()
   })
 })

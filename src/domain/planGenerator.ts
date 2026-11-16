@@ -1,20 +1,23 @@
 import { SUBJECT_LABEL } from '../data/subjects'
-import { addDays } from './date'
+import { addDays, daysBetween, weekdayOf } from './date'
 import type { StudyTask, SubjectId, TaskKind } from './types'
 
 export interface PlanConfig {
-  /** Segunda-feira da primeira semana (YYYY-MM-DD). */
-  startMonday: string
-  weeks: number
+  /** Primeiro dia de estudo (YYYY-MM-DD). */
+  startDate: string
+  /** Último dia de estudo (YYYY-MM-DD). */
+  endDate: string
   /** Dias úteis sem estudo. */
   holidays: string[]
   curriculum: Record<SubjectId, string[]>
+  /** Quantos dias úteis finais são só de revisão. */
+  reviewDays?: number
 }
 
 type Slot = SubjectId | 'rotativa'
 
-/** Duas tarefas de 1h por dia, de segunda a sexta. */
-const WEEK_TEMPLATE: Slot[][] = [
+/** Ciclo de 5 dias de estudo, com 2 tarefas de 1h por dia. */
+const CYCLE: Slot[][] = [
   ['matematica', 'portugues'],
   ['fisica', 'biologia'],
   ['quimica', 'geografia'],
@@ -22,68 +25,68 @@ const WEEK_TEMPLATE: Slot[][] = [
   ['ingles', 'rotativa'],
 ]
 
-/** Disciplinas que ocupam o 2º horário das sextas, em rodízio. */
-const FRIDAY_ROTATION: SubjectId[] = ['matematica', 'fisica', 'quimica', 'biologia', 'portugues']
-
-/** Semanas de conteúdo novo; depois vêm 1 semana de questões e 1 de revisão. */
-const REVIEW_WEEKS = 1
-const PRACTICE_WEEKS = 1
+/** Disciplinas que ocupam o horário "rotativo" do ciclo, em rodízio (questões de provas). */
+const ROTATION: SubjectId[] = ['matematica', 'fisica', 'quimica', 'biologia', 'portugues']
 
 const MINUTES = 60
 
+export function studyDays(config: PlanConfig): string[] {
+  const days: string[] = []
+  const total = daysBetween(config.startDate, config.endDate)
+  for (let i = 0; i <= total; i++) {
+    const d = addDays(config.startDate, i)
+    const wd = weekdayOf(d)
+    if (wd !== 0 && wd !== 6 && !config.holidays.includes(d)) days.push(d)
+  }
+  return days
+}
+
+/**
+ * Gera o plano: cada disciplina percorre seus tópicos em ordem; quando acabam, as tarefas
+ * viram questões de provas anteriores. Os últimos dias são só de revisão.
+ */
 export function generatePlan(config: PlanConfig): StudyTask[] {
+  const days = studyDays(config)
+  const reviewFrom = days.length - (config.reviewDays ?? 3)
+  const nextTopic: Partial<Record<SubjectId, number>> = {}
+  let rotation = 0
   const tasks: StudyTask[] = []
-  const nextTopic: Record<SubjectId, number> = {
-    matematica: 0, portugues: 0, ingles: 0, fisica: 0,
-    quimica: 0, biologia: 0, geografia: 0, historia: 0,
-  }
-  const contentWeeks = config.weeks - PRACTICE_WEEKS - REVIEW_WEEKS
-  let rotationIdx = 0
 
-  for (let week = 0; week < config.weeks; week++) {
-    const weekKind: TaskKind =
-      week < contentWeeks ? 'conteudo' : week < contentWeeks + PRACTICE_WEEKS ? 'pratica' : 'revisao'
+  days.forEach((date, dayIdx) => {
+    for (const slot of CYCLE[dayIdx % CYCLE.length]) {
+      const subject: SubjectId = slot === 'rotativa' ? ROTATION[rotation++ % ROTATION.length] : slot
+      const topics = config.curriculum[subject]
+      const used = nextTopic[subject] ?? 0
 
-    for (let dow = 0; dow < 5; dow++) {
-      const date = addDays(config.startMonday, week * 7 + dow)
-      if (config.holidays.includes(date)) continue
-
-      for (const slot of WEEK_TEMPLATE[dow]) {
-        let subject: SubjectId
-        let kind = weekKind
-        if (slot === 'rotativa') {
-          subject = FRIDAY_ROTATION[rotationIdx % FRIDAY_ROTATION.length]
-          rotationIdx += 1
-          if (kind === 'conteudo') kind = 'pratica'
-        } else {
-          subject = slot
-        }
-
-        const topics = config.curriculum[subject]
-        if (kind === 'conteudo' && nextTopic[subject] >= topics.length) kind = 'pratica'
-
-        let title: string
-        if (kind === 'conteudo') {
-          title = topics[nextTopic[subject]]
-          nextTopic[subject] += 1
-        } else if (kind === 'pratica') {
-          title = `Questões de provas anteriores: ${SUBJECT_LABEL[subject]}`
-        } else {
-          title = `Revisão: ${SUBJECT_LABEL[subject]}`
-        }
-
-        tasks.push({
-          id: `t-${date}-${subject}`,
-          date,
-          subject,
-          kind,
-          title,
-          minutes: MINUTES,
-          lessonSlug: `${subject}-${kind}-${tasks.length + 1}`,
-          exerciseIds: [],
-        })
+      let kind: TaskKind
+      let title: string
+      let lessonSlug: string
+      if (dayIdx >= reviewFrom) {
+        kind = 'revisao'
+        title = `Revisão: ${SUBJECT_LABEL[subject]}`
+        lessonSlug = `${subject}-revisao`
+      } else if (slot !== 'rotativa' && used < topics.length) {
+        kind = 'conteudo'
+        title = topics[used]
+        lessonSlug = `${subject}-${used + 1}`
+        nextTopic[subject] = used + 1
+      } else {
+        kind = 'pratica'
+        title = `Questões de provas anteriores: ${SUBJECT_LABEL[subject]}`
+        lessonSlug = `${subject}-pratica`
       }
+
+      tasks.push({
+        id: `t-${date}-${subject}`,
+        date,
+        subject,
+        kind,
+        title,
+        minutes: MINUTES,
+        lessonSlug,
+        exerciseIds: [],
+      })
     }
-  }
+  })
   return tasks
 }

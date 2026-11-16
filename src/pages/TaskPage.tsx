@@ -1,5 +1,7 @@
 import { Link, useParams } from 'react-router-dom'
 import { ExerciseCard } from '../components/ExerciseCard'
+import { LessonView } from '../components/LessonView'
+import { lessonBySlug } from '../data/lessons'
 import { ReviewSection } from '../components/ReviewSection'
 import { exerciseById } from '../data/questionBank'
 import { taskById } from '../data/plan'
@@ -11,6 +13,7 @@ export function TaskPage() {
   const { taskId = '' } = useParams()
   const { progress, answer, finishTask } = useProgress()
   const task = taskById(taskId)
+  const lesson = task ? lessonBySlug(task.lessonSlug) : undefined
 
   if (!task) {
     return (
@@ -36,10 +39,22 @@ export function TaskPage() {
         <h1 className="mt-2 text-3xl font-extrabold tracking-tight">{task.title}</h1>
       </header>
 
-      <section aria-label="Conteúdo" className="card p-4">
-        <h2 className="font-semibold">Conteúdo</h2>
-        <p className="mt-1 text-muted">A página de conteúdo desta tarefa será adicionada aqui.</p>
-      </section>
+      {lesson ? (
+        <section aria-label="Aula" className="card space-y-3 p-4">
+          <h2 className="text-xl font-extrabold">📖 Aula</h2>
+          <LessonView blocks={lesson.blocks} />
+        </section>
+      ) : (
+        <section aria-label="Orientação" className="card p-4">
+          <p className="text-muted">
+            {task.kind === 'conteudo'
+              ? 'A aula deste tópico será adicionada em breve.'
+              : task.kind === 'pratica'
+                ? 'Resolva as questões de provas anteriores. Se errar, a questão volta para revisão nos próximos dias.'
+                : 'Hora de revisar: refaça os erros e releia as aulas desta matéria.'}
+          </p>
+        </section>
+      )}
 
       <section aria-label="Exercícios" className="space-y-3">
         <h2 className="text-xl font-extrabold">Exercícios</h2>

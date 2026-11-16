@@ -37,3 +37,38 @@ export const PORTUGUES_1: Lesson = {
     ex('portugues-1', 5, S, 'Texto: "Ler um bom livro não serve apenas para passar o tempo. Quem lê com frequência amplia o vocabulário, desenvolve a imaginação e escreve com mais facilidade." Assinale a alternativa INCORRETA em relação ao texto.', ['A leitura ajuda a ampliar o vocabulário.', 'A leitura desenvolve a imaginação.', 'A leitura serve apenas para passar o tempo.', 'Quem lê com frequência tende a escrever melhor.'], 2, 'Resposta C (a incorreta). O texto diz exatamente o contrário: ler "não serve apenas para passar o tempo". As alternativas A, B e D repetem benefícios citados. Atenção ao comando "INCORRETA" e à palavra "apenas", que costuma indicar exagero.'),
   ],
 }
+
+export const PORTUGUES_2: Lesson = {
+  slug: 'portugues-2',
+  title: 'Variação linguística e funções da linguagem',
+  blocks: [
+    { type: 'p', text: 'Uma língua não é falada de um único jeito. A **variação linguística** estuda essas diferenças, e as **funções da linguagem** mostram qual é o objetivo de quem fala ou escreve. Os dois temas aparecem sempre em provas de Português, inclusive na UEMG (2023 trouxe uma questão sobre variações regionais).' },
+    { type: 'h', text: '1. Tipos de variação' },
+    { type: 'table', head: ['Tipo', 'Depende de...', 'Exemplos'], rows: [
+      ['Diatópica (regional)', 'Lugar onde se fala', 'Sotaque mineiro, "mainha" no Nordeste, "guri" no Sul, "trem" em Minas'],
+      ['Diastrática (social)', 'Grupo social: escolaridade, idade, profissão', 'Gírias de jovens, jargão médico ou de informática'],
+      ['Diacrônica (histórica)', 'Época', '"Vossa mercê" → "você"; "farmácia" já foi "pharmacia"'],
+      ['Diafásica (situacional)', 'Situação de uso: formal ou informal', 'Entrevista de emprego × conversa com amigos'],
+    ] },
+    { type: 'callout', kind: 'dica', text: 'Macete: dia-TÓ-pica = TÓpico = lugar. Dia-STRÁ-tica = estrato = camada social. Dia-CRÔ-nica = crono = tempo. Dia-FÁ-sica = fase = situação.' },
+    { type: 'h', text: '2. Norma-padrão e preconceito linguístico' },
+    { type: 'p', text: 'A **norma-padrão** é o modelo ensinado na escola e cobrado nos vestibulares e na redação. Já a **língua em uso** é o que as pessoas realmente falam. Nenhuma variação é "errada" em si: cada uma é adequada a certos contextos. Discriminar alguém pelo jeito de falar é o **preconceito linguístico**.' },
+    { type: 'h', text: '3. Funções da linguagem' },
+    { type: 'table', head: ['Função', 'Foco', 'Marcas', 'Exemplo'], rows: [
+      ['Referencial', 'O assunto (o referente)', '3ª pessoa, linguagem objetiva', 'Notícias, textos científicos: "A água ferve a 100 °C."'],
+      ['Emotiva (expressiva)', 'O emissor', '1ª pessoa, exclamações, emoção', '"Que saudade eu sinto de você!"'],
+      ['Conativa (apelativa)', 'O receptor', 'Imperativo, vocativo, apelo', '"Compre agora e economize!"'],
+      ['Fática', 'O canal de comunicação', 'Testar ou manter o contato', '"Alô? Está me ouvindo?"'],
+      ['Metalinguística', 'O código (a própria língua)', 'A linguagem explica a linguagem', 'Dicionário e gramática: "Substantivo é a palavra que nomeia seres."'],
+      ['Poética', 'A mensagem em si', 'Figuras de linguagem, ritmo, rima', 'Poemas e letras de música'],
+    ] },
+    { type: 'callout', kind: 'atencao', text: 'Um mesmo texto pode ter várias funções, mas a prova pede a **predominante**. Pergunte-se: o texto quer informar (referencial), expressar sentimento (emotiva), convencer (conativa), checar a comunicação (fática), explicar a língua (metalinguística) ou chamar atenção para a forma (poética)?' },
+  ],
+  exercises: [
+    ex('portugues-2', 1, S, 'O uso de expressões como "trem" (em Minas Gerais) e "guri" (no Rio Grande do Sul) para se referir a objetos e meninos é um exemplo de variação:', ['diacrônica', 'diatópica', 'diafásica', 'diastrática'], 1, 'Resposta B (diatópica). A diferença depende do lugar (região) onde as pessoas moram. Diacrônica seria a variação no tempo; diafásica, na situação de uso; diastrática, no grupo social.'),
+    ex('portugues-2', 2, S, 'Uma pessoa usa linguagem formal numa entrevista de emprego e linguagem bem informal ao conversar com os amigos. Isso mostra variação:', ['diatópica', 'diacrônica', 'diafásica', 'regional'], 2, 'Resposta C (diafásica). A mesma pessoa muda o jeito de falar conforme a situação (formal ou informal). Não depende do lugar (diatópica ou regional) nem da época (diacrônica).'),
+    ex('portugues-2', 3, S, 'No anúncio "Compre agora e economize! Aproveite!", predomina a função da linguagem:', ['referencial', 'emotiva', 'conativa', 'poética'], 2, 'Resposta C (conativa). O texto tenta convencer o leitor a agir, com verbos no imperativo (compre, economize, aproveite). É a função centrada no receptor.'),
+    ex('portugues-2', 4, S, 'No trecho de uma gramática "Verbo é a palavra que indica ação, estado ou fenômeno", predomina a função:', ['conativa', 'fática', 'metalinguística', 'emotiva'], 2, 'Resposta C (metalinguística). A linguagem está sendo usada para explicar a própria língua (um conceito gramatical). É típica de gramáticas e dicionários.'),
+    ex('portugues-2', 5, S, 'Em "Que saudade danada eu sinto de você!", predomina a função da linguagem:', ['referencial', 'emotiva', 'metalinguística', 'conativa'], 1, 'Resposta B (emotiva). O foco está no emissor e em seu sentimento: 1ª pessoa (eu sinto), exclamação e expressão de emoção (saudade danada). Não há apelo ao leitor nem informação objetiva.'),
+  ],
+}

@@ -59,3 +59,46 @@ export const FISICA_1: Lesson = {
     ex('fisica-1', 5, S, 'Uma pedra é solta, do repouso, do alto de um prédio e leva 3 s para chegar ao solo. Desprezando a resistência do ar e adotando g = 10 m/s², a altura do prédio é:', ['30 m', '45 m', '60 m', '90 m'], 1, 'Resposta B (45 m). Queda livre a partir do repouso: h = g·t²/2 = 10 · 3² / 2 = 10 · 9 / 2 = 45 m.'),
   ],
 }
+
+const SVG_FORCAS = `<svg viewBox="0 0 320 200" xmlns="http://www.w3.org/2000/svg" font-family="sans-serif" font-size="12">
+
+<rect width="320" height="200" fill="#fff"/>
+<line x1="20" y1="140" x2="300" y2="140" stroke="#0a0a0f" stroke-width="3"/>
+<rect x="115" y="95" width="90" height="45" fill="#ede4ff" stroke="#6d28d9" stroke-width="3"/>
+<text x="160" y="123" text-anchor="middle" fill="#6d28d9" font-weight="bold">bloco</text>
+<g stroke="#0a0a0f" stroke-width="2.5" fill="none">
+<line x1="160" y1="95" x2="160" y2="42"/><line x1="160" y1="140" x2="160" y2="178"/>
+<line x1="205" y1="118" x2="268" y2="118"/><line x1="115" y1="118" x2="62" y2="118"/></g>
+<g fill="#0a0a0f"><polygon points="153,46 167,46 160,32"/><polygon points="153,174 167,174 160,188"/><polygon points="264,111 264,125 278,118"/><polygon points="66,111 66,125 52,118"/></g>
+<text x="168" y="40" fill="#0a0a0f">N (normal)</text><text x="168" y="180" fill="#0a0a0f">P = m·g (peso)</text>
+<text x="225" y="108" fill="#0a0a0f">F</text><text x="20" y="108" fill="#0a0a0f">atrito</text>
+<text x="160" y="16" text-anchor="middle" fill="#0a0a0f" font-weight="bold">Forças sobre um bloco</text></svg>`
+
+export const FISICA_2: Lesson = {
+  slug: 'fisica-2',
+  title: 'Dinâmica: leis de Newton e aplicações',
+  blocks: [
+    { type: 'p', text: 'A Dinâmica explica **por que** os corpos se movem: o que causa mudanças de velocidade. A resposta está nas três leis de Newton. Na unidade de força, 1 newton (N) é a força que dá a uma massa de 1 kg a aceleração de 1 m/s².' },
+    { type: 'h', text: '1. As três leis' },
+    { type: 'table', head: ['Lei', 'Enunciado', 'Exemplo do dia a dia'], rows: [
+      ['1ª: Inércia', 'Sem força resultante, o corpo continua em repouso ou em MRU.', 'Quando o ônibus freia, você é jogado para a frente.'],
+      ['2ª: Princípio fundamental', String.raw`$F_R = m \cdot a$ (a força resultante causa aceleração)`, 'Empurrar um carrinho vazio acelera mais que um cheio.'],
+      ['3ª: Ação e reação', 'Toda ação tem uma reação de mesma intensidade e sentido oposto, em corpos diferentes.', 'Foguete expulsa gases para baixo e é empurrado para cima.'],
+    ] },
+    { type: 'callout', kind: 'atencao', text: 'Ação e reação **não se anulam**, porque atuam em corpos diferentes. Para anular, as forças precisam atuar no mesmo corpo.' },
+    { type: 'h', text: '2. Forças que você precisa conhecer' },
+    { type: 'figure', svg: SVG_FORCAS, alt: 'Bloco sobre uma superfície com setas para peso, normal, força aplicada e atrito', caption: 'Peso para baixo, normal para cima, força F puxando e atrito contrário ao movimento.' },
+    { type: 'list', items: [String.raw`**Peso:** $P = m\cdot g$ (com $g \approx 10\ \text{m/s}^2$). Peso é força (N); massa é quantidade de matéria (kg).`, '**Normal (N):** força de contato que a superfície faz sobre o corpo, perpendicular a ela.', String.raw`**Atrito:** contrário ao movimento (ou à tendência dele). $f_{at} = \mu \cdot N$.`, '**Tração (T):** força transmitida por fios ou cordas.'] },
+    { type: 'h', text: '3. Como resolver um problema' },
+    { type: 'list', ordered: true, items: ['Desenhe o corpo e todas as forças que atuam **nele**.', 'Escolha o sentido do movimento como positivo.', String.raw`Aplique $F_R = m\cdot a$: soma das forças a favor menos as contrárias.`] },
+    { type: 'callout', kind: 'exemplo', text: String.raw`Um bloco de 10 kg é puxado por uma força de 50 N, e o atrito vale 20 N.` + '\n' + String.raw`$F_R = 50 - 20 = 30\ \text{N}$` + '\n' + String.raw`$a = \dfrac{F_R}{m} = \dfrac{30}{10} = 3\ \text{m/s}^2$` },
+    { type: 'callout', kind: 'dica', text: 'Se a força resultante é zero, a aceleração é zero: o corpo está em repouso ou em MRU (equilíbrio). Isso vale até para um carro viajando em velocidade constante.' },
+  ],
+  exercises: [
+    ex('fisica-2', 1, S, 'Uma força resultante de 20 N atua sobre um corpo de massa 5 kg. A aceleração do corpo é:', ['2 m/s²', '4 m/s²', '25 m/s²', '100 m/s²'], 1, 'Resposta B (4 m/s²). Pela 2ª lei de Newton, F = m·a, então a = F/m = 20/5 = 4 m/s².'),
+    ex('fisica-2', 2, S, 'O peso de uma pessoa de massa 60 kg, num local onde g = 10 m/s², é:', ['6 N', '60 N', '600 N', '6 000 N'], 2, 'Resposta C (600 N). Peso é uma força: P = m·g = 60 · 10 = 600 N. A massa (60 kg) não muda de lugar para lugar, mas o peso muda com a gravidade.'),
+    ex('fisica-2', 3, S, 'Quando um ônibus freia bruscamente, os passageiros são projetados para a frente. Esse fato é explicado pela:', ['1ª lei de Newton (inércia)', '2ª lei de Newton', '3ª lei de Newton', 'lei da gravitação universal'], 0, 'Resposta A. Pela inércia, os corpos tendem a manter o estado de movimento: o ônibus para, mas os passageiros continuam com a velocidade que tinham, indo para a frente.'),
+    ex('fisica-2', 4, S, 'Um foguete é impulsionado para cima ao expelir gases em alta velocidade para baixo. Isso é explicado principalmente pela:', ['lei da inércia', 'lei da ação e reação', 'lei de Ohm', 'lei de Kepler'], 1, 'Resposta B (ação e reação, 3ª lei). O foguete empurra os gases para baixo (ação) e os gases empurram o foguete para cima (reação). São forças de mesma intensidade e sentidos opostos, aplicadas em corpos diferentes.'),
+    ex('fisica-2', 5, S, 'Um bloco de 10 kg é puxado por uma força de 50 N sobre uma superfície com atrito de 20 N. A aceleração do bloco é:', ['2 m/s²', '3 m/s²', '5 m/s²', '7 m/s²'], 1, 'Resposta B (3 m/s²). A força resultante é a força que puxa menos o atrito: 50 − 20 = 30 N. Então a = FR/m = 30/10 = 3 m/s².'),
+  ],
+}

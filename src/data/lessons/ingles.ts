@@ -34,3 +34,42 @@ export const INGLES_1: Lesson = {
     ex('ingles-1', 5, S, 'Em "He wanted to play outside, BUT it was raining", a palavra BUT indica:', ['causa', 'oposição', 'consequência', 'adição'], 1, 'Resposta B (oposição). "But" significa "mas" e contrapõe duas ideias: ele queria brincar fora, porém estava chovendo. Para causa use "because"; para consequência, "so"; para adição, "and".'),
   ],
 }
+
+export const INGLES_2: Lesson = {
+  slug: 'ingles-2',
+  title: 'Tempos verbais: presente, passado e futuro',
+  blocks: [
+    { type: 'p', text: 'Saber reconhecer o tempo verbal ajuda a entender **quando** algo acontece no texto. Nas provas da UEMG aparecem perguntas como "qual é o tempo verbal de realised?" ou "qual auxiliar completa a pergunta?". Veja os principais.' },
+    { type: 'h', text: '1. Simple present (presente simples)' },
+    { type: 'p', text: 'Fala de hábitos, rotinas e verdades gerais. Com **he / she / it**, o verbo ganha **-s** (ou -es).' },
+    { type: 'table', head: ['Forma', 'Estrutura', 'Exemplo'], rows: [
+      ['Afirmativa', 'sujeito + verbo (+ s com he/she/it)', 'She goes to school every day.'],
+      ['Negativa', 'do not (don\'t) / does not (doesn\'t) + verbo base', 'He doesn\'t like coffee.'],
+      ['Pergunta', 'Do / Does + sujeito + verbo base', 'Does he speak English?'],
+    ] },
+    { type: 'callout', kind: 'atencao', text: 'Depois de does/doesn\'t/did/didn\'t, o verbo fica **no infinitivo, sem -s e sem -ed**: "Does she work?" (não "Does she works?").' },
+    { type: 'h', text: '2. Present continuous (presente contínuo)' },
+    { type: 'p', text: 'Ação que está acontecendo **agora**: **am / is / are + verbo com -ing**. Palavras-chave: now, right now, at the moment, "Look!". Exemplo: *It is raining right now.*' },
+    { type: 'h', text: '3. Simple past (passado simples)' },
+    { type: 'p', text: 'Ação terminada no passado. Verbos regulares ganham **-ed** (watch → watched). Os **irregulares** têm forma própria e precisam ser decorados. Palavras-chave: yesterday, last week, in 2020, ago.' },
+    { type: 'table', head: ['Presente', 'Passado', 'Presente', 'Passado'], rows: [
+      ['go', 'went', 'see', 'saw'],
+      ['have', 'had', 'take', 'took'],
+      ['make', 'made', 'buy', 'bought'],
+      ['be (am/is)', 'was', 'be (are)', 'were'],
+    ] },
+    { type: 'p', text: 'Pergunta e negação do passado usam **did / didn\'t** + verbo base: *Did you see the movie? I didn\'t see it.*' },
+    { type: 'h', text: '4. Futuro' },
+    { type: 'list', items: ['**will + verbo**: decisões na hora, previsões, promessas. *I will help you.*', '**am/is/are going to + verbo**: planos e intenções já decididos. *I am going to visit my grandmother tomorrow.*', 'Palavras-chave: tomorrow, next week, soon, in 2030.'] },
+    { type: 'h', text: '5. Present perfect (noção)' },
+    { type: 'p', text: '**have / has + particípio** liga o passado ao presente: *I have studied English for two years.* Aparece com for, since, already, yet, ever.' },
+    { type: 'callout', kind: 'dica', text: 'Para identificar o tempo: procure o auxiliar (do/does/did, am/is/are, will, have/has) e as palavras de tempo (yesterday, now, tomorrow). Isso resolve a maioria das questões.' },
+  ],
+  exercises: [
+    ex('ingles-2', 1, S, 'Complete: "She ____ to school every day."', ['go', 'goes', 'going', 'went'], 1, 'Resposta B (goes). "Every day" indica hábito (presente simples) e o sujeito she exige o -s no verbo: goes. "Go" seria para I/you/we/they; "went" é passado.'),
+    ex('ingles-2', 2, S, 'Complete: "Yesterday, they ____ a movie at the cinema."', ['watch', 'watches', 'watched', 'will watch'], 2, 'Resposta C (watched). "Yesterday" indica passado, e watch é verbo regular: watch + ed = watched. "Will watch" seria futuro.'),
+    ex('ingles-2', 3, S, 'Complete: "Look! It ____ right now."', ['rains', 'is raining', 'rained', 'will rain'], 1, 'Resposta B (is raining). "Look!" e "right now" indicam ação em andamento, o presente contínuo: is + verbo com -ing.'),
+    ex('ingles-2', 4, S, 'Complete: "I ____ my grandmother tomorrow."', ['visited', 'am going to visit', 'have visited', 'visits'], 1, 'Resposta B (am going to visit). "Tomorrow" indica futuro, e a estrutura de plano é am/is/are going to + verbo. "Visited" é passado, "have visited" é present perfect e "visits" não combina com o sujeito I.'),
+    ex('ingles-2', 5, S, 'Complete: "Does he ____ English?"', ['speaks', 'speak', 'spoke', 'speaking'], 1, 'Resposta B (speak). Depois de does, o verbo fica na forma base, sem -s: "Does he speak English?". O -s já aparece no auxiliar does.'),
+  ],
+}

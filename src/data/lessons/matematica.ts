@@ -72,3 +72,75 @@ export const MATEMATICA_2: Lesson = {
     ex('matematica-2', 5, S, 'Em uma turma há 18 meninas e 12 meninos. A razão entre o número de meninos e o total de alunos é:', ['2/3', '3/5', '2/5', '3/2'], 2, 'Resposta C (2/5). O total é 18 + 12 = 30 alunos. A razão de meninos para o total é 12/30, que simplificada por 6 dá 2/5. Cuidado: 2/3 seria a razão de meninos para meninas.'),
   ],
 }
+
+export const MATEMATICA_3: Lesson = {
+  slug: 'matematica-3',
+  title: 'Equações e sistemas do 1º e 2º graus',
+  blocks: [
+    { type: 'p', text: 'Equação é uma igualdade com uma ou mais incógnitas (letras que representam números desconhecidos). Resolver é descobrir os valores que tornam a igualdade verdadeira. Boa parte dos problemas de prova vira uma equação.' },
+    { type: 'h', text: '1. Equação do 1º grau' },
+    { type: 'p', text: String.raw`Forma geral: $ax + b = 0$, com $a \neq 0$. O objetivo é **isolar o x**: o que está somando passa subtraindo, o que está multiplicando passa dividindo (sempre fazendo a mesma operação nos dois lados).` },
+    { type: 'callout', kind: 'exemplo', text: String.raw`$3x - 7 = 2x + 5$` + '\n' + String.raw`Junte os $x$ de um lado: $3x - 2x = 5 + 7$` + '\n' + String.raw`Logo $x = 12$.` + '\n' + 'Teste: 3·12 − 7 = 29 e 2·12 + 5 = 29. ✓' },
+    { type: 'h', text: '2. Sistemas de duas equações' },
+    { type: 'p', text: 'Quando há duas incógnitas e duas equações, use um dos métodos:' },
+    { type: 'table', head: ['Método', 'Como fazer', 'Quando usar'], rows: [
+      ['Adição', 'Some as equações para eliminar uma incógnita', 'Quando os coeficientes são iguais ou opostos'],
+      ['Substituição', 'Isole uma incógnita numa equação e substitua na outra', 'Quando uma incógnita tem coeficiente 1'],
+    ] },
+    { type: 'callout', kind: 'exemplo', title: 'Método da adição', text: String.raw`$\begin{cases} x + y = 10 \\ x - y = 4 \end{cases}$` + '\n' + 'Somando: 2x = 14, então x = 7.' + '\n' + 'Em x + y = 10: y = 3. Resposta: (7, 3).' },
+    { type: 'h', text: '3. Equação do 2º grau' },
+    { type: 'p', text: String.raw`Forma geral: $ax^2 + bx + c = 0$, com $a\neq 0$. Use a **fórmula de Bhaskara**:` },
+    { type: 'math', tex: String.raw`\Delta = b^2 - 4ac \qquad x = \dfrac{-b \pm \sqrt{\Delta}}{2a}` },
+    { type: 'table', head: ['Discriminante', 'Número de raízes reais'], rows: [
+      [String.raw`$\Delta > 0$`, 'Duas raízes reais e diferentes'],
+      [String.raw`$\Delta = 0$`, 'Uma raiz real (raízes iguais)'],
+      [String.raw`$\Delta < 0$`, 'Nenhuma raiz real'],
+    ] },
+    { type: 'p', text: String.raw`**Soma e produto** (atalho quando $a = 1$): a soma das raízes é $-\dfrac{b}{a}$ e o produto é $\dfrac{c}{a}$. Em $x^2 - 5x + 6 = 0$: soma $= 5$ e produto $= 6$, então as raízes são 2 e 3.` },
+    { type: 'callout', kind: 'exemplo', title: 'Problema de área', text: String.raw`Um retângulo tem lados $x$ e $x+3$ e área 40. Então $x(x+3) = 40 \Rightarrow x^2 + 3x - 40 = 0$.` + '\n' + String.raw`$\Delta = 9 + 160 = 169$, logo $x = \dfrac{-3 + 13}{2} = 5$ (a raiz negativa não serve para um comprimento).` + '\n' + 'Lados 5 e 8, perímetro 26.' },
+    { type: 'callout', kind: 'dica', text: 'Em problemas, siga sempre: 1) dê nome às incógnitas; 2) monte as equações; 3) resolva; 4) responda o que foi perguntado (às vezes não é o x!).' },
+  ],
+  exercises: [
+    ex('matematica-3', 1, S, 'A solução da equação 3x − 7 = 2x + 5 é:', ['x = 2', 'x = 5', 'x = 12', 'x = −12'], 2, 'Resposta C (x = 12). Passe os termos com x para a esquerda e os números para a direita: 3x − 2x = 5 + 7, logo x = 12. Conferindo: 3 · 12 − 7 = 29 e 2 · 12 + 5 = 29.'),
+    ex('matematica-3', 2, S, 'Se x + y = 10 e x − y = 4, o valor de x · y é:', ['21', '10', '24', '40'], 0, 'Resposta A (21). Somando as duas equações: 2x = 14, então x = 7. Em x + y = 10 obtemos y = 3. Logo x · y = 7 · 3 = 21.'),
+    ex('matematica-3', 3, S, 'A soma das raízes da equação x² − 5x + 6 = 0 é:', ['5', '6', '−5', '1'], 0, 'Resposta A (5). Pela fórmula da soma das raízes, S = −b/a = −(−5)/1 = 5. Conferindo: as raízes são 2 e 3, e 2 + 3 = 5 (e o produto 2 · 3 = 6 = c/a).'),
+    ex('matematica-3', 4, S, 'Os lados de um retângulo medem x e x + 3 (em cm) e sua área é 40 cm². O perímetro desse retângulo é:', ['16 cm', '26 cm', '32 cm', '40 cm'], 1, 'Resposta B (26 cm). x(x + 3) = 40 → x² + 3x − 40 = 0. Delta = 9 + 160 = 169, e x = (−3 + 13)/2 = 5 (a raiz negativa não serve). Os lados são 5 cm e 8 cm; perímetro = 2(5 + 8) = 26 cm.'),
+    ex('matematica-3', 5, S, 'Em um estacionamento há carros e motos, num total de 30 veículos e 90 rodas. Quantos carros há?', ['10', '15', '20', '25'], 1, 'Resposta B (15). Seja c o número de carros e m o de motos: c + m = 30 e 4c + 2m = 90. Multiplicando a primeira por 2: 2c + 2m = 60. Subtraindo da segunda: 2c = 30, logo c = 15 (e m = 15). Conferindo: 15 · 4 + 15 · 2 = 90 rodas.'),
+  ],
+}
+
+export const MATEMATICA_4: Lesson = {
+  slug: 'matematica-4',
+  title: 'Produtos notáveis e fatoração',
+  blocks: [
+    { type: 'p', text: String.raw`Produtos notáveis são multiplicações que aparecem tanto que vale decorar o resultado. Fatorar é o caminho de volta: transformar uma soma em um produto. Os dois ajudam a simplificar expressões grandes, como na questão de 2023 da UEMG com $x^3 - y^3$ e na de 2024 com $a^3 + b^3$.` },
+    { type: 'h', text: '1. Produtos notáveis' },
+    { type: 'table', head: ['Nome', 'Fórmula', 'Exemplo'], rows: [
+      ['Quadrado da soma', String.raw`$(a+b)^2 = a^2 + 2ab + b^2$`, String.raw`$(x+5)^2 = x^2 + 10x + 25$`],
+      ['Quadrado da diferença', String.raw`$(a-b)^2 = a^2 - 2ab + b^2$`, String.raw`$(x-3)^2 = x^2 - 6x + 9$`],
+      ['Produto da soma pela diferença', String.raw`$(a+b)(a-b) = a^2 - b^2$`, String.raw`$(x+7)(x-7) = x^2 - 49$`],
+      ['Cubo da soma', String.raw`$(a+b)^3 = a^3 + 3a^2b + 3ab^2 + b^3$`, String.raw`$(x+1)^3 = x^3+3x^2+3x+1$`],
+    ] },
+    { type: 'callout', kind: 'atencao', text: String.raw`Erro mais comum: $(a+b)^2 \neq a^2 + b^2$. Falta o termo do meio, $2ab$.` },
+    { type: 'h', text: '2. Fatoração' },
+    { type: 'table', head: ['Caso', 'Como reconhecer', 'Resultado'], rows: [
+      ['Fator comum', 'Todos os termos têm algo em comum', String.raw`$6x^2 + 9x = 3x(2x+3)$`],
+      ['Agrupamento', 'Quatro termos que formam dois grupos', String.raw`$ax + ay + bx + by = (a+b)(x+y)$`],
+      ['Diferença de quadrados', 'Dois quadrados subtraídos', String.raw`$x^2 - 49 = (x+7)(x-7)$`],
+      ['Trinômio quadrado perfeito', 'Dois quadrados e o dobro do produto', String.raw`$4x^2 - 12x + 9 = (2x-3)^2$`],
+      ['Diferença de cubos', String.raw`$a^3 - b^3$`, String.raw`$(a-b)(a^2+ab+b^2)$`],
+      ['Soma de cubos', String.raw`$a^3 + b^3$`, String.raw`$(a+b)(a^2-ab+b^2)$`],
+    ] },
+    { type: 'h', text: '3. Para que serve na prova' },
+    { type: 'callout', kind: 'exemplo', title: 'Cálculo rápido', text: String.raw`$101^2 - 99^2$ parece trabalhoso, mas é diferença de quadrados:` + '\n' + String.raw`$(101 - 99)(101 + 99) = 2 \cdot 200 = 400$` },
+    { type: 'callout', kind: 'exemplo', title: 'Usando soma e produto', text: String.raw`Se $a + b = 10$ e $ab = 21$, quanto vale $a^2 + b^2$?` + '\n' + String.raw`$(a+b)^2 = a^2 + 2ab + b^2 \Rightarrow 100 = a^2 + b^2 + 42 \Rightarrow a^2 + b^2 = 58$` },
+    { type: 'callout', kind: 'dica', text: 'Quando ver uma expressão cheia de potências, pense primeiro em fator comum e em produto notável antes de abrir tudo na força bruta.' },
+  ],
+  exercises: [
+    ex('matematica-4', 1, S, 'O desenvolvimento de (x + 5)² é:', ['x² + 25', 'x² + 10x + 25', 'x² + 5x + 25', 'x² + 10x + 10'], 1, 'Resposta B. Quadrado da soma: (a + b)² = a² + 2ab + b². Com a = x e b = 5: x² + 2 · x · 5 + 25 = x² + 10x + 25. A alternativa A esquece o termo do meio.'),
+    ex('matematica-4', 2, S, 'O valor de 101² − 99² é:', ['200', '400', '4', '2 000'], 1, 'Resposta B (400). É uma diferença de quadrados: a² − b² = (a − b)(a + b) = (101 − 99)(101 + 99) = 2 · 200 = 400.'),
+    ex('matematica-4', 3, S, 'A forma fatorada de x² − 49 é:', ['(x − 7)²', '(x + 7)²', '(x + 7)(x − 7)', 'x(x − 49)'], 2, 'Resposta C. Diferença de quadrados: x² − 7² = (x + 7)(x − 7). Não é quadrado perfeito, pois falta o termo do meio (±14x).'),
+    ex('matematica-4', 4, S, 'Se a + b = 10 e a · b = 21, o valor de a² + b² é:', ['58', '79', '100', '121'], 0, 'Resposta A (58). Elevando ao quadrado a soma: (a + b)² = a² + 2ab + b². Logo 100 = a² + b² + 2 · 21, então a² + b² = 100 − 42 = 58.'),
+    ex('matematica-4', 5, S, 'A expressão 4x² − 12x + 9 é igual a:', ['(2x − 3)²', '(2x + 3)²', '(4x − 3)²', '2(x − 3)²'], 0, 'Resposta A. É um trinômio quadrado perfeito: (2x)² = 4x², 3² = 9 e o dobro do produto 2 · 2x · 3 = 12x, com sinal negativo. Portanto 4x² − 12x + 9 = (2x − 3)².'),
+  ],
+}

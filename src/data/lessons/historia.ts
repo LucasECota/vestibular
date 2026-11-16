@@ -38,3 +38,53 @@ export const HISTORIA_1: Lesson = {
     ex('historia-1', 5, S, 'Um importante legado de Roma para o mundo ocidental é:', ['o alfabeto fenício', 'o direito romano e a língua latina', 'a pólis grega e a democracia direta', 'o código de Hamurabi'], 1, 'Resposta B. O direito romano influencia os sistemas jurídicos atuais, inclusive o brasileiro, e o latim deu origem ao português, espanhol, italiano, francês e romeno. A é dos fenícios, C é da Grécia e D é da Mesopotâmia.'),
   ],
 }
+
+const SVG_FEUDAL = `<svg viewBox="0 0 340 230" xmlns="http://www.w3.org/2000/svg" font-family="sans-serif" font-size="12">
+<rect width="340" height="230" fill="#fff"/>
+<text x="170" y="18" text-anchor="middle" font-weight="bold" fill="#0a0a0f">Sociedade feudal (estamental)</text>
+<polygon points="170,32 120,90 220,90" fill="#fde68a" stroke="#a16207" stroke-width="2"/>
+<text x="170" y="82" text-anchor="middle" fill="#0a0a0f" font-weight="bold">Rei</text>
+<polygon points="120,90 220,90 250,140 90,140" fill="#ede4ff" stroke="#6d28d9" stroke-width="2"/>
+<text x="170" y="120" text-anchor="middle" fill="#0a0a0f" font-weight="bold">Nobreza e clero</text>
+<polygon points="90,140 250,140 290,205 50,205" fill="#bbf7d0" stroke="#15803d" stroke-width="2"/>
+<text x="170" y="170" text-anchor="middle" fill="#0a0a0f" font-weight="bold">Servos (trabalhadores)</text>
+<text x="170" y="188" text-anchor="middle" fill="#0a0a0f" font-size="10">maioria da população, presa à terra</text>
+<text x="20" y="224" fill="#0a0a0f" font-size="10">Pouca mobilidade social: nascia-se e morria-se no mesmo estamento.</text></svg>`
+
+export const HISTORIA_2: Lesson = {
+  slug: 'historia-2',
+  title: 'Idade Média, Renascimento e Absolutismo',
+  blocks: [
+    { type: 'p', text: 'Nesta aula você segue a história da Europa depois de Roma: do mundo feudal, dominado pela Igreja, até o surgimento dos Estados modernos, com reis muito poderosos. A UEMG já cobrou o Absolutismo (2023) e a Idade Média aparece sempre como base.' },
+    { type: 'h', text: '1. Idade Média (séc. V a XV)' },
+    { type: 'p', text: 'Vai da queda de Roma (476) à tomada de Constantinopla (1453). Dividimos em **Alta Idade Média** (séc. V–X, ruralização e feudalismo) e **Baixa Idade Média** (séc. XI–XV, renascimento comercial e urbano).' },
+    { type: 'figure', svg: SVG_FEUDAL, alt: 'Pirâmide com rei no topo, nobreza e clero no meio e servos na base', caption: 'A sociedade feudal era rígida e dividida em ordens.' },
+    { type: 'table', head: ['Aspecto', 'No feudalismo'], rows: [
+      ['Economia', 'Agrária, de subsistência, baseada no feudo (a terra); pouco comércio e uso de moeda'],
+      ['Trabalho', 'Servidão: o servo trabalhava a terra do senhor e pagava obrigações (corveia e talha), mas não era escravo'],
+      ['Política', 'Poder fragmentado entre senhores feudais; relações de suserania e vassalagem (proteção em troca de lealdade)'],
+      ['Religião', 'A Igreja Católica era a instituição mais poderosa: dona de terras, guardiã da cultura (mosteiros) e orientadora das mentalidades'],
+    ] },
+    { type: 'p', text: 'A partir do século XI, a melhoria agrícola, as **Cruzadas** (guerras religiosas para retomar Jerusalém) e a reabertura do Mediterrâneo ao comércio dão origem ao **renascimento comercial e urbano**: crescem as cidades (burgos) e surge a **burguesia**. No século XIV, a **peste negra**, a fome e a **Guerra dos Cem Anos** (Inglaterra × França) provocam a crise do feudalismo.' },
+    { type: 'h', text: '2. Renascimento (séc. XIV a XVI)' },
+    { type: 'p', text: 'Movimento cultural que começou na Itália (Florença, Veneza), financiado por burgueses e nobres (**mecenato**). Valorizou a cultura greco-romana, a razão e a observação da natureza.' },
+    { type: 'list', items: ['**Humanismo:** o ser humano e suas capacidades no centro de tudo (**antropocentrismo**), em vez de só Deus (teocentrismo).', '**Artistas:** Leonardo da Vinci, Michelangelo, Rafael.', '**Ciência:** Copérnico (heliocentrismo) e Galileu; **imprensa** de Gutenberg (c. 1450) espalha o conhecimento.'] },
+    { type: 'callout', kind: 'atencao', text: 'Não confunda: **Idade Média = teocentrismo** (Deus como centro). **Renascimento = antropocentrismo** (o homem como centro).' },
+    { type: 'h', text: '3. Reforma protestante (séc. XVI)' },
+    { type: 'p', text: 'Em 1517, o monge **Martinho Lutero** publicou as 95 teses contra a venda de indulgências e outras práticas da Igreja. A ruptura criou as igrejas protestantes (luteranos, calvinistas, anglicanos) e levou à Contrarreforma católica.' },
+    { type: 'h', text: '4. Absolutismo e Mercantilismo' },
+    { type: 'p', text: 'Com o fim do feudalismo, os reis concentraram o poder, criando os **Estados nacionais modernos**, com exército permanente, impostos e burocracia. No **Absolutismo**, o rei tem poder ilimitado. Teorias que o justificaram: **Bossuet** (direito divino dos reis: o poder vem de Deus) e **Hobbes** (o Leviatã: o Estado forte garante a ordem). O exemplo clássico é **Luís XIV** da França, que teria dito "O Estado sou eu".' },
+    { type: 'table', head: ['Mercantilismo (política econômica do Absolutismo)', ''], rows: [
+      ['Metalismo', 'A riqueza de um país é medida pelo ouro e pela prata acumulados'],
+      ['Balança comercial favorável', 'Exportar mais do que importar'],
+      ['Protecionismo e colonialismo', 'Proteger a produção nacional e explorar colônias, com monopólio comercial'],
+    ] },
+  ],
+  exercises: [
+    ex('historia-2', 1, S, 'No feudalismo europeu, a maior parte da população era formada por:', ['burgueses ricos que viviam do comércio', 'servos, presos à terra e obrigados a pagar tributos ao senhor', 'escravos comprados em mercados', 'cavaleiros e reis'], 1, 'Resposta B. A maioria era camponesa, em regime de servidão: não era escrava (não podia ser vendida), mas vivia na terra do senhor e pagava obrigações. A burguesia só cresceu depois, com o renascimento comercial.'),
+    ex('historia-2', 2, S, 'O Humanismo, uma das principais características do Renascimento, defendia:', ['o teocentrismo, com Deus como centro de tudo', 'a valorização do ser humano e da razão (antropocentrismo)', 'o fortalecimento do feudalismo', 'a proibição da ciência'], 1, 'Resposta B. O Humanismo coloca o ser humano, sua capacidade de pensar e criar, no centro, e retoma a cultura greco-romana. O teocentrismo é a marca da Idade Média.'),
+    ex('historia-2', 3, S, 'Em 1517, Martinho Lutero publicou as 95 teses, iniciando:', ['as Cruzadas', 'a Reforma protestante', 'a Revolução Francesa', 'o Absolutismo'], 1, 'Resposta B. As 95 teses criticavam práticas da Igreja, como a venda de indulgências, e deram início à Reforma protestante, que dividiu o cristianismo ocidental.'),
+    ex('historia-2', 4, S, 'A frase atribuída a Luís XIV, "O Estado sou eu", resume uma característica do:', ['feudalismo', 'liberalismo', 'Absolutismo monárquico', 'socialismo'], 2, 'Resposta C. No Absolutismo, o poder do rei é concentrado e ilimitado: o rei se confunde com o próprio Estado. No feudalismo o poder era fragmentado entre os senhores.'),
+    ex('historia-2', 5, S, 'O Mercantilismo, política econômica dos Estados absolutistas, defendia:', ['livre mercado sem intervenção do Estado', 'acúmulo de metais preciosos, balança comercial favorável e monopólio colonial', 'o fim das colônias', 'a economia baseada apenas na agricultura de subsistência'], 1, 'Resposta B. O Mercantilismo vê a riqueza no ouro e na prata e quer exportar mais do que importar, com forte intervenção do Estado e exploração das colônias. O livre mercado é a ideia do liberalismo (que o critica).'),
+  ],
+}

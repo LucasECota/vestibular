@@ -67,3 +67,46 @@ export const BIOLOGIA_1: Lesson = {
     ex('biologia-1', 5, S, 'O transporte ativo através da membrana plasmática se caracteriza por:', ['ocorrer a favor do gradiente de concentração, sem gasto de energia', 'ocorrer contra o gradiente de concentração, com gasto de ATP', 'ser exclusivo da passagem de água', 'depender apenas da temperatura'], 1, 'Resposta B. No transporte ativo, a célula move substâncias do meio menos concentrado para o mais concentrado, contra o gradiente, e por isso gasta ATP. Um exemplo é a bomba de sódio e potássio. A é o transporte passivo; C descreve a osmose.'),
   ],
 }
+
+export const BIOLOGIA_2: Lesson = {
+  slug: 'biologia-2',
+  title: 'Metabolismo energético, enzimas e divisão celular',
+  blocks: [
+    { type: 'p', text: 'As células precisam de energia o tempo todo. Essa energia fica guardada no **ATP**, a "moeda de energia" da célula. Aqui você vai ver como o ATP é produzido, como as enzimas aceleram as reações e como as células se dividem (temas que já caíram na UEMG).' },
+    { type: 'h', text: '1. Respiração celular aeróbia' },
+    { type: 'math', tex: String.raw`C_6H_{12}O_6 + 6\,O_2 \longrightarrow 6\,CO_2 + 6\,H_2O + \text{energia (ATP)}` },
+    { type: 'table', head: ['Etapa', 'Onde ocorre', 'O que acontece', 'Saldo'], rows: [
+      ['Glicólise', 'Citoplasma (hialoplasma)', 'Glicose é quebrada em 2 piruvatos (sem oxigênio)', '2 ATP'],
+      ['Ciclo de Krebs', 'Matriz da mitocôndria', 'Piruvato é degradado e libera CO₂', '2 ATP'],
+      ['Cadeia respiratória', 'Cristas mitocondriais', 'Elétrons passam por proteínas; o O₂ é o aceptor final e forma água', 'cerca de 32 a 34 ATP'],
+    ] },
+    { type: 'p', text: 'Saldo total: cerca de **36 a 38 ATP** por glicose.' },
+    { type: 'h', text: '2. Fermentação' },
+    { type: 'p', text: 'Sem oxigênio, a célula faz só a glicólise e depois fermenta. O saldo é de apenas **2 ATP** por glicose.' },
+    { type: 'table', head: ['Tipo', 'Produtos', 'Quem faz'], rows: [
+      ['Alcoólica', 'Etanol + CO₂', 'Leveduras (pão, cerveja, vinho)'],
+      ['Láctica', 'Ácido lático', 'Bactérias do iogurte; músculos em esforço intenso'],
+    ] },
+    { type: 'h', text: '3. Fotossíntese (resumo)' },
+    { type: 'math', tex: String.raw`6\,CO_2 + 6\,H_2O \xrightarrow{\ \text{luz, clorofila}\ } C_6H_{12}O_6 + 6\,O_2` },
+    { type: 'p', text: 'Ocorre nos **cloroplastos** e é o processo inverso da respiração: produz glicose e libera O₂.' },
+    { type: 'h', text: '4. Enzimas' },
+    { type: 'list', items: ['São **proteínas catalisadoras**: aceleram reações sem serem consumidas.', 'Cada uma é **específica**: o substrato se encaixa no **sítio ativo** (modelo chave-fechadura).', '**Temperatura:** cada enzima tem uma temperatura ótima; calor excessivo causa **desnaturação** (perda da forma e da função).', '**pH:** cada enzima tem um pH ótimo (pepsina ≈ 2; amilase salivar ≈ 7; tripsina ≈ 8). Fora dele, a atividade cai.'] },
+    { type: 'h', text: '5. Divisão celular' },
+    { type: 'table', head: ['', 'Mitose', 'Meiose'], rows: [
+      ['Onde', 'Células do corpo (crescimento e reparo)', 'Células germinativas (formação de gametas)'],
+      ['Divisões', '1', '2 (meiose I e II)'],
+      ['Células-filhas', '2, idênticas à mãe (mesmo número de cromossomos)', '4, com metade dos cromossomos (haploides) e geneticamente diferentes'],
+      ['Variabilidade', 'Não gera', 'Gera (crossing-over e separação aleatória)'],
+    ] },
+    { type: 'p', text: '**Fases da mitose (PMAT):** **P**rófase (cromossomos se condensam), **M**etáfase (alinham-se na placa equatorial), **A**náfase (cromátides-irmãs se separam e vão para polos opostos) e **T**elófase (formam-se dois núcleos e a célula se divide).' },
+    { type: 'callout', kind: 'atencao', text: 'Na meiose I separam-se os cromossomos **homólogos**; na meiose II separam-se as **cromátides-irmãs** (como na mitose). A metáfase I tem pares de homólogos alinhados.' },
+  ],
+  exercises: [
+    ex('biologia-2', 1, S, 'A etapa inicial da respiração celular, chamada glicólise, ocorre:', ['na matriz da mitocôndria', 'no citoplasma da célula', 'no núcleo', 'nos cloroplastos'], 1, 'Resposta B. A glicólise acontece no citoplasma (hialoplasma) e não depende de oxigênio. O ciclo de Krebs ocorre na matriz mitocondrial e a cadeia respiratória, nas cristas da mitocôndria.'),
+    ex('biologia-2', 2, S, 'O aquecimento excessivo de uma enzima provoca:', ['aumento contínuo da atividade enzimática', 'a desnaturação da proteína, com perda de função', 'a transformação da enzima em carboidrato', 'a produção de mais substrato'], 1, 'Resposta B. Enzimas são proteínas. Temperaturas muito altas alteram sua forma tridimensional (desnaturação), e o sítio ativo deixa de encaixar no substrato, o que faz a enzima perder a função.'),
+    ex('biologia-2', 3, S, 'Os produtos da fermentação alcoólica realizada por leveduras são:', ['etanol e gás carbônico', 'ácido lático e água', 'glicose e oxigênio', 'ATP e oxigênio'], 0, 'Resposta A. Na fermentação alcoólica, o piruvato vira etanol e CO₂ (é o CO₂ que faz o pão crescer). O ácido lático é produto da fermentação láctica. O saldo energético é de só 2 ATP.'),
+    ex('biologia-2', 4, S, 'Na mitose, a fase em que os cromossomos se alinham na região central (placa equatorial) da célula é a:', ['prófase', 'metáfase', 'anáfase', 'telófase'], 1, 'Resposta B (metáfase). Na prófase os cromossomos se condensam; na metáfase alinham-se na placa equatorial; na anáfase as cromátides-irmãs se separam; na telófase formam-se os dois novos núcleos.'),
+    ex('biologia-2', 5, S, 'Uma célula diploide sofre meiose. Ao final do processo, formam-se:', ['2 células idênticas à célula mãe', '4 células haploides, geneticamente diferentes entre si', '4 células diploides idênticas', '1 célula com o dobro de cromossomos'], 1, 'Resposta B. A meiose tem duas divisões e produz 4 células com metade do número de cromossomos (haploides), diferentes entre si por causa do crossing-over e da separação aleatória dos homólogos. É assim que se formam os gametas.'),
+  ],
+}

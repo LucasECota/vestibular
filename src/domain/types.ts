@@ -32,6 +32,8 @@ export interface ExerciseAttempt {
   taskId: string
   subject: SubjectId
   correct: boolean
+  /** Índice (0–3) da alternativa marcada. */
+  chosen?: number
 }
 
 /** Questão errada que deve voltar para revisão em datas futuras. */

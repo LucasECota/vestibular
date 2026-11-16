@@ -124,9 +124,9 @@ describe('fluxo principal', () => {
     const user = userEvent.setup()
     // dia 1 (17/11): erra a questão 1 da aula de Matemática (certa: C = 15)
     const day1 = renderApp('/tarefa/t-2026-11-17-matematica', '2026-11-17')
-    const card = screen.getAllByRole('article')[0]
-    await user.click(within(card).getByRole('button', { name: /^A\s*11/ }))
-    expect(within(card).getByText(/resposta certa: C/i)).toBeInTheDocument()
+    await answerMat1(user) // a 1ª alternativa marcada (A = 11) está errada
+    await user.click(screen.getByRole('button', { name: /concluir tarefa/i }))
+    expect(within(screen.getAllByRole('article')[0]).getByText(/resposta certa: C/i)).toBeInTheDocument()
     day1.unmount()
 
     // mesmo dia: ainda não vence
@@ -150,10 +150,30 @@ describe('fluxo principal', () => {
   it('tarefa mostra a revisão de erros vencidos', async () => {
     const user = userEvent.setup()
     const day1 = renderApp('/tarefa/t-2026-11-17-matematica', '2026-11-17')
-    await user.click(within(screen.getAllByRole('article')[0]).getByRole('button', { name: /^A\s*11/ }))
+    await answerMat1(user)
+    await user.click(screen.getByRole('button', { name: /concluir tarefa/i }))
     day1.unmount()
     renderApp('/tarefa/t-2026-11-18-fisica', '2026-11-18')
     expect(screen.getByRole('region', { name: /revisão de erros/i })).toBeInTheDocument()
+  })
+
+  it('a revisão dentro da tarefa também só é corrigida ao concluir', async () => {
+    const user = userEvent.setup()
+    const day1 = renderApp('/tarefa/t-2026-11-17-matematica', '2026-11-17')
+    await answerMat1(user) // erra a 1ª
+    await user.click(screen.getByRole('button', { name: /concluir tarefa/i }))
+    day1.unmount()
+
+    renderApp('/tarefa/t-2026-11-18-fisica', '2026-11-18')
+    const review = within(screen.getByRole('region', { name: /revisão de erros/i }))
+    await user.click(review.getByRole('button', { name: /^C\s*15/ })) // acerta a questão errada de ontem
+    expect(review.queryByText('Correto!')).not.toBeInTheDocument() // ainda sem correção
+
+    // responde os exercícios de Física (sempre a alternativa A) e conclui
+    const cards = screen.getAllByRole('article').slice(0, 5)
+    for (const c of cards) await user.click(within(c).getAllByRole('button')[0]) // alternativa A
+    await user.click(screen.getByRole('button', { name: /concluir tarefa/i }))
+    expect(review.getByText('Correto!')).toBeInTheDocument()
   })
 
   it('mostra a estrutura da prova', async () => {
@@ -178,7 +198,7 @@ describe('fluxo principal', () => {
     expect(screen.getAllByRole('article')).toHaveLength(5)
   })
 
-  it('responde os 5 exercícios, vê o feedback, conclui a tarefa e ganha XP', async () => {
+  it('o gabarito e a explicação só aparecem depois de concluir a tarefa', async () => {
     const user = userEvent.setup()
     renderApp('/tarefa/t-2026-11-17-matematica')
 
@@ -187,17 +207,50 @@ describe('fluxo principal', () => {
 
     const cards = screen.getAllByRole('article')
     await user.click(within(cards[0]).getByRole('button', { name: MAT1_PICKS[0] })) // errada
-    expect(within(cards[0]).getByText(/resposta certa: C/i)).toBeInTheDocument()
-    expect(within(cards[0]).getByText(/primeiro a potência/i)).toBeInTheDocument()
+    // marcar não corrige: nada de gabarito ainda
+    expect(screen.queryByText(/resposta certa/i)).not.toBeInTheDocument()
+    expect(screen.queryByText('Correto!')).not.toBeInTheDocument()
+    expect(screen.queryByText(/primeiro a potência/i)).not.toBeInTheDocument()
+    expect(within(cards[0]).getByRole('button', { name: MAT1_PICKS[0] })).toHaveAttribute('aria-pressed', 'true')
     expect(finish).toBeDisabled() // faltam 4
+
+    // dá para trocar a resposta antes de concluir
+    await user.click(within(cards[0]).getByRole('button', { name: /^C\s*15/ }))
+    expect(within(cards[0]).getByRole('button', { name: /^C\s*15/ })).toHaveAttribute('aria-pressed', 'true')
+    await user.click(within(cards[0]).getByRole('button', { name: MAT1_PICKS[0] }))
+
     for (let i = 1; i < 5; i++) await user.click(within(cards[i]).getByRole('button', { name: MAT1_PICKS[i] }))
-    expect(within(cards[1]).getByText('Correto!')).toBeInTheDocument()
+    expect(finish).toBeEnabled()
+    expect(screen.queryByText('Correto!')).not.toBeInTheDocument()
 
     await user.click(finish)
     expect(screen.getByRole('button', { name: /tarefa concluída/i })).toBeDisabled()
+    expect(within(cards[0]).getByText(/resposta certa: C/i)).toBeInTheDocument()
+    expect(within(cards[0]).getByText(/primeiro a potência/i)).toBeInTheDocument()
+    expect(within(cards[1]).getByText('Correto!')).toBeInTheDocument()
 
     await user.click(goHome())
     expect(screen.getByText('92 XP')).toBeInTheDocument() // 2 + 4×10 + 50
+  })
+
+  it('as respostas marcadas sobrevivem a recarregar a página e a correção volta com a escolha dela', async () => {
+    const user = userEvent.setup()
+    const first = renderApp('/tarefa/t-2026-11-17-matematica')
+    await user.click(within(screen.getAllByRole('article')[0]).getByRole('button', { name: MAT1_PICKS[0] }))
+    first.unmount()
+
+    const again = renderApp('/tarefa/t-2026-11-17-matematica') // rascunho recuperado
+    expect(within(screen.getAllByRole('article')[0]).getByRole('button', { name: MAT1_PICKS[0] })).toHaveAttribute('aria-pressed', 'true')
+    for (let i = 1; i < 5; i++) await user.click(within(screen.getAllByRole('article')[i]).getByRole('button', { name: MAT1_PICKS[i] }))
+    await user.click(screen.getByRole('button', { name: /concluir tarefa/i }))
+    again.unmount()
+
+    renderApp('/tarefa/t-2026-11-17-matematica') // reabre depois de concluída
+    const card0 = screen.getAllByRole('article')[0]
+    expect(within(card0).getByText(/resposta certa: C/i)).toBeInTheDocument()
+    expect(within(card0).getByRole('button', { name: MAT1_PICKS[0] })).toHaveAttribute('aria-pressed', 'true') // o que ela marcou
+    expect(screen.getByRole('button', { name: /tarefa concluída/i })).toBeDisabled()
+    expect(localStorage.getItem('vestibular-uemg:draft:t-2026-11-17-matematica')).toBeNull()
   })
 
   it('mostra o progresso por disciplina depois de concluir tarefas', async () => {

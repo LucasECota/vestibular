@@ -1,17 +1,28 @@
+import { useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
-import { ExerciseCard } from '../components/ExerciseCard'
+import { ExerciseView } from '../components/ExerciseCard'
 import { LessonView } from '../components/LessonView'
 import { lessonBySlug } from '../data/lessons'
-import { ReviewSection } from '../components/ReviewSection'
 import { exerciseById } from '../data/questionBank'
 import { taskById } from '../data/plan'
 import { SubjectChip } from '../components/SubjectChip'
 import { SUBJECT_COLOR } from '../data/subjects'
+import { dueReviews } from '../domain/review'
+import { useDraftAnswers } from '../state/useDraftAnswers'
 import { useProgress } from '../state/useProgress'
 
 export function TaskPage() {
   const { taskId = '' } = useParams()
-  const { progress, answer, finishTask } = useProgress()
+  const { progress, today, answer, answerReview, finishTask } = useProgress()
+  const { draft, choose, clearStorage } = useDraftAnswers(taskId)
+  const [finishedHere, setFinishedHere] = useState(false)
+  // revisão de erros vencidos: lista fixada ao abrir a tarefa
+  const [reviewItems] = useState(() =>
+    dueReviews(progress, today)
+      .slice(0, 3)
+      .map((r) => exerciseById(r.exerciseId))
+      .filter((e) => e !== undefined),
+  )
   const task = taskById(taskId)
   const lesson = task ? lessonBySlug(task.lessonSlug) : undefined
 
@@ -26,10 +37,27 @@ export function TaskPage() {
 
   const exercises = task.exerciseIds.map(exerciseById).filter((e) => e !== undefined)
   const done = progress.completedTaskIds.includes(task.id)
-  const answeredCount = exercises.filter((e) =>
-    progress.attempts.some((a) => a.exerciseId === e.id),
-  ).length
-  const allAnswered = answeredCount === exercises.length
+  const allAnswered = exercises.every((e) => draft[e.id] !== undefined)
+  const showReview = reviewItems.length > 0 && (!done || finishedHere)
+
+  /** Alternativa mostrada: o que ela marcou (rascunho) ou, depois de concluir, o que foi corrigido. */
+  const chosenFor = (id: string): number | null => {
+    if (done && !finishedHere) return progress.attempts.find((a) => a.exerciseId === id)?.chosen ?? null
+    return draft[id] ?? null
+  }
+
+  const finish = () => {
+    for (const e of exercises) {
+      const chosen = draft[e.id]
+      answer({ exerciseId: e.id, taskId: task.id, subject: task.subject, correct: chosen === e.answer, chosen })
+    }
+    for (const e of reviewItems) {
+      if (draft[e.id] !== undefined) answerReview(e.id, draft[e.id] === e.answer)
+    }
+    finishTask(task.id)
+    setFinishedHere(true)
+    clearStorage()
+  }
 
   return (
     <div className="space-y-5">
@@ -58,20 +86,42 @@ export function TaskPage() {
 
       <section aria-label="Exercícios" className="space-y-3">
         <h2 className="text-xl font-extrabold">Exercícios</h2>
+        {!done && exercises.length > 0 && (
+          <p className="text-sm text-muted">
+            Marque uma alternativa em cada questão. O gabarito e as explicações aparecem quando você concluir a tarefa.
+          </p>
+        )}
         {exercises.length === 0 && <p className="text-muted">Sem exercícios nesta tarefa ainda.</p>}
         {exercises.map((e, i) => (
-          <ExerciseCard
+          <ExerciseView
             key={e.id}
             exercise={e}
             index={i}
-            onAnswer={(correct) =>
-              answer({ exerciseId: e.id, taskId: task.id, subject: task.subject, correct })
-            }
+            chosen={chosenFor(e.id)}
+            revealed={done}
+            onChoose={done ? undefined : (opt) => choose(e.id, opt)}
           />
         ))}
       </section>
 
-      <ReviewSection limit={3} />
+      {showReview && (
+        <section aria-label="Revisão de erros" className="space-y-3">
+          <div>
+            <h2 className="text-xl font-extrabold">🔁 Revisão de erros</h2>
+            <p className="text-sm text-muted">Questões que você errou antes. Opcional, mas vale XP.</p>
+          </div>
+          {reviewItems.map((e, i) => (
+            <ExerciseView
+              key={e.id}
+              exercise={e}
+              index={i}
+              chosen={draft[e.id] ?? null}
+              revealed={done}
+              onChoose={done ? undefined : (opt) => choose(e.id, opt)}
+            />
+          ))}
+        </section>
+      )}
 
       <Link
         to={`/duvidas?materia=${task.subject}`}
@@ -83,11 +133,11 @@ export function TaskPage() {
       <button
         type="button"
         disabled={done || !allAnswered}
-        onClick={() => finishTask(task.id)}
+        onClick={finish}
         className="w-full rounded-2xl px-4 py-4 text-base font-extrabold text-white shadow-md disabled:bg-line disabled:text-muted disabled:shadow-none"
         style={done || !allAnswered ? undefined : { background: SUBJECT_COLOR[task.subject] }}
       >
-        {done ? 'Tarefa concluída ✓' : 'Concluir tarefa (+50 XP)'}
+        {done ? 'Tarefa concluída ✓' : 'Concluir tarefa e ver o gabarito (+50 XP)'}
       </button>
     </div>
   )

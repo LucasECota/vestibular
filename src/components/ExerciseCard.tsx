@@ -20,16 +20,20 @@ function Figures({ images, alt }: { images: string[]; alt: string }) {
   )
 }
 
-export function ExerciseCard({ exercise, index, onAnswer }: Props) {
-  const [chosen, setChosen] = useState<number | null>(null)
-  const [showOriginal, setShowOriginal] = useState(false)
-  const answered = chosen !== null
+interface ViewProps {
+  exercise: Exercise
+  index: number
+  /** Alternativa marcada (0–3) ou null. */
+  chosen: number | null
+  /** Sem `onChoose`, as alternativas ficam travadas. */
+  onChoose?: (i: number) => void
+  /** Mostra o gabarito e a explicação. */
+  revealed: boolean
+}
 
-  const choose = (i: number) => {
-    if (answered) return
-    setChosen(i)
-    onAnswer(i === exercise.answer)
-  }
+/** Questão controlada: o pai decide quando mostrar a correção. */
+export function ExerciseView({ exercise, index, chosen, onChoose, revealed }: ViewProps) {
+  const [showOriginal, setShowOriginal] = useState(false)
 
   return (
     <article className="card p-4">
@@ -59,20 +63,24 @@ export function ExerciseCard({ exercise, index, onAnswer }: Props) {
 
       <ul className="mt-3 space-y-2">
         {exercise.options.map((opt, i) => {
-          const isRight = answered && i === exercise.answer
-          const isWrong = answered && i === chosen && i !== exercise.answer
+          const isRight = revealed && i === exercise.answer
+          const isWrong = revealed && i === chosen && i !== exercise.answer
+          const isPicked = !revealed && i === chosen
           return (
             <li key={opt + i}>
               <button
                 type="button"
-                disabled={answered}
-                onClick={() => choose(i)}
+                disabled={revealed || !onChoose}
+                aria-pressed={i === chosen}
+                onClick={() => onChoose?.(i)}
                 className={`flex w-full items-center gap-3 rounded-xl border-2 px-3 py-3 text-left text-base font-semibold ${
                   isRight
                     ? 'border-ok bg-green-50'
                     : isWrong
                       ? 'border-bad bg-red-50'
-                      : 'border-line bg-surface active:bg-brand-soft'
+                      : isPicked
+                        ? 'border-brand bg-brand-soft'
+                        : 'border-line bg-surface active:bg-brand-soft'
                 }`}
               >
                 <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-brand-soft text-sm font-extrabold text-brand">
@@ -84,7 +92,7 @@ export function ExerciseCard({ exercise, index, onAnswer }: Props) {
           )
         })}
       </ul>
-      {answered && (
+      {revealed && (
         <div role="status" className="mt-3 rounded-xl bg-brand-soft p-3 text-sm">
           <p className="font-semibold">
             {chosen === exercise.answer
@@ -99,5 +107,30 @@ export function ExerciseCard({ exercise, index, onAnswer }: Props) {
         </div>
       )}
     </article>
+  )
+}
+
+interface Props {
+  exercise: Exercise
+  index: number
+  onAnswer: (correct: boolean) => void
+}
+
+/** Questão com correção imediata (banco de questões e revisão). */
+export function ExerciseCard({ exercise, index, onAnswer }: Props) {
+  const [chosen, setChosen] = useState<number | null>(null)
+
+  return (
+    <ExerciseView
+      exercise={exercise}
+      index={index}
+      chosen={chosen}
+      revealed={chosen !== null}
+      onChoose={(i) => {
+        if (chosen !== null) return
+        setChosen(i)
+        onAnswer(i === exercise.answer)
+      }}
+    />
   )
 }

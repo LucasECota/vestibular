@@ -40,6 +40,7 @@ describe('fluxo principal', () => {
     expect(screen.getByText('4h')).toBeInTheDocument()
     expect(screen.getByText('48')).toBeInTheDocument()
     expect(screen.getByText('96 (2 por questão)')).toBeInTheDocument()
+    expect(screen.getByText('156 pontos')).toBeInTheDocument()
     expect(screen.getByText('Matemática')).toBeInTheDocument()
   })
 

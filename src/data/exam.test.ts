@@ -12,7 +12,11 @@ describe('estrutura da prova', () => {
   })
 
   it('totais batem com o gabarito oficial (48 questões x 2 pontos)', () => {
-    expect(examTotals()).toEqual({ questions: 48, points: 96 })
+    expect(examTotals()).toEqual({ questions: 48, points: 96, maxPoints: 156 })
+  })
+
+  it('os critérios da redação somam 60 pontos', () => {
+    expect(EXAM.essayCriteria.reduce((n, c) => n + c.points, 0)).toBe(EXAM.essayPoints)
   })
 
   it('a sugestão de ritmo ocupa exatamente o tempo da prova', () => {

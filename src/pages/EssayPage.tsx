@@ -10,8 +10,8 @@ export function EssayPage() {
     <div className="space-y-4">
       <h1 className="text-2xl font-semibold">Redação</h1>
       <p className="text-muted">
-        Texto dissertativo-argumentativo a partir de textos motivadores. Na prova de 2024 o tema foi
-        mudanças climáticas.
+        Texto dissertativo-argumentativo com 15 a 30 linhas, a partir de textos motivadores, valendo até 60
+        pontos. Na prova de 2024 o tema foi mudanças climáticas.
       </p>
       <ol className="space-y-3">
         {parts.map((p, i) => (

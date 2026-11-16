@@ -1,7 +1,11 @@
 import katex from 'katex'
 import 'katex/dist/katex.min.css'
 
-const PART = /(\$[^$]+\$|\*\*[^*]+\*\*)/g
+/**
+ * Fórmula: `$` sem espaço logo depois de abrir e sem espaço logo antes de fechar.
+ * Assim "R$ 200" (cifrão seguido de espaço) continua sendo texto comum.
+ */
+const PART = /(\$(?!\s)[^$]*[^\s$]\$|\*\*[^*]+\*\*)/g
 
 export function Tex({ tex, display = false }: { tex: string; display?: boolean }) {
   const html = katex.renderToString(tex, { displayMode: display, throwOnError: false, output: 'html' })

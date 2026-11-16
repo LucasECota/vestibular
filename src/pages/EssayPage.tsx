@@ -8,14 +8,14 @@ const parts = [
 export function EssayPage() {
   return (
     <div className="space-y-4">
-      <h1 className="text-2xl font-semibold">Redação</h1>
+      <h1 className="text-3xl font-extrabold tracking-tight">Redação</h1>
       <p className="text-muted">
         Texto dissertativo-argumentativo com 15 a 30 linhas, a partir de textos motivadores, valendo até 60
         pontos. Na prova de 2024 o tema foi mudanças climáticas.
       </p>
       <ol className="space-y-3">
         {parts.map((p, i) => (
-          <li key={p.title} className="rounded-2xl border border-line bg-surface p-4">
+          <li key={p.title} className="card p-4">
             <p className="text-sm text-muted">Parágrafo {i + 1}</p>
             <h2 className="font-semibold">{p.title}</h2>
             <p className="mt-1">{p.text}</p>

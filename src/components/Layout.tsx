@@ -1,32 +1,53 @@
 import { NavLink, Outlet } from 'react-router-dom'
 
+const icons = {
+  home: 'M3 11.5 12 4l9 7.5V20a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z',
+  books: 'M5 4h4v16H5zM11 4h4v16h-4zM17.5 5.5l3.5 1-3.5 13.5-3.5-1z',
+  clock: 'M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18zm0 4v5l3.5 2',
+  pen: 'M4 20h4L19 9l-4-4L4 16zM14 6l4 4',
+}
+
 const links = [
-  { to: '/', label: 'Hoje', end: true },
-  { to: '/disciplinas', label: 'Disciplinas', end: false },
-  { to: '/prova', label: 'Prova', end: false },
-  { to: '/redacao', label: 'Redação', end: false },
+  { to: '/', label: 'Hoje', end: true, icon: icons.home },
+  { to: '/disciplinas', label: 'Disciplinas', end: false, icon: icons.books },
+  { to: '/prova', label: 'Prova', end: false, icon: icons.clock },
+  { to: '/redacao', label: 'Redação', end: false, icon: icons.pen },
 ]
 
 export function Layout() {
   return (
     <div className="mx-auto flex min-h-dvh max-w-md flex-col">
-      <main className="flex-1 px-4 pb-24 pt-6">
+      <main className="flex-1 px-4 pb-28 pt-6">
         <Outlet />
       </main>
       <nav
         aria-label="Navegação principal"
-        className="fixed inset-x-0 bottom-0 border-t border-line bg-surface pb-[env(safe-area-inset-bottom)]"
+        className="fixed inset-x-0 bottom-0 z-10 border-t border-line bg-surface/95 pb-[env(safe-area-inset-bottom)] backdrop-blur"
       >
-        <ul className="mx-auto flex max-w-md">
+        <ul className="mx-auto flex max-w-md px-2 py-1">
           {links.map((l) => (
             <li key={l.to} className="flex-1">
               <NavLink
                 to={l.to}
                 end={l.end}
                 className={({ isActive }) =>
-                  `block py-3 text-center text-sm font-medium ${isActive ? 'text-brand' : 'text-muted'}`
+                  `flex flex-col items-center gap-0.5 rounded-xl py-2 text-xs font-bold ${
+                    isActive ? 'bg-brand-soft text-brand' : 'text-muted'
+                  }`
                 }
               >
+                <svg
+                  viewBox="0 0 24 24"
+                  className="h-6 w-6"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  aria-hidden
+                >
+                  <path d={l.icon} />
+                </svg>
                 {l.label}
               </NavLink>
             </li>

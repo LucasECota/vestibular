@@ -23,6 +23,11 @@ describe('fluxo principal', () => {
     expect(screen.queryByText(/cinemática/i)).not.toBeInTheDocument()
   })
 
+  it('cumprimenta a Daniela', () => {
+    renderApp()
+    expect(screen.getByRole('heading', { name: /daniela/i })).toBeInTheDocument()
+  })
+
   it('navega entre as abas', async () => {
     const user = userEvent.setup()
     renderApp()

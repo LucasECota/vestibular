@@ -2,7 +2,8 @@ import { Link, useParams } from 'react-router-dom'
 import { ExerciseCard } from '../components/ExerciseCard'
 import { exerciseById } from '../data/exercises'
 import { taskById } from '../data/plan'
-import { SUBJECT_LABEL } from '../data/subjects'
+import { SubjectChip } from '../components/SubjectChip'
+import { SUBJECT_COLOR } from '../data/subjects'
 import { useProgress } from '../state/useProgress'
 
 export function TaskPage() {
@@ -28,21 +29,19 @@ export function TaskPage() {
 
   return (
     <div className="space-y-5">
-      <Link to="/" className="text-sm text-muted">‹ Hoje</Link>
+      <Link to="/" className="text-sm font-bold text-brand">‹ Hoje</Link>
       <header>
-        <p className="text-sm text-muted">
-          {SUBJECT_LABEL[task.subject]} · {task.minutes} min
-        </p>
-        <h1 className="text-2xl font-semibold">{task.title}</h1>
+        <SubjectChip subject={task.subject} extra={`${task.minutes} min`} />
+        <h1 className="mt-2 text-3xl font-extrabold tracking-tight">{task.title}</h1>
       </header>
 
-      <section aria-label="Conteúdo" className="rounded-2xl border border-line bg-surface p-4">
+      <section aria-label="Conteúdo" className="card p-4">
         <h2 className="font-semibold">Conteúdo</h2>
         <p className="mt-1 text-muted">A página de conteúdo desta tarefa será adicionada aqui.</p>
       </section>
 
       <section aria-label="Exercícios" className="space-y-3">
-        <h2 className="text-lg font-semibold">Exercícios</h2>
+        <h2 className="text-xl font-extrabold">Exercícios</h2>
         {exercises.length === 0 && <p className="text-muted">Sem exercícios nesta tarefa ainda.</p>}
         {exercises.map((e, i) => (
           <ExerciseCard
@@ -60,7 +59,8 @@ export function TaskPage() {
         type="button"
         disabled={done || !allAnswered}
         onClick={() => finishTask(task.id)}
-        className="w-full rounded-xl bg-brand px-4 py-3 font-semibold text-white disabled:bg-line disabled:text-muted"
+        className="w-full rounded-2xl px-4 py-4 text-base font-extrabold text-white shadow-md disabled:bg-line disabled:text-muted disabled:shadow-none"
+        style={done || !allAnswered ? undefined : { background: SUBJECT_COLOR[task.subject] }}
       >
         {done ? 'Tarefa concluída ✓' : 'Concluir tarefa (+50 XP)'}
       </button>

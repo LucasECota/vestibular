@@ -18,13 +18,13 @@ export function ExamPage() {
   return (
     <div className="space-y-6">
       <header>
-        <h1 className="text-2xl font-semibold">A prova</h1>
+        <h1 className="text-3xl font-extrabold tracking-tight">A prova</h1>
         <p className="text-muted">
           Prova de Conhecimentos Gerais: 48 questões objetivas e uma redação, no mesmo dia.
         </p>
       </header>
 
-      <section aria-label="Resumo" className="rounded-2xl border border-line bg-surface">
+      <section aria-label="Resumo" className="card">
         <dl className="divide-y divide-line">
           {facts.map((f) => (
             <div key={f.label} className="flex items-baseline justify-between gap-4 px-4 py-3">
@@ -36,10 +36,10 @@ export function ExamPage() {
       </section>
 
       <section aria-label="Distribuição das questões" className="space-y-3">
-        <h2 className="text-lg font-semibold">Questões por disciplina</h2>
+        <h2 className="text-xl font-extrabold">Questões por disciplina</h2>
         <ul className="space-y-2">
           {EXAM.sections.map((s) => (
-            <li key={s.name} className="rounded-2xl border border-line bg-surface p-4">
+            <li key={s.name} className="card p-4">
               <div className="flex items-baseline justify-between">
                 <span className="font-medium">{s.name}</span>
                 <span className="text-sm text-muted">
@@ -56,8 +56,8 @@ export function ExamPage() {
       </section>
 
       <section aria-label="Pontuação da redação" className="space-y-3">
-        <h2 className="text-lg font-semibold">Como a redação é avaliada</h2>
-        <ul className="rounded-2xl border border-line bg-surface">
+        <h2 className="text-xl font-extrabold">Como a redação é avaliada</h2>
+        <ul className="card">
           {EXAM.essayCriteria.map((c) => (
             <li key={c.name} className="border-b border-line px-4 py-3 last:border-b-0">
               <div className="flex items-baseline justify-between gap-4">
@@ -76,9 +76,9 @@ export function ExamPage() {
       </section>
 
       <section aria-label="Sugestão de ritmo" className="space-y-3">
-        <h2 className="text-lg font-semibold">Como dividir as 4 horas</h2>
+        <h2 className="text-xl font-extrabold">Como dividir as 4 horas</h2>
         <p className="text-sm text-muted">Sugestão para treinar o ritmo. Não é regra oficial.</p>
-        <ul className="rounded-2xl border border-line bg-surface">
+        <ul className="card">
           {paceSuggestion().map((b) => (
             <li
               key={b.label}
@@ -92,7 +92,7 @@ export function ExamPage() {
       </section>
 
       <section aria-label="Regras do dia" className="space-y-2">
-        <h2 className="text-lg font-semibold">Regras do dia da prova</h2>
+        <h2 className="text-xl font-extrabold">Regras do dia da prova</h2>
         <ul className="list-disc space-y-1 pl-5 text-sm">
           <li>Prova às 14h. Os portões fecham 30 minutos antes; chegue 1 hora antes do fechamento.</li>
           <li>Leve documento oficial com foto e caneta esferográfica azul ou preta transparente.</li>

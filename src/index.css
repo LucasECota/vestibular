@@ -36,3 +36,32 @@ body {
 @utility tint {
   background: color-mix(in srgb, var(--c) 12%, white);
 }
+
+/* Comemoração de nível: confetes, foguetes e palmas (desligados se a pessoa pediu menos movimento) */
+@keyframes confetti-fall {
+  0% { transform: translateY(-12vh) rotate(0deg); opacity: 1; }
+  100% { transform: translateY(110vh) rotate(720deg); opacity: 0.9; }
+}
+@keyframes rocket-up {
+  0% { transform: translateY(0) scale(0.8); opacity: 0; }
+  10% { opacity: 1; }
+  100% { transform: translateY(-115vh) scale(1.2); opacity: 1; }
+}
+@keyframes clap {
+  0%, 100% { transform: scale(1) rotate(0deg); }
+  25% { transform: scale(1.35) rotate(-14deg); }
+  50% { transform: scale(1) rotate(10deg); }
+  75% { transform: scale(1.3) rotate(-8deg); }
+}
+@keyframes pop-in {
+  from { transform: scale(0.6); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+.fx-confetti { animation: confetti-fall linear infinite; }
+.fx-rocket { animation: rocket-up ease-in infinite; }
+.fx-clap { animation: clap 0.9s ease-in-out infinite; display: inline-block; }
+.fx-pop { animation: pop-in 0.45s cubic-bezier(0.2, 1.4, 0.4, 1) both; }
+@media (prefers-reduced-motion: reduce) {
+  .fx-confetti, .fx-rocket { display: none; }
+  .fx-clap, .fx-pop { animation: none; }
+}

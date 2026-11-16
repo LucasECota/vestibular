@@ -2,6 +2,7 @@ import { Link, NavLink, Outlet, useLocation } from 'react-router-dom'
 import { taskById } from '../data/plan'
 import { SUBJECT_COLOR, SUBJECT_LABEL } from '../data/subjects'
 import { useProgress } from '../state/useProgress'
+import { LevelUpCelebration } from './LevelUpCelebration'
 
 const icons = {
   home: 'M3 11.5 12 4l9 7.5V20a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z',
@@ -55,6 +56,7 @@ export function Layout() {
   const hasResume = Boolean(openTaskId && taskById(openTaskId) && !progress.completedTaskIds.includes(openTaskId))
   return (
     <div className="mx-auto flex min-h-dvh max-w-md flex-col">
+      <LevelUpCelebration />
       <main className={`flex-1 px-4 pt-6 ${hasResume ? 'pb-44' : 'pb-28'}`}>
         <Outlet />
       </main>

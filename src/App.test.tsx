@@ -75,6 +75,44 @@ describe('fluxo principal', () => {
     expect(screen.getByText('10 XP')).toBeInTheDocument()
   })
 
+  it('subir de nível mostra o card "Você subiu de nível!" uma única vez', async () => {
+    const user = userEvent.setup()
+    // 9 acertos já feitos = 90 XP (nível 1, faltam 10 para o nível 2)
+    const attempts = Array.from({ length: 9 }, (_, i) => ({ exerciseId: `seed-${i}`, taskId: 'banco', subject: 'matematica', correct: true }))
+    localStorage.setItem('vestibular-uemg:progress:v1', JSON.stringify({ completedTaskIds: [], activeDates: [], attempts }))
+
+    const first = renderApp('/questoes')
+    expect(screen.queryByRole('dialog')).not.toBeInTheDocument() // abrir o site não comemora
+    await user.selectOptions(screen.getByLabelText(/disciplina/i), 'matematica')
+    await user.selectOptions(screen.getByLabelText(/^ano/i), '2024')
+    const card = screen.getAllByRole('article')[0]
+    await user.click(within(card).getByRole('button', { name: /^D\s*25\./ })) // certa: +10 XP = 100 XP
+    expect(screen.queryByRole('dialog')).not.toBeInTheDocument() // só marcou, ainda não confirmou
+    await user.click(within(card).getByRole('button', { name: /confirmar resposta/i }))
+
+    const dialog = screen.getByRole('dialog', { name: /você subiu de nível!/i })
+    expect(within(dialog).getByText('2')).toBeInTheDocument() // novo nível
+    expect(dialog).toHaveTextContent('Total: 100 XP')
+    expect(dialog).toHaveTextContent('Daniela')
+
+    await user.click(within(dialog).getByRole('button', { name: /continuar/i }))
+    expect(screen.queryByRole('dialog')).not.toBeInTheDocument()
+    first.unmount()
+
+    // recarregar não repete a comemoração
+    renderApp('/')
+    expect(screen.queryByRole('dialog')).not.toBeInTheDocument()
+    expect(screen.getByText('Nível 2')).toBeInTheDocument()
+  })
+
+  it('quem já tinha nível alto ao abrir pela primeira vez não vê comemoração', () => {
+    const attempts = Array.from({ length: 50 }, (_, i) => ({ exerciseId: `seed-${i}`, taskId: 'banco', subject: 'matematica', correct: true }))
+    localStorage.setItem('vestibular-uemg:progress:v1', JSON.stringify({ completedTaskIds: [], activeDates: [], attempts }))
+    renderApp('/')
+    expect(screen.queryByRole('dialog')).not.toBeInTheDocument()
+    expect(localStorage.getItem('vestibular-uemg:seen-level:v1')).not.toBeNull()
+  })
+
   it('cumprimenta a Daniela', () => {
     renderApp()
     expect(screen.getByRole('heading', { name: /daniela/i })).toBeInTheDocument()

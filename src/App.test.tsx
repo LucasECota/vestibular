@@ -107,6 +107,7 @@ describe('fluxo principal', () => {
     expect(screen.getByText(/5 questões|\d+ questões/)).toBeInTheDocument()
     const first = screen.getAllByRole('article')[0]
     expect(within(first).getByText(/UEMG 2024, questão 43/)).toBeInTheDocument()
+    expect(screen.queryByRole('button', { name: /ver a questão como na prova/i })).not.toBeInTheDocument()
     await user.click(within(first).getByRole('button', { name: /^D\s*25\./ })) // gabarito oficial: D
     expect(within(first).getByText('Correto!')).toBeInTheDocument()
   })
@@ -198,6 +199,11 @@ describe('fluxo principal', () => {
     expect(screen.getAllByRole('article')).toHaveLength(5)
   })
 
+  it('não mostra resultado antes de concluir', () => {
+    renderApp('/tarefa/t-2026-11-17-matematica')
+    expect(screen.queryByRole('status', { name: 'Resultado da tarefa' })).not.toBeInTheDocument()
+  })
+
   it('o gabarito e a explicação só aparecem depois de concluir a tarefa', async () => {
     const user = userEvent.setup()
     renderApp('/tarefa/t-2026-11-17-matematica')
@@ -228,6 +234,7 @@ describe('fluxo principal', () => {
     expect(within(cards[0]).getByText(/resposta certa: C/i)).toBeInTheDocument()
     expect(within(cards[0]).getByText(/primeiro a potência/i)).toBeInTheDocument()
     expect(within(cards[1]).getByText('Correto!')).toBeInTheDocument()
+    expect(screen.getByRole('status', { name: 'Resultado da tarefa' })).toHaveTextContent('Você acertou 4/5')
 
     await user.click(goHome())
     expect(screen.getByText('92 XP')).toBeInTheDocument() // 2 + 4×10 + 50
@@ -250,6 +257,7 @@ describe('fluxo principal', () => {
     expect(within(card0).getByText(/resposta certa: C/i)).toBeInTheDocument()
     expect(within(card0).getByRole('button', { name: MAT1_PICKS[0] })).toHaveAttribute('aria-pressed', 'true') // o que ela marcou
     expect(screen.getByRole('button', { name: /tarefa concluída/i })).toBeDisabled()
+    expect(screen.getByRole('status', { name: 'Resultado da tarefa' })).toHaveTextContent('Você acertou 4/5') // também ao reabrir
     expect(localStorage.getItem('vestibular-uemg:draft:t-2026-11-17-matematica')).toBeNull()
   })
 

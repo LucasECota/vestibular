@@ -75,6 +75,7 @@ export function QuestionBankPage() {
             key={q.id}
             exercise={q}
             index={i}
+            allowOriginal={false}
             onAnswer={(correct) =>
               answer({ exerciseId: q.id, taskId: 'banco', subject: q.subject, correct })
             }

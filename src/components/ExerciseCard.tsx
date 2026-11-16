@@ -6,6 +6,7 @@ interface Props {
   exercise: Exercise
   index: number
   onAnswer: (correct: boolean) => void
+  allowOriginal?: boolean
 }
 
 const LETTERS = ['A', 'B', 'C', 'D']
@@ -29,10 +30,12 @@ interface ViewProps {
   onChoose?: (i: number) => void
   /** Mostra o gabarito e a explicação. */
   revealed: boolean
+  /** Oferece o botão "ver a questão como na prova" (padrão: sim). */
+  allowOriginal?: boolean
 }
 
 /** Questão controlada: o pai decide quando mostrar a correção. */
-export function ExerciseView({ exercise, index, chosen, onChoose, revealed }: ViewProps) {
+export function ExerciseView({ exercise, index, chosen, onChoose, revealed, allowOriginal = true }: ViewProps) {
   const [showOriginal, setShowOriginal] = useState(false)
 
   return (
@@ -52,7 +55,7 @@ export function ExerciseView({ exercise, index, chosen, onChoose, revealed }: Vi
       <p className="mt-2 whitespace-pre-line text-lg font-bold leading-snug">{exercise.statement}</p>
       {exercise.images && <Figures images={exercise.images} alt="Figura da questão" />}
 
-      {exercise.snapshots && exercise.snapshots.length > 0 && (
+      {allowOriginal && exercise.snapshots && exercise.snapshots.length > 0 && (
         <div className="mt-1">
           <button type="button" onClick={() => setShowOriginal((v) => !v)} className="text-sm font-bold text-brand">
             {showOriginal ? 'Esconder a questão original' : 'Ver a questão como na prova'}
@@ -114,10 +117,11 @@ interface Props {
   exercise: Exercise
   index: number
   onAnswer: (correct: boolean) => void
+  allowOriginal?: boolean
 }
 
 /** Questão com correção imediata (banco de questões e revisão). */
-export function ExerciseCard({ exercise, index, onAnswer }: Props) {
+export function ExerciseCard({ exercise, index, onAnswer, allowOriginal }: Props) {
   const [chosen, setChosen] = useState<number | null>(null)
 
   return (
@@ -126,6 +130,7 @@ export function ExerciseCard({ exercise, index, onAnswer }: Props) {
       index={index}
       chosen={chosen}
       revealed={chosen !== null}
+      allowOriginal={allowOriginal}
       onChoose={(i) => {
         if (chosen !== null) return
         setChosen(i)

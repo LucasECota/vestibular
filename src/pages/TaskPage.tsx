@@ -46,6 +46,11 @@ export function TaskPage() {
     return draft[id] ?? null
   }
 
+  const correctCount = exercises.filter((e) => {
+    const chosen = chosenFor(e.id)
+    return chosen !== null ? chosen === e.answer : progress.attempts.find((a) => a.exerciseId === e.id)?.correct
+  }).length
+
   const finish = () => {
     for (const e of exercises) {
       const chosen = draft[e.id]
@@ -129,6 +134,27 @@ export function TaskPage() {
       >
         ❓ Anotar uma dúvida desta matéria
       </Link>
+
+      {done && exercises.length > 0 && (
+        <section
+          role="status"
+          aria-label="Resultado da tarefa"
+          className="card p-5 text-center"
+          style={{ background: 'linear-gradient(135deg, #ede4ff 0%, #ffe9c7 100%)' }}
+        >
+          <p className="text-sm font-bold text-muted">Seu resultado</p>
+          <p className="text-4xl font-extrabold">
+            Você acertou {correctCount}/{exercises.length}
+          </p>
+          <p className="mt-1 text-base font-semibold">
+            {correctCount === exercises.length
+              ? 'Perfeito! 🎉'
+              : correctCount / exercises.length >= 0.6
+                ? 'Muito bem! 👏 Leia a explicação das que errou.'
+                : 'Sem problema! 💪 Releia a aula e as explicações: as que errou voltam para revisão.'}
+          </p>
+        </section>
+      )}
 
       <button
         type="button"

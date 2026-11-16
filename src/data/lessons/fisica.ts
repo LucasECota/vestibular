@@ -102,3 +102,51 @@ export const FISICA_2: Lesson = {
     ex('fisica-2', 5, S, 'Um bloco de 10 kg é puxado por uma força de 50 N sobre uma superfície com atrito de 20 N. A aceleração do bloco é:', ['2 m/s²', '3 m/s²', '5 m/s²', '7 m/s²'], 1, 'Resposta B (3 m/s²). A força resultante é a força que puxa menos o atrito: 50 − 20 = 30 N. Então a = FR/m = 30/10 = 3 m/s².'),
   ],
 }
+
+const SVG_ENERGIA = `<svg viewBox="0 0 340 200" xmlns="http://www.w3.org/2000/svg" font-family="sans-serif" font-size="11">
+<rect width="340" height="200" fill="#fff"/>
+<text x="170" y="16" text-anchor="middle" font-weight="bold" fill="#0a0a0f">Conservação da energia mecânica (sem atrito)</text>
+<path d="M20 50 C80 50 90 150 150 150 C210 150 220 90 300 90" fill="none" stroke="#0a0a0f" stroke-width="3"/>
+<circle cx="30" cy="42" r="9" fill="#6d28d9"/><circle cx="150" cy="142" r="9" fill="#6d28d9"/><circle cx="290" cy="82" r="9" fill="#6d28d9"/>
+<text x="40" y="38" fill="#0a0a0f">A: só Ep</text><text x="150" y="166" text-anchor="middle" fill="#0a0a0f">B: só Ec</text><text x="215" y="78" fill="#0a0a0f">C: Ep + Ec</text>
+<g font-size="10"><rect x="20" y="180" width="70" height="12" fill="#bbf7d0" stroke="#15803d"/><text x="26" y="190" fill="#0a0a0f">Ep (altura)</text>
+<rect x="110" y="180" width="70" height="12" fill="#fecaca" stroke="#b91c1c"/><text x="116" y="190" fill="#0a0a0f">Ec (velocidade)</text>
+<text x="200" y="190" fill="#0a0a0f">Em = Ec + Ep é constante</text></g></svg>`
+
+export const FISICA_3: Lesson = {
+  slug: 'fisica-3',
+  title: 'Trabalho, energia, potência e impulso',
+  blocks: [
+    { type: 'p', text: 'Energia é a capacidade de realizar trabalho. Ela não se cria nem se destrói: só se transforma. Essa ideia resolve muitos problemas sem precisar acompanhar o movimento ponto a ponto, como na questão da montanha-russa da UEMG 2024.' },
+    { type: 'h', text: '1. Trabalho de uma força' },
+    { type: 'math', tex: String.raw`W = F \cdot d \cdot \cos\theta` },
+    { type: 'p', text: String.raw`Unidade: **joule (J)**. Se a força é paralela ao deslocamento ($\theta = 0^\circ$), $W = F\cdot d$. Se a força é perpendicular ao deslocamento ($90^\circ$), o trabalho é zero (a força normal e o peso numa superfície horizontal não realizam trabalho).` },
+    { type: 'h', text: '2. Tipos de energia mecânica' },
+    { type: 'table', head: ['Tipo', 'Fórmula', 'Depende de'], rows: [
+      ['Cinética', String.raw`$E_c = \dfrac{m\,v^2}{2}$`, 'Massa e velocidade'],
+      ['Potencial gravitacional', String.raw`$E_p = m\,g\,h$`, 'Massa e altura'],
+      ['Potencial elástica', String.raw`$E_{el} = \dfrac{k\,x^2}{2}$`, 'Constante da mola e deformação'],
+    ] },
+    { type: 'callout', kind: 'atencao', text: 'A velocidade entra ao **quadrado** na energia cinética: dobrar a velocidade quadruplica a energia (e a distância de frenagem).' },
+    { type: 'h', text: '3. Conservação da energia mecânica' },
+    { type: 'figure', svg: SVG_ENERGIA, alt: 'Trilho com três posições: no alto só energia potencial, embaixo só cinética, e no meio as duas', caption: 'Sem atrito, a soma Ec + Ep permanece igual em todos os pontos.' },
+    { type: 'math', tex: String.raw`E_{m,\text{inicial}} = E_{m,\text{final}} \quad\Rightarrow\quad m g h = \dfrac{m v^2}{2} \ \ (\text{queda a partir do repouso})` },
+    { type: 'callout', kind: 'exemplo', text: String.raw`Um objeto cai de 5 m, do repouso ($g = 10$ m/s²): $v = \sqrt{2\,g\,h} = \sqrt{2\cdot 10\cdot 5} = 10$ m/s. A massa se cancela.` },
+    { type: 'h', text: '4. Potência e rendimento' },
+    { type: 'math', tex: String.raw`P = \dfrac{W}{\Delta t} \qquad \eta = \dfrac{P_{\text{útil}}}{P_{\text{total}}}` },
+    { type: 'p', text: 'Unidade de potência: **watt (W)** = 1 J/s. Na conta de luz, a energia vem em **kWh** (quilowatt-hora): 1 kWh = 3,6 · 10⁶ J. Nenhuma máquina tem rendimento de 100%.' },
+    { type: 'h', text: '5. Quantidade de movimento e impulso' },
+    { type: 'table', head: ['Grandeza', 'Fórmula', 'Unidade'], rows: [
+      ['Quantidade de movimento', String.raw`$Q = m\cdot v$`, 'kg·m/s'],
+      ['Impulso de uma força', String.raw`$I = F\cdot\Delta t = \Delta Q$`, 'N·s'],
+    ] },
+    { type: 'p', text: 'Em colisões e explosões, se não há forças externas, a **quantidade de movimento total se conserva**. Colisão elástica conserva também a energia cinética; na inelástica, parte dela vira calor e deformação.' },
+  ],
+  exercises: [
+    ex('fisica-3', 1, S, 'Uma força de 20 N, paralela ao deslocamento, move um corpo por 5 m. O trabalho realizado é:', ['4 J', '25 J', '100 J', '400 J'], 2, 'Resposta C (100 J). Como a força é paralela ao deslocamento, W = F · d = 20 · 5 = 100 J.'),
+    ex('fisica-3', 2, S, 'A energia cinética de um corpo de massa 4 kg com velocidade de 5 m/s é:', ['20 J', '25 J', '50 J', '100 J'], 2, 'Resposta C (50 J). Ec = m·v²/2 = 4 · 5² / 2 = 4 · 25 / 2 = 50 J.'),
+    ex('fisica-3', 3, S, 'Um objeto é solto, do repouso, de uma altura de 5 m. Desprezando o ar e adotando g = 10 m/s², a velocidade com que atinge o solo é:', ['5 m/s', '10 m/s', '25 m/s', '50 m/s'], 1, 'Resposta B (10 m/s). Conservando a energia: m·g·h = m·v²/2, então v = √(2·g·h) = √(2 · 10 · 5) = √100 = 10 m/s.'),
+    ex('fisica-3', 4, S, 'Uma máquina realiza um trabalho de 600 J em 20 s. Sua potência média é:', ['30 W', '120 W', '12 000 W', '3 W'], 0, 'Resposta A (30 W). Potência é trabalho por tempo: P = W/Δt = 600/20 = 30 W (30 J por segundo).'),
+    ex('fisica-3', 5, S, 'A quantidade de movimento de um carro de 1 000 kg que se move a 20 m/s é:', ['20 kg·m/s', '2 000 kg·m/s', '20 000 kg·m/s', '50 kg·m/s'], 2, 'Resposta C (20 000 kg·m/s). Q = m · v = 1 000 · 20 = 20 000 kg·m/s.'),
+  ],
+}

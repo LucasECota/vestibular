@@ -73,3 +73,50 @@ export const INGLES_2: Lesson = {
     ex('ingles-2', 5, S, 'Complete: "Does he ____ English?"', ['speaks', 'speak', 'spoke', 'speaking'], 1, 'Resposta B (speak). Depois de does, o verbo fica na forma base, sem -s: "Does he speak English?". O -s já aparece no auxiliar does.'),
   ],
 }
+
+export const INGLES_3: Lesson = {
+  slug: 'ingles-3',
+  title: 'Pronomes, preposições e conectivos',
+  blocks: [
+    { type: 'p', text: 'Pronomes, preposições e conectivos são pequenas palavras que dão sentido à frase. Entender a quem um pronome se refere e que relação um conectivo cria é o que mais pesa nas questões de leitura (como "it se refere a quê?" ou "o que indica but?").' },
+    { type: 'h', text: '1. Pronomes pessoais e possessivos' },
+    { type: 'table', head: ['Sujeito', 'Objeto', 'Adjetivo possessivo', 'Pronome possessivo'], rows: [
+      ['I', 'me', 'my', 'mine'],
+      ['you', 'you', 'your', 'yours'],
+      ['he', 'him', 'his', 'his'],
+      ['she', 'her', 'her', 'hers'],
+      ['it', 'it', 'its', '—'],
+      ['we', 'us', 'our', 'ours'],
+      ['they', 'them', 'their', 'theirs'],
+    ] },
+    { type: 'list', items: ['**Sujeito** vem antes do verbo: *She studies.* **Objeto** vem depois: *I called her.*', '**Adjetivo possessivo** vem antes do substantivo: *her book*. **Pronome possessivo** substitui o substantivo: *The book is hers.*'] },
+    { type: 'callout', kind: 'atencao', title: 'its × it\'s', text: '**its** = dele/dela (de coisa ou animal): *The cat licked its paws.* **it\'s** = it is ou it has: *It\'s raining.* Essa confusão apareceu na UEMG 2024.' },
+    { type: 'h', text: '2. Demonstrativos' },
+    { type: 'table', head: ['', 'Perto', 'Longe'], rows: [
+      ['Singular', 'this (este/isto)', 'that (aquele/aquilo)'],
+      ['Plural', 'these (estes)', 'those (aqueles)'],
+    ] },
+    { type: 'h', text: '3. Preposições de tempo e lugar' },
+    { type: 'table', head: ['Preposição', 'Tempo', 'Lugar'], rows: [
+      ['at', 'horas e momentos: at 9 a.m., at night', 'ponto específico: at school, at the door'],
+      ['on', 'dias e datas: on Monday, on May 5th', 'sobre uma superfície: on the table'],
+      ['in', 'meses, anos, estações, partes do dia: in July, in 2025, in the morning', 'espaço fechado, cidade, país: in Brazil, in the box'],
+    ] },
+    { type: 'h', text: '4. Conectivos (connectors)' },
+    { type: 'table', head: ['Ideia', 'Palavras', 'Exemplo'], rows: [
+      ['Adição', 'and, also, in addition', 'She sings and dances.'],
+      ['Oposição', 'but, however, although, though', 'I was tired, but I kept studying.'],
+      ['Causa', 'because, since', 'I stayed home because it rained.'],
+      ['Consequência', 'so, therefore, as a result', 'It rained, so we stayed home.'],
+      ['Alternativa', 'or', 'Tea or coffee?'],
+    ] },
+    { type: 'callout', kind: 'dica', text: 'Para saber a relação entre duas ideias, pergunte: elas se somam (and), se opõem (but, however), uma explica a outra (because) ou uma leva à outra (so)?' },
+  ],
+  exercises: [
+    ex('ingles-3', 1, S, 'Complete: "Mary and I are friends. ____ study together."', ['We', 'They', 'Us', 'Our'], 0, 'Resposta A (We). "Mary and I" (Mary e eu) forma um grupo que inclui o falante, e o pronome sujeito para isso é we. "Us" é pronome objeto e "our" é possessivo.'),
+    ex('ingles-3', 2, S, 'Complete: "This is Ana. ____ brother is a doctor."', ['She', 'Her', 'Hers', 'Herself'], 1, 'Resposta B (Her). Antes de um substantivo (brother) usamos o adjetivo possessivo: her brother (o irmão dela). "Hers" substitui o substantivo e "she" é pronome sujeito.'),
+    ex('ingles-3', 3, S, 'Complete: "The cat licked ____ paws."', ['it\'s', 'its', 'it', 'itself'], 1, 'Resposta B (its). "Its" é o possessivo de it: as patas dele (do gato). "It\'s" significa "it is" ou "it has", e não indica posse.'),
+    ex('ingles-3', 4, S, 'Complete: "The meeting is ____ Monday ____ 9 a.m."', ['in / at', 'on / at', 'at / on', 'on / in'], 1, 'Resposta B (on / at). Usamos on com dias da semana (on Monday) e at com horas (at 9 a.m.). In é para meses, anos e partes do dia (in July, in the morning).'),
+    ex('ingles-3', 5, S, 'Complete: "I was tired, ____ I kept studying."', ['because', 'so', 'but', 'or'], 2, 'Resposta C (but). Há oposição entre as ideias: estava cansado, mas continuou estudando. "Because" daria causa, "so" daria consequência e "or" daria alternativa.'),
+  ],
+}

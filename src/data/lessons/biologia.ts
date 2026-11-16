@@ -110,3 +110,51 @@ export const BIOLOGIA_2: Lesson = {
     ex('biologia-2', 5, S, 'Uma célula diploide sofre meiose. Ao final do processo, formam-se:', ['2 células idênticas à célula mãe', '4 células haploides, geneticamente diferentes entre si', '4 células diploides idênticas', '1 célula com o dobro de cromossomos'], 1, 'Resposta B. A meiose tem duas divisões e produz 4 células com metade do número de cromossomos (haploides), diferentes entre si por causa do crossing-over e da separação aleatória dos homólogos. É assim que se formam os gametas.'),
   ],
 }
+
+export const BIOLOGIA_3: Lesson = {
+  slug: 'biologia-3',
+  title: 'Genética: Mendel e heredogramas',
+  blocks: [
+    { type: 'p', text: 'A Genética explica como as características passam dos pais para os filhos. Gregor Mendel, estudando ervilhas, descobriu as leis básicas da hereditariedade. Na UEMG já caiu probabilidade com genótipos (2023).' },
+    { type: 'h', text: '1. Vocabulário essencial' },
+    { type: 'table', head: ['Termo', 'Significado', 'Exemplo'], rows: [
+      ['Gene', 'Trecho de DNA que determina uma característica', 'cor da semente'],
+      ['Alelos', 'Formas diferentes de um mesmo gene', 'A (dominante) e a (recessivo)'],
+      ['Genótipo', 'Combinação de alelos do indivíduo', 'AA, Aa, aa'],
+      ['Fenótipo', 'Característica observável (genótipo + ambiente)', 'semente amarela'],
+      ['Homozigoto', 'Alelos iguais', 'AA ou aa'],
+      ['Heterozigoto', 'Alelos diferentes', 'Aa'],
+      ['Dominante', 'Se manifesta mesmo em dose única', 'A'],
+      ['Recessivo', 'Só se manifesta em dose dupla', 'aa'],
+    ] },
+    { type: 'h', text: '2. Primeira lei de Mendel (segregação)' },
+    { type: 'p', text: 'Cada característica é determinada por **dois fatores (alelos)**, que se **separam** na formação dos gametas: cada gameta leva apenas um deles.' },
+    { type: 'p', text: 'Cruzamento de dois heterozigotos (**Aa × Aa**) pelo quadro de Punnett:' },
+    { type: 'table', head: ['', 'A', 'a'], rows: [
+      ['**A**', 'AA', 'Aa'],
+      ['**a**', 'Aa', 'aa'],
+    ] },
+    { type: 'p', text: 'Proporção genotípica: **1 AA : 2 Aa : 1 aa**. Proporção fenotípica: **3 dominantes : 1 recessivo**. Ou seja, a chance de aa é 1/4.' },
+    { type: 'callout', kind: 'dica', title: 'Macete dos heredogramas', text: 'Pais **sem** a característica que têm um filho **com** ela: a característica é **recessiva** e os pais são heterozigotos (Aa). Exemplo clássico: casal de pigmentação normal com filho albino.' },
+    { type: 'h', text: '3. Probabilidade em Genética' },
+    { type: 'list', items: ['**Regra do "e":** eventos independentes que precisam acontecer juntos → **multiplica** as probabilidades.', '**Regra do "ou":** eventos que não podem ocorrer juntos → **soma** as probabilidades.', 'Exemplo: Aa × Aa terem **dois** filhos aa = 1/4 × 1/4 = 1/16.'] },
+    { type: 'h', text: '4. Segunda lei de Mendel' },
+    { type: 'p', text: 'Genes para características diferentes, localizados em cromossomos diferentes, **segregam-se independentemente**. O cruzamento AaBb × AaBb dá a proporção fenotípica **9 : 3 : 3 : 1**.' },
+    { type: 'h', text: '5. Sistema ABO e ligação ao sexo' },
+    { type: 'table', head: ['Grupo', 'Genótipos possíveis'], rows: [
+      ['A', String.raw`$I^AI^A$ ou $I^Ai$`],
+      ['B', String.raw`$I^BI^B$ ou $I^Bi$`],
+      ['AB', String.raw`$I^AI^B$ (codominância)`],
+      ['O', 'ii'],
+    ] },
+    { type: 'p', text: 'Doenças como **daltonismo** e **hemofilia** são recessivas e ligadas ao cromossomo **X**. Homens (XY) têm um único X, por isso são mais afetados. Mulheres (XX) precisam de dois alelos recessivos.' },
+    { type: 'callout', kind: 'exemplo', text: 'Mãe portadora ($X^DX^d$) × pai normal ($X^DY$): filhos possíveis $X^DX^D$, $X^DX^d$, $X^DY$ e $X^dY$, cada um com 1/4. A chance de um filho ser um **menino daltônico** ($X^dY$) é 1/4.' },
+  ],
+  exercises: [
+    ex('biologia-3', 1, S, 'Do cruzamento de dois indivíduos heterozigotos (Aa × Aa), a probabilidade de nascer um descendente homozigoto recessivo (aa) é:', ['1/4', '1/2', '3/4', '1'], 0, 'Resposta A (1/4). No quadro de Punnett saem AA, Aa, Aa e aa. Só um dos quatro cruzamentos é aa, ou seja, 1/4 (25%).'),
+    ex('biologia-3', 2, S, 'Um casal de pigmentação normal tem um filho albino (albinismo é recessivo). Os genótipos dos pais são:', ['AA e AA', 'Aa e Aa', 'aa e aa', 'AA e aa'], 1, 'Resposta B (Aa e Aa). O filho albino é aa, então cada pai passou um alelo a. Como os pais têm pigmentação normal, também têm o alelo dominante A. Logo, ambos são heterozigotos (Aa).'),
+    ex('biologia-3', 3, S, 'Um casal Aa × Aa terá dois filhos. A probabilidade de os dois serem aa é:', ['1/2', '1/4', '1/8', '1/16'], 3, 'Resposta D (1/16). Para cada filho, P(aa) = 1/4. Como os dois eventos precisam acontecer juntos e são independentes, multiplicamos: 1/4 × 1/4 = 1/16.'),
+    ex('biologia-3', 4, S, 'Um homem do grupo sanguíneo A (genótipo IAi) casa-se com uma mulher do grupo B (genótipo IBi). A probabilidade de terem um filho do grupo O é:', ['0', '1/4', '1/2', '1'], 1, 'Resposta B (1/4). Cada um passa IA ou i (pai) e IB ou i (mãe). O grupo O (ii) exige que os dois passem i: 1/2 × 1/2 = 1/4. Os outros filhos podem ser AB, A ou B, 1/4 cada.'),
+    ex('biologia-3', 5, S, 'O daltonismo é recessivo e ligado ao cromossomo X. Uma mulher portadora (XDXd) casa-se com um homem normal (XDY). A probabilidade de terem um menino daltônico é:', ['1/8', '1/4', '1/2', '3/4'], 1, 'Resposta B (1/4). Os filhos possíveis são XDXD, XDXd, XDY e XdY, cada um com probabilidade 1/4. O menino daltônico é o XdY, ou seja, 1/4 de todos os filhos (ou 1/2 dos meninos).'),
+  ],
+}

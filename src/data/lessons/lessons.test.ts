@@ -44,6 +44,15 @@ describe('aulas', () => {
     }
   })
 
+  it('todas as tarefas de conteúdo da terceira semana (1 a 7/12) têm aula e 5 exercícios', () => {
+    const week3 = PLAN.filter((t) => t.date >= '2026-12-01' && t.date <= '2026-12-07' && t.kind === 'conteudo')
+    expect(week3).toHaveLength(9)
+    for (const t of week3) {
+      expect(lessonBySlug(t.lessonSlug), t.id).toBeDefined()
+      expect(t.exerciseIds, t.id).toHaveLength(5)
+    }
+  })
+
   it('o título da aula é o mesmo da tarefa', () => {
     for (const t of PLAN.filter((t) => lessonBySlug(t.lessonSlug))) {
       expect(lessonBySlug(t.lessonSlug)!.title).toBe(t.title)

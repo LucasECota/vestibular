@@ -120,3 +120,41 @@ export const QUIMICA_2: Lesson = {
     ex('quimica-2', 5, S, 'Os gases nobres (grupo 18) são pouco reativos porque:', ['têm muitos elétrons livres', 'são metais muito eletronegativos', 'têm a camada de valência completa', 'têm apenas 1 elétron de valência'], 2, 'Resposta C. Os gases nobres já têm a camada de valência completa (8 elétrons, ou 2 no hélio), uma configuração muito estável, e por isso quase não precisam fazer ligações.'),
   ],
 }
+
+export const QUIMICA_3: Lesson = {
+  slug: 'quimica-3',
+  title: 'Funções inorgânicas e reações químicas',
+  blocks: [
+    { type: 'p', text: 'Os compostos inorgânicos se agrupam em quatro funções: ácidos, bases, sais e óxidos. Já as reações químicas mostram como substâncias se transformam em outras. Esses temas são a base do cotidiano da Química (e da Engenharia Ambiental: chuva ácida, tratamento de água, solos).' },
+    { type: 'h', text: '1. As quatro funções' },
+    { type: 'table', head: ['Função', 'Definição (Arrhenius)', 'Exemplos', 'Uso'], rows: [
+      ['Ácido', 'Em água, libera H⁺ como único cátion', 'HCl, H₂SO₄, HNO₃', 'Suco gástrico, baterias, fertilizantes'],
+      ['Base (hidróxido)', 'Em água, libera OH⁻ como único ânion', 'NaOH, Ca(OH)₂, NH₄OH', 'Sabão, cal, antiácidos'],
+      ['Sal', 'Produto da reação de um ácido com uma base (além da água)', 'NaCl, CaCO₃', 'Sal de cozinha, giz, fertilizantes'],
+      ['Óxido', 'Composto binário em que o oxigênio é o elemento mais eletronegativo', 'CO₂, CaO, Fe₂O₃', 'Gases do efeito estufa, cal virgem, ferrugem'],
+    ] },
+    { type: 'callout', kind: 'dica', title: 'Como identificar pela fórmula', text: 'Começa com H → provavelmente ácido (HCl). Termina em OH → base (NaOH). Metal + ametal sem H nem OH → sal (NaCl). Dois elementos, um deles O → óxido (CO₂).' },
+    { type: 'h', text: '2. Óxidos importantes' },
+    { type: 'list', items: ['**Óxidos ácidos** (de ametais, como CO₂, SO₂, SO₃, NO₂): reagem com água formando ácidos e causam a **chuva ácida**.', '**Óxidos básicos** (de metais, como CaO e Na₂O): reagem com água formando bases.'] },
+    { type: 'h', text: '3. Reações químicas' },
+    { type: 'table', head: ['Tipo', 'Esquema', 'Exemplo'], rows: [
+      ['Síntese (adição)', 'A + B → AB', '2 H₂ + O₂ → 2 H₂O'],
+      ['Decomposição (análise)', 'AB → A + B', '2 H₂O₂ → 2 H₂O + O₂'],
+      ['Simples troca', 'A + BC → AC + B', 'Zn + 2 HCl → ZnCl₂ + H₂'],
+      ['Dupla troca', 'AB + CD → AD + CB', 'AgNO₃ + NaCl → AgCl + NaNO₃'],
+    ] },
+    { type: 'p', text: '**Neutralização** é a reação entre um ácido e uma base, que forma sal e água:' },
+    { type: 'math', tex: String.raw`HCl + NaOH \longrightarrow NaCl + H_2O` },
+    { type: 'h', text: '4. Balanceamento' },
+    { type: 'p', text: 'A **lei de Lavoisier** diz que a massa se conserva: o número de átomos de cada elemento deve ser igual nos dois lados. Ajustamos só os **coeficientes** (nunca os índices).' },
+    { type: 'callout', kind: 'exemplo', text: String.raw`$H_2 + O_2 \to H_2O$ tem 2 O à esquerda e 1 à direita. Coloque 2 na água: $H_2 + O_2 \to 2\,H_2O$. Agora há 4 H à direita, então 2 na frente do H₂: $2\,H_2 + O_2 \to 2\,H_2O$ (4 H e 2 O dos dois lados).` },
+    { type: 'callout', kind: 'atencao', text: 'No balanceamento, mude os coeficientes (números grandes na frente). Nunca altere os índices (números pequenos), porque isso muda a substância.' },
+  ],
+  exercises: [
+    ex('quimica-3', 1, S, 'O composto HCl, em solução aquosa, é classificado como:', ['ácido', 'base', 'sal', 'óxido'], 0, 'Resposta A (ácido). O HCl libera íons H⁺ em água e começa com H, o que indica um ácido (ácido clorídrico). Bases terminam em OH e sais não têm H⁺ nem OH⁻ como únicos íons.'),
+    ex('quimica-3', 2, S, 'A reação HCl + NaOH → NaCl + H₂O é classificada como:', ['neutralização', 'decomposição', 'síntese', 'simples troca'], 0, 'Resposta A (neutralização). Um ácido (HCl) reage com uma base (NaOH) e forma um sal (NaCl) e água. É também uma reação de dupla troca.'),
+    ex('quimica-3', 3, S, 'Os coeficientes que balanceiam a equação __ H₂ + __ O₂ → __ H₂O, na ordem, são:', ['1, 1, 1', '2, 1, 2', '1, 2, 2', '2, 2, 2'], 1, 'Resposta B (2, 1, 2). Com 2 H₂ + 1 O₂ → 2 H₂O há 4 átomos de H e 2 de O dos dois lados. A equação respeita a conservação da massa (lei de Lavoisier).'),
+    ex('quimica-3', 4, S, 'Qual das substâncias abaixo é um óxido?', ['NaCl', 'CO₂', 'HNO₃', 'KOH'], 1, 'Resposta B (CO₂). Óxido é um composto de dois elementos em que um deles é o oxigênio. NaCl é um sal, HNO₃ é um ácido e KOH é uma base.'),
+    ex('quimica-3', 5, S, 'A reação 2 H₂O₂ → 2 H₂O + O₂, em que uma substância dá origem a duas ou mais, é classificada como:', ['síntese', 'decomposição', 'dupla troca', 'neutralização'], 1, 'Resposta B (decomposição). Uma única substância (água oxigenada) se quebra em duas (água e gás oxigênio). Na síntese acontece o contrário: substâncias se juntam para formar uma.'),
+  ],
+}

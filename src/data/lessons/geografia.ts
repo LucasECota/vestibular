@@ -118,3 +118,50 @@ export const GEOGRAFIA_2: Lesson = {
     ex('geografia-2', 5, S, 'O Quadrilátero Ferrífero, em Minas Gerais, é muito rico em minério de ferro. Essa riqueza está associada, principalmente, à estrutura geológica de:', ['bacias sedimentares recentes', 'escudos cristalinos (rochas antigas do Pré-cambriano)', 'dobramentos modernos', 'planícies aluviais'], 1, 'Resposta B. Os minérios metálicos, como ferro, ouro e manganês, ocorrem principalmente nos escudos cristalinos, formados por rochas muito antigas do Pré-cambriano. Foi essa riqueza que fez de Minas Gerais um polo de mineração e siderurgia, como João Monlevade.'),
   ],
 }
+
+export const GEOGRAFIA_3: Lesson = {
+  slug: 'geografia-3',
+  title: 'Clima, vegetação e biomas',
+  blocks: [
+    { type: 'p', text: 'Clima, vegetação e biomas estão ligados: onde faz calor e chove muito, há florestas; onde chove pouco, há vegetação seca. Esse é um assunto central para a Engenharia Ambiental e já apareceu na UEMG em questões sobre biomas e queimadas.' },
+    { type: 'h', text: '1. Tempo × clima' },
+    { type: 'p', text: '**Tempo** é o estado da atmosfera em um momento (hoje choveu). **Clima** é o conjunto de condições típicas de uma região ao longo de muitos anos (a média de 30 anos ou mais). Os elementos do clima são **temperatura, umidade, pressão atmosférica, ventos e precipitação**.' },
+    { type: 'h', text: '2. Fatores que influenciam o clima' },
+    { type: 'table', head: ['Fator', 'Como influencia'], rows: [
+      ['Latitude', 'Quanto mais perto do Equador, mais quente (os raios solares chegam mais perpendiculares)'],
+      ['Altitude', 'Quanto maior, mais frio (cerca de 0,6 °C a menos a cada 100 m)'],
+      ['Maritimidade e continentalidade', 'O mar suaviza a temperatura; o interior tem maior amplitude térmica'],
+      ['Massas de ar e correntes marítimas', 'Transportam calor e umidade (a corrente fria de Humboldt, por exemplo, deixa o deserto do Atacama seco)'],
+      ['Relevo', 'Serras barram a umidade (chuva de relevo)'],
+    ] },
+    { type: 'h', text: '3. Principais climas do Brasil' },
+    { type: 'table', head: ['Clima', 'Onde', 'Características'], rows: [
+      ['Equatorial', 'Amazônia', 'Quente e muito úmido o ano todo'],
+      ['Tropical', 'Brasil Central e boa parte do país', 'Quente, com verão chuvoso e inverno seco'],
+      ['Tropical de altitude', 'Serras do Sudeste (como MG e SP)', 'Verão chuvoso e inverno seco, mas temperaturas mais amenas'],
+      ['Tropical úmido (litorâneo)', 'Litoral leste', 'Chuvas abundantes e bem distribuídas'],
+      ['Semiárido', 'Sertão nordestino', 'Quente, chuvas escassas e irregulares, secas prolongadas'],
+      ['Subtropical', 'Sul do país', 'Chuvas bem distribuídas, estações bem definidas, geadas no inverno'],
+    ] },
+    { type: 'h', text: '4. Biomas brasileiros' },
+    { type: 'table', head: ['Bioma', 'Clima', 'Vegetação', 'Observações'], rows: [
+      ['Amazônia', 'Equatorial', 'Floresta densa e úmida (terra firme, várzea, igapó)', 'Maior bioma; sofre com desmatamento e queimadas'],
+      ['Cerrado', 'Tropical', 'Savana: árvores de troncos retorcidos e gramíneas', 'Chamado "berço das águas"; avanço da soja e da pecuária'],
+      ['Mata Atlântica', 'Tropical úmido', 'Floresta densa, muitas espécies endêmicas', 'Restam cerca de 12% da cobertura original'],
+      ['Caatinga', 'Semiárido', 'Vegetação xerófila (cactos, arbustos espinhosos)', 'Exclusivamente brasileiro'],
+      ['Pantanal', 'Tropical', 'Mosaico de campos, cerrado e matas; planície alagável', 'Maior planície alagável do mundo'],
+      ['Pampa', 'Subtropical', 'Campos (gramíneas), poucas árvores', 'No Rio Grande do Sul; pecuária'],
+    ] },
+    { type: 'callout', kind: 'atencao', text: 'Pegadinha clássica: o Pampa NÃO é semiárido. Clima semiárido, vegetação xerófila e solos pedregosos são da **Caatinga**. O Pampa tem clima subtropical e campos de gramíneas.' },
+    { type: 'callout', kind: 'dica', text: 'Para identificar o bioma, procure a combinação: floresta + chuva o ano todo = Amazônia; cactos + seca = Caatinga; árvores retorcidas + estação seca = Cerrado; campos no Sul = Pampa; alagado = Pantanal; floresta litorânea muito devastada = Mata Atlântica.' },
+    { type: 'h', text: '5. Impactos ambientais' },
+    { type: 'list', items: ['**Queimadas** liberam CO₂, CO e CH₄ (gases do efeito estufa) e reduzem a biodiversidade.', '**Desmatamento** causa erosão, perda de solo, assoreamento de rios e alteração do ciclo da água.', '**Desertificação** é a degradação de terras em áreas secas, ligada ao mau uso do solo (e não ao avanço natural de dunas).'] },
+  ],
+  exercises: [
+    ex('geografia-3', 1, S, 'O bioma de clima semiárido, com vegetação adaptada à seca (cactos e arbustos espinhosos), é a:', ['Amazônia', 'Caatinga', 'Mata Atlântica', 'Pampa'], 1, 'Resposta B (Caatinga). A Caatinga ocupa o sertão nordestino, de clima semiárido, com vegetação xerófila (adaptada à falta de água). É o único bioma exclusivamente brasileiro.'),
+    ex('geografia-3', 2, S, 'O Cerrado é caracterizado por:', ['floresta densa e chuvas o ano todo', 'savana, com árvores de troncos retorcidos e gramíneas, e estação seca definida', 'campos de gramíneas no Sul, com clima subtropical', 'planície alagável com grande biodiversidade de aves'], 1, 'Resposta B. O Cerrado é a savana brasileira, com clima tropical, verão chuvoso e inverno seco. A é a Amazônia, C é o Pampa e D é o Pantanal.'),
+    ex('geografia-3', 3, S, 'O bioma brasileiro mais devastado, com cerca de 12% de sua cobertura original preservada, é a:', ['Caatinga', 'Amazônia', 'Mata Atlântica', 'Cerrado'], 2, 'Resposta C (Mata Atlântica). Ela cobria boa parte do litoral e foi bastante desmatada para cidades, agricultura e pecuária, pois é onde vive a maior parte da população brasileira. Restam cerca de 12% da cobertura original.'),
+    ex('geografia-3', 4, S, 'Em geral, com o aumento da altitude, a temperatura do ar:', ['aumenta', 'diminui', 'permanece igual', 'varia só com a latitude'], 1, 'Resposta B (diminui). A temperatura cai, em média, cerca de 0,6 °C a cada 100 m de altitude, porque o ar fica mais rarefeito e retém menos calor. Por isso o clima é mais ameno nas serras do Sudeste, como em Minas Gerais.'),
+    ex('geografia-3', 5, S, 'O Pampa, bioma típico do Rio Grande do Sul, apresenta:', ['clima semiárido e vegetação xerófila', 'clima equatorial e floresta densa', 'clima subtropical e predomínio de campos de gramíneas', 'clima tropical de altitude e mangues'], 2, 'Resposta C. O Pampa tem clima subtropical, com chuvas bem distribuídas e estações definidas, e vegetação de campos (gramíneas), usada na pecuária. Clima semiárido e vegetação xerófila são da Caatinga.'),
+  ],
+}

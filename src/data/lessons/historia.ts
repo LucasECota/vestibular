@@ -88,3 +88,38 @@ export const HISTORIA_2: Lesson = {
     ex('historia-2', 5, S, 'O Mercantilismo, política econômica dos Estados absolutistas, defendia:', ['livre mercado sem intervenção do Estado', 'acúmulo de metais preciosos, balança comercial favorável e monopólio colonial', 'o fim das colônias', 'a economia baseada apenas na agricultura de subsistência'], 1, 'Resposta B. O Mercantilismo vê a riqueza no ouro e na prata e quer exportar mais do que importar, com forte intervenção do Estado e exploração das colônias. O livre mercado é a ideia do liberalismo (que o critica).'),
   ],
 }
+
+export const HISTORIA_3: Lesson = {
+  slug: 'historia-3',
+  title: 'Colonização do Brasil e escravidão',
+  blocks: [
+    { type: 'p', text: 'A colonização portuguesa moldou a economia, a sociedade e até a geografia do Brasil. Entender como Portugal organizou a colônia e o papel da escravidão é essencial para compreender a história do país. A UEMG já cobriu a mineração e a mudança da capital para o Rio de Janeiro (2023) e a resistência escrava.' },
+    { type: 'h', text: '1. Linha do tempo' },
+    { type: 'table', head: ['Período', 'O que aconteceu'], rows: [
+      ['1500', 'Chegada de Cabral e posse do território para Portugal (Tratado de Tordesilhas, 1494)'],
+      ['1500–1530 (pré-colonial)', 'Exploração do pau-brasil por **escambo** (troca de machados e espelhos por trabalho indígena); feitorias no litoral'],
+      ['1534', 'Capitanias hereditárias: o território é dividido em faixas doadas a donatários'],
+      ['1549', 'Governo-geral, com Tomé de Sousa e a capital em Salvador, para centralizar a administração'],
+      ['Séc. XVI–XVII', 'Ciclo do açúcar no Nordeste'],
+      ['1580–1640', 'União Ibérica (Portugal sob a coroa espanhola) e invasões holandesas ao Nordeste'],
+      ['Séc. XVII', 'Expansão do território: bandeirantes, pecuária e as drogas do sertão'],
+      ['Séc. XVIII', 'Ciclo do ouro em Minas Gerais; capital muda de Salvador para o Rio de Janeiro (1763)'],
+    ] },
+    { type: 'h', text: '2. Economia açucareira' },
+    { type: 'list', items: ['**Latifúndio, monocultura e escravidão:** grandes propriedades (engenhos) dedicadas à cana, com trabalho escravo.', 'Produção voltada à **exportação** para a Europa (economia agroexportadora).', 'Sociedade **patriarcal e hierarquizada**: o senhor de engenho no topo; os escravizados na base.'] },
+    { type: 'h', text: '3. Escravidão' },
+    { type: 'p', text: 'No início usou-se a escravidão indígena, mas a Coroa e a Igreja restringiram esse uso e o **tráfico negreiro** tornou-se um grande negócio: milhões de africanos foram trazidos à força ao Brasil, que foi o último país das Américas a abolir a escravidão (1888).' },
+    { type: 'callout', kind: 'atencao', text: 'A escravidão era lucrativa para Portugal e para os traficantes, por isso o tráfico foi tão intenso. Os africanos escravizados não eram "povos passivos": resistiram o tempo todo.' },
+    { type: 'p', text: '**Formas de resistência:** fugas, revoltas, sabotagens, preservação da cultura e a formação de **quilombos**. O mais famoso foi o **Quilombo dos Palmares** (Serra da Barriga, atual Alagoas), no século XVII, liderado por **Zumbi**, que chegou a reunir milhares de pessoas e resistiu por quase cem anos.' },
+    { type: 'h', text: '4. Mineração em Minas Gerais (séc. XVIII)' },
+    { type: 'list', items: ['A descoberta de **ouro e diamantes** atraiu milhares de pessoas, formou cidades (Vila Rica, atual Ouro Preto) e deslocou o centro econômico para o Centro-Sul; a capital foi para o **Rio de Janeiro** em 1763.', 'Controle rígido da Coroa: **quinto** (20% do ouro), casas de fundição e **derrama** (cobrança forçada de impostos atrasados).', 'Esse contexto levou à **Inconfidência Mineira** (1789), movimento contra a cobrança de impostos.'] },
+    { type: 'callout', kind: 'dica', text: 'Relação com Minas: o ouro explica a ocupação do interior do Brasil e a origem de muitas cidades mineiras. Mais tarde, a mineração de ferro faria de Minas um polo siderúrgico, como em João Monlevade.' },
+  ],
+  exercises: [
+    ex('historia-3', 1, S, 'As capitanias hereditárias, criadas em 1534, tinham como objetivo principal:', ['abolir a escravidão indígena', 'ocupar e colonizar o território, dividido em faixas doadas a donatários', 'criar uma república no Brasil', 'expulsar os portugueses do litoral'], 1, 'Resposta B. Sem recursos para colonizar tudo sozinha, a Coroa dividiu o território em faixas e as entregou a donatários, que deveriam povoá-las e explorá-las. O sistema teve resultados irregulares e foi seguido pelo governo-geral (1549).'),
+    ex('historia-3', 2, S, 'A economia açucareira colonial se baseava em:', ['pequenas propriedades e trabalho assalariado', 'latifúndio, monocultura e trabalho escravo, voltados à exportação', 'indústrias têxteis e trabalho livre', 'mineração de ouro e diamantes'], 1, 'Resposta B. Os engenhos eram grandes propriedades (latifúndio) dedicadas só à cana (monocultura), com mão de obra escravizada e produção exportada para a Europa. A mineração é do século XVIII.'),
+    ex('historia-3', 3, S, 'O Quilombo dos Palmares, no século XVII, foi:', ['um engenho de açúcar de Pernambuco', 'uma comunidade formada por pessoas escravizadas que fugiram, liderada por Zumbi', 'uma capitania hereditária', 'uma missão jesuítica'], 1, 'Resposta B. Palmares foi o maior quilombo colonial, na Serra da Barriga, e simboliza a resistência à escravidão. Zumbi foi seu último grande líder; o Dia da Consciência Negra (20 de novembro) lembra sua morte.'),
+    ex('historia-3', 4, S, 'A descoberta de ouro em Minas Gerais, no século XVIII, provocou:', ['a transferência da capital colonial de Salvador para o Rio de Janeiro (1763)', 'o fim da escravidão no Brasil', 'a Independência do Brasil', 'a chegada da família real portuguesa'], 0, 'Resposta A. O ouro deslocou o eixo econômico do Nordeste para o Centro-Sul, e a capital passou para o Rio de Janeiro, mais próximo das minas e do porto de escoamento. A Independência é de 1822 e a chegada da corte, de 1808.'),
+    ex('historia-3', 5, S, 'No período pré-colonial (1500–1530), a exploração do pau-brasil era feita principalmente por meio do:', ['trabalho assalariado', 'escambo com os indígenas', 'tráfico de africanos', 'cultivo em grandes engenhos'], 1, 'Resposta B (escambo). Os portugueses trocavam objetos como machados, espelhos e tecidos pelo trabalho dos indígenas no corte e transporte da madeira, sem pagar salários. A escravidão africana e os engenhos vieram depois.'),
+  ],
+}

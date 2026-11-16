@@ -144,3 +144,97 @@ export const MATEMATICA_4: Lesson = {
     ex('matematica-4', 5, S, 'A expressão 4x² − 12x + 9 é igual a:', ['(2x − 3)²', '(2x + 3)²', '(4x − 3)²', '2(x − 3)²'], 0, 'Resposta A. É um trinômio quadrado perfeito: (2x)² = 4x², 3² = 9 e o dobro do produto 2 · 2x · 3 = 12x, com sinal negativo. Portanto 4x² − 12x + 9 = (2x − 3)².'),
   ],
 }
+
+/** Gera um caminho SVG "M x y L ..." para o gráfico de uma função. */
+const plotPath = (fn: (x: number) => number, from: number, to: number, ox: number, oy: number, sx: number, sy: number): string => {
+  const pts: string[] = []
+  for (let x = from; x <= to + 1e-9; x += (to - from) / 60) {
+    pts.push(`${(ox + x * sx).toFixed(1)} ${(oy - fn(x) * sy).toFixed(1)}`)
+  }
+  return `M${pts.join(' L')}`
+}
+
+const axes = (w: number, h: number, ox: number, oy: number): string =>
+  `<line x1="10" y1="${oy}" x2="${w - 10}" y2="${oy}" stroke="#0a0a0f" stroke-width="1.5"/><line x1="${ox}" y1="${h - 10}" x2="${ox}" y2="34" stroke="#0a0a0f" stroke-width="1.5"/>`
+
+const SVG_AFIM = `<svg viewBox="0 0 320 200" xmlns="http://www.w3.org/2000/svg" font-family="sans-serif" font-size="11"><rect width="320" height="200" fill="#fff"/>${axes(320, 200, 130, 130)}
+<path d="${plotPath((x) => 2 * x - 2, -3.2, 5.2, 130, 130, 28, 14)}" fill="none" stroke="#6d28d9" stroke-width="3"/>
+<circle cx="158" cy="130" r="4" fill="#15803d"/><text x="162" y="146" fill="#15803d">raiz (x = 1)</text>
+<circle cx="130" cy="158" r="4" fill="#c2410c"/><text x="136" y="170" fill="#c2410c">corta o eixo y em b = −2</text>
+<text x="12" y="22" fill="#0a0a0f" font-weight="bold">f(x) = 2x − 2: reta crescente (a &gt; 0)</text></svg>`
+
+const SVG_PARABOLA = `<svg viewBox="0 0 320 200" xmlns="http://www.w3.org/2000/svg" font-family="sans-serif" font-size="11"><rect width="320" height="200" fill="#fff"/>${axes(320, 200, 100, 120)}
+<path d="${plotPath((x) => x * x - 4 * x + 3, -0.4, 4.4, 100, 120, 48, 14)}" fill="none" stroke="#6d28d9" stroke-width="3"/>
+<circle cx="148" cy="120" r="4" fill="#15803d"/><circle cx="244" cy="120" r="4" fill="#15803d"/>
+<text x="136" y="108" fill="#15803d">1</text><text x="246" y="108" fill="#15803d">3</text>
+<circle cx="196" cy="134" r="4" fill="#c2410c"/><text x="204" y="152" fill="#c2410c">vértice (2, −1)</text>
+<text x="12" y="22" fill="#0a0a0f" font-weight="bold">f(x) = x² − 4x + 3: parábola com concavidade para cima</text></svg>`
+
+export const MATEMATICA_5: Lesson = {
+  slug: 'matematica-5',
+  title: 'Funções: afim e quadrática',
+  blocks: [
+    { type: 'p', text: String.raw`Uma **função** relaciona cada valor de $x$ (domínio) a um único valor $y = f(x)$. É a linguagem usada para descrever custo, velocidade, crescimento e muito mais. Duas funções caem sempre: a **afim** (reta) e a **quadrática** (parábola).` },
+    { type: 'h', text: '1. Função afim: f(x) = ax + b' },
+    { type: 'table', head: ['Elemento', 'O que é', 'Como usar'], rows: [
+      ['a (coeficiente angular)', 'Inclinação da reta', String.raw`$a>0$: crescente; $a<0$: decrescente`],
+      ['b (coeficiente linear)', 'Onde a reta corta o eixo y', String.raw`$f(0) = b$`],
+      ['Raiz (zero da função)', 'Valor de x em que f(x) = 0', String.raw`$x = -\dfrac{b}{a}$`],
+    ] },
+    { type: 'figure', svg: SVG_AFIM, alt: 'Gráfico de uma reta crescente que corta o eixo x em 1 e o eixo y em −2', caption: 'Para f(x) = 2x − 2: raiz em x = 1 e b = −2.' },
+    { type: 'callout', kind: 'exemplo', text: String.raw`$f(x) = 2x + 3$. Então $f(4) = 2\cdot 4 + 3 = 11$. Para $f(x) = 3x - 12$, a raiz é $x = -\dfrac{-12}{3} = 4$.` },
+    { type: 'h', text: '2. Função quadrática: f(x) = ax² + bx + c' },
+    { type: 'p', text: String.raw`O gráfico é uma **parábola**. Se $a>0$, a concavidade é para cima (tem ponto de **mínimo**); se $a<0$, é para baixo (tem **máximo**). O ponto de corte com o eixo y é $c$.` },
+    { type: 'list', items: [String.raw`**Raízes:** resolva $ax^2+bx+c=0$ (Bhaskara). São onde a parábola corta o eixo x.`, String.raw`**Vértice:** $x_v = -\dfrac{b}{2a}$ e $y_v = -\dfrac{\Delta}{4a}$ (ou calcule $f(x_v)$). É o ponto de máximo ou mínimo.`] },
+    { type: 'figure', svg: SVG_PARABOLA, alt: 'Parábola com concavidade para cima, raízes 1 e 3 e vértice em (2, −1)', caption: 'As raízes 1 e 3 ficam simétricas em relação ao vértice (x = 2).' },
+    { type: 'callout', kind: 'exemplo', title: 'Valor máximo', text: String.raw`Uma bola tem altura $h(t) = -t^2 + 4t$ (em metros). Como $a<0$, há máximo:` + '\n' + String.raw`$t_v = -\dfrac{4}{2\cdot(-1)} = 2$ e $h(2) = -4 + 8 = 4$.` + '\nAltura máxima: 4 m, depois de 2 s.' },
+    { type: 'callout', kind: 'dica', text: 'O vértice fica sempre no meio das raízes: xv = (x₁ + x₂)/2. Se você já achou as raízes 1 e 3, o xv é 2.' },
+  ],
+  exercises: [
+    ex('matematica-5', 1, S, 'Se f(x) = 2x + 3, então f(4) é igual a:', ['8', '9', '11', '14'], 2, 'Resposta C (11). Substitua x por 4: f(4) = 2 · 4 + 3 = 8 + 3 = 11.'),
+    ex('matematica-5', 2, S, 'A raiz (zero) da função f(x) = 3x − 12 é:', ['−4', '3', '4', '12'], 2, 'Resposta C (4). A raiz é o valor de x que faz f(x) = 0: 3x − 12 = 0 → 3x = 12 → x = 4.'),
+    ex('matematica-5', 3, S, 'O vértice da parábola de f(x) = x² − 6x + 5 é o ponto:', ['(3, −4)', '(−3, −4)', '(3, 4)', '(6, 5)'], 0, 'Resposta A. xv = −b/2a = 6/2 = 3. Então yv = f(3) = 9 − 18 + 5 = −4. O vértice é (3, −4). Como a > 0, é um ponto de mínimo.'),
+    ex('matematica-5', 4, S, 'A altura, em metros, de uma bola é h(t) = −t² + 4t, com t em segundos. A altura máxima atingida é:', ['2 m', '4 m', '8 m', '0 m'], 1, 'Resposta B (4 m). Como a = −1 < 0, a parábola tem máximo no vértice: tv = −4/(2 · (−1)) = 2 s. Então h(2) = −4 + 8 = 4 m.'),
+    ex('matematica-5', 5, S, 'Os pontos em que o gráfico de f(x) = x² − 4x + 3 corta o eixo x têm abscissas:', ['1 e 3', '−1 e −3', '2 e 3', '0 e 4'], 0, 'Resposta A (1 e 3). Resolva x² − 4x + 3 = 0: Δ = 16 − 12 = 4, e x = (4 ± 2)/2, ou seja, x = 3 e x = 1. Conferindo: soma = 4 (= −b/a) e produto = 3 (= c/a).'),
+  ],
+}
+
+const SVG_EXP = `<svg viewBox="0 0 320 200" xmlns="http://www.w3.org/2000/svg" font-family="sans-serif" font-size="11"><rect width="320" height="200" fill="#fff"/>${axes(320, 200, 110, 150)}
+<path d="${plotPath((x) => 2 ** x, -2.2, 3.2, 110, 150, 36, 12)}" fill="none" stroke="#6d28d9" stroke-width="3"/>
+<path d="${plotPath((x) => 0.5 ** x, -3.2, 2.2, 110, 150, 36, 12)}" fill="none" stroke="#c2410c" stroke-width="3"/>
+<circle cx="110" cy="138" r="4" fill="#0a0a0f"/><text x="116" y="168" fill="#0a0a0f">(0, 1)</text>
+<text x="215" y="40" fill="#6d28d9" font-weight="bold">2ˣ (cresce)</text><text x="12" y="40" fill="#c2410c" font-weight="bold">(1/2)ˣ (decresce)</text>
+<text x="12" y="192" fill="#0a0a0f">Todas passam por (0, 1) e ficam acima do eixo x.</text></svg>`
+
+export const MATEMATICA_6: Lesson = {
+  slug: 'matematica-6',
+  title: 'Funções exponencial e logarítmica',
+  blocks: [
+    { type: 'p', text: 'A função exponencial descreve crescimentos e decaimentos muito rápidos (bactérias, juros, radioatividade). O logaritmo é a operação inversa: serve para "descobrir o expoente". A UEMG já cobrou crescimento exponencial de vírus (2023).' },
+    { type: 'h', text: '1. Função exponencial' },
+    { type: 'p', text: String.raw`$f(x) = a^x$, com $a>0$ e $a\neq 1$. Se $a>1$, a função é **crescente**; se $0<a<1$, é **decrescente**. O gráfico sempre passa por $(0,1)$ e nunca toca o eixo x.` },
+    { type: 'figure', svg: SVG_EXP, alt: 'Dois gráficos exponenciais, um crescente e outro decrescente, ambos passando pelo ponto (0, 1)', caption: 'Quanto maior a base (a > 1), mais rápido o crescimento.' },
+    { type: 'p', text: '**Equação exponencial:** iguale as bases e depois os expoentes.' },
+    { type: 'callout', kind: 'exemplo', text: String.raw`$3^{x+1} = 27 \Rightarrow 3^{x+1} = 3^3 \Rightarrow x + 1 = 3 \Rightarrow x = 2$` },
+    { type: 'h', text: '2. Logaritmo' },
+    { type: 'math', tex: String.raw`\log_a b = x \iff a^x = b \qquad (a>0,\ a\neq 1,\ b>0)` },
+    { type: 'p', text: String.raw`Leia "log de $b$ na base $a$ é o expoente a que se eleva $a$ para obter $b$". Exemplos: $\log_2 64 = 6$ (pois $2^6 = 64$) e $\log_{10} 1000 = 3$. Sem base escrita, $\log$ é base 10.` },
+    { type: 'table', head: ['Propriedade', 'Regra'], rows: [
+      ['Produto', String.raw`$\log(a\cdot b) = \log a + \log b$`],
+      ['Quociente', String.raw`$\log\left(\dfrac{a}{b}\right) = \log a - \log b$`],
+      ['Potência', String.raw`$\log a^n = n\cdot\log a$`],
+      ['Valores especiais', String.raw`$\log_a a = 1$ e $\log_a 1 = 0$`],
+    ] },
+    { type: 'callout', kind: 'exemplo', text: String.raw`$\log 2 + \log 5 = \log(2\cdot 5) = \log 10 = 1$` },
+    { type: 'h', text: '3. Crescimento exponencial' },
+    { type: 'p', text: String.raw`Quando uma quantidade dobra a cada período, usamos $P(t) = P_0 \cdot 2^t$. Para saber em quanto tempo ela chega a um valor, iguale as potências ou use logaritmo.` },
+    { type: 'callout', kind: 'dica', text: 'Em equações exponenciais, tente sempre escrever os dois lados como potência da mesma base (por exemplo, 32 = 2⁵, 27 = 3³, 81 = 3⁴).' },
+  ],
+  exercises: [
+    ex('matematica-6', 1, S, 'A solução da equação 2ˣ = 32 é:', ['x = 4', 'x = 5', 'x = 6', 'x = 16'], 1, 'Resposta B (x = 5). Escreva 32 como potência de 2: 32 = 2⁵. Então 2ˣ = 2⁵ e, igualando os expoentes, x = 5.'),
+    ex('matematica-6', 2, S, 'O valor de log₂ 64 é:', ['4', '5', '6', '32'], 2, 'Resposta C (6). log₂ 64 é o expoente que se aplica a 2 para obter 64. Como 2⁶ = 64, o resultado é 6.'),
+    ex('matematica-6', 3, S, 'O valor de log 2 + log 5 (logaritmos decimais) é:', ['0', '1', '7', '10'], 1, 'Resposta B (1). Pela propriedade do produto, log 2 + log 5 = log (2 · 5) = log 10 = 1, já que 10¹ = 10.'),
+    ex('matematica-6', 4, S, 'Uma cultura de bactérias dobra a cada hora: P(t) = 100 · 2ᵗ, com t em horas. Em quantas horas a população chega a 1 600 bactérias?', ['3 horas', '4 horas', '8 horas', '16 horas'], 1, 'Resposta B (4 horas). Queremos 100 · 2ᵗ = 1 600, logo 2ᵗ = 16 = 2⁴. Igualando os expoentes, t = 4 horas.'),
+    ex('matematica-6', 5, S, 'A solução da equação 3^(x+1) = 27 é:', ['x = 1', 'x = 2', 'x = 3', 'x = 9'], 1, 'Resposta B (x = 2). Como 27 = 3³, temos 3^(x+1) = 3³, então x + 1 = 3 e x = 2. Cuidado: x = 3 seria a resposta de 3ˣ = 27, sem o "+1".'),
+  ],
+}

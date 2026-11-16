@@ -32,6 +32,17 @@ describe('fluxo principal', () => {
     expect(screen.getByRole('heading', { name: 'Redação' })).toBeInTheDocument()
   })
 
+  it('mostra a estrutura da prova', async () => {
+    const user = userEvent.setup()
+    renderApp()
+    await user.click(screen.getByRole('link', { name: 'Prova' }))
+    expect(screen.getByRole('heading', { name: 'A prova' })).toBeInTheDocument()
+    expect(screen.getByText('4h')).toBeInTheDocument()
+    expect(screen.getByText('48')).toBeInTheDocument()
+    expect(screen.getByText('96 (2 por questão)')).toBeInTheDocument()
+    expect(screen.getByText('Matemática')).toBeInTheDocument()
+  })
+
   it('responde exercícios, vê o feedback, conclui a tarefa e ganha XP', async () => {
     const user = userEvent.setup()
     renderApp('/tarefa/t-2026-11-16-mat')

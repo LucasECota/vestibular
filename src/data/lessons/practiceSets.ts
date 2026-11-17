@@ -32,4 +32,13 @@ export const QUIMICA_PRATICA_1: Lesson = simulado(
   [],
 )
 
-export const LESSONS_PRACTICE: Lesson[] = [MATEMATICA_PRATICA_1, FISICA_PRATICA_1, QUIMICA_PRATICA_1]
+export const BIOLOGIA_PRATICA_1: Lesson = simulado(
+  'biologia-pratica-1',
+  'Prática de Biologia 1',
+  'Primeira prática de Biologia: as questões oficiais abaixo cobrem vários temas, e as extras reforçam citologia, genética, ecologia e evolução.',
+  ['Leia o enunciado inteiro: as provas da UEMG trazem um texto introdutório com dicas.', 'Em genética, monte o quadro de cruzamento antes de calcular probabilidades.', 'Em ecologia, lembre-se de que a energia diminui a cada nível trófico (cerca de 10% passa adiante).', 'Faça primeiro as fáceis e deixe as difíceis para o final.'],
+  'Confundir homólogo com análogo; esquecer que probabilidades de eventos independentes se multiplicam; e trocar DNA por RNA (timina × uracila).',
+  [],
+)
+
+export const LESSONS_PRACTICE: Lesson[] = [MATEMATICA_PRATICA_1, FISICA_PRATICA_1, QUIMICA_PRATICA_1, BIOLOGIA_PRATICA_1]

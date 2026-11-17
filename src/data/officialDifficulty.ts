@@ -9,6 +9,9 @@ export const OFFICIAL_DIFFICULTY: Record<string, Difficulty> = {
   'uemg-2023-q43': 'dificil',
   // 30/11: notação científica com potências de 10
   'uemg-2023-q13': 'facil',
+  // 14/12: Biologia (seis oficiais)
+  'uemg-2023-q29': 'facil',
+  'uemg-2023-q28': 'dificil',
 }
 
 /** Nível de uma questão: o marcado nela, ou o padrão (aula = fácil; prova anterior = média). */

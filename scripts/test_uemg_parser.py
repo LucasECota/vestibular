@@ -65,6 +65,16 @@ class ParserTests(unittest.TestCase):
         self.assertEqual(p.parse_answers(p.english_table(lines)), {1: "A", 2: "D", 3: "X"})
         self.assertEqual(p.parse_answers(lines)[1], "B")
 
+    def test_answers_in_blocks_skip_spanish(self):
+        lines = ["VESTIBULAR UEMG 2022 – INGLÊS", "7", "8", "C", "B",
+                 "VESTIBULAR UEMG 2022 – ESPANHOL", "7", "8", "A", "A",
+                 "VESTIBULAR UEMG 2022 – FÍSICA", "13", "14", "D", "*"]
+        self.assertEqual(p.parse_answers_blocks(lines), {7: "C", 8: "B", 13: "D", 14: "X"})
+
+    def test_sections_are_case_insensitive_and_merge_repeated_headings(self):
+        lines = ["Física", "13. a", "A) x", "física", "Matemática", "43. b"]
+        self.assertEqual([s for s, _ in p.split_sections(lines)], ["fisica", "matematica"])
+
 
 if __name__ == "__main__":
     unittest.main()

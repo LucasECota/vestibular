@@ -91,5 +91,55 @@
   },
   "uemg-2023-q38": {
     "context": []
+  },
+  "uemg-2022-q19": {
+    "statement": "Preparou-se uma solução adicionando 0,040 mol de ácido fórmico em água, perfazendo um volume total de 2 litros. Com base no exposto, o grau de ionização dessa solução é, aproximadamente, Dados: Ka (HCOOH) = 1,8 × 10⁻⁴; √7,2 = 2,68; √3,6 = 1,90; √14,4 = 3,79."
+  },
+  "uemg-2022-q22": {
+    "statement": "O raio iônico afeta as propriedades físicas e químicas de um composto iônico. A estrutura tridimensional de um composto iônico depende das dimensões relativas dos seus cátions e ânions. Considerando os seguintes pares de íons (a) N³⁻ ou F⁻; (b) Mg²⁺ ou Ca²⁺; (c) Fe²⁺ ou Fe³⁺, assinale a alternativa que indica qual das duas espécies dos pares possui maior raio, respectivamente.",
+    "options": [
+      "N³⁻; Ca²⁺; Fe²⁺.",
+      "F⁻; Ca²⁺; Fe³⁺.",
+      "N³⁻; Mg²⁺; Fe²⁺.",
+      "F⁻; Ca²⁺; Fe²⁺."
+    ]
+  },
+  "uemg-2022-q23": {
+    "statement": "Em relação ao comportamento ácido/básico/neutro de soluções aquosas, assinale a alternativa que apresenta corretamente o caráter dos sais NH₄I, NaNO₂, KCl e NH₄F, respectivamente. Dados: Ka (NH₄⁺) = 5,6 × 10⁻¹⁰; Kb (F⁻) = 1,4 × 10⁻¹¹"
+  },
+  "uemg-2022-q43": {
+    "options": [
+      "maior do que 3⁵.",
+      "múltiplo de 5, mas não múltiplo de 3.",
+      "primo.",
+      "quadrado perfeito."
+    ]
+  },
+  "uemg-2022-q44": {
+    "statement": "Sejam as matrizes A com linhas (log x, log y) e (1, 2), e B com linhas (log y, log x) e (0, 1), e sabendo que det A = 2 e det B = 0, é correto afirmar que",
+    "options": [
+      "x/y < x.",
+      "x/y < y.",
+      "x + y = −9 ou x + y = 11.",
+      "x + y = 11."
+    ]
+  },
+  "uemg-2022-q45": {
+    "statement": "Um professor solicitou que seus alunos encontrassem o domínio da função f: ℝ → ℝ definida por f(x) = √( x/(x − 1) − 2x/(x + 1) ). O aluno A resolveu a questão, mas cometeu um erro e respondeu que o domínio dessa função é S₁ = {x ∈ ℝ | 0 ≤ x ≤ 3}. O aluno B resolveu a questão corretamente e respondeu que o domínio dessa função é S₂. Sendo A o conjunto dos números inteiros pertencentes a S₁ e B o conjunto dos números inteiros pertencentes a S₂, é correto afirmar que A ∩ B é igual a",
+    "options": [
+      "{0, 1, 2, 3}.",
+      "{0, 2, 3}.",
+      "{2, 3}.",
+      "∅."
+    ]
+  },
+  "uemg-2022-q46": {
+    "statement": "Se sen(x) = √5/5, com π/2 < x < π, então o valor de cotg(x) − cos(x) é igual a",
+    "options": [
+      "−2 + 2√5/5.",
+      "−2 − 2√5/5.",
+      "2 − 2√5/5.",
+      "2 + 2√5/5."
+    ]
   }
 }

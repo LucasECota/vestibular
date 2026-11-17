@@ -24,10 +24,12 @@ def split_sections(lines):
     out, cur = [], None
     for ln in lines:
         s = ln.strip()
-        hit = next(((pat, subj) for pat, subj in SECTIONS if re.match(pat, s)), None)
+        hit = next(((pat, subj) for pat, subj in SECTIONS if re.match(pat, s, re.I)), None)
         if hit and len(s) < 60:
             if hit[1] == "__fim__":
                 break
+            if cur is not None and cur[0] == hit[1]:
+                continue  # cabeçalho repetido da mesma disciplina
             cur = [hit[1], []]
             out.append(cur)
             continue
@@ -122,3 +124,28 @@ def english_table(lines):
         if re.search(r"GERAIS.*ING|ING.*GERAIS|CONHECIMENTOS GERAIS\s*/\s*ING", l.upper()):
             return lines[i:]
     return lines
+
+
+def parse_answers_blocks(lines):
+    """Gabarito em blocos (2022): uma lista de números seguida da lista de letras; ignora o espanhol."""
+    out, nums, letters, skip = {}, [], [], False
+
+    def flush():
+        if not skip and nums and len(nums) == len(letters):
+            for n, l in zip(nums, letters):
+                out.setdefault(n, "X" if l in ("*", "X") else l)
+
+    for raw in lines:
+        t = raw.strip()
+        if not t:
+            continue
+        if re.search(r"VESTIBULAR", t, re.I):
+            flush()
+            nums, letters = [], []
+            skip = bool(re.search(r"ESPANHOL", t, re.I))
+        elif re.fullmatch(r"\d{1,2}", t) and not letters:
+            nums.append(int(t))
+        elif re.fullmatch(r"[A-Da-dXx*]", t):
+            letters.append(t.upper())
+    flush()
+    return out

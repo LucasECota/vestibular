@@ -1,4 +1,5 @@
 import biologia from './biologia.json'
+import exam2022 from './2022.json'
 import fisica from './fisica.json'
 import geografia from './geografia.json'
 import historia from './historia.json'
@@ -17,4 +18,5 @@ export const EXPLANATIONS: Record<string, string> = {
   ...ingles,
   ...geografia,
   ...historia,
+  ...exam2022,
 }

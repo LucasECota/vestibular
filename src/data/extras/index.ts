@@ -1,0 +1,10 @@
+import type { Exercise } from '../exercises'
+import { EXTRAS_WEEK1 } from './week1'
+
+/**
+ * Questões extras por tarefa (chave = slug da aula). A partir de 18/11 cada tarefa tem 12 questões:
+ * 5 fáceis (as de aula), 5 médias e 2 difíceis. Aqui ficam as médias e difíceis novas.
+ */
+export const EXTRAS: Record<string, Exercise[]> = {
+  ...EXTRAS_WEEK1,
+}

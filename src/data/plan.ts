@@ -3,8 +3,10 @@ import { generatePlan } from '../domain/planGenerator'
 import { SUBJECTS, type SubjectId } from '../domain/types'
 import type { StudyTask } from '../domain/types'
 import { CURRICULUM } from './curriculum'
+import { DIFFICULTY_ORDER } from '../domain/types'
+import { difficultyOf } from './officialDifficulty'
 import { lessonBySlug } from './lessons'
-import { questionsBySubject } from './questionBank'
+import { exerciseById, questionsBySubject } from './questionBank'
 
 /**
  * Data provável da prova: domingo de meados de janeiro de 2027.
@@ -32,10 +34,24 @@ const generated = generatePlan({
  * Tarefas de prática recebem até 6 questões de provas anteriores da disciplina e, quando têm
  * um simulado próprio (semana 8), as questões extras dele vêm depois.
  */
-export const PLAN: StudyTask[] = allocatePractice(generated, practicePool, 6).map((t) =>
+const withExtras = allocatePractice(generated, practicePool, 6).map((t) =>
   t.kind === 'pratica'
     ? { ...t, exerciseIds: [...t.exerciseIds, ...(lessonBySlug(t.lessonSlug)?.exercises.map((e) => e.id) ?? [])] }
     : t,
 )
+
+const rank = (id: string): number => {
+  const e = exerciseById(id)
+  return e ? DIFFICULTY_ORDER.indexOf(difficultyOf(e)) : 0
+}
+
+/** Em cada tarefa, as questões ficam das mais fáceis para as mais difíceis (a ordem original é mantida em cada nível). */
+export const PLAN: StudyTask[] = withExtras.map((t) => ({
+  ...t,
+  exerciseIds: t.exerciseIds
+    .map((id, i) => ({ id, i, r: rank(id) }))
+    .sort((a, b) => a.r - b.r || a.i - b.i)
+    .map((x) => x.id),
+}))
 
 export const taskById = (id: string): StudyTask | undefined => PLAN.find((t) => t.id === id)

@@ -1,4 +1,4 @@
-import type { SubjectId } from '../domain/types'
+import type { Difficulty, SubjectId } from '../domain/types'
 
 export interface ExerciseContext {
   text: string
@@ -18,6 +18,8 @@ export interface Exercise {
   context?: ExerciseContext[]
   /** Figuras recortadas da prova (caminhos relativos a `public/`). */
   images?: string[]
+  /** Nível da questão. Sem marca, as de aula contam como fáceis e as de provas anteriores, como médias. */
+  difficulty?: Difficulty
   /** Origem, para questões de provas anteriores. */
   source?: { year: number; number: number }
 }

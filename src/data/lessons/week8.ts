@@ -7,7 +7,7 @@ import { ex } from './helpers'
  * Semana 8 (6 a 12/01): simulados. Cada tarefa traz as questões oficiais de provas anteriores
  * da disciplina e, aqui, um roteiro de estratégia com 5 questões extras no estilo da UEMG.
  */
-const simulado = (
+export const simulado = (
   slug: string,
   title: string,
   intro: string,

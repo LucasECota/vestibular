@@ -63,3 +63,13 @@ export const emptyProgress = (): ProgressState => ({
   reviewQueue: [],
   reviewCorrect: 0,
 })
+
+export type Difficulty = 'facil' | 'media' | 'dificil'
+
+export const DIFFICULTY_ORDER: Difficulty[] = ['facil', 'media', 'dificil']
+
+export const DIFFICULTY_LABEL: Record<Difficulty, string> = {
+  facil: 'Fácil',
+  media: 'Média',
+  dificil: 'Difícil',
+}

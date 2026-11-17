@@ -5,12 +5,12 @@ import { LESSONS, lessonBySlug } from './index'
 const LETTERS = ['A', 'B', 'C', 'D']
 
 describe('aulas', () => {
-  it('têm slug único e 5 exercícios com ids únicos', () => {
+  it('têm slug único e pelo menos 5 exercícios com ids únicos', () => {
     expect(new Set(LESSONS.map((l) => l.slug)).size).toBe(LESSONS.length)
     const ids = LESSONS.flatMap((l) => l.exercises.map((e) => e.id))
     expect(new Set(ids).size).toBe(ids.length)
     for (const l of LESSONS) {
-      expect(l.exercises, l.slug).toHaveLength(5)
+      expect(l.exercises.length, l.slug).toBeGreaterThanOrEqual(5)
       expect(l.blocks.length).toBeGreaterThan(5)
     }
   })
@@ -31,7 +31,7 @@ describe('aulas', () => {
     expect(week1).toHaveLength(9)
     for (const t of week1) {
       expect(lessonBySlug(t.lessonSlug), t.id).toBeDefined()
-      expect(t.exerciseIds, t.id).toHaveLength(5)
+      expect(t.exerciseIds.length, t.id).toBeGreaterThanOrEqual(5)
     }
   })
 
@@ -40,7 +40,7 @@ describe('aulas', () => {
     expect(week2).toHaveLength(9)
     for (const t of week2) {
       expect(lessonBySlug(t.lessonSlug), t.id).toBeDefined()
-      expect(t.exerciseIds, t.id).toHaveLength(5)
+      expect(t.exerciseIds.length, t.id).toBeGreaterThanOrEqual(5)
     }
   })
 
@@ -49,7 +49,7 @@ describe('aulas', () => {
     expect(week3).toHaveLength(9)
     for (const t of week3) {
       expect(lessonBySlug(t.lessonSlug), t.id).toBeDefined()
-      expect(t.exerciseIds, t.id).toHaveLength(5)
+      expect(t.exerciseIds.length, t.id).toBeGreaterThanOrEqual(5)
     }
   })
 
@@ -58,7 +58,7 @@ describe('aulas', () => {
     expect(week4).toHaveLength(9)
     for (const t of week4) {
       expect(lessonBySlug(t.lessonSlug), t.id).toBeDefined()
-      expect(t.exerciseIds, t.id).toHaveLength(5)
+      expect(t.exerciseIds.length, t.id).toBeGreaterThanOrEqual(5)
     }
   })
 
@@ -67,7 +67,7 @@ describe('aulas', () => {
     expect(week5).toHaveLength(9)
     for (const t of week5) {
       expect(lessonBySlug(t.lessonSlug), t.id).toBeDefined()
-      expect(t.exerciseIds, t.id).toHaveLength(5)
+      expect(t.exerciseIds.length, t.id).toBeGreaterThanOrEqual(5)
     }
   })
 
@@ -76,7 +76,7 @@ describe('aulas', () => {
     expect(week6).toHaveLength(8) // 25/12 é feriado; Inglês já cumpriu os 5 tópicos
     for (const t of week6) {
       expect(lessonBySlug(t.lessonSlug), t.id).toBeDefined()
-      expect(t.exerciseIds, t.id).toHaveLength(5)
+      expect(t.exerciseIds.length, t.id).toBeGreaterThanOrEqual(5)
     }
   })
 
@@ -85,7 +85,7 @@ describe('aulas', () => {
     expect(week7).toHaveLength(8) // 29/12 só tem questões de provas; 1/1 é feriado
     for (const t of week7) {
       expect(lessonBySlug(t.lessonSlug), t.id).toBeDefined()
-      expect(t.exerciseIds, t.id).toHaveLength(5)
+      expect(t.exerciseIds.length, t.id).toBeGreaterThanOrEqual(5)
     }
   })
 
@@ -97,8 +97,7 @@ describe('aulas', () => {
       const lesson = lessonBySlug(t.lessonSlug)
       expect(lesson, t.id).toBeDefined()
       expect(lesson!.heading, t.id).toBe('Simulado')
-      const extra = lesson!.exercises.map((e) => e.id)
-      expect(t.exerciseIds.slice(-5), t.id).toEqual(extra) // as extras vêm depois das oficiais
+      for (const e of lesson!.exercises) expect(t.exerciseIds, t.id).toContain(e.id) // as extras do simulado estão na tarefa
       expect(t.exerciseIds.length, t.id).toBeGreaterThanOrEqual(8)
     }
   })
@@ -109,7 +108,7 @@ describe('aulas', () => {
     for (const t of week9) {
       expect(t.kind, t.id).toBe('revisao')
       expect(lessonBySlug(t.lessonSlug)?.heading, t.id).toBe('Resumão')
-      expect(t.exerciseIds, t.id).toHaveLength(5)
+      expect(t.exerciseIds.length, t.id).toBeGreaterThanOrEqual(5)
     }
   })
 

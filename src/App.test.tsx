@@ -315,8 +315,9 @@ describe('fluxo principal', () => {
     await user.click(review.getByRole('button', { name: /^C\s*15/ })) // acerta a questão errada de ontem
     expect(review.queryByText('Correto!')).not.toBeInTheDocument() // ainda sem correção
 
-    // responde os exercícios de Física (sempre a alternativa A) e conclui
-    const cards = screen.getAllByRole('article').slice(0, 5)
+    // responde todos os exercícios de Física (sempre a alternativa A) e conclui
+    const cards = within(screen.getByRole('region', { name: 'Exercícios' })).getAllByRole('article')
+    expect(cards).toHaveLength(12)
     for (const c of cards) await user.click(within(c).getAllByRole('button')[0]) // alternativa A
     await user.click(screen.getByRole('button', { name: /concluir tarefa/i }))
     expect(review.getByText('Correto!')).toBeInTheDocument()

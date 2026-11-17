@@ -1,5 +1,6 @@
 import { useState, type ReactNode } from 'react'
 import type { Exercise } from '../data/exercises'
+import { DIFFICULTY_LABEL, type Difficulty } from '../domain/types'
 import { asset } from '../lib/assets'
 
 interface Props {
@@ -9,6 +10,12 @@ interface Props {
 }
 
 const LETTERS = ['A', 'B', 'C', 'D']
+
+const DIFFICULTY_STYLE: Record<Difficulty, string> = {
+  facil: 'bg-green-100 text-green-800',
+  media: 'bg-amber-100 text-amber-800',
+  dificil: 'bg-red-100 text-red-800',
+}
 
 function Figures({ images, alt }: { images: string[]; alt: string }) {
   return (
@@ -29,18 +36,30 @@ interface ViewProps {
   onChoose?: (i: number) => void
   /** Mostra o gabarito e a explicação. */
   revealed: boolean
+  /** Nível da questão, mostrado como etiqueta (fácil, média ou difícil). */
+  difficulty?: Difficulty
   /** Conteúdo extra (ex.: botão de confirmar) mostrado abaixo das alternativas, antes da correção. */
   footer?: ReactNode
 }
 
 /** Questão controlada: o pai decide quando mostrar a correção. */
-export function ExerciseView({ exercise, index, chosen, onChoose, revealed, footer }: ViewProps) {
+export function ExerciseView({ exercise, index, chosen, onChoose, revealed, difficulty, footer }: ViewProps) {
   return (
     <article className="card p-4">
-      <p className="text-xs font-extrabold uppercase tracking-wide text-brand">
-        Exercício {index + 1}
-        {exercise.source ? ` · UEMG ${exercise.source.year}, questão ${exercise.source.number}` : ''}
-      </p>
+      <div className="flex items-center justify-between gap-2">
+        <p className="text-xs font-extrabold uppercase tracking-wide text-brand">
+          Exercício {index + 1}
+          {exercise.source ? ` · UEMG ${exercise.source.year}, questão ${exercise.source.number}` : ''}
+        </p>
+        {difficulty && (
+          <span
+            data-difficulty={difficulty}
+            className={`shrink-0 rounded-full px-2.5 py-0.5 text-xs font-extrabold ${DIFFICULTY_STYLE[difficulty]}`}
+          >
+            {DIFFICULTY_LABEL[difficulty]}
+          </span>
+        )}
+      </div>
 
       {exercise.context?.map((c) => (
         <div key={c.text + c.images.join()} className="mt-2 rounded-xl bg-bg p-3 text-sm leading-relaxed">

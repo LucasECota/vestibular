@@ -3,6 +3,7 @@ import { Link, useParams } from 'react-router-dom'
 import { ExerciseView } from '../components/ExerciseCard'
 import { LessonView } from '../components/LessonView'
 import { lessonBySlug } from '../data/lessons'
+import { difficultyOf } from '../data/officialDifficulty'
 import { exerciseById } from '../data/questionBank'
 import { taskById } from '../data/plan'
 import { SubjectChip } from '../components/SubjectChip'
@@ -120,6 +121,7 @@ export function TaskPage() {
             exercise={e}
             index={i}
             chosen={chosenFor(e.id)}
+            difficulty={difficultyOf(e)}
             revealed={done}
             onChoose={done ? undefined : (opt) => choose(e.id, opt)}
           />

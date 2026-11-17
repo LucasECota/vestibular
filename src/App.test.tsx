@@ -139,7 +139,7 @@ describe('fluxo principal', () => {
     renderApp('/tarefa/t-2027-01-15-biologia')
     expect(screen.getByRole('region', { name: 'Resumão' })).toBeInTheDocument()
     expect(screen.getByText('Véspera e dia da prova')).toBeInTheDocument()
-    expect(screen.getAllByRole('article')).toHaveLength(5)
+    expect(screen.getAllByRole('article')).toHaveLength(12)
   })
 
   it('cumprimenta a Daniela', () => {

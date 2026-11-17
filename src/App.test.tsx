@@ -129,6 +129,19 @@ describe('fluxo principal', () => {
     expect(scrollTo).toHaveBeenCalledWith(0, 0)
   })
 
+  it('tarefas da semana 8 mostram o roteiro do simulado e as questões; as da semana 9, o resumão', async () => {
+    const week8 = renderApp('/tarefa/t-2027-01-11-quimica')
+    expect(screen.getByRole('region', { name: 'Simulado' })).toBeInTheDocument()
+    expect(screen.getByText(/como usar esta hora/i)).toBeInTheDocument()
+    expect(screen.getAllByRole('article').length).toBeGreaterThanOrEqual(8) // oficiais + 5 extras
+    week8.unmount()
+
+    renderApp('/tarefa/t-2027-01-15-biologia')
+    expect(screen.getByRole('region', { name: 'Resumão' })).toBeInTheDocument()
+    expect(screen.getByText('Véspera e dia da prova')).toBeInTheDocument()
+    expect(screen.getAllByRole('article')).toHaveLength(5)
+  })
+
   it('cumprimenta a Daniela', () => {
     renderApp()
     expect(screen.getByRole('heading', { name: /daniela/i })).toBeInTheDocument()

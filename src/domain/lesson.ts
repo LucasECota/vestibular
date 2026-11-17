@@ -16,6 +16,8 @@ export interface Lesson {
   /** Mesmo valor de `lessonSlug` da tarefa, por exemplo "matematica-1". */
   slug: string
   title: string
+  /** Título da caixa na tarefa (padrão: "Aula"); simulados e resumões usam outro. */
+  heading?: string
   blocks: Block[]
   /** Exercícios da tarefa (os ids são usados em `exerciseIds`). */
   exercises: Exercise[]

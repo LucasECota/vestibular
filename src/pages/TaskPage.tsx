@@ -85,8 +85,8 @@ export function TaskPage() {
       </header>
 
       {lesson ? (
-        <section aria-label="Aula" className="card space-y-3 p-4">
-          <h2 className="text-xl font-extrabold">📖 Aula</h2>
+        <section aria-label={lesson.heading ?? 'Aula'} className="card space-y-3 p-4">
+          <h2 className="text-xl font-extrabold">{lesson.heading === 'Resumão' ? '🔁' : lesson.heading ? '📝' : '📖'} {lesson.heading ?? 'Aula'}</h2>
           <LessonView blocks={lesson.blocks} />
         </section>
       ) : (

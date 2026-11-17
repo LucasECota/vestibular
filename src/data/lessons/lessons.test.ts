@@ -89,13 +89,42 @@ describe('aulas', () => {
     }
   })
 
+  it('semana 8 (6 a 12/01): toda tarefa de prática tem simulado próprio e soma as questões de provas com 5 extras', () => {
+    const week8 = PLAN.filter((t) => t.date >= '2027-01-06' && t.date <= '2027-01-12')
+    expect(week8).toHaveLength(10)
+    for (const t of week8) {
+      expect(t.kind, t.id).toBe('pratica')
+      const lesson = lessonBySlug(t.lessonSlug)
+      expect(lesson, t.id).toBeDefined()
+      expect(lesson!.heading, t.id).toBe('Simulado')
+      const extra = lesson!.exercises.map((e) => e.id)
+      expect(t.exerciseIds.slice(-5), t.id).toEqual(extra) // as extras vêm depois das oficiais
+      expect(t.exerciseIds.length, t.id).toBeGreaterThanOrEqual(8)
+    }
+  })
+
+  it('semana 9 (13 a 15/01): as 6 tarefas de revisão têm resumão e 5 questões', () => {
+    const week9 = PLAN.filter((t) => t.date >= '2027-01-13')
+    expect(week9).toHaveLength(6)
+    for (const t of week9) {
+      expect(t.kind, t.id).toBe('revisao')
+      expect(lessonBySlug(t.lessonSlug)?.heading, t.id).toBe('Resumão')
+      expect(t.exerciseIds, t.id).toHaveLength(5)
+    }
+  })
+
+  it('nenhuma tarefa do plano fica sem material: todas têm aula/resumão ou questões', () => {
+    const empty = PLAN.filter((t) => t.exerciseIds.length === 0).map((t) => t.id)
+    expect(empty).toEqual([])
+  })
+
   it('o conteúdo programático está completo: toda tarefa de conteúdo do plano tem aula', () => {
     const missing = PLAN.filter((t) => t.kind === 'conteudo' && !lessonBySlug(t.lessonSlug)).map((t) => t.id)
     expect(missing).toEqual([])
   })
 
   it('o título da aula é o mesmo da tarefa', () => {
-    for (const t of PLAN.filter((t) => lessonBySlug(t.lessonSlug))) {
+    for (const t of PLAN.filter((t) => t.kind === 'conteudo' && lessonBySlug(t.lessonSlug))) {
       expect(lessonBySlug(t.lessonSlug)!.title).toBe(t.title)
     }
   })

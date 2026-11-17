@@ -21,9 +21,21 @@ const generated = generatePlan({
   endDate: '2027-01-15',
   holidays: ['2026-12-25', '2027-01-01'],
   curriculum: CURRICULUM,
-}).map((t) => ({ ...t, exerciseIds: lessonBySlug(t.lessonSlug)?.exercises.map((e) => e.id) ?? [] }))
+})
+  // aulas e resumões de revisão trazem os próprios exercícios; as de prática ficam para receber questões de provas
+  .map((t) => ({
+    ...t,
+    exerciseIds: t.kind === 'pratica' ? [] : (lessonBySlug(t.lessonSlug)?.exercises.map((e) => e.id) ?? []),
+  }))
 
-/** Tarefas de prática recebem até 6 questões de provas anteriores da disciplina. */
-export const PLAN: StudyTask[] = allocatePractice(generated, practicePool, 6)
+/**
+ * Tarefas de prática recebem até 6 questões de provas anteriores da disciplina e, quando têm
+ * um simulado próprio (semana 8), as questões extras dele vêm depois.
+ */
+export const PLAN: StudyTask[] = allocatePractice(generated, practicePool, 6).map((t) =>
+  t.kind === 'pratica'
+    ? { ...t, exerciseIds: [...t.exerciseIds, ...(lessonBySlug(t.lessonSlug)?.exercises.map((e) => e.id) ?? [])] }
+    : t,
+)
 
 export const taskById = (id: string): StudyTask | undefined => PLAN.find((t) => t.id === id)

@@ -49,6 +49,7 @@ export function generatePlan(config: PlanConfig): StudyTask[] {
   const days = studyDays(config)
   const reviewFrom = days.length - (config.reviewDays ?? 3)
   const nextTopic: Partial<Record<SubjectId, number>> = {}
+  const practiceCount: Partial<Record<SubjectId, number>> = {}
   let rotation = 0
   const tasks: StudyTask[] = []
 
@@ -73,7 +74,8 @@ export function generatePlan(config: PlanConfig): StudyTask[] {
       } else {
         kind = 'pratica'
         title = `Questões de provas anteriores: ${SUBJECT_LABEL[subject]}`
-        lessonSlug = `${subject}-pratica`
+        practiceCount[subject] = (practiceCount[subject] ?? 0) + 1
+        lessonSlug = `${subject}-pratica-${practiceCount[subject]}`
       }
 
       tasks.push({

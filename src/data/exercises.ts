@@ -18,8 +18,6 @@ export interface Exercise {
   context?: ExerciseContext[]
   /** Figuras recortadas da prova (caminhos relativos a `public/`). */
   images?: string[]
-  /** Recortes da questão inteira, como aparece na prova. */
-  snapshots?: string[]
   /** Origem, para questões de provas anteriores. */
   source?: { year: number; number: number }
 }

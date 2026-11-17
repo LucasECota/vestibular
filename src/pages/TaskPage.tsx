@@ -78,7 +78,12 @@ export function TaskPage() {
 
   return (
     <div className="space-y-5">
-      <Link to="/" className="text-sm font-bold text-brand">‹ Hoje</Link>
+      <Link
+        to="/plano"
+        className="-ml-2 inline-flex items-center gap-1 rounded-xl px-2 py-2 text-base font-extrabold text-brand active:bg-brand-soft"
+      >
+        <span aria-hidden>‹</span> Voltar ao plano
+      </Link>
       <header>
         <SubjectChip subject={task.subject} extra={`${task.minutes} min`} />
         <h1 className="mt-2 text-3xl font-extrabold tracking-tight">{task.title}</h1>

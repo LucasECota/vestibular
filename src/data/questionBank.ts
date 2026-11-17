@@ -47,7 +47,6 @@ const toExercise = (raw: RawQuestion): Exercise => {
   explanation: EXPLANATIONS[q.id],
   context: q.context,
   images: q.images,
-  snapshots: q.snapshots,
   source: { year: q.year, number: q.number },
   }
 }

@@ -6,7 +6,6 @@ interface Props {
   exercise: Exercise
   index: number
   onAnswer: (correct: boolean) => void
-  allowOriginal?: boolean
 }
 
 const LETTERS = ['A', 'B', 'C', 'D']
@@ -30,16 +29,12 @@ interface ViewProps {
   onChoose?: (i: number) => void
   /** Mostra o gabarito e a explicação. */
   revealed: boolean
-  /** Oferece o botão "ver a questão como na prova" (padrão: sim). */
-  allowOriginal?: boolean
   /** Conteúdo extra (ex.: botão de confirmar) mostrado abaixo das alternativas, antes da correção. */
   footer?: ReactNode
 }
 
 /** Questão controlada: o pai decide quando mostrar a correção. */
-export function ExerciseView({ exercise, index, chosen, onChoose, revealed, allowOriginal = true, footer }: ViewProps) {
-  const [showOriginal, setShowOriginal] = useState(false)
-
+export function ExerciseView({ exercise, index, chosen, onChoose, revealed, footer }: ViewProps) {
   return (
     <article className="card p-4">
       <p className="text-xs font-extrabold uppercase tracking-wide text-brand">
@@ -56,15 +51,6 @@ export function ExerciseView({ exercise, index, chosen, onChoose, revealed, allo
 
       <p className="mt-2 whitespace-pre-line text-lg font-bold leading-snug">{exercise.statement}</p>
       {exercise.images && <Figures images={exercise.images} alt="Figura da questão" />}
-
-      {allowOriginal && exercise.snapshots && exercise.snapshots.length > 0 && (
-        <div className="mt-1">
-          <button type="button" onClick={() => setShowOriginal((v) => !v)} className="text-sm font-bold text-brand">
-            {showOriginal ? 'Esconder a questão original' : 'Ver a questão como na prova'}
-          </button>
-          {showOriginal && <Figures images={exercise.snapshots} alt="Questão como aparece na prova" />}
-        </div>
-      )}
 
       <ul className="mt-3 space-y-2">
         {exercise.options.map((opt, i) => {
@@ -120,11 +106,10 @@ interface Props {
   exercise: Exercise
   index: number
   onAnswer: (correct: boolean) => void
-  allowOriginal?: boolean
 }
 
 /** Questão com correção imediata (banco de questões e revisão). */
-export function ExerciseCard({ exercise, index, onAnswer, allowOriginal }: Props) {
+export function ExerciseCard({ exercise, index, onAnswer }: Props) {
   const [chosen, setChosen] = useState<number | null>(null)
 
   return (
@@ -133,7 +118,6 @@ export function ExerciseCard({ exercise, index, onAnswer, allowOriginal }: Props
       index={index}
       chosen={chosen}
       revealed={chosen !== null}
-      allowOriginal={allowOriginal}
       onChoose={(i) => {
         if (chosen !== null) return
         setChosen(i)

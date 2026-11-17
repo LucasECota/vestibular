@@ -238,13 +238,32 @@ describe('fluxo principal', () => {
     expect(screen.queryByText(/UEMG 2024, questão 43/)).not.toBeInTheDocument()
   })
 
-  it('tarefa de prática traz questões de provas anteriores', async () => {
-    const user = userEvent.setup()
+  it('tarefa de prática traz questões de provas anteriores', () => {
     renderApp('/tarefa/t-2026-11-23-matematica')
     expect(screen.getByRole('heading', { name: /questões de provas anteriores/i })).toBeInTheDocument()
     expect(screen.getAllByRole('article').length).toBeGreaterThanOrEqual(3)
-    await user.click(screen.getAllByRole('button', { name: /ver a questão como na prova/i })[0])
-    expect(screen.getAllByAltText(/como aparece na prova/i)[0]).toBeInTheDocument()
+    // a opção "ver a questão como na prova" não existe mais
+    expect(screen.queryByRole('button', { name: /como na prova/i })).not.toBeInTheDocument()
+    expect(screen.queryByAltText(/como aparece na prova/i)).not.toBeInTheDocument()
+  })
+
+  it('na tarefa, o botão do topo volta para o plano (e não para a página Hoje)', async () => {
+    const user = userEvent.setup()
+    renderApp('/plano')
+    await user.click(screen.getAllByRole('link', { name: /operações, potências e porcentagem/i })[0])
+    expect(screen.getByRole('heading', { name: 'Operações, potências e porcentagem' })).toBeInTheDocument()
+    expect(screen.queryByRole('link', { name: /‹ hoje/i })).not.toBeInTheDocument()
+
+    await user.click(screen.getByRole('link', { name: /voltar ao plano/i }))
+    expect(screen.getByRole('heading', { name: 'Plano de estudo' })).toBeInTheDocument()
+  })
+
+  it('abrir uma tarefa pela tela Hoje também mostra "Voltar ao plano"', async () => {
+    const user = userEvent.setup()
+    renderApp('/')
+    await user.click(screen.getByRole('link', { name: /operações, potências e porcentagem/i }))
+    await user.click(screen.getByRole('link', { name: /voltar ao plano/i }))
+    expect(screen.getByRole('heading', { name: 'Plano de estudo' })).toBeInTheDocument()
   })
 
   it('questão errada volta para revisão nos dias seguintes, e acertar rende XP', async () => {

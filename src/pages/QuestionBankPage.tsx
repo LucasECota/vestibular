@@ -121,7 +121,6 @@ export function QuestionBankPage() {
               index={i}
               chosen={chosen}
               revealed={Boolean(attempt)}
-              allowOriginal={false}
               onChoose={attempt ? undefined : (opt) => setPending((p) => ({ ...p, [q.id]: opt }))}
               footer={
                 <button

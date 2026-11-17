@@ -1,5 +1,6 @@
 import type { Exercise } from '../exercises'
 import { EXTRAS_WEEK1 } from './week1'
+import { EXTRAS_WEEK2 } from './week2'
 
 /**
  * Questões extras por tarefa (chave = slug da aula). A partir de 18/11 cada tarefa tem 12 questões:
@@ -7,4 +8,5 @@ import { EXTRAS_WEEK1 } from './week1'
  */
 export const EXTRAS: Record<string, Exercise[]> = {
   ...EXTRAS_WEEK1,
+  ...EXTRAS_WEEK2,
 }

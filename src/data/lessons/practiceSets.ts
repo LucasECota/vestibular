@@ -14,4 +14,13 @@ export const MATEMATICA_PRATICA_1: Lesson = simulado(
   [],
 )
 
-export const LESSONS_PRACTICE: Lesson[] = [MATEMATICA_PRATICA_1]
+export const FISICA_PRATICA_1: Lesson = simulado(
+  'fisica-pratica-1',
+  'Prática de Física 1',
+  'Primeira prática de Física: as questões oficiais abaixo cobrem vários temas, e as extras reforçam o que você já estudou (cinemática e leis de Newton).',
+  ['Converta tudo para o SI (km/h → m/s, g → kg) antes de aplicar as fórmulas.', 'Em dinâmica, desenhe as forças e some as que têm o mesmo sentido, subtraindo as contrárias.', 'Em lançamentos, separe os movimentos: horizontal (MRU) e vertical (MRUV).', 'As questões vêm das mais fáceis para as mais difíceis: use as fáceis para aquecer.'],
+  'Confundir massa com peso; esquecer o atrito na resultante; usar a distância errada em Torricelli; e esquecer que no ponto mais alto de um lançamento vertical a velocidade é zero.',
+  [],
+)
+
+export const LESSONS_PRACTICE: Lesson[] = [MATEMATICA_PRATICA_1, FISICA_PRATICA_1]

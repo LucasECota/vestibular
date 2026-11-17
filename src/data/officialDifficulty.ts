@@ -7,6 +7,8 @@ import type { Difficulty } from '../domain/types'
 export const OFFICIAL_DIFFICULTY: Record<string, Difficulty> = {
   // 23/11: expressão com fatoração e potência negativa
   'uemg-2023-q43': 'dificil',
+  // 30/11: notação científica com potências de 10
+  'uemg-2023-q13': 'facil',
 }
 
 /** Nível de uma questão: o marcado nela, ou o padrão (aula = fácil; prova anterior = média). */

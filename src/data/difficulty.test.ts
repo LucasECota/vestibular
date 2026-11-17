@@ -9,7 +9,7 @@ import { exerciseById } from './questionBank'
  * A partir de 18/11 cada tarefa tem 12 questões: 5 fáceis, 5 médias e 2 difíceis.
  * Esta data marca até onde as tarefas já foram completadas; avance-a a cada lote de questões novas.
  */
-const COMPLETE_THROUGH = '2026-12-21'
+const COMPLETE_THROUGH = '2026-12-29'
 const FIRST_DAY = '2026-11-18'
 
 const countByLevel = (ids: string[]): Record<Difficulty, number> => {

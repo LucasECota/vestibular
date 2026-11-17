@@ -50,4 +50,22 @@ export const PORTUGUES_PRATICA_1: Lesson = simulado(
   [],
 )
 
-export const LESSONS_PRACTICE: Lesson[] = [MATEMATICA_PRATICA_1, FISICA_PRATICA_1, QUIMICA_PRATICA_1, BIOLOGIA_PRATICA_1, PORTUGUES_PRATICA_1]
+export const INGLES_PRATICA_1: Lesson = simulado(
+  'ingles-pratica-1',
+  'Prática de Inglês 1',
+  'Primeira prática de Inglês: as questões oficiais trazem poemas, diálogos, notícias e tirinhas, e as extras reforçam gramática e vocabulário.',
+  ['Leia o texto antes das alternativas e procure palavras parecidas com o português (mas cuidado com os falsos cognatos).', 'Em diálogos, repare em quem fala e no tom da conversa.', 'Para conectivos (but, because, despite), pense na relação entre as duas ideias.', 'Faça as fáceis primeiro e deixe as difíceis para o final.'],
+  'Cair em falsos cognatos (library, actually, pretend); ignorar o tempo verbal; e responder pelo que "parece" em vez de pelo que o texto diz.',
+  [],
+)
+
+export const MATEMATICA_PRATICA_2: Lesson = simulado(
+  'matematica-pratica-2',
+  'Prática de Matemática 2',
+  'Segunda prática de Matemática: as três questões oficiais cobrem geometria analítica, funções e matrizes, e as extras reforçam cálculos básicos, probabilidade, matrizes e contagem.',
+  ['Nas questões de geometria analítica, faça um esboço do plano cartesiano.', 'Em determinantes, escreva os produtos das diagonais com cuidado com os sinais.', 'Em contagem, veja se a ordem importa (permutação) ou não (combinação).', 'Comece pelas fáceis para pegar ritmo.'],
+  'Errar o sinal no determinante; esquecer o domínio em funções racionais; e esquecer de multiplicar pelas trocas de lugar em permutações com elementos juntos.',
+  [],
+)
+
+export const LESSONS_PRACTICE: Lesson[] = [MATEMATICA_PRATICA_1, FISICA_PRATICA_1, QUIMICA_PRATICA_1, BIOLOGIA_PRATICA_1, PORTUGUES_PRATICA_1, INGLES_PRATICA_1, MATEMATICA_PRATICA_2]

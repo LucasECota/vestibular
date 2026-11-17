@@ -23,4 +23,13 @@ export const FISICA_PRATICA_1: Lesson = simulado(
   [],
 )
 
-export const LESSONS_PRACTICE: Lesson[] = [MATEMATICA_PRATICA_1, FISICA_PRATICA_1]
+export const QUIMICA_PRATICA_1: Lesson = simulado(
+  'quimica-pratica-1',
+  'Prática de Química 1',
+  'Primeira prática de Química: as questões oficiais abaixo misturam vários temas, e as extras reforçam o que você viu até agora (matéria, átomo, tabela, ligações e funções inorgânicas).',
+  ['Comece pelas fáceis para aquecer, depois faça as oficiais e deixe as difíceis por último.', 'Em cálculos, escreva a reação balanceada e use a proporção em mols.', 'Para pH, lembre: menor que 7 é ácido, 7 é neutro e maior que 7 é básico.', 'Para o tipo de ligação, observe quem se liga: metal + ametal é iônica; ametal + ametal é covalente.'],
+  'Esquecer de balancear a equação; misturar massa (g) com quantidade (mol); e achar que diluir um ácido forte o torna básico (o pH só se aproxima de 7).',
+  [],
+)
+
+export const LESSONS_PRACTICE: Lesson[] = [MATEMATICA_PRATICA_1, FISICA_PRATICA_1, QUIMICA_PRATICA_1]

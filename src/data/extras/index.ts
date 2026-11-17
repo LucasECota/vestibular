@@ -3,6 +3,7 @@ import { EXTRAS_WEEK1 } from './week1'
 import { EXTRAS_WEEK2 } from './week2'
 import { EXTRAS_WEEK3 } from './week3'
 import { EXTRAS_WEEK4 } from './week4'
+import { EXTRAS_WEEK5 } from './week5'
 
 /**
  * Questões extras por tarefa (chave = slug da aula). A partir de 18/11 cada tarefa tem 12 questões:
@@ -13,4 +14,5 @@ export const EXTRAS: Record<string, Exercise[]> = {
   ...EXTRAS_WEEK2,
   ...EXTRAS_WEEK3,
   ...EXTRAS_WEEK4,
+  ...EXTRAS_WEEK5,
 }

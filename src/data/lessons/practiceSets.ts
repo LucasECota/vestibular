@@ -41,4 +41,13 @@ export const BIOLOGIA_PRATICA_1: Lesson = simulado(
   [],
 )
 
-export const LESSONS_PRACTICE: Lesson[] = [MATEMATICA_PRATICA_1, FISICA_PRATICA_1, QUIMICA_PRATICA_1, BIOLOGIA_PRATICA_1]
+export const PORTUGUES_PRATICA_1: Lesson = simulado(
+  'portugues-pratica-1',
+  'Prática de Português e Literatura 1',
+  'Primeira prática de Português e Literatura: as questões oficiais abaixo cobrem interpretação, gramática e escolas literárias, e as extras reforçam o que você viu até agora.',
+  ['Em interpretação, volte ao texto: a resposta sempre está nele (ou pode ser deduzida dele).', 'Em questões de "alternativa incorreta", marque a que está errada, não a certa.', 'Associe cada escola literária a autor, época e tema (ex.: Castro Alves, condoreirismo e abolição).', 'Faça as fáceis primeiro e deixe as difíceis para o final.'],
+  'Marcar a alternativa certa quando o enunciado pede a incorreta; confundir sujeito com o termo mais próximo do verbo; e trocar escolas literárias parecidas (Romantismo, Realismo, Parnasianismo).',
+  [],
+)
+
+export const LESSONS_PRACTICE: Lesson[] = [MATEMATICA_PRATICA_1, FISICA_PRATICA_1, QUIMICA_PRATICA_1, BIOLOGIA_PRATICA_1, PORTUGUES_PRATICA_1]

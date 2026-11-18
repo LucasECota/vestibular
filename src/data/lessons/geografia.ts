@@ -46,6 +46,12 @@ export const GEOGRAFIA_1: Lesson = {
     { type: 'p', text: 'O Brasil tem **quatro fusos**: UTC−2 (ilhas oceânicas, como Fernando de Noronha), UTC−3 (horário de Brasília, que vale em quase todo o litoral e no Sudeste), UTC−4 (Amazonas, Mato Grosso, Mato Grosso do Sul, Rondônia e Roraima) e UTC−5 (Acre e extremo oeste do Amazonas).' },
     { type: 'callout', kind: 'exemplo', title: 'Passo a passo: conta com fusos', text: 'Quando é 12h em Brasília (UTC−3), que horas são em Tóquio (UTC+9)?' + '\n' + 'Diferença = (+9) − (−3) = 12 horas à frente.' + '\n' + 'Em Tóquio são 24h, ou seja, 0h do dia seguinte.' },
     { type: 'callout', kind: 'atencao', text: 'Em viagens, converta tudo para UTC: horário local − fuso = UTC. Some a duração do voo e converta de novo para o fuso do destino. Isso evita erros de sinal.' },
+    { type: 'h', text: '5. Contas que aparecem em prova' },
+    { type: 'p', text: '**Diferença de horário pela longitude:** divida a diferença de longitude por 15°. Se os locais estão do mesmo lado de Greenwich (ambos a leste ou ambos a oeste), **subtraia** as longitudes. Se estão em lados opostos, **some**.' },
+    { type: 'callout', kind: 'exemplo', text: String.raw`20° L e 40° O (lados opostos): $20 + 40 = 60°$, que dá $60 \div 15 = 4$ horas. 15° O e 45° O (mesmo lado): $45 - 15 = 30°$, que dá 2 horas.` },
+    { type: 'p', text: '**Hemisférios:** a latitude diz se o ponto está ao Norte ou ao Sul do Equador. A longitude diz se está a Leste (hemisfério Oriental) ou a Oeste (hemisfério Ocidental) de Greenwich. Exemplo: 10° N e 30° L estão nos hemisférios Norte e Oriental.' },
+    { type: 'p', text: '**Escala e áreas:** a escala vale para comprimentos. Para **áreas**, eleve a razão ao quadrado, ou seja, converta o comprimento e depois eleve ao quadrado.' },
+    { type: 'callout', kind: 'exemplo', text: String.raw`Escala 1 : 50 000: 1 cm no mapa = 0,5 km reais. Então 1 cm² no mapa = $0{,}5^2 = 0{,}25$ km². Uma área de 8 cm² no mapa equivale a $8 \cdot 0{,}25 = 2$ km².` },
   ],
   exercises: [
     ex('geografia-1', 1, S, 'A Terra tem 24 fusos horários de 15° cada. A diferença de horário entre dois locais cujas longitudes são 45° O e 15° L é de:', ['2 horas', '3 horas', '4 horas', '6 horas'], 2, 'Resposta C (4 horas). A diferença de longitude é 45° + 15° = 60° (um está a oeste e o outro a leste, então somam). Como 15° = 1 hora, 60° ÷ 15° = 4 horas.'),

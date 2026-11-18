@@ -58,6 +58,17 @@ export const BIOLOGIA_1: Lesson = {
       ['Transporte ativo', 'Sim', 'Contra o gradiente (do menos para o mais concentrado)', 'Bomba de sódio e potássio'],
     ] },
     { type: 'callout', kind: 'dica', text: 'Osmose: a água "vai atrás do soluto", ou seja, para o lado mais concentrado. Uma hemácia em meio hipotônico (menos soluto fora) ganha água e pode estourar (lise).' },
+    { type: 'h', text: '4. Osmose na prática: células animais e vegetais' },
+    { type: 'table', head: ['Meio externo', 'Hemácia (célula animal)', 'Célula vegetal'], rows: [
+      ['Hipotônico (menos soluto fora)', 'Ganha água, incha e pode estourar (lise)', 'Ganha água e fica túrgida; a parede celular impede o rompimento'],
+      ['Isotônico (mesma concentração)', 'Sem mudança de volume', 'Sem mudança'],
+      ['Hipertônico (mais soluto fora)', 'Perde água e fica enrugada (crenação)', 'Perde água e a membrana se solta da parede celular (plasmólise)'],
+    ] },
+    { type: 'h', text: '5. Caminho das proteínas de secreção' },
+    { type: 'p', text: 'As proteínas que serão exportadas seguem uma "linha de montagem": são produzidas no **retículo endoplasmático rugoso**, seguem em vesículas para o **complexo de Golgi** (que as modifica e empacota) e, em novas vesículas, chegam à **membrana plasmática**, onde são liberadas (exocitose).' },
+    { type: 'h', text: '6. Bomba de sódio e potássio e gasto de energia' },
+    { type: 'p', text: 'A bomba de sódio e potássio é um transporte ativo: usa ATP para tirar Na⁺ da célula e colocar K⁺ para dentro. Assim, mantém o **gradiente** (concentrações diferentes dos dois lados da membrana), essencial para o impulso nervoso e para a contração muscular. Se a bomba for bloqueada, o gradiente se desfaz.' },
+    { type: 'callout', kind: 'dica', text: 'Células que gastam muita energia, como as musculares, têm muitas mitocôndrias, porque precisam de muito ATP.' },
   ],
   exercises: [
     ex('biologia-1', 1, S, 'A organela responsável pela respiração celular, produzindo a maior parte do ATP, é a:', ['mitocôndria', 'lisossomo', 'complexo de Golgi', 'retículo endoplasmático liso'], 0, 'Resposta A (mitocôndria). É nela que ocorre a respiração celular aeróbia, que libera energia armazenada em ATP. O lisossomo digere, o Golgi empacota e distribui, e o retículo liso sintetiza lipídios.'),

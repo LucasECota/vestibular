@@ -6,6 +6,7 @@ import { ADD_WEEK5 } from './week5'
 import { ADD_WEEK6 } from './week6'
 import { ADD_WEEK7 } from './week7'
 import { ADD_WEEK8 } from './week8'
+import { ADD_WEEK9 } from './week9'
 
 /**
  * Complementos das aulas: conteúdo que as questões da tarefa pedem e que a aula original não trazia.
@@ -20,4 +21,5 @@ export const ADDITIONS: Record<string, Block[]> = {
   ...ADD_WEEK6,
   ...ADD_WEEK7,
   ...ADD_WEEK8,
+  ...ADD_WEEK9,
 }

@@ -21,6 +21,11 @@ function withAdditions(l: Lesson, extra: Block[]): Block[] {
   if (l.heading === 'Simulado') {
     return [l.blocks[0], { type: 'h', text: 'Revisão rápida: o que as questões pedem' }, ...extra, ...l.blocks.slice(1)]
   }
+  if (l.heading === 'Resumão') {
+    // a mensagem final (boa sorte, na hora da prova) continua por último
+    const last = l.blocks[l.blocks.length - 1]
+    return last.type === 'callout' ? [...l.blocks.slice(0, -1), ...extra, last] : [...l.blocks, ...extra]
+  }
   return [...l.blocks, ...extra]
 }
 

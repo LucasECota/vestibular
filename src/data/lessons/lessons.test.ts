@@ -1,10 +1,20 @@
 import { describe, expect, it } from 'vitest'
 import { PLAN } from '../plan'
+import { ADDITIONS } from './additions'
 import { LESSONS, lessonBySlug } from './index'
 
 const LETTERS = ['A', 'B', 'C', 'D']
 
 describe('aulas', () => {
+  it('todo complemento de aula aponta para uma aula existente e entra no conteúdo dela', () => {
+    for (const [slug, extra] of Object.entries(ADDITIONS)) {
+      const l = lessonBySlug(slug)
+      expect(l, slug).toBeDefined()
+      expect(extra.length, slug).toBeGreaterThan(0)
+      for (const b of extra) expect(l!.blocks, slug).toContainEqual(b)
+    }
+  })
+
   it('têm slug único e pelo menos 5 exercícios com ids únicos', () => {
     expect(new Set(LESSONS.map((l) => l.slug)).size).toBe(LESSONS.length)
     const ids = LESSONS.flatMap((l) => l.exercises.map((e) => e.id))

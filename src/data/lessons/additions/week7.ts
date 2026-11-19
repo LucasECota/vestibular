@@ -1,5 +1,5 @@
 import type { Block } from '../../../domain/lesson'
-import { call, h, list, p, table } from './b'
+import { call, h, list, p } from './b'
 
 /** Complementos das tarefas de 28 a 31/12. */
 export const ADD_WEEK7: Record<string, Block[]> = {
